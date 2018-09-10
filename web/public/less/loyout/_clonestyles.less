@@ -1,0 +1,162 @@
+.companies-headline {
+	display: flex;
+	justify-content: space-between;
+	font-size: 1.125rem;
+	color: @activeColor;
+	margin-bottom: 0.875rem;
+
+	&__prime {
+		font-weight: @wBold;
+		display: inline-block;
+		text-transform: uppercase;
+	}
+
+	&__found {
+		display: inline-block;
+	}
+}
+
+
+.right-send {
+	width: 100%;
+	padding: 6px 1.125rem 1.25rem 1.125rem;
+	box-shadow: @basicShadow;
+	&:not(:last-child) {
+		margin-bottom: 1.25rem;
+	}
+
+
+	&__title {
+		margin-bottom: 1.125rem;
+		font-size: 1.125rem;
+		color: @activeColor;
+		text-transform: uppercase;
+	}
+
+	.accepting {
+		display: flex;
+		align-items: flex-start;
+		margin-bottom: 1.5rem;
+	}
+
+	.criteria {
+		display: flex;
+		justify-content: space-between;
+		&:not(:last-child) {
+			margin-bottom: 1rem;
+		}
+
+		&__text {
+			font-size: 1.125rem;
+			color: @activeColor;
+			text-transform: uppercase;
+
+			&--minifont {
+				font-size: 1rem;
+			}
+		}
+
+		&__company-num {
+			text-transform: lowercase;
+			font-size: 0.875rem;
+		}
+
+
+	}
+}
+
+
+.filter {
+	width: 100%;
+	box-shadow: @basicShadow;
+	padding: 1.625rem 0;
+
+	@media screen and (max-width: 990px) {
+		margin-bottom: 1.125rem;
+	}
+
+	&__doubleitem-wrapper {
+		width: 62%;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+
+		@media screen and (max-width: 990px) {
+			width: 90%;
+		}
+	}
+
+	&__item {
+		width: 62%;
+		margin: 0 auto;
+
+		@media screen and (max-width: 990px) {
+			width: 90%;
+		}
+
+		&--vicel {
+			width: 96%;
+		}
+
+		&--double-1 {
+			width: 53%;
+			display: inline-block;
+			margin: 0;
+		}
+
+		&--double-2 {
+			width: 43%;
+			display: inline-block;
+			margin: 0;
+		}
+	}
+
+	&__title {
+		color: @activeColor;
+		text-transform: uppercase;
+		font-size: 1.5rem;
+		margin-left: 0.4rem;
+		margin-bottom: 0.4rem;
+	}
+
+	&__input-double-wrapper {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__input {
+		border: 1px solid @lightGray;
+		font-size: 1rem;
+		color: @activeColor;
+		height: 3rem;
+		padding: 0 1.25rem;
+
+		&--one {
+			width: 100%;
+		}
+
+		&--double {
+			width: 48%;
+		}
+	}
+
+	&__input::-webkit-input-placeholder {
+		font-weight: @wLight;
+		color: @grayTextColor;
+		font-size: 1.5rem;
+	}
+
+	&__input:-moz-placeholde {
+		font-weight: @wLight;
+		color: @grayTextColor;
+		font-size: 1.5rem;
+	}
+
+}
+
+.advertising-wrapper {
+	margin-bottom: 2rem;
+	@media screen and (max-width: 990px) {
+		margin: 0;
+	}
+}

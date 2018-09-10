@@ -1,0 +1,30 @@
+.advertising {
+	min-height: 9.125rem;
+	box-shadow: @basicShadow;
+	width: 100%;
+	display: inline-block;
+	&:not(:last-child) {
+		margin-bottom: 2rem;
+	}
+
+	@media screen and (max-width: 990px) {
+		margin-bottom: 1.125rem !important;
+	}
+
+	&--find-student {
+		min-height: 11.125rem;
+		margin-bottom: 2.3rem !important;
+	}
+
+	&--find-vessel {
+		margin-bottom: 3rem !important;
+		@media screen and (max-width: 990px) {
+			margin-bottom: 1.125rem !important;
+		}
+	}
+
+	&--oneitem {
+		margin-bottom: 2rem;
+	}
+
+}

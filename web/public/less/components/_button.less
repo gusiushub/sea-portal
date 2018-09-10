@@ -1,0 +1,66 @@
+.button {
+	width: 100%;
+	background-color: @navActiveColor;
+	color: @whiteColor;
+	font-size: 1.5rem;
+	min-height: 3.75rem;
+	border: none;
+	text-transform: uppercase;
+	outline: none;
+	padding: 0 4px;
+
+	@media screen and (max-width: 600px) {
+		font-size: 1.3rem;
+	}
+
+	&--result-box {
+		min-height: 2.375rem;
+	}
+
+	&--crew {
+		width: 48%;
+		
+		@media screen and (max-width: 1210px) {
+			width: 100%;
+			margin-bottom: 0.4rem;
+		}
+
+		@media screen and (max-width: 990px) {
+			width: 48%;
+		}
+	}
+
+	&--selecte {
+		background-color: transparent;
+		border: 1px solid @lightBlue;
+		color: @lightBlue;
+		transition: 0.3s;
+	}
+
+	&--selecte-active {
+		background-color: @lightBlue;
+		color: @whiteColor;
+	}
+
+	&--lighten {
+		background-color: @lightBlue;
+	}
+
+	&--sign {
+		text-transform: none;
+	}
+
+	&--transparent {
+		border: 2px solid @navActiveColor;
+		color: @blackColor;
+		background: transparent;
+	}
+
+	&--profile {
+		min-height: 3.125rem;
+	}
+
+	&--appeared {
+		display: none;
+	}
+}

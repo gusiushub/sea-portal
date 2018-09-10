@@ -1,0 +1,56 @@
+.result-box {
+	padding: 4px;
+	border: 1px solid @blueColor;
+	margin-bottom: 1.25rem;
+
+	&--active &__active-logo {
+		display: block;
+	}
+
+	&__top {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 0.625rem;
+
+		&--crew {
+			margin-bottom: 0.325rem;
+		}
+	}
+
+	&__image {
+		position: relative;
+		display: inline-block;
+	}
+
+	&__add-button {
+		position: absolute;
+		bottom: 4px;
+		left: 4px;
+		width: 23px;
+		height: 23px;
+		background: url(../img/icons/add-pict.jpg);
+		background-size: 100%;
+		border: none;
+	}
+
+	&__picture {
+		display: block;
+		max-width: 6.25rem;
+		max-height: 6.25rem;
+	}
+
+	&__description {
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	&__desc-line {
+		display: block;
+	}
+
+	&__active-logo {
+		display: none;
+		max-height: 6.25rem;
+		overflow-y: hidden;
+	}
+}

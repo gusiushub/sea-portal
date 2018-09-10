@@ -1,0 +1,56 @@
+.profile1 {
+	padding-bottom: 21rem;
+}
+
+.profile {
+
+	&__photo {
+		width: 100%;
+	}
+
+	&__upload-photo {
+		background-color: transparent;
+		font-size: 1.5rem;
+		color: @activeColor;
+		font-weight: @wLight;
+		text-transform: uppercase;
+		padding-left: 30px;
+		background: url(../img/icons/photo.png);
+		background-position: left center;
+		background-repeat: no-repeat;
+		display: block;
+		margin: 0 auto;
+		text-decoration: underline;
+		border: none;
+	}
+
+	&__setting {
+		margin-bottom: 0.75rem;
+
+		&--no-margin {
+			margin-bottom: 0;
+		}
+	}
+
+	&__password {
+		font-size: 1.5rem;
+		text-transform: uppercase;
+		color: @activeColor;
+
+		@media (max-width: 600px) {
+			font-size: 0.875rem;
+		}
+	}
+
+	&__details {
+		font-size: 1.5rem;
+		font-size: @wBold;
+		color: @activeColor;
+		text-transform: uppercase;
+		@media (max-width: 600px) {
+			font-size: 0.875rem;
+		}
+	}
+
+
+}

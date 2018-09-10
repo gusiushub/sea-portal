@@ -1,0 +1,87 @@
+.select-style {
+	position: relative;
+	width: 100%;
+
+	&--sing {
+		margin-bottom: 0.625rem;
+	}
+
+	&__select {
+		appearance: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		border: 1px solid @lightGray;
+		height: 3.125rem;
+		padding-left: 10px;
+		width: 100%;
+		text-transform: uppercase;
+		font-weight: @wLight;
+		color: @grayTextColor;
+		font-size: 1.5rem;
+		outline: none;
+		
+		option {
+			text-transform: uppercase;
+			font-size: 1.5rem;
+			color: @activeColor;
+		}
+
+		&:hover {
+			cursor: pointer;
+		}
+
+		&--unactive {
+			border: none !important;
+			padding: 0;
+			background-color: transparent !important;
+		}
+
+		&--sing-1 {
+			background: url(../img/icons/flag.png);
+		}
+
+		&--sing-2 {
+			background: url(../img/icons/pen.png);
+		}
+
+		&--sing-3 {
+			background: url(../img/icons/home.png);
+		}
+
+		&--sing {
+			padding-left: 40px;
+			position: relative;
+			background-position: 6px center;
+			background-repeat: no-repeat;
+		}
+
+	}
+
+	&__select::-ms-expand {
+		display: none;
+	}
+
+	&__select:focus &__placeholder {
+		display: none;
+	}
+
+	&__placeholder {
+		font-size: 1.5rem;
+		color: @grayTextColor;
+		text-transform: uppercase;
+	}
+
+	&__arrow {
+		position: absolute;
+		right: 1px;
+		top: 50%;
+		height: 90%;
+		width: 2.375rem;
+		transform: translateY(-50%);
+		background-color: @whiteColor;
+		background-image: url(../img/icons/select-arrow.png);
+		background-repeat: no-repeat;
+		background-position: center;
+		pointer-events: none;
+	}
+}

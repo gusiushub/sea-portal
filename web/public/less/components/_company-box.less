@@ -1,0 +1,44 @@
+.company-box {
+	padding: 4px;
+	border: 1px solid @lightGray;
+	width: 100%;
+	margin-bottom: 1.125rem;
+	display: flex;
+	position: relative;
+	&--empty {
+		padding: 1.185rem 0;
+		text-align: center;
+		justify-content: center;
+	}
+
+	&--empty &__description {
+		padding: 0;
+	}
+
+	&__logo {
+		margin-right: 6px;
+	}
+
+	&__description {
+		padding-top: 0.625rem;
+	}
+
+	&__image {
+		display: block;
+		max-height: 5.625rem;
+		max-width: 5.625rem;
+	}
+
+	&__company-name {
+		font-size: 1.125rem;
+		font-weight: @wRegular;
+		text-transform: uppercase;
+		color: @activeColor;
+	}
+
+	&__site-link {
+		text-decoration: none;
+		font-size: 1rem;
+		color: @activeColor
+	}
+}

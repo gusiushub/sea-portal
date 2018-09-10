@@ -1,0 +1,42 @@
+.profile6 {
+	padding-bottom: 4.125rem;
+}
+
+.request {
+	box-shadow: @basicShadow;
+	padding: 0.625rem;
+	&:not(:last-child) {
+		margin-bottom: 1.125rem;
+	}
+
+	&__headline {
+		font-size: 1.125rem;
+		color: @blackColor;
+		text-transform: uppercase;
+		margin-bottom: 1.25rem;
+	}
+
+	&__position {
+		text-transform: uppercase;
+		font-size: 1rem;
+		color: @blackColor;
+	}
+
+	&__detail {
+		font-size: 1rem;
+		text-transform: uppercase;
+		color: @blackColor;
+		margin-bottom: 1rem;
+
+		@media screen and (max-width: 500px) {
+			margin-bottom: 0.5rem;
+		}
+
+		&--last {
+
+			@media screen and (max-width: 500px) {
+				margin-bottom: 0.875rem;
+			}
+		}
+	}
+}

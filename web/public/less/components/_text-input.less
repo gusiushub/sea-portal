@@ -1,0 +1,111 @@
+.textinput-container {
+	position: relative;
+	&:not(:last-child) {
+		margin-bottom: 0.625rem;
+	}
+
+	&__input {
+		width: 100%;
+		border: 1px solid @lightGray;
+		font-size: 1rem;
+		color: @activeColor;
+		height: 3rem;
+		padding: 0 1.25rem;
+
+		&--sing-1 {
+			background: url(../img/icons/mail.png);
+		}
+
+		&--sing-2 {
+			background: url(../img/icons/pass.png);
+		}
+
+		&--sing-3 {
+			background: url(../img/icons/company.png);
+		}
+
+		&--sing-4 {
+			background: url(../img/icons/ball.png);
+		}
+
+		&--sing-5 {
+			background: url(../img/icons/phone-num.png);
+		}
+
+		&--sing-6 {
+			background: url(../img/icons/people.png);
+		}
+
+		&--sing {
+			padding-left: 40px;
+			position: relative;
+			background-position: 6px center;
+			background-repeat: no-repeat;
+		}
+
+		&--pass {
+			padding-right: 40px;
+		}
+
+		&--plus {
+			padding-right: 50px;
+		}
+
+		&--profile {
+			height: 28px;
+		}
+
+		&--profile-unactive {
+			border: 1px solid transparent;
+			background-color: transparent;
+		}
+
+		&--change {
+			text-transform: uppercase;
+			font-size: 1.5rem;
+		}
+
+		&--change-pass {
+			text-transform: uppercase;
+			font-size: 1.5rem;
+		}
+
+		&--change-unactive {
+			border: 1px solid transparent;
+			background-color: transparent;
+		}
+
+		&--mini-padding {
+			padding: 0 0.5rem;
+			text-align: center;
+		}
+
+		&--from-to {
+			text-transform: uppercase;
+			font-size: 1.2rem;
+		}
+
+		&--solary {
+			text-transform: uppercase;
+			font-size: 1.2rem;
+		}
+
+	}
+
+	&__textarea {
+		width: 100%;
+		resize: none;
+		height: 8rem;
+		border: 1px solid @lightGray;
+		font-size: 1rem;
+		color: @activeColor;
+		padding: 0 1.25rem;
+		padding-top: 1.125rem;
+
+		&--profile {
+			box-shadow: @basicShadow;
+			height: 9.875rem;
+
+		}
+	}
+}

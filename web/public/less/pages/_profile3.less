@@ -1,0 +1,50 @@
+.profile3 {
+	padding-bottom: 20.125rem;
+
+	@media screen and (max-width: 576px) {
+		padding-bottom: 1rem;
+	}
+}
+
+#chart-statistics {
+	height: 290px;
+}
+
+.statistics {
+	padding: 1.25rem;
+	box-shadow: @basicShadow;
+
+	&__title {
+		font-size: 1.875rem;
+		color: @activeColor;
+		font-weight: @wRegular;
+		text-decoration: underline;
+		text-transform: uppercase;
+	}
+
+	&__sub-title {
+		font-size: 1.125rem;
+		color: @activeColor;
+		font-weight: @wRegular;
+		text-transform: uppercase;
+	}
+
+	&__count {
+		font-size: 3.75rem;
+		text-align: center;
+		color: @activeColor;
+		display: block;
+		margin: 0 auto;
+		margin-top: 4.625rem;
+		line-height: 50px;
+
+		@media screen and (max-width: 990px) {
+			margin: 0;
+			margin-left: auto;
+		}
+
+		@media screen and (max-width: 576px) {
+			font-size: 2.125rem;
+		}
+	}
+}

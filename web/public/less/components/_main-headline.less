@@ -1,0 +1,41 @@
+.main-headline {
+	padding-bottom: 1.125rem;
+	border-bottom: 1px solid @activeColor;
+	@media screen and (max-width: 900px) {
+		border: none;
+	}
+
+	&--profile {
+		@media screen and (max-width: 900px) {
+			border-top: 1px solid @activeColor;
+			border-bottom: 1px solid @activeColor;
+			padding: 10px 0;
+			margin-bottom: 4px;
+		}
+	}
+
+	&--modal {
+		padding-bottom: 0.625rem;
+		margin-bottom: 0.625rem;
+	}
+
+	&--no-underline {
+		border: none;
+	}
+
+	&__title {
+		font-size: 3rem;
+		color: @blueColor;
+		font-weight: @wLight;
+		text-transform: uppercase;
+
+		&--modal {
+			font-size: 1.875rem;
+		}
+
+		@media screen and (max-width: 900px) {
+			font-size: 1.5rem;
+			text-align: center;
+		}
+	}
+}

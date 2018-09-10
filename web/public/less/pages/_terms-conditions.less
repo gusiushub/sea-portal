@@ -1,0 +1,40 @@
+.terms-conditions {
+	padding-bottom: 1.125rem;
+}
+
+.terms {
+
+	&__list {
+		list-style: none;
+		margin-bottom: 1.625rem;
+	}
+
+	&__link {
+		font-size: 1.5rem;
+		color: @activeColor;
+	}
+
+	&__container {
+		margin-left: 1.125rem;
+		&:not(:last-child) {
+			margin-bottom: 1.75rem;
+		}
+	}
+
+	&__paragraph {
+		font-size: 1rem;
+		color: @activeColor;
+	}
+
+	&__headline {
+		font-size: 1.5rem;
+		color: @blueColor;
+		margin-bottom: 1.875rem;
+		font-weight: @wRegular;
+
+		&--special {
+			margin-bottom: 0;
+			color: @activeColor;
+		}
+	}
+}

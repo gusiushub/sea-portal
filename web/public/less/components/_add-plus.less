@@ -1,0 +1,29 @@
+.add-plus {
+	position: absolute;
+	width: 1.675rem;
+	height: 1.675rem;
+	border: 2px solid @blueColor;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 4px;
+	cursor: pointer;
+
+	&--company-box {
+		bottom: 5px;
+		right: 5px;
+		cursor: pointer;
+	}
+
+	&--attach-file {
+		right: 1rem;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	.add-plus__symbol {
+		color: @blueColor;
+		font-size: 1.7rem;
+		font-weight: @wLight;
+	}
+}

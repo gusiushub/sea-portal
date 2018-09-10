@@ -1,0 +1,51 @@
+.sell-card {
+	box-shadow: @basicShadow;
+	padding: 0.875rem;
+	display: flex;
+	flex-direction: column;
+	min-height: 38rem;
+	width: 31%;
+
+	&--mini {
+		min-height: 25rem;
+	}
+
+	@media screen and (max-width: 700px) {
+		width: 100%;
+		margin-bottom: 8px;
+	}
+
+	&__cost {
+		margin-bottom: 0.375rem;
+	}
+
+	&__image {
+
+		@media screen and (max-width: 1180px) {
+			width: 100%;
+		}
+
+		@media screen and (max-width: 700px) {
+			width: 60%;
+		}
+	}
+
+	&__paragraph {
+		font-size: 14px;
+		text-align: center;
+		color: @activeColor;
+		margin-bottom: 1.375rem;
+
+		&--no-margin {
+			margin: 0;
+		}
+
+		&--bold {
+			font-weight: @wBold;
+		}
+	}
+
+	&__button {
+		margin-top: auto;
+	}
+}

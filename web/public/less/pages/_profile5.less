@@ -1,0 +1,89 @@
+.profile5 {
+	padding-bottom: 5.375rem;
+}
+
+.slider-advertising {
+	margin-bottom: 1.625rem;
+	padding: 0 46px;
+
+	&__slide {
+		cursor: pointer;
+	}
+
+	&__display {
+		text-align: center;
+	}
+
+	&__headline {
+		font-size: 1.125rem;
+		text-transform: uppercase;
+		font-weight: @wRegular;
+	}
+
+	&__image {
+		margin: 0 auto;
+	}
+
+	&__modal {
+		display: none;
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, .3);
+		top: 0;
+		left: 0;
+		z-index: 500;
+		overflow-y: auto;
+	}
+
+	&__wrapper {
+		margin: 5% 0;
+	}
+
+	&__modal-body {
+		padding: 1.25rem;
+		background-color: @whiteColor;
+	}
+
+	&__adv-place {
+		padding: 0.5rem;
+		box-shadow: @basicShadow;
+		padding-bottom: 1.25rem;
+	}
+
+	&__page-screen {
+		width: 100%;
+	}
+
+	&__available {
+		height: 5rem;
+		font-size: 1.125rem;
+		border: 2px solid @navActiveColor;
+		color: @navActiveColor;
+		text-transform: uppercase;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		box-shadow: @basicShadow;
+		margin-bottom: 1.56rem;
+		transition: .3s;
+		cursor: pointer;
+
+		&--active {
+			background-color: @blueColor;
+			color: @whiteColor;
+			border: 2px solid @blueColor;
+		}
+
+		&--selected {
+			background-color: #d7d7d7;
+			color: @blackColor;
+			border: 2px solid #d7d7d7;
+		}
+
+		&--no-margin {
+			margin: 0;
+		}
+	}
+
+}

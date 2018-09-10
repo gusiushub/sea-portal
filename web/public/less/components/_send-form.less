@@ -1,0 +1,43 @@
+.right-send {
+	width: 100%;
+	padding: 6px 1.125rem 1.25rem 1.125rem;
+	box-shadow: @basicShadow;
+	&:not(:last-child) {
+		margin-bottom: 1.25rem;
+	}
+
+
+	&__title {
+		margin-bottom: 1.125rem;
+		font-size: 1.125rem;
+		color: @activeColor;
+		text-transform: uppercase;
+	}
+
+	.accepting {
+		display: flex;
+		align-items: flex-start;
+		margin-bottom: 1.5rem;
+	}
+
+	.criteria {
+		display: flex;
+		justify-content: space-between;
+		&:not(:last-child) {
+			margin-bottom: 1rem;
+		}
+
+		&__text {
+			font-size: 1.125rem;
+			color: @activeColor;
+			text-transform: uppercase;
+		}
+
+		&__company-num {
+			text-transform: lowercase;
+			font-size: 0.875rem;
+		}
+
+
+	}
+}
