@@ -10,7 +10,7 @@
                     <div class="settings">
                         <div class="settings__item">
                             <a href="#" class="settings__email">
-                                wilkinson@gmail.com
+                                <?php echo Yii::$app->user->identity->email ; ?>
                             </a>
                         </div>
                         <div class="settings__item">
@@ -26,12 +26,12 @@
                             <div class="settings__hidden-menu">
                                 <ul class="settings__list">
                                     <li class="settings__list-item">
-                                        <a href="#" class="settings__link">
+                                        <a href="/web/company/profile" class="settings__link">
                                             Profile
                                         </a>
                                     </li>
                                     <li class="settings__list-item">
-                                        <a href="#" class="settings__link">
+                                        <a href="/web/company/logout" class="settings__link">
                                             Sign Out
                                         </a>
                                     </li>
@@ -50,8 +50,8 @@
                                         Sign In
                                     </a>
                                 </li>
-                                <li class="/web/site/signup">
-                                    <a href="#" class="adaptive-menu__link">
+                                <li class="adaptive-menu__item">
+                                    <a href="/web/site/signup" class="adaptive-menu__link">
                                         Sign Up
                                     </a>
                                 </li>
@@ -66,7 +66,7 @@
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/crew" class="adaptive-menu__link">
                                         Crew
                                     </a>
                                 </li>
@@ -81,12 +81,12 @@
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/contacts" class="adaptive-menu__link">
                                         Contacts
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/faq" class="adaptive-menu__link">
                                         Faq
                                     </a>
                                 </li>
@@ -114,7 +114,7 @@
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/site/crew" class="secondary-navigation__link">
                                     Crew
                                 </a>
                             </li>
@@ -124,17 +124,17 @@
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/site/chartering-market" class="secondary-navigation__link">
                                     Chartering market
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/site/contacts" class="secondary-navigation__link">
                                     Contacts
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/site/faq" class="secondary-navigation__link">
                                     Faq
                                 </a>
                             </li>

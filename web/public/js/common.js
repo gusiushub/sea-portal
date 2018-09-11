@@ -94,20 +94,24 @@ $('#profile-change').click(function(){
             city = $('input[name="city"]').val(),
             website = $('input[name="website"]').val(),
             email = $('input[name="email"]').val(),
-            contacts = $('input[name="contacts"]').val();
+            contacts = $('input[name="contacts"]').val(),
+            _csrf = $('input[name="_csrf"]').val(),
+            profile1 = {
+                company,
+                phone,
+                country,
+                city,
+                website,
+                email,
+                contacts
+            };
+        var jsdata = JSON.stringify(profile1);
         $.ajax({
             type: "POST",
             url: "/web/site/ajax",
             data: {
-                profile1: profile1=>[
-                    company => company,
-                    phone => phone,
-                    country => country,
-                    city => city,
-                    website => website,
-                    email => email,
-                    contacts => contacts
-                ]
+                profile1: jsdata,
+                _csrf: _csrf
             },
             success: function(r) {
                 console.log(r);

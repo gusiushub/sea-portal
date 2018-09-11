@@ -13,6 +13,7 @@ use app\models\User;
 use app\models\SignupForm;
 use app\models\UserProfile;
 use app\models\BecomeSupplier;
+use app\models\Ajax;
 
 
 class SiteController extends Controller
@@ -76,24 +77,43 @@ class SiteController extends Controller
 
     public function actionAjax()
     {
-//        $_SESSION['qqq']=$_POST;
-//        var_dump($_SESSION['qqq']);
+        $model = new Ajax();
+
+        if ($model->load(Yii::$app->request->isAjax)) {
+            $model->profileUpdate();
+        }
+        //var_dump($user->username);
+        //if(\Yii::$app->request->isAjax) {
+//        if (isset($_POST['profile1'])) {
+//            $profile = json_decode($_POST['profile1'], true);
+//
+//            //$ajax = new Ajax($profile['company']);
+//            //$ajax->profileUpdate();
+//            $filename = __DIR__ . '/data.php';  // Путь куда записать содержимое файла
+//            //$profile = json_decode($_POST['profile1'],true);
+//            //$profile = $_POST['profile1'];
+//            $string = 'POST-  ' .$profile['company'] ;
+//            file_put_contents($filename, $string);
+//
+//            $user->username = $profile['company'];
+//
+//            $user->save();//? $users : null;
+//        }
+
+       // }
     }
 
     public function actionProfile()
     {
-        //var_dump(Yii::$app->user->identity->user_status); exit;
-        $status = Yii::$app->user->identity->user_status;
-        if (!Yii::$app->user->isGuest && $status==1){
-        //$profile = new UserProfile();
-        $model = new User();
-//        $profile = $model->attributes;
-//        var_dump($model);exit;
-//        if ($model->load(Yii::$app->request->post())) {
-//            var_dump(Yii::$app->request->post());exit;
-//        }
-
-        return $this->render('profile',['model'=>$model]);
+        if (!Yii::$app->user->isGuest){
+            $status = Yii::$app->user->identity->user_status;
+            if ( $status == 1) {
+                //$profile = new UserProfile();
+                $model = new User();
+                return $this->render('profile', ['model' => $model]);
+            }else{
+                $this->redirect(['index']);
+            }
         }else {
             $this->redirect(['index']);
         }
@@ -212,13 +232,21 @@ class SiteController extends Controller
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+            return $this->redirect(['profile']);
         }
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            //return $this->goBack();
-            $this->redirect(['profile']);
+            $user_status = Yii::$app->user->identity->user_status;
+            if ($user_status==1) {
+                return $this->redirect(['profile']);
+            }
+            if ($user_status==2) {
+                return $this->redirect('/web/company/profile');
+            }
+            if ($user_status==3) {
+                return $this->redirect('/web/seller/profile');
+            }
         }
 
         $model->password = '';
@@ -234,9 +262,10 @@ class SiteController extends Controller
      */
     public function actionLogout()
     {
-        Yii::$app->user->logout();
-
-        return $this->goHome();
+        if (Yii::$app->user->isGuest){
+            Yii::$app->user->logout();
+            return $this->goHome();
+        }
     }
 
     /**
@@ -257,13 +286,4 @@ class SiteController extends Controller
         ]);
     }
 
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
-    }
 }

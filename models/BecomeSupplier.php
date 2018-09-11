@@ -72,7 +72,7 @@ class BecomeSupplier extends Model
         $user->city = $this->city;
         $user->phone = $this->phone;
         $user->website = $this->website;
-        $user->user_status = 1;
+        $user->user_status = 2;
         return $user->save() ? $user : null;
     }
 

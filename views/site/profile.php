@@ -1,6 +1,6 @@
 <?php
-use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+//use yii\helpers\Html;
+//use yii\bootstrap\ActiveForm;
 
 $user = $model->attributes;
 
@@ -38,20 +38,9 @@ $user = $model->attributes;
                                         </a>
                                     </li>
                                     <li class="settings__list-item">
-<!--                                        <a href="/web/site/logout" class="settings__link">-->
-<!--                                            Sign Out-->
-<!--                                        </a>-->
-<!--                                        <form method="POST" action="/web/site/logout">-->
-<!--                                            <input type="submit" class="settings__link">-->
-<!--                                        </form>-->
-                                        <?php
-                                        echo  Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Sign Out',
-                    ['class' => 'btn btn-link settings__link']
-                )
-                . Html::endForm();
-                                        ?>
+                                        <a href="/web/user/logout" class="settings__link">
+                                            Sign Out
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -74,12 +63,12 @@ $user = $model->attributes;
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/find-supplier" class="adaptive-menu__link">
                                         Find a supplier
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/become-supplier" class="adaptive-menu__link">
                                         Become a supplier
                                     </a>
                                 </li>
@@ -104,7 +93,7 @@ $user = $model->attributes;
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/faq" class="adaptive-menu__link">
                                         Faq
                                     </a>
                                 </li>
@@ -122,12 +111,12 @@ $user = $model->attributes;
                     <nav class="secondary-navigation">
                         <ul class="secondary-navigation__list">
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/site/find-supplier" class="secondary-navigation__link">
                                     Find a supplier
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/site/become-supplier" class="secondary-navigation__link">
                                     Become a supplier
                                 </a>
                             </li>
@@ -238,13 +227,7 @@ $user = $model->attributes;
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-<!--                                            --><?//= $form->field($model, 'username')->textInput([
-//                                                'class' => 'textinput-container__input textinput-container__input--change textinput-container__input--change-unactive',
-//                                                'placeholder'=>'ANDERS',
-//                                                'disabled'=>'',
-//                                                'name'=>'fname',
-//                                                'type'=>'text   '
-//                                            ]) ?>
+
                                             <input type="text" class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="ANDERS" name="fname">
                                         </div>
                                     </div>
@@ -328,8 +311,6 @@ $user = $model->attributes;
                             </button>
                         </div>
                     </div>
-<!--                    --><?php //ActiveForm::end(); ?>
-
 
                     <div class="row block-underline">
                         <div class="col-lg-6">

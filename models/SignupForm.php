@@ -73,8 +73,8 @@ class SignupForm extends Model
             $user->city = $this->city;
             $user->second_name = $this->second_name;
             //$user->first_name = $this->first_name;
-            $user->user_status = 1;
-            $user->setPassword($this->password);
+            $user->user_status = 2;
+            //$user->setPassword($this->password);
             $user->generateAuthKey();
             return $user->save() ? $user : null;
         }
