@@ -48,6 +48,14 @@ class BecomeSupplier extends Model
     {
         return [
             'verifyCode' => 'Verification Code',
+            'username'=>'',
+            'country'=>'',
+            'phone'=>'',
+            'city'=>'',
+            'email'=>'',
+            'second_name'=>'',
+            'password'=>'',
+            'website'=>'',
         ];
     }
 

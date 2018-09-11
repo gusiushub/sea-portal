@@ -1,20 +1,16 @@
-<?php use yii\bootstrap\Html; ?>
 <body>
 <header class="header">
-
-    <!--  1 МЕНЮ  -->
-
     <div class="container">
         <div class="top-navbar top-navbar--no-buttons">
             <div class="row">
                 <div class="col-lg-12 vertical-center horizontal-between">
                     <div class="logotype-box">
-                        <a href="/web/site"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
+                        <a href="#"><img src="img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
                     </div>
                     <div class="settings">
                         <div class="settings__item">
                             <a href="#" class="settings__email">
-                                <?php echo Yii::$app->user->identity->email ; ?>
+                                wilkinson@gmail.com
                             </a>
                         </div>
                         <div class="settings__item">
@@ -30,12 +26,12 @@
                             <div class="settings__hidden-menu">
                                 <ul class="settings__list">
                                     <li class="settings__list-item">
-                                        <a href="/web/company/profile" class="settings__link">
+                                        <a href="#" class="settings__link">
                                             Profile
                                         </a>
                                     </li>
                                     <li class="settings__list-item">
-                                        <a href="/web/company/logout" class="settings__link">
+                                        <a href="#" class="settings__link">
                                             Sign Out
                                         </a>
                                     </li>
@@ -45,32 +41,32 @@
                     </div>
                     <div class="adaptive-menu">
                         <div class="adaptive-menu__button">
-                            <img src="../../web/public/img/icons/burger.png" alt="burger">
+                            <img src="img/icons/burger.png" alt="burger">
                         </div>
                         <nav class="adaptive-menu__navigation">
                             <ul class="adaptive-menu__list">
                                 <li class="adaptive-menu__item">
-                                    <a href="/web/site/login" class="adaptive-menu__link">
+                                    <a href="#" class="adaptive-menu__link">
                                         Sign In
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="/web/site/signup" class="adaptive-menu__link">
+                                    <a href="#" class="adaptive-menu__link">
                                         Sign Up
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="/web/site/find-supplier" class="adaptive-menu__link">
+                                    <a href="#" class="adaptive-menu__link">
                                         Find a supplier
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="/web/site/become-supplier" class="adaptive-menu__link">
+                                    <a href="#" class="adaptive-menu__link">
                                         Become a supplier
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="/web/site/crew" class="adaptive-menu__link">
+                                    <a href="#" class="adaptive-menu__link">
                                         Crew
                                     </a>
                                 </li>
@@ -85,12 +81,12 @@
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="/web/site/contacts" class="adaptive-menu__link">
+                                    <a href="#" class="adaptive-menu__link">
                                         Contacts
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="/web/site/faq" class="adaptive-menu__link">
+                                    <a href="#" class="adaptive-menu__link">
                                         Faq
                                     </a>
                                 </li>
@@ -101,11 +97,6 @@
             </div>
         </div>
     </div>
-
-    <!--  1 МЕНЮ  -->
-
-    <!--  2 МЕНЮ  -->
-
     <div class="secondary-navbar margin-bottom-light">
         <div class="container">
             <div class="row">
@@ -113,17 +104,17 @@
                     <nav class="secondary-navigation">
                         <ul class="secondary-navigation__list">
                             <li class="secondary-navigation__item">
-                                <a href="/web/site/find-supplier" class="secondary-navigation__link">
+                                <a href="#" class="secondary-navigation__link">
                                     Find a supplier
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="/web/site/become-supplier" class="secondary-navigation__link">
+                                <a href="#" class="secondary-navigation__link">
                                     Become a supplier
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="/web/site/crew" class="secondary-navigation__link">
+                                <a href="#" class="secondary-navigation__link">
                                     Crew
                                 </a>
                             </li>
@@ -133,17 +124,17 @@
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="/web/site/chartering-market" class="secondary-navigation__link">
+                                <a href="#" class="secondary-navigation__link">
                                     Chartering market
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="/web/site/contacts" class="secondary-navigation__link">
+                                <a href="#" class="secondary-navigation__link">
                                     Contacts
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="/web/site/faq" class="secondary-navigation__link">
+                                <a href="#" class="secondary-navigation__link">
                                     Faq
                                 </a>
                             </li>
@@ -153,9 +144,6 @@
             </div>
         </div>
     </div>
-
-    <!--  2 МЕНЮ  -->
-
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -164,7 +152,7 @@
                         Profile
                     </h1>
                     <a href="#" class="settings__email settings__email--head">
-                        <?php echo Yii::$app->user->identity->email ; ?>
+                        wilkinson@gmail.com
                     </a>
                 </div>
             </div>
@@ -172,7 +160,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="primary-menu margin-bottom-medium">
-                    <a href='/web/company/profile' class="primary-menu__item">
+                    <a href='#' class="primary-menu__item">
                         <i class="icon-town primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             about the company
@@ -190,7 +178,7 @@
                             statistics
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item primary-menu__item--active">
+                    <a href='#' class="primary-menu__item  primary-menu__item--active">
                         <i class="icon-list6 primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             contracts
@@ -220,164 +208,155 @@
     </div>
 </header>
 <main>
-
     <section class="profile4">
-
         <div class="container">
             <div class="row">
-                <div class="col-lg-2 offset-lg-10">
-                    <a style="text-decoration: none;" href="/web/company/add-contracts">
-                        <button class="button">
-                            add
-                        </button>
-                    </a>
+                <div class="col-lg-12">
+                    <div class="sub-title margin-bottom-light">
+                        <h3 class="sub-title__title">
+                            choose your business plan:
+                        </h3>
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="secondary-headline text-left margin-bottom-light">
-                        <h2 class="secondary-headline__title">
-                            contract 1:
-                        </h2>
+                    <div class="cards-wrapper horizontal-between margin-bottom-medium">
+                        <div class="sell-card">
+                            <div class="sell-card__cost">
+                                <img src="img/sell1.png" alt="cost" class="sell-card__image">
+                            </div>
+                            <div class="sell-card__information">
+                                <p class="sell-card__paragraph">
+                                    Customer support 24/7.
+                                </p>
+                                <p class="sell-card__paragraph">
+                                    Personal office - selected categories,
+                                    free add-on in selected categories.
+                                </p>
+                                <p class="sell-card__paragraph">
+                                    Unlimited number of brands and categories.
+                                </p>
+                                <p class="sell-card__paragraph">
+                                    Information about supplier - company name and webpage.
+                                </p>
+                                <p class="sell-card__paragraph">
+                                    Listing in "General" for buyer.
+                                </p>
+                                <p class="sell-card__paragraph">
+                                    To send a request the buyer should go to your webpage
+                                </p>
+                                <p class="sell-card__paragraph">
+                                    Place your advertsing on our web site (special rates applied)
+                                </p>
+                            </div>
+                            <div class="sell-card__button">
+                                <button class="button button--transparent">
+                                    your business plan
+                                </button>
+                            </div>
+                        </div>
+                        <div class="sell-card">
+                            <div class="sell-card__cost">
+                                <img src="img/sell2.png" alt="cost" class="sell-card__image">
+                            </div>
+                            <div class="sell-card__information">
+                                <p class="sell-card__paragraph">
+                                    Customer support 24/7.
+                                </p>
+                                <p class="sell-card__paragraph">
+                                    Personal office - selected categories, <span class="sell-card__paragraph--bold">information
+                                            about expiration date</span>, free add-on for selected
+                                    categories, <span class="sell-card__paragraph--bold">statistics on received requests.</span>
+                                </p>
+                                <p class="sell-card__paragraph">
+                                    Unlimited number of brands and categories.
+                                </p>
+                                <p class="sell-card__paragraph">
+                                    Unlimited number of ports in one country.
+                                </p>
+                                <p class="sell-card__paragraph">
+                                    Place your advertsing on our web site (special rates applied)
+                                </p>
+                                <p class="sell-card__paragraph">
+                                    Information about supplier - company name, phone and webpage.
+                                </p>
+                                <p class="sell-card__paragraph">
+                                    Receive requests to your email and to the personal office.
+                                </p>
+                                <p class="sell-card__paragraph">
+                                    Listng in "Recommended" for buyer.
+                                </p>
+                                <p class="sell-card__paragraph">
+                                    To send a request the buyer should <span class="sell-card__paragraph--bold">only add your company</span> to the mailing list.
+                                </p>
+                            </div>
+                            <div class="sell-card__button">
+                                <button class="button">
+                                    select business plan
+                                </button>
+                            </div>
+                        </div>
+                        <div class="sell-card">
+                            <div class="sell-card__cost">
+                                <img src="img/sell3.png" alt="cost" class="sell-card__image">
+                            </div>
+                            <div class="sell-card__information">
+                                <p class="sell-card__paragraph">
+                                    Customer support 24/7.
+                                </p>
+                                <p class="sell-card__paragraph">
+                                    Personal office - selected categories, <span class="sell-card__paragraph--bold">information
+                                            about expiration date</span>, free add-on for selected
+                                    categories, <span class="sell-card__paragraph--bold">statistics on received requests.</span>
+                                </p>
+                                <p class="sell-card__paragraph">
+                                    Unlimited number of brands and categories.
+                                </p>
+                                <p class="sell-card__paragraph">
+                                    Unlimited number of ports in one country.
+                                </p>
+                                <p class="sell-card__paragraph">
+                                    Place your advertsing on our web site (special rates applied)
+                                </p>
+                                <p class="sell-card__paragraph">
+                                    Information about supplier - company name, phone and webpage.
+                                </p>
+                                <p class="sell-card__paragraph">
+                                    Receive requests to your email and to the personal office.
+                                </p>
+                                <p class="sell-card__paragraph">
+                                    <span class="sell-card__paragraph--bold">Listing in “Primeg for buyer“</span>
+                                </p>
+                                <p class="sell-card__paragraph">
+                                    To send a request the buyer should <span class="sell-card__paragraph--bold">only add your company</span> to the mailing list.
+                                </p>
+                            </div>
+                            <div class="sell-card__button">
+                                <button class="button">
+                                    select business plan
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <?php
-            if($model){
-                foreach ($model as $m){
-            ?>
-            <div class="contract-line">
-
-                <div class="row">
-                    <div class="col-lg-2">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                <h4 class="contract-line__headline">
-                                    Contract
-                                </h4>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                        <span class="contract-line__info contract-line__info--uppercase">
-                                            <?php echo $m->name ?>
-                                        </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                <h4 class="contract-line__headline">
-                                    Date
-                                </h4>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                        <span class="contract-line__info">
-                                            <?php echo $m->date ?>
-                                        </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                <h4 class="contract-line__headline">
-                                    Date of expiry
-                                </h4>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                        <span class="contract-line__info">
-                                            <?php echo $m->date_of_expiry ?>
-                                        </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                <h4 class="contract-line__headline">
-                                    <?php echo $m->category  ?>
-                                </h4>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                        <span class="contract-line__info contract-line__info--uppercase">
-                                            courses/AIR TICKETS for crew
-                                        </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                <h4 class="contract-line__headline">
-                                    Plan
-                                </h4>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                        <span class="contract-line__info contract-line__info--uppercase">
-                                            business
-                                        </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-1">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                <h4 class="contract-line__headline">
-                                    Status
-                                </h4>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                        <span class="contract-line__info contract-line__info--uppercase">
-                                            paid
-                                        </span>
-                            </div>
-                        </div>
-                    </div>
+            <div class="row horizontal-between">
+                <div class="col-lg-2 col-md-3 col-sm-4 col-4">
+                    <a  href="/web/company/add-contracts">
+                        <button class="button">
+                            back
+                        </button>
+                    </a>
                 </div>
-
-            </div>
-            <?php
-                }
-            }
-            ?>
-            <div class="contract-information block-underline-top block-underline margin-bottom-light">
-                <div class="row contract-information__desktop">
-                    <div class="col-lg-12 horizontal-between">
-                        <div class="contract-information__column">
-
-                        </div>
-                        <!--info column-->
-                        <div class="contract-information__column">
-
-                        </div>
-                        <!--info column-->
-                        <div class="contract-information__column">
-
-                        </div>
-                        <!--info column-->
-
-                        <!--info column-->
-                    </div>
-                </div>
-                <div class="row contract-information__mobile">
-                    <div class="col-lg-12">
-
-                        <!--list-end-->
-                    </div>
-                </div>
-                <!--mobile-version-->
-
-                <div class="row horizontal-center">
-                    <div class="col-lg-3 col-md-4 col-sm-5 col-5">
-                        <a href="/web/company/choose-plan">
-                            <button class="button margin-bottom-light">
-                                choose your plan
-                            </button>
-                        </a>
-                    </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-4">
+                    <a  href="/web/company/pay">
+                        <button class="button">
+                            pay
+                        </button>
+                    </a>
                 </div>
             </div>
-
         </div>
     </section>
 </main>
@@ -386,7 +365,7 @@
         <div class="row margin-bottom-light">
             <div class="col-lg-6">
                 <div class="logotype-box">
-                    <img src="../../web/public/img/logotype-big.png" alt="logotype" class="logotype-box__footer">
+                    <img src="img/logotype-big.png" alt="logotype" class="logotype-box__footer">
                 </div>
             </div>
             <div class="col-lg-6">
@@ -462,16 +441,16 @@
             <div class="col-lg-12">
                 <div class="social-networks">
                     <a href="#" class="social-networks__link">
-                        <img src="../../web/public/img/icons/soc-mail.png" alt="mail">
+                        <img src="img/icons/soc-mail.png" alt="mail">
                     </a>
                     <a href="#" class="social-networks__link">
-                        <img src="../../web/public/img/icons/soc-mobile.png" alt="mobile">
+                        <img src="img/icons/soc-mobile.png" alt="mobile">
                     </a>
                     <a href="#" class="social-networks__link">
-                        <img src="../../web/public/img/icons/soc-skype.png" alt="skype">
+                        <img src="img/icons/soc-skype.png" alt="skype">
                     </a>
                     <a href="#" class="social-networks__link">
-                        <img src="../../web/public/img/icons/soc-mobile-2.png" alt="mobile">
+                        <img src="img/icons/soc-mobile-2.png" alt="mobile">
                     </a>
                 </div>
             </div>
@@ -494,47 +473,3 @@
 </footer>
 </body>
 <script src="../../web/public/js/common.js"></script>
-<script>
-    var editBtn = document.querySelector('.button--edit');
-    editBtn.onclick = function() {
-        var inputs = document.querySelectorAll('.checkbox-style__input');
-        var inputsContainer = document.querySelectorAll('.checkbox-style');
-        if (inputsContainer[0].classList.contains('checkbox-style--unactive')) {
-            editBtn.textContent = 'save';
-        } else {
-            editBtn.textContent = 'edit';
-        }
-        for (var i = 0; i < inputsContainer.length; i++) {
-            inputsContainer[i].classList.toggle('checkbox-style--unactive');
-        }
-        for (var i = 0; i < inputsContainer.length; i++) {
-            if(inputs[i].hasAttribute('disabled')) {
-                inputs[i].removeAttribute('disabled');
-            } else {
-                inputs[i].setAttribute('disabled', 'disabled');
-            }
-        }
-    }
-
-    var radios = document.querySelectorAll('input[name="category"]');
-    for (var i = 0; i < radios.length; i++) {
-        var contentInfo = document.querySelectorAll('.contract-information__tab-wrapper');
-        contentInfo[0].classList.add('contract-information__tab-wrapper--active');
-        radios[i].dataset.number = i;
-        radios[i].addEventListener('change', function() {
-            for(var i = 0; i < contentInfo.length; i++) {
-                if(contentInfo[i].classList.contains('contract-information__tab-wrapper--active')) {
-                    contentInfo[i].classList.remove('contract-information__tab-wrapper--active');
-                }
-            }
-            for(var i = 0; i < radios.length; i++) {
-                if(radios[i].checked) {
-                    var indexContent = radios[i].dataset.number;
-                    contentInfo[indexContent].classList.add('contract-information__tab-wrapper--active');
-                }
-            }
-
-        })
-    }
-
-</script>

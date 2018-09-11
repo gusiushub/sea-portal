@@ -1,11 +1,14 @@
 <body>
 <header class="header">
+
+<!--  1 МЕНЮ  -->
+
     <div class="container">
         <div class="top-navbar top-navbar--no-buttons">
             <div class="row">
                 <div class="col-lg-12 vertical-center horizontal-between">
                     <div class="logotype-box">
-                        <a href="#"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
+                        <a href="/web/site"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
                     </div>
                     <div class="settings">
                         <div class="settings__item">
@@ -97,6 +100,10 @@
             </div>
         </div>
     </div>
+
+    <!--  1 МЕНЮ  -->
+
+    <!--  2 МЕНЮ  -->
     <div class="secondary-navbar margin-bottom-light">
         <div class="container">
             <div class="row">
@@ -144,6 +151,9 @@
             </div>
         </div>
     </div>
+
+    <!--  2 МЕНЮ  -->
+
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -151,8 +161,8 @@
                     <h1 class="main-headline__title">
                         Profile
                     </h1>
-                    <a href="#" class="settings__email settings__email--head">
-                        wilkinson@gmail.com
+                    <a href="/web/company/profile" class="settings__email settings__email--head">
+                        <?php echo Yii::$app->user->identity->email ; ?>
                     </a>
                 </div>
             </div>
@@ -160,43 +170,43 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="primary-menu margin-bottom-medium">
-                    <a href='#' class="primary-menu__item primary-menu__item--active">
+                    <a href='/web/company/profile' class="primary-menu__item primary-menu__item--active">
                         <i class="icon-town primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             about the company
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/company/pricing' class="primary-menu__item">
                         <i class="icon-list7 primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             pricing
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/company/statistics' class="primary-menu__item">
                         <i class="icon-charting primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             statistics
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/company/contracts' class="primary-menu__item">
                         <i class="icon-list6 primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             contracts
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/company/profile' class="primary-menu__item">
                         <i class="icon-window primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             Place an adverticement
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/company/requests' class="primary-menu__item">
                         <i class="icon-message primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             incoming requests
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/company/terms-conditions' class="primary-menu__item">
                         <i class="icon-list3 primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             terms and conditions
@@ -359,6 +369,9 @@
         </div>
     </section>
 </main>
+
+<!-- FOOTER -->
+
 <footer class="footer">
     <div class="container">
         <div class="row margin-bottom-light">
@@ -375,27 +388,27 @@
                         </h4>
                         <ul class="footer-nav__list">
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/find-supplier" class="footer-nav__link">
                                     Find a supplier
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/become-supplier" class="footer-nav__link">
                                     Become a supplier
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/crew" class="footer-nav__link">
                                     Crew
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/find-supplier" class="footer-nav__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/find-supplier" class="footer-nav__link">
                                     Chartering market
                                 </a>
                             </li>
@@ -407,27 +420,27 @@
                         </h4>
                         <ul class="footer-nav__list">
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/contacts" class="footer-nav__link">
                                     Contacts
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/faq" class="footer-nav__link">
                                     Faq
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/terms-conditions" class="footer-nav__link">
                                     Terms and Conditions
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/login" class="footer-nav__link">
                                     Sign In
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/signup" class="footer-nav__link">
                                     Sign Up
                                 </a>
                             </li>

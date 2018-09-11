@@ -3,10 +3,11 @@
 namespace app\controllers;
 
 
-
-use app\models\User;
 use Yii;
 use yii\web\Controller;
+use app\models\User;
+use app\models\DataSelection;
+use app\models\Contracts;
 
 class CompanyController extends Controller
 {
@@ -34,7 +35,26 @@ class CompanyController extends Controller
 
     public function actionContracts()
     {
-        return $this->render('contracts');
+        $model = Contracts::find()->select('*')->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->all();
+
+
+        return $this->render('contracts',['model'=>$model]);
+    }
+
+    public function actionAddContracts()
+    {
+        $model = new DataSelection();
+        return $this->render('addcontracts',['model' => $model]);
+    }
+
+    public function actionChoosePlan()
+    {
+        return $this->render('chooseplan');
+    }
+
+    public function actionPay()
+    {
+        return $this->render('pay');
     }
 
     public function actionPlaceAdverticement()

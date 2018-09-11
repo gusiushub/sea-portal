@@ -63,44 +63,24 @@ class SiteController extends Controller
 
     public function actionButton()
     {
-        //$model= new CouponForm();
         if(\Yii::$app->request->isAjax){
             $_SESSION['a'] = \Yii::$app->request->isAjax;
             var_dump(\Yii::$app->request->isAjax);
-           // var_dump(\Yii::$app->request->isAjax);exit;
-//            if ($model->load(Yii::$app->request->post()) && $model->validate() ) {
-//                // выполняем необходимые операции с базой
-//                print_r($model);
-//            }
         }
     }
 
     public function actionAjax()
     {
-        $model = new Ajax();
-
-        if ($model->load(Yii::$app->request->isAjax)) {
-            $model->profileUpdate();
-        }
-        //var_dump($user->username);
-        //if(\Yii::$app->request->isAjax) {
-//        if (isset($_POST['profile1'])) {
-//            $profile = json_decode($_POST['profile1'], true);
-//
-//            //$ajax = new Ajax($profile['company']);
-//            //$ajax->profileUpdate();
-//            $filename = __DIR__ . '/data.php';  // Путь куда записать содержимое файла
-//            //$profile = json_decode($_POST['profile1'],true);
-//            //$profile = $_POST['profile1'];
-//            $string = 'POST-  ' .$profile['company'] ;
-//            file_put_contents($filename, $string);
-//
-//            $user->username = $profile['company'];
-//
-//            $user->save();//? $users : null;
-//        }
-
-       // }
+        $profile = json_decode($_POST['profile1'], true);
+        $id = Yii::$app->user->identity->id;
+        $model = User::find()->where(['id' => $id])->one();
+        $model->username = $profile['company'];
+        $model->phone = $profile['phone'];
+        $model->country = $profile['country'];
+        $model->city = $profile['city'];
+        $model->website = $profile['website'];
+        $model->email = $profile['email'];
+        $model->save();
     }
 
     public function actionProfile()
@@ -154,27 +134,6 @@ class SiteController extends Controller
             $this->redirect(['index']);
         }
     }
-
-    /**
-     * добавить пользователя автоматически
-     *
-     * @return mixed
-     */
-//    public function actionAdd()
-//    {
-//        $model = User::find()->where(['username' => 'admin'])->one();
-//        if (empty($model)) {
-//            $user = new User();
-//            $user->username = 'admin';
-//            $user->email = 'admin@yoursite.ru';
-//            $user->setPassword('admin');
-//            $user->generateAuthKey();
-//            if ($user->save()) {
-//                echo 'good';
-//            }
-//        }
-//    }
-
 
     public function actionFindSupplier()
     {
