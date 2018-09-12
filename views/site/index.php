@@ -94,7 +94,7 @@ $this->title = 'Start page';
             <div class="row">
                 <div class="col-lg-12">
                     <div class="five-buttons horizontal-between">
-                        <a href='/web/site/find-supplier' class="five-buttons__item">
+                        <a href='/web/find/shipboard-supply' class="five-buttons__item">
                             <div class="icon-wrapper">
                                 <img src="../../web/public/img/icons/zoom-5btn.png" alt="zoom" class="five-buttons__icon">
                             </div>

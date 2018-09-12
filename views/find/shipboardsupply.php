@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <body>
 <header class="header">
     <div class="container">
@@ -5,16 +9,56 @@
             <div class="row">
                 <div class="col-lg-12 vertical-center horizontal-between">
                     <div class="logotype-box">
-                        <a href="#"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
+                        <a href="/web/site"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
                     </div>
-                    <div class="authorization">
-                        <a href="/web/site/login" class="authorization__link">
-                            Sign In
-                        </a>
-                        <a href="/web/site/signup" class="authorization__link">
-                            Sign Up
-                        </a>
-                    </div>
+                    <?php
+
+                    if (Yii::$app->user->isGuest){ ?>
+                        <div class="authorization">
+                            <a href="/web/site/login" class="authorization__link">
+                                Sign In
+                            </a>
+                            <a href="/web/site/signup" class="authorization__link">
+                                Sign Up
+                            </a>
+                        </div>
+                    <?php } else { ?>
+
+                        <div class="settings">
+                            <div class="settings__item">
+                                <a href="/web/company/profile" class="settings__email">
+                                    <?php echo Yii::$app->user->identity->email ?>
+                                </a>
+                            </div>
+                            <div class="settings__item">
+                                <button class="settings__icon settings__icon--1">
+
+                                </button>
+                                <button class="settings__icon settings__icon--2">
+
+                                </button>
+                                <button class="settings__icon settings__icon--3">
+
+                                </button>
+                                <div class="settings__hidden-menu">
+                                    <ul class="settings__list">
+                                        <li class="settings__list-item">
+                                            <a href="#" class="settings__link">
+                                                Profile
+                                            </a>
+                                        </li>
+                                        <li class="settings__list-item">
+                                            <a href="/web/company/logout" class="settings__link">
+                                                Sign Out
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    <?php } ?>
+
                     <div class="adaptive-menu">
                         <div class="adaptive-menu__button">
                             <img src="../../web/public/img/icons/burger.png" alt="burger">
@@ -32,7 +76,7 @@
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="/web/site/find-supplier" class="adaptive-menu__link adaptive-menu__link--active">
+                                    <a href="/web/find/shipboard-supply" class="adaptive-menu__link adaptive-menu__link--active">
                                         Find a supplier
                                     </a>
                                 </li>
@@ -80,7 +124,7 @@
                     <nav class="secondary-navigation">
                         <ul class="secondary-navigation__list">
                             <li class="secondary-navigation__item">
-                                <a href="/web/site/find-supplier" class="secondary-navigation__link secondary-navigation__link--active">
+                                <a href="/web/find/shipboard-supply" class="secondary-navigation__link secondary-navigation__link--active">
                                     Find a supplier
                                 </a>
                             </li>
@@ -133,7 +177,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="primary-menu margin-bottom-medium">
-                    <a href='#' class="primary-menu__item primary-menu__item--active">
+                    <a href='/web/find/shipboard-supply' class="primary-menu__item primary-menu__item--active">
                         <i class="icon-sheap primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             Shipboard supply
@@ -198,6 +242,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-8">
+<form id="myform" method="POST" action="/web/find/shipboard-result">
                     <div class="filter">
                         <div class="secondary-headline margin-bottom-light">
                             <h2 class="secondary-headline__title">
@@ -209,8 +254,9 @@
                                 Refine your search
                             </h4>
                             <div class="select-style">
-                                <select name="refine" id="" class="select-style__select">
-                                    <option class="select-style__placeholder">Shipping and Logistics</option>
+
+                                <select  name="search" id="" class="select-style__select">
+                                    <option value="spare parts and equipment" class="select-style__placeholder">spare parts and equipment</option>
                                     <option value="">text</option>
                                     <option value="">text</option>
                                 </select>
@@ -222,8 +268,8 @@
                                 Spare parts and equipment
                             </h4>
                             <div class="select-style">
-                                <select name="refine" id="" class="select-style__select">
-                                    <option class="select-style__placeholder">Main and auxiliary engines</option>
+                                <select name="equipment" id="" class="select-style__select">
+                                    <option value="pumps" class="select-style__placeholder">pumps</option>
                                     <option value="">text</option>
                                     <option value="">text</option>
                                 </select>
@@ -235,20 +281,24 @@
                                 maker
                             </h4>
                             <div class="select-style">
-                                <select name="refine" id="" class="select-style__select">
-                                    <option class="select-style__placeholder">Bergen diesel</option>
+                                <select name="maker" id="" class="select-style__select">
+                                    <option value="adasdasdasd" class="select-style__placeholder">Shipping and Logistics</option>
                                     <option value="">text</option>
                                     <option value="">text</option>
                                 </select>
                                 <div class="select-style__arrow">&nbsp;</div>
                             </div>
+                            <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
                         </div>
                         <div class="filter__item">
-                            <button class="button button--show-results">
-                                Show results
-                            </button>
+                            <input type="submit"  id="request" class="button button--show-results">
+<!--                            <button id="request" class="button button--show-results">-->
+<!--                                Show results-->
+<!--                            </button>-->
                         </div>
                     </div>
+</form>
+
                 </div>
                 <div class="col-lg-4">
                     <div class="advertising-wrapper">
@@ -300,7 +350,7 @@
                         </h4>
                         <ul class="footer-nav__list">
                             <li class="footer-nav__item">
-                                <a href="/web/site/find-supplier" class="footer-nav__link">
+                                <a href="/web/find/shipboard-supply" class="footer-nav__link">
                                     Find a supplier
                                 </a>
                             </li>
@@ -397,3 +447,54 @@
 </footer>
 </body>
 <script src="../../web/public/js/common.js"></script>
+<script>
+    var Btn = document.querySelector('#request');
+    Btn.onclick = function(){
+
+            var search = $('select[name="search"]').val(),
+                equipment = $('select[name="equipment"]').val(),
+                maker = $('select[name="maker"]').val(),
+                _csrf = $('input[name="_csrf"]').val(),
+                profile1 = {
+                    search,
+                    equipment,
+                    maker,
+                    _csrf
+                };
+            var jsdata = JSON.stringify(profile1);
+            $.ajax({
+                type: "POST",
+                url: "/web/find/shipboard-result",
+                data: {
+                    profile1: jsdata,
+                    _csrf: _csrf
+                },
+                success: window.location.replace("/web/find/shipboard-result")
+
+            });
+
+    };
+
+
+
+    // $("#myform").submit( function(e){
+    //     var form = $(this);
+    //     $.ajax({
+    //         url    : '/web/find/shipboard-result',
+    //         type   : 'POST',
+    //         async: true,
+    //         cache: false,
+    //         data   : form.serialize(),
+    //         success: function (response)
+    //         {
+    //             window.location.replace("/web/find/shipboard-result");
+    //         },
+    //         error  : function (e)
+    //         {
+    //             console.log(e);
+    //         }
+    //     });
+    //     return false;
+    // })
+</script>
+

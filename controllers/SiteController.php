@@ -88,7 +88,7 @@ class SiteController extends Controller
         if (!Yii::$app->user->isGuest){
             $status = Yii::$app->user->identity->user_status;
             if ( $status == 1) {
-                //$profile = new UserProfile();
+
                 $model = new User();
                 return $this->render('profile', ['model' => $model]);
             }else{
@@ -133,11 +133,6 @@ class SiteController extends Controller
         }else {
             $this->redirect(['index']);
         }
-    }
-
-    public function actionFindSupplier()
-    {
-        return $this->render('findsupplier');
     }
 
     public function actionBecomeSupplier()

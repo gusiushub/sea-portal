@@ -12,16 +12,55 @@ use yii\bootstrap\Html;
             <div class="row">
                 <div class="col-lg-12 vertical-center horizontal-between">
                     <div class="logotype-box">
-                        <a href="find-a-supplier-1.html"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
+                        <a href="/web/site"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
                     </div>
-                    <div class="authorization">
-                        <a href="/web/site/login" class="authorization__link">
-                            Sign In
-                        </a>
-                        <a href="/web/site/signup" class="authorization__link">
-                            Sign Up
-                        </a>
-                    </div>
+                    <?php
+
+                    if (Yii::$app->user->isGuest){ ?>
+                        <div class="authorization">
+                            <a href="/web/site/login" class="authorization__link">
+                                Sign In
+                            </a>
+                            <a href="/web/site/signup" class="authorization__link">
+                                Sign Up
+                            </a>
+                        </div>
+                    <?php } else { ?>
+
+                        <div class="settings">
+                            <div class="settings__item">
+                                <a href="/web/company/profile" class="settings__email">
+                                    <?php echo Yii::$app->user->identity->email ?>
+                                </a>
+                            </div>
+                            <div class="settings__item">
+                                <button class="settings__icon settings__icon--1">
+
+                                </button>
+                                <button class="settings__icon settings__icon--2">
+
+                                </button>
+                                <button class="settings__icon settings__icon--3">
+
+                                </button>
+                                <div class="settings__hidden-menu">
+                                    <ul class="settings__list">
+                                        <li class="settings__list-item">
+                                            <a href="#" class="settings__link">
+                                                Profile
+                                            </a>
+                                        </li>
+                                        <li class="settings__list-item">
+                                            <a href="/web/company/logout" class="settings__link">
+                                                Sign Out
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    <?php } ?>
                     <div class="adaptive-menu">
                         <div class="adaptive-menu__button">
                             <img src="../../web/public/img/icons/burger.png" alt="burger">
@@ -39,7 +78,7 @@ use yii\bootstrap\Html;
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="/web/site/find-supplier" class="adaptive-menu__link">
+                                    <a href="/web/find/shipboard-supply" class="adaptive-menu__link">
                                         Find a supplier
                                     </a>
                                 </li>
@@ -87,7 +126,7 @@ use yii\bootstrap\Html;
                     <nav class="secondary-navigation">
                         <ul class="secondary-navigation__list">
                             <li class="secondary-navigation__item">
-                                <a href="/web/site/find-supplier" class="secondary-navigation__link">
+                                <a href="/web/find/shipboard-supply" class="secondary-navigation__link">
                                     Find a supplier
                                 </a>
                             </li>
@@ -112,12 +151,12 @@ use yii\bootstrap\Html;
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/site/Contacts" class="secondary-navigation__link">
                                     Contacts
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/site/faq" class="secondary-navigation__link">
                                     Faq
                                 </a>
                             </li>
@@ -192,7 +231,6 @@ use yii\bootstrap\Html;
                                                 'class' => 'textinput-container__input textinput-container__input--sing textinput-container__input--sing-3',
                                                 'placeholder' => 'COMPANY NAME',
                                             ]) ?>
-<!--                                            <input type="text" class="textinput-container__input textinput-container__input--sing textinput-container__input--sing-3" placeholder="COMPANY NAME" name="company-name">-->
                                         </div>
                                     </div>
                                     <div class="col-lg-6 margin-bottom-light">
@@ -204,7 +242,6 @@ use yii\bootstrap\Html;
                                                 'class'=>'textinput-container__input textinput-container__input--sing textinput-container__input--sing-5',
                                                 'placeholder'=>'PHONE NUMBER',
                                             ]) ?>
-<!--                                            <input type="text" class="textinput-container__input textinput-container__input--sing textinput-container__input--sing-5" placeholder="PHONE NUMBER" name="phone">-->
                                         </div>
                                     </div>
                                 </div>
@@ -214,15 +251,12 @@ use yii\bootstrap\Html;
                                             Country
                                         </h4>
                                         <div class="select-style select-style--sing">
-                                            <?= $form->field($model, 'country')->textInput([
+
+                                            <?= $form->field($model, 'country')->dropDownList(['Russia'=>'Russia'],[
                                                 'class'=>'select-style__select select-style__select--sing select-style__select--sing-1',
                                                 'placeholder'=>'COUNTRY',
                                             ]) ?>
-<!--                                            <select name="country" id="" class="select-style__select select-style__select--sing select-style__select--sing-1">-->
-<!--                                                <option class="select-style__placeholder">Albania</option>-->
-<!--                                                <option value="">text</option>-->
-<!--                                                <option value="">text</option>-->
-<!--                                            </select>-->
+
                                             <div class="select-style__arrow">&nbsp;</div>
                                         </div>
                                     </div>
@@ -231,15 +265,11 @@ use yii\bootstrap\Html;
                                             City
                                         </h4>
                                         <div class="select-style select-style--sing">
-                                            <?= $form->field($model, 'city')->textInput([
+                                            <?= $form->field($model, 'city')->dropDownList(['Moscow'=>'Moscow'],[
                                                 'class'=>'select-style__select select-style__select--sing select-style__select--sing-3',
                                                 'placeholder'=>'city',
                                             ]) ?>
-<!--                                            <select name="city" id="" class="select-style__select select-style__select--sing select-style__select--sing-3">-->
-<!--                                                <option class="select-style__placeholder">Vlore</option>-->
-<!--                                                <option value="">text</option>-->
-<!--                                                <option value="">text</option>-->
-<!--                                            </select>-->
+
                                             <div class="select-style__arrow">&nbsp;</div>
                                         </div>
                                     </div>
@@ -276,11 +306,11 @@ use yii\bootstrap\Html;
                                             Option
                                         </h4>
                                         <div class="select-style select-style--sing">
-                                            <select name="become-supplier" id="" class="select-style__select select-style__select--sing select-style__select--sing-2">
-                                                <option class="select-style__placeholder">Become a supplier</option>
-                                                <option value="">text</option>
-                                                <option value="">text</option>
-                                            </select>
+                                            <?= $form->field($model, 'user_status')->dropDownList([
+                                                '2'=>'Become a supplier',
+                                                '3'=>'Become a seller',
+                                            ],["class"=>"select-style__select select-style__select--sing select-style__select--sing-2"]) ?>
+
                                             <div class="select-style__arrow">&nbsp;</div>
                                         </div>
                                     </div>
@@ -305,9 +335,7 @@ use yii\bootstrap\Html;
                         <div class="row horizontal-center">
                             <div class="col-lg-6">
                                 <?= Html::submitButton('Signup', ['class' => 'button margin-bottom-medium', 'name' => 'signup-button']) ?>
-<!--                                <button class="button margin-bottom-medium">-->
-<!--                                    Sign up-->
-<!--                                </button>-->
+
                             </div>
                         </div>
                     </div>
