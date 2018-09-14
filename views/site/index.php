@@ -110,7 +110,7 @@ $this->title = 'Start page';
                                 Become a supplier
                             </h4>
                         </a>
-                        <a href='#' class="five-buttons__item">
+                        <a href='/web/find/crew' class="five-buttons__item">
                             <div class="icon-wrapper">
                                 <img src="../../web/public/img/icons/case-5btn.png" alt="case" class="five-buttons__icon">
                             </div>
@@ -118,7 +118,7 @@ $this->title = 'Start page';
                                 Crew
                             </h4>
                         </a>
-                        <a href='#' class="five-buttons__item">
+                        <a href='/web/find/vessels-sale' class="five-buttons__item">
                             <div class="icon-wrapper">
                                 <img src="../../web/public/img/icons/ship-5btn.png" alt="ship" class="five-buttons__icon">
                             </div>

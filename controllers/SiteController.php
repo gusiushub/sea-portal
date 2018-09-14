@@ -142,7 +142,16 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user)) {
-                    return $this->goHome();
+                    $user_status = Yii::$app->user->identity->user_status;
+                    if ($user_status==1) {
+                        return $this->redirect(['profile']);
+                    }
+                    if ($user_status==2) {
+                        return $this->redirect('/web/company/profile');
+                    }
+                    if ($user_status==3) {
+                        return $this->redirect('/web/seller/profile');
+                    }
                 }
             }
         }
@@ -158,7 +167,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user)) {
-                    return $this->goHome();
+                    return $this->redirect('/web/site/profile');
                 }
             }
         }

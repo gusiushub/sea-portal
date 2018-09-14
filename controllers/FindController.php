@@ -17,23 +17,21 @@ class FindController extends Controller
 
     public function actionShipboardResult()
     {
-if (isset($_POST)){
+    if (isset($_POST['search'])){
 
-    $search = Contracts::find()->select('*')->where('search = :search' and 'mechanism = :mechanism' and 'maker = :maker', [':search' => $_POST['search'],':maker' => $_POST['maker'],':mechanism' => $_POST['equipment']])->all();
-    $mechanism = Contracts::find()->select('*')->where('mechanism = :mechanism', [':mechanism' => $_POST['equipment']])->all();
-//var_dump($search);
-       $maker = Contracts::find()->select('*')->where('maker = :maker', [':maker' => $_POST['maker']])->all();
-        $post = $_POST;
-    return $this->render('shipboardresult',['post'=>$post,'maker'=>$maker,'equipment'=>$mechanism,'search'=>$search]);
-    }
-        //file_put_contents($file, $current);
+        $freePlan = Contracts::find()->where(['like', 'search', $_POST['search']])->andWhere(['like', 'mechanism',$_POST['equipment']])->andWhere(['like', 'maker', $_POST['maker']])->andWhere('plan = :plan',[':plan'=>'free'])->andWhere('category = :category',[':category'=>'shipboard supply'])->all();
+        $businessPlan = Contracts::find()->where(['like', 'search', $_POST['search']])->andWhere(['like', 'mechanism',$_POST['equipment']])->andWhere(['like', 'maker', $_POST['maker']])->andWhere('plan = :plan',[':plan'=>'buiznes'])->andWhere('category = :category',[':category'=>'shipboard supply'])->all();
+        $businessAdvancedPlan = Contracts::find()->where(['like', 'search', $_POST['search']])->andWhere(['like', 'mechanism',$_POST['equipment']])->andWhere(['like', 'maker', $_POST['maker']])->andWhere('plan = :plan',[':plan'=>'buiznesadvanced'])->andWhere('category = :category',[':category'=>'shipboard supply'])->all();
 
+        return $this->render('shipboardresult',['free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
+        }
         return $this->render('shipboardresult');
     }
 
     public function actionPortServices()
     {
-        return $this->render('portservices');
+        $model = new FindModel();
+        return $this->render('shipboardsupply',['model'=>$model]);
     }
 
     public function actionRepairs()
@@ -41,9 +39,28 @@ if (isset($_POST)){
         return $this->render('repairs');
     }
 
-    public function actionFindSupplier()
+//    public function actionFindSupplier()
+//    {
+//        return $this->render('findsupplier');
+//    }
+
+    public function actionCrew()
     {
-        //$model = Co
-        return $this->render('findsupplier');
+        return $this->render('crew');
+    }
+
+    public function actionVesselsSale()
+    {
+        return $this->render('vesselssale');
+    }
+
+    public function actionChartering()
+    {
+        return $this->render('chartering');
+    }
+
+    public function actionStudent()
+    {
+        return $this->render('student');
     }
 }

@@ -1,7 +1,6 @@
 <?php
-//var_dump($post);
 
-//var_dump(Yii::$app->request->get());
+
 ?>
 
 <body>
@@ -69,32 +68,32 @@
                         <nav class="adaptive-menu__navigation">
                             <ul class="adaptive-menu__list">
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/login" class="adaptive-menu__link">
                                         Sign In
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/signup" class="adaptive-menu__link">
                                         Sign Up
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/shipboard-supply" class="adaptive-menu__link">
                                         Find a supplier
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/become-supplier" class="adaptive-menu__link">
                                         Become a supplier
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link adaptive-menu__link--active">
+                                    <a href="/web/find/crew" class="adaptive-menu__link adaptive-menu__link--active">
                                         Crew
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/chartering" class="adaptive-menu__link">
                                         Vessels sell/chartering
                                     </a>
                                 </li>
@@ -237,6 +236,7 @@
                             search results for shipboard supply & transportation
                         </h2>
                     </div>
+                    <?php if(!empty($businessAdvanced)){ ?>
                     <div class="companies-wrapper margin-bottom-medium">
                         <div class="row">
                             <div class="col-lg-12">
@@ -245,20 +245,18 @@
                                         prime
                                     </p>
                                     <p class="companies-headline__found">
-                                        Found: <span class="companies-headline__found-num">138</span> companies
+                                        Found: <span class="companies-headline__found-num"><?php echo count($businessAdvanced)?></span> companies
                                     </p>
                                 </div>
                             </div>
                         </div>
-                        <?php
 
-
-                        foreach($equipment as $e){  //var_dump($e['user_id']);
-                            $prof = User::findOne($e['user_id']);
-                            var_dump($prof['id']);
-                            ?>
 
                         <div class="row">
+                            <?php
+                            foreach($businessAdvanced as $user){  //var_dump($e['user_id']);
+                            $prof = User::findOne($user['user_id']);
+                            ?>
                             <div class="col-lg-4">
                                 <div class="company-box">
                                     <div class="company-box__logo">
@@ -279,14 +277,19 @@
                                     </div>
                                 </div>
                             </div>
+                            <?php } ?>
                         </div>
-                        <?php } ?>
+
                         <div class="row">
                             <div class="col-lg-12 text-right">
                                 <a href="#" class="show-all">Show all</a>
                             </div>
                         </div>
                     </div>
+                    <?php
+                    }
+                    if (!empty($business)){
+                    ?>
                     <!--Block wrapper-->
                     <div class="companies-wrapper margin-bottom-medium">
                         <div class="row">
@@ -296,12 +299,16 @@
                                         recommend
                                     </p>
                                     <p class="companies-headline__found">
-                                        Found: <span class="companies-headline__found-num">138</span> companies
+                                        Found: <span class="companies-headline__found-num"><?php echo count($business)?></span> companies
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
+                            <?php
+                            foreach($business as $user){  //var_dump($e['user_id']);
+                            $prof = User::findOne($user['user_id']);
+                            ?>
                             <div class="col-lg-4">
                                 <div class="company-box">
                                     <div class="company-box__logo">
@@ -309,10 +316,10 @@
                                     </div>
                                     <div class="company-box__description">
                                         <h5 class="company-box__company-name">
-                                            Bergen diesel
+                                            <?php echo $prof['username']?>
                                         </h5>
                                         <a href="#" class="company-box__site-link">
-                                            www.bergendiesel.com
+                                            <?php echo $prof['website']?>
                                         </a>
                                     </div>
                                     <div class="add-plus add-plus--company-box">
@@ -322,106 +329,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
-                                <div class="company-box">
-                                    <div class="company-box__logo">
-                                        <img src="../../web/public/img/company-logo.png" alt="company logo" class="company-box__image">
-                                    </div>
-                                    <div class="company-box__description">
-                                        <h5 class="company-box__company-name">
-                                            Bergen diesel
-                                        </h5>
-                                        <a href="#" class="company-box__site-link">
-                                            www.bergendiesel.com
-                                        </a>
-                                    </div>
-                                    <div class="add-plus add-plus--company-box">
-                                        <p class="add-plus__symbol">
-                                            +
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="company-box">
-                                    <div class="company-box__logo">
-                                        <img src="../../web/public/img/company-logo.png" alt="company logo" class="company-box__image">
-                                    </div>
-                                    <div class="company-box__description">
-                                        <h5 class="company-box__company-name">
-                                            Bergen diesel
-                                        </h5>
-                                        <a href="#" class="company-box__site-link">
-                                            www.bergendiesel.com
-                                        </a>
-                                    </div>
-                                    <div class="add-plus add-plus--company-box">
-                                        <p class="add-plus__symbol">
-                                            +
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="company-box">
-                                    <div class="company-box__logo">
-                                        <img src="../../web/public/img/company-logo.png" alt="company logo" class="company-box__image">
-                                    </div>
-                                    <div class="company-box__description">
-                                        <h5 class="company-box__company-name">
-                                            Bergen diesel
-                                        </h5>
-                                        <a href="#" class="company-box__site-link">
-                                            www.bergendiesel.com
-                                        </a>
-                                    </div>
-                                    <div class="add-plus add-plus--company-box">
-                                        <p class="add-plus__symbol">
-                                            +
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="company-box">
-                                    <div class="company-box__logo">
-                                        <img src="../../web/public/img/company-logo.png" alt="company logo" class="company-box__image">
-                                    </div>
-                                    <div class="company-box__description">
-                                        <h5 class="company-box__company-name">
-                                            Bergen diesel
-                                        </h5>
-                                        <a href="#" class="company-box__site-link">
-                                            www.bergendiesel.com
-                                        </a>
-                                    </div>
-                                    <div class="add-plus add-plus--company-box">
-                                        <p class="add-plus__symbol">
-                                            +
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="company-box">
-                                    <div class="company-box__logo">
-                                        <img src="../../web/public/img/company-logo.png" alt="company logo" class="company-box__image">
-                                    </div>
-                                    <div class="company-box__description">
-                                        <h5 class="company-box__company-name">
-                                            Bergen diesel
-                                        </h5>
-                                        <a href="#" class="company-box__site-link">
-                                            www.bergendiesel.com
-                                        </a>
-                                    </div>
-                                    <div class="add-plus add-plus--company-box">
-                                        <p class="add-plus__symbol">
-                                            +
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php } ?>
+
                         </div>
                         <div class="row">
                             <div class="col-lg-12 text-right">
@@ -429,6 +338,9 @@
                             </div>
                         </div>
                     </div>
+                    <?php } ?>
+
+                    <?php if(!empty($free)){ ?>
                     <!--Block wrapper-->
                     <div class="companies-wrapper">
                         <div class="row">
@@ -438,84 +350,30 @@
                                         general
                                     </p>
                                     <p class="companies-headline__found">
-                                        Found: <span class="companies-headline__found-num">138</span> companies
+                                        Found: <span class="companies-headline__found-num"><?php echo count($free) ?></span> companies
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
+                            <?php
+                            foreach($free as $user){  //var_dump($e['user_id']);
+                            $prof = User::findOne($user['user_id']);
+                            ?>
                             <div class="col-lg-4">
                                 <div class="company-box company-box--empty">
                                     <div class="company-box__description">
                                         <h5 class="company-box__company-name">
-                                            Bergen diesel
+                                            <?php echo $prof['username']?>
                                         </h5>
                                         <a href="#" class="company-box__site-link">
-                                            www.bergendiesel.com
+                                            <?php echo $prof['website']?>
                                         </a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
-                                <div class="company-box company-box--empty">
-                                    <div class="company-box__description">
-                                        <h5 class="company-box__company-name">
-                                            Bergen diesel
-                                        </h5>
-                                        <a href="#" class="company-box__site-link">
-                                            www.bergendiesel.com
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="company-box company-box--empty">
-                                    <div class="company-box__description">
-                                        <h5 class="company-box__company-name">
-                                            Bergen diesel
-                                        </h5>
-                                        <a href="#" class="company-box__site-link">
-                                            www.bergendiesel.com
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="company-box company-box--empty">
-                                    <div class="company-box__description">
-                                        <h5 class="company-box__company-name">
-                                            Bergen diesel
-                                        </h5>
-                                        <a href="#" class="company-box__site-link">
-                                            www.bergendiesel.com
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="company-box company-box--empty">
-                                    <div class="company-box__description">
-                                        <h5 class="company-box__company-name">
-                                            Bergen diesel
-                                        </h5>
-                                        <a href="#" class="company-box__site-link">
-                                            www.bergendiesel.com
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="company-box company-box--empty">
-                                    <div class="company-box__description">
-                                        <h5 class="company-box__company-name">
-                                            Bergen diesel
-                                        </h5>
-                                        <a href="#" class="company-box__site-link">
-                                            www.bergendiesel.com
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php } ?>
+
                         </div>
                         <div class="row">
                             <div class="col-lg-12 text-right">
@@ -523,6 +381,7 @@
                             </div>
                         </div>
                     </div>
+                    <?php } ?>
                 </div>
                 <!--Block wrapper-->
                 <div class="col-lg-3">
@@ -531,7 +390,7 @@
                             Chosen company
                         </h3>
                         <div class="criteria">
-                            <p class="criteria__text">Prime <span class="criteria__company-num">(138 companies)</span></p>
+                            <p class="criteria__text">Prime <span class="criteria__company-num">(<?php echo count($businessAdvanced) ?> companies)</span></p>
                             <div class="checkbox-style">
                                 <input type="checkbox" id='prime' class="checkbox-style__input">
                                 <label for="prime" class="checkbox-style__label">
@@ -540,7 +399,7 @@
                             </div>
                         </div>
                         <div class="criteria">
-                            <p class="criteria__text">Recommend <span class="criteria__company-num">(138 companies)</span></p>
+                            <p class="criteria__text">Recommend <span class="criteria__company-num">(<?php echo count($business) ?> companies)</span></p>
                             <div class="checkbox-style">
                                 <input type="checkbox" id='recommend' class="checkbox-style__input">
                                 <label for="recommend" class="checkbox-style__label">

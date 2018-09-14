@@ -1,16 +1,19 @@
 <body>
 <header class="header">
+
+    <!--  1 МЕНЮ  -->
+
     <div class="container">
         <div class="top-navbar top-navbar--no-buttons">
             <div class="row">
                 <div class="col-lg-12 vertical-center horizontal-between">
                     <div class="logotype-box">
-                        <a href="#"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
+                        <a href="/web/site"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
                     </div>
                     <div class="settings">
                         <div class="settings__item">
                             <a href="#" class="settings__email">
-                                wilkinson@gmail.com
+                                <?php echo Yii::$app->user->identity->email ; ?>
                             </a>
                         </div>
                         <div class="settings__item">
@@ -26,12 +29,12 @@
                             <div class="settings__hidden-menu">
                                 <ul class="settings__list">
                                     <li class="settings__list-item">
-                                        <a href="#" class="settings__link">
+                                        <a href="/web/company/profile" class="settings__link">
                                             Profile
                                         </a>
                                     </li>
                                     <li class="settings__list-item">
-                                        <a href="#" class="settings__link">
+                                        <a href="/web/company/logout" class="settings__link">
                                             Sign Out
                                         </a>
                                     </li>
@@ -41,32 +44,32 @@
                     </div>
                     <div class="adaptive-menu">
                         <div class="adaptive-menu__button">
-                            <img src="img/icons/burger.png" alt="burger">
+                            <img src="../../web/public/img/icons/burger.png" alt="burger">
                         </div>
                         <nav class="adaptive-menu__navigation">
                             <ul class="adaptive-menu__list">
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/login" class="adaptive-menu__link">
                                         Sign In
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/signup" class="adaptive-menu__link">
                                         Sign Up
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/shipboard-supply" class="adaptive-menu__link">
                                         Find a supplier
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/become-supplier" class="adaptive-menu__link">
                                         Become a supplier
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/crew" class="adaptive-menu__link">
                                         Crew
                                     </a>
                                 </li>
@@ -81,12 +84,12 @@
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/contacts" class="adaptive-menu__link">
                                         Contacts
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/faq" class="adaptive-menu__link">
                                         Faq
                                     </a>
                                 </li>
@@ -97,6 +100,11 @@
             </div>
         </div>
     </div>
+
+    <!--  1 МЕНЮ  -->
+
+    <!--  2 МЕНЮ  -->
+
     <div class="secondary-navbar margin-bottom-light">
         <div class="container">
             <div class="row">
@@ -104,17 +112,17 @@
                     <nav class="secondary-navigation">
                         <ul class="secondary-navigation__list">
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/shipboard-supply" class="secondary-navigation__link">
                                     Find a supplier
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/site/become-supplier" class="secondary-navigation__link">
                                     Become a supplier
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/site/crew" class="secondary-navigation__link">
                                     Crew
                                 </a>
                             </li>
@@ -124,17 +132,17 @@
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/site/chartering-market" class="secondary-navigation__link">
                                     Chartering market
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/site/contacts" class="secondary-navigation__link">
                                     Contacts
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/site/faq" class="secondary-navigation__link">
                                     Faq
                                 </a>
                             </li>
@@ -144,6 +152,9 @@
             </div>
         </div>
     </div>
+
+    <!--  2 МЕНЮ  -->
+
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -152,7 +163,7 @@
                         Profile
                     </h1>
                     <a href="#" class="settings__email settings__email--head">
-                        wilkinson@gmail.com
+                        <?php echo Yii::$app->user->identity->email ; ?>
                     </a>
                 </div>
             </div>
@@ -160,7 +171,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="primary-menu margin-bottom-medium">
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/company/profile' class="primary-menu__item">
                         <i class="icon-town primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             about the company
@@ -196,7 +207,7 @@
                             incoming requests
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/company/terms-conditions' class="primary-menu__item">
                         <i class="icon-list3 primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             terms and conditions
@@ -208,105 +219,106 @@
     </div>
 </header>
 <main>
-    <section class="profile4">
+
+<section class="profile4">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="secondary-headline text-left margin-bottom-light">
-                        <h2 class="secondary-headline__title">
-                            contract 1:
-                        </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="contract-line">
-                <div class="row">
-                    <div class="col-lg-2">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                <h4 class="contract-line__headline">
-                                    Contract
-                                </h4>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                        <span class="contract-line__info contract-line__info--uppercase">
-                                            Contract 1
-                                        </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                <h4 class="contract-line__headline">
-                                    Date
-                                </h4>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                        <span class="contract-line__info">
-                                            31/02/2018
-                                        </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                <h4 class="contract-line__headline">
-                                    Date of expiry
-                                </h4>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                        <span class="contract-line__info">
-                                            31/02/2019
-                                        </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                <h4 class="contract-line__headline">
-                                    category
-                                </h4>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                        <span class="contract-line__info contract-line__info--uppercase">
-                                            courses/AIR TICKETS for crew
-                                        </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                <h4 class="contract-line__headline">
-                                    Plan
-                                </h4>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                        <span class="contract-line__info contract-line__info--uppercase">
-                                            business
-                                        </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-1">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                <h4 class="contract-line__headline">
-                                    Status
-                                </h4>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                        <span class="contract-line__info contract-line__info--uppercase">
-                                            paid
-                                        </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!--            <div class="row">-->
+<!--                <div class="col-lg-12">-->
+<!--                    <div class="secondary-headline text-left margin-bottom-light">-->
+<!--                        <h2 class="secondary-headline__title">-->
+<!--                            contract 1:-->
+<!--                        </h2>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="contract-line">-->
+<!--                <div class="row">-->
+<!--                    <div class="col-lg-2">-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">-->
+<!--                                <h4 class="contract-line__headline">-->
+<!--                                    Contract-->
+<!--                                </h4>-->
+<!--                            </div>-->
+<!--                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">-->
+<!--                                        <span class="contract-line__info contract-line__info--uppercase">-->
+<!--                                            Contract 1-->
+<!--                                        </span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-2">-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">-->
+<!--                                <h4 class="contract-line__headline">-->
+<!--                                    Date-->
+<!--                                </h4>-->
+<!--                            </div>-->
+<!--                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">-->
+<!--                                        <span class="contract-line__info">-->
+<!--                                            31/02/2018-->
+<!--                                        </span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-2">-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">-->
+<!--                                <h4 class="contract-line__headline">-->
+<!--                                    Date of expiry-->
+<!--                                </h4>-->
+<!--                            </div>-->
+<!--                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">-->
+<!--                                        <span class="contract-line__info">-->
+<!--                                            31/02/2019-->
+<!--                                        </span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-3">-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">-->
+<!--                                <h4 class="contract-line__headline">-->
+<!--                                    category-->
+<!--                                </h4>-->
+<!--                            </div>-->
+<!--                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">-->
+<!--                                        <span class="contract-line__info contract-line__info--uppercase">-->
+<!--                                            courses/AIR TICKETS for crew-->
+<!--                                        </span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-2">-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">-->
+<!--                                <h4 class="contract-line__headline">-->
+<!--                                    Plan-->
+<!--                                </h4>-->
+<!--                            </div>-->
+<!--                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">-->
+<!--                                        <span class="contract-line__info contract-line__info--uppercase">-->
+<!--                                            business-->
+<!--                                        </span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-1">-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">-->
+<!--                                <h4 class="contract-line__headline">-->
+<!--                                    Status-->
+<!--                                </h4>-->
+<!--                            </div>-->
+<!--                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">-->
+<!--                                        <span class="contract-line__info contract-line__info--uppercase">-->
+<!--                                            paid-->
+<!--                                        </span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
             <div class="contract-information block-underline-top block-underline margin-bottom-light">
                 <div class="row contract-information__desktop">
                     <div class="col-lg-12 horizontal-between">
@@ -1793,9 +1805,11 @@
                 </div>
                 <div class="row horizontal-center">
                     <div class="col-lg-3 col-md-4 col-sm-5 col-5">
+                        <a href="/web/company/choose-plan">
                         <button class="button margin-bottom-light">
                             choose your plan
                         </button>
+                        </a>
                     </div>
                 </div>
             </div>
