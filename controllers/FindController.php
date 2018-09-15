@@ -63,4 +63,9 @@ class FindController extends Controller
     {
         return $this->render('student');
     }
+
+    public function actionCrewResult()
+    {
+        return $this->render('crewresult');
+    }
 }

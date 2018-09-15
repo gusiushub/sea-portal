@@ -12,7 +12,7 @@ $user = $model->attributes;
             <div class="row">
                 <div class="col-lg-12 vertical-center horizontal-between">
                     <div class="logotype-box">
-                        <a href="#"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
+                        <a href="/web/site"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
                     </div>
                     <div class="settings">
                         <div class="settings__item">
@@ -53,17 +53,17 @@ $user = $model->attributes;
                         <nav class="adaptive-menu__navigation">
                             <ul class="adaptive-menu__list">
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/login" class="adaptive-menu__link">
                                         Sign In
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/signup" class="adaptive-menu__link">
                                         Sign Up
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="/web/find/shipboard-supply" class="adaptive-menu__link">
+                                    <a href="#" class="adaptive-menu__link">
                                         Find a supplier
                                     </a>
                                 </li>
@@ -73,27 +73,27 @@ $user = $model->attributes;
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="/web/find/crew" class="adaptive-menu__link">
+                                    <a href="/web/site/crew" class="adaptive-menu__link">
                                         Crew
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="/web/find/chartering" class="adaptive-menu__link">
+                                    <a href="#" class="adaptive-menu__link">
                                         Vessels sell/chartering
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="/web/find/chartering-market" class="adaptive-menu__link">
+                                    <a href="#" class="adaptive-menu__link">
                                         Chartering market
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="/web/site/contacts" class="adaptive-menu__link">
+                                    <a href="#" class="adaptive-menu__link">
                                         Contacts
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="/web/site/faq" class="adaptive-menu__link">
+                                    <a href="#" class="adaptive-menu__link">
                                         Faq
                                     </a>
                                 </li>
@@ -111,7 +111,7 @@ $user = $model->attributes;
                     <nav class="secondary-navigation">
                         <ul class="secondary-navigation__list">
                             <li class="secondary-navigation__item">
-                                <a href="/web/site/find-supplier" class="secondary-navigation__link">
+                                <a href="/web/find/shipboard-supply" class="secondary-navigation__link">
                                     Find a supplier
                                 </a>
                             </li>
@@ -126,22 +126,22 @@ $user = $model->attributes;
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="/web/find/chartering" class="secondary-navigation__link">
+                                <a href="#" class="secondary-navigation__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="/web/find/chartering-market" class="secondary-navigation__link">
+                                <a href="#" class="secondary-navigation__link">
                                     Chartering market
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="/web/site/contacts" class="secondary-navigation__link">
+                                <a href="#" class="secondary-navigation__link">
                                     Contacts
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="/web/site/faq" class="secondary-navigation__link">
+                                <a href="#" class="secondary-navigation__link">
                                     Faq
                                 </a>
                             </li>
@@ -158,8 +158,8 @@ $user = $model->attributes;
                     <h1 class="main-headline__title">
                         Profile
                     </h1>
-                    <a href="#" class="settings__email settings__email--head">
-                        <?php echo $user['email'] ; ?>
+                    <a href="/web/site/profile" class="settings__email settings__email--head">
+                        <?php echo Yii::$app->user->identity->email ?>
                     </a>
                 </div>
             </div>
@@ -167,7 +167,7 @@ $user = $model->attributes;
         <div class="row">
             <div class="col-lg-12">
                 <div class="primary-menu margin-bottom-medium">
-                    <a href='#' class="primary-menu__item primary-menu__item--active">
+                    <a href='/web/site/profile' class="primary-menu__item primary-menu__item--active">
                         <i class="icon-town primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             personal information
@@ -215,7 +215,6 @@ $user = $model->attributes;
                     </div>
                 </div>
                 <div class="col-lg-9">
-
                     <div class="row ">
                         <div class="col-lg-6">
                             <div class="profile__setting">
@@ -227,8 +226,7 @@ $user = $model->attributes;
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-
-                                            <input type="text" class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="<?php echo Yii::$app->user->identity->username ?>" name="fname">
+                                            <input type="text" class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="ANDERS" name="fname" value="<?php echo Yii::$app->user->identity->username ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -242,7 +240,7 @@ $user = $model->attributes;
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="<?php echo Yii::$app->user->identity->second_name ?>" name="sname">
+                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="POWERS" name="sname" value="<?php echo Yii::$app->user->identity->second_name ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -256,7 +254,7 @@ $user = $model->attributes;
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="17.02.1972" name="dbirth">
+                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="17.02.1972" name="dbirth" value="">
                                         </div>
                                     </div>
                                 </div>
@@ -270,7 +268,7 @@ $user = $model->attributes;
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="<?php echo Yii::$app->user->identity->country ?>" name="country">
+                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="ESTONIA" name="country" value="<?php echo Yii::$app->user->identity->country ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -284,7 +282,7 @@ $user = $model->attributes;
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="<?php echo Yii::$app->user->identity->city ?>" name="city">
+                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="TALLINN" name="city" value="<?php echo Yii::$app->user->identity->city ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -297,21 +295,20 @@ $user = $model->attributes;
                                                 </span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                        <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" >
                                         <div class="textinput-container">
-                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="22 YEARS" name="experience">
+                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="22 YEARS" name="experience" value="">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 offset-lg-3 col-md-3 col-sm-3 col-3">
-
-                            <button class="button button--profile button--profile-change">
+                            <button id="profile_personal1" class="button button--profile button--profile-change">
                                 edit
                             </button>
                         </div>
                     </div>
-
                     <div class="row block-underline">
                         <div class="col-lg-6">
                             <div class="profile__setting">
@@ -323,7 +320,7 @@ $user = $model->attributes;
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="100000" name="salary">
+                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="100000" name="salary" value="">
                                         </div>
                                     </div>
                                 </div>
@@ -339,14 +336,13 @@ $user = $model->attributes;
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-                                            <input  type="text" class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="EUR" name="currency">
+                                            <input  type="text" class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="EUR" name="currency" value="">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <div class="row block-underline">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-6 vertical-center">
                             <div class="profile__setting profile__setting--no-margin">
@@ -358,14 +354,14 @@ $user = $model->attributes;
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-                                            <input  type="text" class="textinput-container__input textinput-container__input--change-pass textinput-container__input--change-unactive" disabled="" value="7ngdc5cn" disabled="" placeholder="PASSWORD" name="currency">
+                                            <input  type="text" class="textinput-container__input textinput-container__input--change-pass textinput-container__input--change-unactive" disabled="" value="7ngdc5cn" disabled="" placeholder="PASSWORD" name="password" >
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 offset-lg-3 col-md-3 col-sm-3 col-3">
-                            <button class="button button--profile button--profile--change-pass">
+                            <button id="profile_personal1_changebtn" class="button button--profile button--profile--change-pass">
                                 change
                             </button>
                         </div>
@@ -401,7 +397,7 @@ $user = $model->attributes;
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-4 col-5">
-                            <button class="button button--profile button--profile--from-to">
+                            <button id="profile_personal1_selectbtn" class="button button--profile button--profile--from-to">
                                 select
                             </button>
                         </div>
@@ -427,27 +423,27 @@ $user = $model->attributes;
                         </h4>
                         <ul class="footer-nav__list">
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/find/shipboard-supply" class="footer-nav__link">
                                     Find a supplier
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/become-supplier" class="footer-nav__link">
                                     Become a supplier
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/find/crew" class="footer-nav__link">
                                     Crew
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/find/shipboard-supply" class="footer-nav__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/find/shipboard-supply" class="footer-nav__link">
                                     Chartering market
                                 </a>
                             </li>
@@ -459,27 +455,27 @@ $user = $model->attributes;
                         </h4>
                         <ul class="footer-nav__list">
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/contacts" class="footer-nav__link">
                                     Contacts
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/faq" class="footer-nav__link">
                                     Faq
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/terms-conditions" class="footer-nav__link">
                                     Terms and Conditions
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/login" class="footer-nav__link">
                                     Sign In
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/signup" class="footer-nav__link">
                                     Sign Up
                                 </a>
                             </li>
@@ -515,16 +511,15 @@ $user = $model->attributes;
                 </div>
                 <div class="copyright">
                     <p class="copyright__design-by">
-                        Design by HoteyCompany
+
                     </p>
                 </div>
             </div>
         </div>
     </div>
 </footer>
-
 </body>
-
 <script src="../../web/public/js/common.js"></script>
 <script src="../../web/public/js/info-change.js"></script>
 <script src="../../web/public/js/from-to.js"></script>
+<script src="../../web/public/js/ajax-forms.js"></script>

@@ -14,6 +14,8 @@ use app\models\SignupForm;
 use app\models\UserProfile;
 use app\models\BecomeSupplier;
 use app\models\Ajax;
+use app\models\Cv;
+use app\models\CvForm;
 
 
 class SiteController extends Controller
@@ -69,18 +71,120 @@ class SiteController extends Controller
         }
     }
 
+    public function actionSellerAjax()
+    {
+        if (isset($_POST['profile_seller1'])){
+            $profile = json_decode($_POST['profile_seller1'], true);
+            $id = Yii::$app->user->identity->id;
+            $model = User::find()->where(['id' => $id])->one();
+            $model->username = $profile['company'];
+            $model->contacts = $profile['contacts'];
+            $model->email = $profile['email'];
+            $model->country = $profile['country'];
+            $model->phone = $profile['phone'];
+            $model->city = $profile['city'];
+            $model->save();
+        }
+    }
+
+    public function actionShipAjax()
+    {
+        if (isset($_POST['profile_seller1'])){
+
+        }
+    }
+
+    public function actionCvAjax()
+    {
+        if (isset($_POST['profile_personal4_1'])){
+            $ajax = json_decode($_POST['profile_personal4_1'], true);
+            $cv = new Cv();
+            $cv->user_id = Yii::$app->user->identity->id;
+            $cv->date = date('Y/m/d');
+            $cv->date_expiry = date('Y/m/d');
+            $cv->category = $ajax['category'];
+            $cv->faculty = $ajax['faculty'];
+            $cv->lvleng = $ajax['levelofeng'];
+            $cv->country = $ajax['country'];
+            $cv->port = $ajax['port'];
+            $cv->plan = 'free';
+            $cv->status = 'paid';
+
+            return $cv->save();
+        }
+
+        if (isset($_POST['profile_personal4_1_job'])){
+            $ajax = json_decode($_POST['profile_personal4_1_job'], true);
+            $cv = new Cv();
+            $cv->user_id = Yii::$app->user->identity->id;
+            $cv->date = date('Y/m/d');
+            $cv->date_expiry = date('Y/m/d');
+            $cv->category = $ajax['category'];
+            $cv->salary_to = $ajax['salary_min'];
+            $cv->salary_from = $ajax['salary_max'];
+            $cv->currency = $ajax['currency'];
+            $cv->position = $ajax['position'];
+            $cv->plan = 'free';
+            $cv->status = 'paid';
+
+            return $cv->save();
+        }
+    }
+
+
     public function actionAjax()
     {
-        $profile = json_decode($_POST['profile1'], true);
-        $id = Yii::$app->user->identity->id;
-        $model = User::find()->where(['id' => $id])->one();
-        $model->username = $profile['company'];
-        $model->phone = $profile['phone'];
-        $model->country = $profile['country'];
-        $model->city = $profile['city'];
-        $model->website = $profile['website'];
-        $model->email = $profile['email'];
-        $model->save();
+        if (isset($_POST['profile_personal1'])){
+            $profile = json_decode($_POST['profile_personal1'], true);
+            $id = Yii::$app->user->identity->id;
+            $model = User::find()->where(['id' => $id])->one();
+            $model->username = $profile['fname'];
+            $model->second_name = $profile['sname'];
+            $model->country = $profile['country'];
+            $model->city = $profile['city'];
+            $model->save();
+        }
+
+        if (isset($_POST['change'])) {
+            //$profile = json_decode($_POST['change'], true);
+            $id = Yii::$app->user->identity->id;
+            $model = User::find()->where(['id' => $id])->one();
+            $model->phone = $_POST['change'];
+            $model->save();
+        }
+        if (isset($_POST['profile1'])){
+            $profile = json_decode($_POST['profile1'], true);
+            $id = Yii::$app->user->identity->id;
+            $model = User::find()->where(['id' => $id])->one();
+            $model->username = $profile['company'];
+            $model->phone = $profile['phone'];
+            $model->country = $profile['country'];
+            $model->city = $profile['city'];
+            $model->website = $profile['website'];
+            $model->email = $profile['email'];
+            $model->contacts = $profile['contacts'];
+            $model->save();
+        }
+
+        if (isset($_POST['profile_personal1'])){
+            $profile = json_decode($_POST['profile_personal1'], true);
+            $id = Yii::$app->user->identity->id;
+            $model = User::find()->where(['id' => $id])->one();
+            $model->username = $profile['fname'];
+            $model->second_name = $profile['sname'];
+            $model->country = $profile['country'];
+            $model->city = $profile['city'];
+            $model->save();
+        }
+
+    }
+
+    public function actionCvJob()
+    {
+        //$cv = new Cv();
+        $userCv = Cv::find()->select('*')->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->all();
+
+        return $this->render('cvjob',['userCv'=>$userCv]);
     }
 
     public function actionProfile()
@@ -111,7 +215,9 @@ class SiteController extends Controller
     public function actionCv()
     {
         if (Yii::$app->user->isGuest==false){
-            return $this->render('cv');
+            $userCv = Cv::find()->select('*')->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->all();
+
+            return $this->render('cv',['userCv'=>$userCv]);
         }else {
             $this->redirect(['index']);
         }

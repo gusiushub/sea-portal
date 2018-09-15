@@ -317,7 +317,7 @@
                                     </div>
                                     <div class="col-lg-8 col-md-8 col-sm-8 col-8">
                                         <div class="textinput-container">
-                                            <input type="text" class="textinput-container__input textinput-container__input--change field-to-change field-to-change--unactive" disabled="" placeholder="CONTACTS" name="contacts" value="">
+                                            <input type="text" class="textinput-container__input textinput-container__input--change field-to-change field-to-change--unactive" disabled="" placeholder="CONTACTS" name="contacts" value="<?php echo Yii::$app->user->identity->contacts ; ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -344,14 +344,14 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-                                            <input  type="text" class="textinput-container__input textinput-container__input--change-pass  textinput-container__input--change-unactive" disabled="" value="7ngdc5cn" disabled="" placeholder="PASSWORD" name="currency">
+                                            <input  type="text" class="textinput-container__input textinput-container__input--change-pass  textinput-container__input--change-unactive" disabled="" value="7ngdc5cn" disabled="" placeholder="PASSWORD" name="password">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 offset-lg-3 col-md-3 col-sm-3 col-3">
-                            <button class="button button--profile button--profile--change-pass">
+                            <button id="profile1_change" class="button button--profile button--profile--change-pass">
                                 change
                             </button>
                         </div>
@@ -382,7 +382,7 @@
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/become-supplier" class="footer-nav__link">
                                     Become a supplier
                                 </a>
                             </li>
@@ -392,12 +392,12 @@
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/find/shipboard-supply" class="footer-nav__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/find/shipboard-supply" class="footer-nav__link">
                                     Chartering market
                                 </a>
                             </li>
@@ -409,27 +409,27 @@
                         </h4>
                         <ul class="footer-nav__list">
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/contacts" class="footer-nav__link">
                                     Contacts
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/faq" class="footer-nav__link">
                                     Faq
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="/web/company/terms-conditions" class="footer-nav__link">
+                                <a href="/web/site/terms-conditions" class="footer-nav__link">
                                     Terms and Conditions
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/login" class="footer-nav__link">
                                     Sign In
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/signup" class="footer-nav__link">
                                     Sign Up
                                 </a>
                             </li>
@@ -465,7 +465,7 @@
                 </div>
                 <div class="copyright">
                     <p class="copyright__design-by">
-                        Design by HoteyCompany
+
                     </p>
                 </div>
             </div>
@@ -475,3 +475,4 @@
 </body>
 <script src="../../web/public/js/common.js"></script>
 <script src="../../web/public/js/info-change.js"></script>
+<script src="../../web/public/js/ajax-forms.js"></script>

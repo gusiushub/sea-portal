@@ -134,7 +134,7 @@
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/crew" class="secondary-navigation__link">
                                     Crew
                                 </a>
                             </li>
@@ -242,7 +242,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-8">
-<form id="myform" method="POST" action="/web/find/shipboard-result">
+                    <form id="myform" method="POST" action="/web/find/shipboard-result">
                     <div class="filter">
                         <div class="secondary-headline margin-bottom-light">
                             <h2 class="secondary-headline__title">

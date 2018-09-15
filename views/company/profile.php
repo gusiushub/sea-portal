@@ -325,7 +325,7 @@
                                     </div>
                                     <div class="col-lg-8 col-md-8 col-sm-8 col-8">
                                         <div class="textinput-container">
-                                            <input type="text" class="textinput-container__input textinput-container__input--change field-to-change field-to-change--unactive" disabled="" placeholder="CONTACTS" name="contacts">
+                                            <input type="text" class="textinput-container__input textinput-container__input--change field-to-change field-to-change--unactive" disabled="" placeholder="<?php echo Yii::$app->user->identity->email ; ?>" name="contacts">
                                         </div>
                                     </div>
                                 </div>
@@ -476,7 +476,7 @@
                 </div>
                 <div class="copyright">
                     <p class="copyright__design-by">
-                        Design by HoteyCompany
+
                     </p>
                 </div>
             </div>

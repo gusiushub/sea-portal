@@ -351,27 +351,27 @@
                                 </h4>
                                 <ul class="footer-nav__list">
                                     <li class="footer-nav__item">
-                                        <a href="#" class="footer-nav__link">
+                                        <a href="/web/find/shipboard-supply" class="footer-nav__link">
                                             Find a supplier
                                         </a>
                                     </li>
                                     <li class="footer-nav__item">
-                                        <a href="#" class="footer-nav__link">
-                                            Become a supplier  
+                                        <a href="/web/site/become-supplier" class="footer-nav__link">
+                                            Become a supplier
                                         </a>
                                     </li>
                                     <li class="footer-nav__item">
                                         <a href="/web/find/crew" class="footer-nav__link">
-                                            Crew  
+                                            Crew
                                         </a>
                                     </li>
                                     <li class="footer-nav__item">
-                                        <a href="#" class="footer-nav__link">
-                                            Vessels sell/chartering  
+                                        <a href="/web/find/shipboard-supply" class="footer-nav__link">
+                                            Vessels sell/chartering
                                         </a>
                                     </li>
                                     <li class="footer-nav__item">
-                                        <a href="#" class="footer-nav__link">
+                                        <a href="/web/find/shipboard-supply" class="footer-nav__link">
                                             Chartering market
                                         </a>
                                     </li>
@@ -383,27 +383,27 @@
                                 </h4>
                                 <ul class="footer-nav__list">
                                     <li class="footer-nav__item">
-                                        <a href="#" class="footer-nav__link">
+                                        <a href="/web/site/contacts" class="footer-nav__link">
                                             Contacts
                                         </a>
                                     </li>
                                     <li class="footer-nav__item">
-                                        <a href="#" class="footer-nav__link">
+                                        <a href="/web/site/faq" class="footer-nav__link">
                                             Faq
                                         </a>
                                     </li>
                                     <li class="footer-nav__item">
-                                        <a href="#" class="footer-nav__link">
+                                        <a href="/web/site/terms-conditions" class="footer-nav__link">
                                             Terms and Conditions
                                         </a>
                                     </li>
                                     <li class="footer-nav__item">
-                                        <a href="#" class="footer-nav__link">
+                                        <a href="/web/site/login" class="footer-nav__link">
                                             Sign In
                                         </a>
                                     </li>
                                     <li class="footer-nav__item">
-                                        <a href="#" class="footer-nav__link">
+                                        <a href="/web/site/signup" class="footer-nav__link">
                                             Sign Up
                                         </a>
                                     </li>
@@ -439,7 +439,7 @@
                         </div>
                         <div class="copyright">
                             <p class="copyright__design-by">
-                               убрал))))
+
                             </p>
                         </div>
                     </div>

@@ -5,12 +5,12 @@
             <div class="row">
                 <div class="col-lg-12 vertical-center horizontal-between">
                     <div class="logotype-box">
-                        <a href="#"><img src="img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
+                        <a href="/web/site"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
                     </div>
                     <div class="settings">
                         <div class="settings__item">
-                            <a href="#" class="settings__email">
-                                wilkinson@gmail.com
+                            <a href="/web/seller/profile" class="settings__email">
+                                <?php echo Yii::$app->user->identity->email ?>
                             </a>
                         </div>
                         <div class="settings__item">
@@ -26,12 +26,12 @@
                             <div class="settings__hidden-menu">
                                 <ul class="settings__list">
                                     <li class="settings__list-item">
-                                        <a href="#" class="settings__link">
+                                        <a href="/web/seller/profile" class="settings__link">
                                             Profile
                                         </a>
                                     </li>
                                     <li class="settings__list-item">
-                                        <a href="#" class="settings__link">
+                                        <a href="/web/seller/logout" class="settings__link">
                                             Sign Out
                                         </a>
                                     </li>
@@ -41,17 +41,17 @@
                     </div>
                     <div class="adaptive-menu">
                         <div class="adaptive-menu__button">
-                            <img src="img/icons/burger.png" alt="burger">
+                            <img src="../../web/public/img/icons/burger.png" alt="burger">
                         </div>
                         <nav class="adaptive-menu__navigation">
                             <ul class="adaptive-menu__list">
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/login" class="adaptive-menu__link">
                                         Sign In
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/signup" class="adaptive-menu__link">
                                         Sign Up
                                     </a>
                                 </li>
@@ -66,7 +66,7 @@
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/crew" class="adaptive-menu__link">
                                         Crew
                                     </a>
                                 </li>
@@ -104,17 +104,17 @@
                     <nav class="secondary-navigation">
                         <ul class="secondary-navigation__list">
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/shipboard-supply" class="secondary-navigation__link">
                                     Find a supplier
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/site/become-supplier" class="secondary-navigation__link">
                                     Become a supplier
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/crew" class="secondary-navigation__link">
                                     Crew
                                 </a>
                             </li>
@@ -152,7 +152,7 @@
                         Profile
                     </h1>
                     <a href="#" class="settings__email settings__email--head">
-                        wilkinson@gmail.com
+                        <?php echo Yii::$app->user->identity->email ?>
                     </a>
                 </div>
             </div>
@@ -160,43 +160,43 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="primary-menu margin-bottom-medium">
-                    <a href='#' class="primary-menu__item primary-menu__item--active">
+                    <a href='/web/seller/profile' class="primary-menu__item primary-menu__item--active">
                         <i class="icon-sheap primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             seller information
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/seller/pricing' class="primary-menu__item">
                         <i class="icon-list7 primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             pricing
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/seller/request' class="primary-menu__item">
                         <i class="icon-message primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             incoming requests
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/seller/statistics' class="primary-menu__item">
                         <i class="icon-charting primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             statistics
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/seller/offers' class="primary-menu__item">
                         <i class="icon-list6 primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             my offers
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/seller/profile' class="primary-menu__item">
                         <i class="icon-window primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             place an adverticement
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/seller/term' class="primary-menu__item">
                         <i class="icon-list5 primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             term and conditions
@@ -213,7 +213,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="profile">
-                        <img src="img/company-logo-big.jpg" alt="company-logo" class="profile__photo margin-bottom-light">
+                        <img src="../../web/public/img/company-logo-big.jpg" alt="company-logo" class="profile__photo margin-bottom-light">
                         <button class="profile__upload-photo margin-bottom-medium">
                             select file
                         </button>
@@ -231,7 +231,7 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-                                            <input type="text" class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="COMPANY NAME" name="cname">
+                                            <input type="text" class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="COMPANY NAME" name="cname" value="<?php echo Yii::$app->user->identity->username ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -245,7 +245,7 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="+0000000000" name="phone">
+                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="+0000000000" name="phone" value="<?php echo Yii::$app->user->identity->phone ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -259,7 +259,7 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="ALBANIA" name="country">
+                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="ALBANIA" name="country" value="<?php echo Yii::$app->user->identity->country ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -273,8 +273,8 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="VLORE" name="city">
-                                        </div>
+                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="VLORE" name="city" value="<?php echo Yii::$app->user->identity->city ?>">
+                                        </div>!
                                     </div>
                                 </div>
                             </div>
@@ -287,7 +287,7 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="INFO@??????.??" name="mail">
+                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="INFO@??????.??" name="mail" value="<?php echo Yii::$app->user->identity->email ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -301,14 +301,14 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="PETER WASQUES" name="contacts">
+                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="PETER WASQUES" name="contacts" value="<?php echo Yii::$app->user->identity->contacts ?>">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 offset-lg-2 col-md-3 col-sm-3 col-4">
-                            <button class="button button--profile button--profile-change">
+                            <button id="profile-seller-change" class="button button--profile button--profile-change">
                                 edit
                             </button>
                         </div>
@@ -323,24 +323,27 @@
                                                 </span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                        <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" >
                                         <div class="textinput-container">
-                                            <input  type="text" class="textinput-container__input textinput-container__input--change-pass textinput-container__input--change-unactive" value="7ngdc5cn" disabled="" placeholder="PASSWORD" name="currency">
+                                            <input type="text" class="textinput-container__input textinput-container__input--change-pass textinput-container__input--change-unactive" value="7ngdc5cn" disabled="" placeholder="PASSWORD" name="password">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 offset-lg-3 col-md-3 col-sm-3 col-4">
-                            <button class="button button--profile button--profile--change-pass">
+                            <button id="profile_sller1_changebtn" class="button button--profile button--profile--change-pass">
                                 change
                             </button>
                         </div>
                     </div>
                     <div class="row horizontal-center">
                         <div class="col-lg-7">
-                            <button class="button button--profile">
-                                place your offer (sell or chartering)
-                            </button>
+                            <a href="/web/seller/vessel">
+                                <button class="button button--profile">
+                                    place your offer (sell or chartering)
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -353,7 +356,7 @@
         <div class="row margin-bottom-light">
             <div class="col-lg-6">
                 <div class="logotype-box">
-                    <img src="img/logotype-big.png" alt="logotype" class="logotype-box__footer">
+                    <img src="../../web/public/img/logotype-big.png" alt="logotype" class="logotype-box__footer">
                 </div>
             </div>
             <div class="col-lg-6">
@@ -364,27 +367,27 @@
                         </h4>
                         <ul class="footer-nav__list">
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/find/shipboard-supply" class="footer-nav__link">
                                     Find a supplier
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/become-supplier" class="footer-nav__link">
                                     Become a supplier
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/find/crew" class="footer-nav__link">
                                     Crew
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/find/shipboard-supply" class="footer-nav__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/find/shipboard-supply" class="footer-nav__link">
                                     Chartering market
                                 </a>
                             </li>
@@ -396,27 +399,27 @@
                         </h4>
                         <ul class="footer-nav__list">
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/contacts" class="footer-nav__link">
                                     Contacts
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/faq" class="footer-nav__link">
                                     Faq
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/terms-conditions" class="footer-nav__link">
                                     Terms and Conditions
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/login" class="footer-nav__link">
                                     Sign In
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/signup" class="footer-nav__link">
                                     Sign Up
                                 </a>
                             </li>
@@ -429,16 +432,16 @@
             <div class="col-lg-12">
                 <div class="social-networks">
                     <a href="#" class="social-networks__link">
-                        <img src="img/icons/soc-mail.png" alt="mail">
+                        <img src="../../web/public/img/icons/soc-mail.png" alt="mail">
                     </a>
                     <a href="#" class="social-networks__link">
-                        <img src="img/icons/soc-mobile.png" alt="mobile">
+                        <img src="../../web/public/img/icons/soc-mobile.png" alt="mobile">
                     </a>
                     <a href="#" class="social-networks__link">
-                        <img src="img/icons/soc-skype.png" alt="skype">
+                        <img src="../../web/public/img/icons/soc-skype.png" alt="skype">
                     </a>
                     <a href="#" class="social-networks__link">
-                        <img src="img/icons/soc-mobile-2.png" alt="mobile">
+                        <img src="../../web/public/img/icons/soc-mobile-2.png" alt="mobile">
                     </a>
                 </div>
             </div>
@@ -452,7 +455,7 @@
                 </div>
                 <div class="copyright">
                     <p class="copyright__design-by">
-                        Design by HoteyCompany
+
                     </p>
                 </div>
             </div>
@@ -460,6 +463,7 @@
     </div>
 </footer>
 </body>
-<script src="js/common.js"></script>
-<script src="js/info-change.js"></script>
-<script src="js/from-to.js"></script>
+<script src="../../web/public/js/common.js"></script>
+<script src="../../web/public/js/info-change.js"></script>
+<script src="../../web/public/js/from-to.js"></script>
+<script src="../../web/public/js/ajax-forms.js"></script>

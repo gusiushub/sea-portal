@@ -49,6 +49,23 @@ $this->title = 'Start page';
                     </div>
                     <div class="col-lg-6">
                         <div class="authorization">
+                            <?php if (!Yii::$app->user->isGuest){  ?>
+                            <a href="<?php if (Yii::$app->user->identity->user_status==1) {
+                                echo '/web/site/profile';
+                            }
+                            if (Yii::$app->user->identity->user_status==2) {
+                                echo '/web/company/profile';
+                            }
+                            if (Yii::$app->user->identity->user_status==3) {
+                                echo '/web/seller/profile';
+                            } ?>" class="authorization__link authorization__link--white">
+                                Profile
+                            </a>
+                            <a href="/web/user/logot" class="authorization__link authorization__link--white">
+                                Logout
+
+                            </a>
+                            <?php } else{ ?>
                             <a href="/web/site/login" class="authorization__link authorization__link--white">
                                 Sign In
                             </a>
@@ -56,6 +73,7 @@ $this->title = 'Start page';
                                 Sign Up
 
                             </a>
+                            <?php } ?>
                             <a href="#" class="authorization__link authorization__link--white">
                                 Faq
                             </a>

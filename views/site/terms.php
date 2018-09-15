@@ -632,7 +632,7 @@
         <div class="row margin-bottom-light">
             <div class="col-lg-6">
                 <div class="logotype-box">
-                    <img src="img/logotype-big.png" alt="logotype" class="logotype-box__footer">
+                    <img src="../../web/public/img/logotype-big.png" alt="logotype" class="logotype-box__footer">
                 </div>
             </div>
             <div class="col-lg-6">
@@ -643,27 +643,27 @@
                         </h4>
                         <ul class="footer-nav__list">
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/find/shipboard-supply" class="footer-nav__link">
                                     Find a supplier
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/become-supplier" class="footer-nav__link">
                                     Become a supplier
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/find/crew" class="footer-nav__link">
                                     Crew
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/find/shipboard-supply" class="footer-nav__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/find/shipboard-supply" class="footer-nav__link">
                                     Chartering market
                                 </a>
                             </li>
@@ -675,27 +675,27 @@
                         </h4>
                         <ul class="footer-nav__list">
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/contacts" class="footer-nav__link">
                                     Contacts
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/faq" class="footer-nav__link">
                                     Faq
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/terms-conditions" class="footer-nav__link">
                                     Terms and Conditions
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/login" class="footer-nav__link">
                                     Sign In
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/signup" class="footer-nav__link">
                                     Sign Up
                                 </a>
                             </li>
@@ -708,16 +708,16 @@
             <div class="col-lg-12">
                 <div class="social-networks">
                     <a href="#" class="social-networks__link">
-                        <img src="img/icons/soc-mail.png" alt="mail">
+                        <img src="../../web/public/img/icons/soc-mail.png" alt="mail">
                     </a>
                     <a href="#" class="social-networks__link">
-                        <img src="img/icons/soc-mobile.png" alt="mobile">
+                        <img src="../../web/public/img/icons/soc-mobile.png" alt="mobile">
                     </a>
                     <a href="#" class="social-networks__link">
-                        <img src="img/icons/soc-skype.png" alt="skype">
+                        <img src="../../web/public/img/icons/soc-skype.png" alt="skype">
                     </a>
                     <a href="#" class="social-networks__link">
-                        <img src="img/icons/soc-mobile-2.png" alt="mobile">
+                        <img src="../../web/public/img/icons/soc-mobile-2.png" alt="mobile">
                     </a>
                 </div>
             </div>
@@ -731,7 +731,7 @@
                 </div>
                 <div class="copyright">
                     <p class="copyright__design-by">
-                        Design by HoteyCompany
+
                     </p>
                 </div>
             </div>

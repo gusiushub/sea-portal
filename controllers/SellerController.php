@@ -28,4 +28,34 @@ class SellerController extends Controller
             $this->redirect(['index']);
         }
     }
+
+    public function actionVessel()
+    {
+        return $this->render('vessel');
+    }
+
+    public function actionOffers()
+    {
+        return $this->render('offers');
+    }
+
+    public function actionPricing()
+    {
+        return $this->render('pricing');
+    }
+
+    public function actionStatistics()
+    {
+        return $this->render('statistics');
+    }
+    public function actionTerm()
+    {
+        return $this->render('term');
+    }
+
+    public function actionRequest()
+    {
+        return $this->render('request');
+    }
+
 }

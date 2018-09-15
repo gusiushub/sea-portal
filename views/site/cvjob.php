@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-lg-12 vertical-center horizontal-between">
                     <div class="logotype-box">
-                        <a href="#"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
+                        <a href="/web/site"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
                     </div>
                     <div class="settings">
                         <div class="settings__item">
@@ -26,12 +26,12 @@
                             <div class="settings__hidden-menu">
                                 <ul class="settings__list">
                                     <li class="settings__list-item">
-                                        <a href="#" class="settings__link">
+                                        <a href="/web/site/profile" class="settings__link">
                                             Profile
                                         </a>
                                     </li>
                                     <li class="settings__list-item">
-                                        <a href="#" class="settings__link">
+                                        <a href="/web/user/logout" class="settings__link">
                                             Sign Out
                                         </a>
                                     </li>
@@ -46,12 +46,12 @@
                         <nav class="adaptive-menu__navigation">
                             <ul class="adaptive-menu__list">
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/login" class="adaptive-menu__link">
                                         Sign In
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/signup" class="adaptive-menu__link">
                                         Sign Up
                                     </a>
                                 </li>
@@ -61,12 +61,12 @@
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/become-supplier" class="adaptive-menu__link">
                                         Become a supplier
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/crew" class="adaptive-menu__link">
                                         Crew
                                     </a>
                                 </li>
@@ -104,17 +104,17 @@
                     <nav class="secondary-navigation">
                         <ul class="secondary-navigation__list">
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/shipboard-supply" class="secondary-navigation__link">
                                     Find a supplier
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/site/become-supplier" class="secondary-navigation__link">
                                     Become a supplier
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/crew" class="secondary-navigation__link">
                                     Crew
                                 </a>
                             </li>
@@ -151,7 +151,7 @@
                     <h1 class="main-headline__title">
                         Profile
                     </h1>
-                    <a href="#" class="settings__email settings__email--head">
+                    <a href="/web/site/profile" class="settings__email settings__email--head">
                         <?php echo Yii::$app->user->identity->email ?>
                     </a>
                 </div>
@@ -172,13 +172,13 @@
                             pricing
                         </h3>
                     </a>
-                    <a href='/web/site/statistics' class="primary-menu__item primary-menu__item--active">
+                    <a href='/web/site/statistics' class="primary-menu__item">
                         <i class="icon-charting primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             statistics
                         </h3>
                     </a>
-                    <a href='/web/site/cv' class="primary-menu__item">
+                    <a href='/web/site/cv-job' class="primary-menu__item primary-menu__item--active">
                         <i class="icon-list6 primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             cv
@@ -198,65 +198,242 @@
 <main>
     <section class="profile-personal">
         <div class="container">
-            <div class="row no-gutters margin-bottom-medium">
-                <div class="col-lg-6 vertical-center">
-                    <div class="sub-title">
-                        <h3 class="sub-title__title">
-                            select the option to show statistics:
-                        </h3>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="secondary-headline text-left margin-bottom-light">
+                        <h2 class="secondary-headline__title">
+                            your cv:
+                        </h2>
                     </div>
                 </div>
-                <div class="col-lg-3 vertical-center">
-                    <div class="select-style">
-                        <select name="refine" id="" class="select-style__select">
-                            <option class="select-style__placeholder">users visited</option>
-                            <option value="">text</option>
-                            <option value="">text</option>
-                        </select>
-                        <div class="select-style__arrow">&nbsp;</div>
+            </div>
+            <?php $count = 1; ?>
+            <?php foreach ($userCv as $cv){ ?>
+            <div class="contract-line">
+
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                <h4 class="contract-line__headline">
+                                    CV
+                                </h4>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                <a href="#" class="contract-line__info contract-line__info--link contract-line__info--uppercase">
+                                    CV<?php echo $count; $count++;?>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                <h4 class="contract-line__headline">
+                                    Date
+                                </h4>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                        <span class="contract-line__info">
+                                            <?php echo $cv['date'] ?>
+                                        </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                <h4 class="contract-line__headline">
+                                    Date of expiry
+                                </h4>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                        <span class="contract-line__info">
+                                            <?php echo $cv['date_expiry'] ?>
+                                        </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                <h4 class="contract-line__headline">
+                                    category
+                                </h4>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                        <span class="contract-line__info contract-line__info--uppercase">
+                                            <?php echo $cv['category'] ?>
+                                        </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                <h4 class="contract-line__headline">
+                                    Plan
+                                </h4>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                        <span class="contract-line__info contract-line__info--uppercase">
+                                            <?php echo $cv['plan'] ?>
+                                        </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                <h4 class="contract-line__headline">
+                                    Status
+                                </h4>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                        <span class="contract-line__info contract-line__info--uppercase">
+                                           <?php echo $cv['status'] ?>
+                                        </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <?php } ?>
+            <div class="contract-description block-underline block-underline-top">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                <h4 class="contract-description__headline">
+                                    category
+                                </h4>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-6 margin-bottom-medium">
+                                <div class="select-style">
+                                    <select name="category" id="selected" class="select-style__select field-to-change field-to-change--unactive" disabled="">
+                                        <option class="select-style__placeholder">find a job</option>
+                                        <option value="">find a job</option>
+                                        <option value="">find a practice</option>
+                                    </select>
+                                    <div class="select-style__arrow">&nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                <h4 class="contract-description__headline">
+                                    Position
+                                </h4>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-6 margin-bottom-medium">
+                                <div class="select-style">
+                                    <select name="position" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
+                                        <option class="select-style__placeholder">Turner / Fitter / Welder</option>
+                                        <option value="">text</option>
+                                        <option value="">text</option>
+                                    </select>
+                                    <div class="select-style__arrow">&nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                <h4 class="contract-description__headline">
+                                    level of english
+                                </h4>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-6 margin-bottom-medium">
+                                <div class="select-style">
+                                    <select name="levelofeng" id="" class="select-style__select field-to-change field-to-change field-to-change--unactive" disabled="">
+                                        <option class="select-style__placeholder">excellent</option>
+                                        <option value="">text</option>
+                                        <option value="">text</option>
+                                    </select>
+                                    <div class="select-style__arrow">&nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6 col-sm-12 col-12">
+                                <h4 class="contract-description__headline">
+                                    Salary
+                                </h4>
+                            </div>
+                            <div class="col-lg-4 col-md-2 col-sm-4 col-4 margin-bottom-medium textinput-container--little-line">
+                                <div class="textinput-container">
+                                    <input type="text" class="textinput-container__input textinput-container__input--solary field-to-change field-to-change--unactive" placeholder="10000" name="salary_min" disabled="">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-2 col-sm-4 col-4 margin-bottom-medium">
+                                <div class="textinput-container">
+                                    <input type="text" class="textinput-container__input textinput-container__input--solary field-to-change field-to-change--unactive" placeholder="50000" name="salary_max" disabled="">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-2 col-sm-4 col-4 margin-bottom-medium">
+                                <div class="select-style">
+                                    <select name="currency" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
+                                        <option class="select-style__placeholder">EUR</option>
+                                        <option value="">text</option>
+                                        <option value="">text</option>
+                                    </select>
+                                    <div class="select-style__arrow">&nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                <h4 class="contract-description__headline">
+                                    CV
+                                </h4>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-6 margin-bottom-medium">
+
+                                <div class="contract-description__cv-block">
+                                    <a href="#" class="contract-description__cv-link">
+                                        view
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" >
+                    <div class="col-lg-2 offset-lg-10">
+                        <button id="personal4_1_job" class="button button--fields-change">Edit</button>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="statistics">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h3 class="statistics__title margin-bottom-light">
-                                    users visited
-                                </h3>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-9">
-                                <div class="chart">
-                                    <canvas id="chart-statistics"></canvas>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                        <h5 class="statistics__sub-title margin-bottom-light">
-                                            visits per:
-                                        </h5>
-                                        <div class="select-style">
-                                            <select name="day" id="" class="select-style__select">
-                                                <option class="select-style__placeholder">day</option>
-                                                <option value="">text</option>
-                                                <option value="">text</option>
-                                            </select>
-                                            <div class="select-style__arrow">&nbsp;</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 col-md-6 col-sm-6 col-6 vertical-bottom">
-                                                <span class="statistics__count">
-                                                    145632
-                                                </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="secondary-headline text-left margin-bottom-light">
+                        <h2 class="secondary-headline__title">
+                            Can not find your category? Let us know and get a discount:
+                        </h2>
                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="textinput-container margin-bottom-light">
+                        <textarea name="message" class="textinput-container__textarea textinput-container__textarea--profile" placeholder="WRITE YOUR PROPOSAL AND SEND US AN E-MAIL"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2 offset-lg-10">
+                    <button class="button">
+                        send
+                    </button>
                 </div>
             </div>
         </div>
@@ -375,57 +552,18 @@
 </footer>
 </body>
 <script src="../../web/public/js/common.js"></script>
-<script src="../../web/public/libs/Chart.min.js"></script>
+<script src="../../web/public/js/ajax-forms.js"></script>
+<script src="../../web/public/js/info-change.js"></script>
+
 <script>
-    var ctx = document.getElementById("chart-statistics").getContext('2d');
-    var myBarChart = new Chart(ctx, {
-        options: {
-            elements: {
-                line: {
-                    tension: 0
-                }
-            },
-            legend: {
-                display: false
-            },
-            scales: {
-                xAxes: [{
-                    gridLines: {
-                        display: false
-                    }
-                }],
-                yAxes: [{
-                    gridLines: {
-                        display: false
-                    }
-                }]
-            },
-            tooltips: {
-                mode: false,
-                callbacks: {
-                    title: function() {},
-                    label: function() {}
-                }
-            }
-        },
-        // The type of chart we want to create
-        type: "line",
-        // The data for our dataset
-        data: {
-            labels: [
-                "2015-10-01",
-                "2015-10-01",
-                "2015-10-01",
-                "2015-10-01",
-                "2015-10-01",
-                "2015-10-01",
-                "2015-10-01"
-            ],
-            datasets: [{
-                backgroundColor: "rgb(206, 225, 240)",
-                borderColor: "rgb(72, 137, 191)",
-                data: [0, 25, 50, 150, 70, 250, 230, 400]
-            }]
+
+    $( "#selected" ).change(function() {
+        var category = $("#selected option:selected").text();
+        if (category=='find a practice'){
+            var url = "http://parsavito.xyz/web/site/cv";
+            $(location).attr('href',url);
         }
     });
+
+
 </script>
