@@ -227,9 +227,12 @@ class SiteController extends Controller
                 $upload = new UploadImage();
                 $model = new User();
                 if(Yii::$app->request->isPost){
-                    $upload->image = UploadedFile::getInstance($upload, 'image');
-                    $upload->upload();
-                    return;
+                    $file = UploadedFile::getInstance($upload, 'image');
+                    //var_dump(Yii::$app->user->identity->img);exit;
+                    if ($upload->uploadFile($file,Yii::$app->user->identity->img)){
+                        return $this->redirect('/web/site/profile');
+                    }
+                    return $this->render('profile', ['model' => $model,'upload'=>$upload]);
                 }
                 return $this->render('profile', ['model' => $model,'upload'=>$upload]);
             }else{

@@ -1,5 +1,6 @@
 <?php
 
+//use kartik\file\FileInput;
 use yii\bootstrap\ActiveForm;
 
 $this->title = 'About the company';
@@ -209,10 +210,9 @@ $user = $model->attributes;
             <div class="row">
                 <div class="col-lg-3">
                     <div class="profile">
-                        <?php if($upload->image): ?>
-                            <img src="../../web/public/uploads/<?= $upload->image?>" alt="company-logo" class="profile__photo margin-bottom-light">
-                        <?php endif; ?>
+
 <!--                        <img src="../../web/public/img/company-logo-big.jpg" alt="company-logo" class="profile__photo margin-bottom-light">-->
+                        <img src="../../web/public/uploads/<?php echo Yii::$app->user->identity->img ?>" alt="company-logo" class="profile__photo margin-bottom-light">
                         <button class="profile__upload-photo margin-bottom-medium">
                             select file
                         </button>
