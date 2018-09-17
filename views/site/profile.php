@@ -1,7 +1,8 @@
 <?php
-//use yii\helpers\Html;
-//use yii\bootstrap\ActiveForm;
 
+use yii\bootstrap\ActiveForm;
+
+$this->title = 'About the company';
 $user = $model->attributes;
 
 ?>
@@ -63,7 +64,7 @@ $user = $model->attributes;
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/shipboard-supply" class="adaptive-menu__link">
                                         Find a supplier
                                     </a>
                                 </li>
@@ -78,7 +79,7 @@ $user = $model->attributes;
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/vessels-sale" class="adaptive-menu__link">
                                         Vessels sell/chartering
                                     </a>
                                 </li>
@@ -126,7 +127,7 @@ $user = $model->attributes;
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/vessels-sale" class="secondary-navigation__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
@@ -208,10 +209,18 @@ $user = $model->attributes;
             <div class="row">
                 <div class="col-lg-3">
                     <div class="profile">
-                        <img src="../../web/public/img/company-logo-big.jpg" alt="company-logo" class="profile__photo margin-bottom-light">
+                        <?php if($upload->image): ?>
+                            <img src="../../web/public/uploads/<?= $upload->image?>" alt="company-logo" class="profile__photo margin-bottom-light">
+                        <?php endif; ?>
+<!--                        <img src="../../web/public/img/company-logo-big.jpg" alt="company-logo" class="profile__photo margin-bottom-light">-->
                         <button class="profile__upload-photo margin-bottom-medium">
                             select file
                         </button>
+                        <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
+                        <?= $form->field($upload, 'image')->fileInput() ?>
+                        <button>Загрузить</button>
+                        <?php ActiveForm::end() ?>
+<!--                        <input type="file" class="profile__upload-photo margin-bottom-medium" name="file" value="select file">-->
                     </div>
                 </div>
                 <div class="col-lg-9">
@@ -254,7 +263,7 @@ $user = $model->attributes;
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="17.02.1972" name="dbirth" value="">
+                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="17.02.1972" name="dbirth" value="<?php echo Yii::$app->user->identity->birthday ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -297,7 +306,7 @@ $user = $model->attributes;
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" >
                                         <div class="textinput-container">
-                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="22 YEARS" name="experience" value="">
+                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="22 YEARS" name="experience" value="<?php echo Yii::$app->user->identity->experience ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -320,7 +329,7 @@ $user = $model->attributes;
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="100000" name="salary" value="">
+                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="100000" name="salary" value="<?php echo Yii::$app->user->identity->salary ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -336,7 +345,7 @@ $user = $model->attributes;
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-                                            <input  type="text" class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="EUR" name="currency" value="">
+                                            <input  type="text" class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="EUR" name="currency" value="<?php echo Yii::$app->user->identity->currency ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -523,3 +532,9 @@ $user = $model->attributes;
 <script src="../../web/public/js/info-change.js"></script>
 <script src="../../web/public/js/from-to.js"></script>
 <script src="../../web/public/js/ajax-forms.js"></script>
+<script>
+    var input = document.querySelector("input[type='file']");
+    input.onchange = function () {
+        this.form.submit();
+    }
+</script>

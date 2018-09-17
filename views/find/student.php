@@ -1,3 +1,10 @@
+<?php
+use app\models\User;
+use yii\bootstrap\ActiveForm;
+use yii\bootstrap\Html;
+
+?>
+
 <body>
 <header class="header">
     <div class="container">
@@ -8,9 +15,6 @@
                         <a href="/web/site"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
                     </div>
                     <?php
-
-                    use app\models\User;
-
                     if (Yii::$app->user->isGuest){ ?>
                         <div class="authorization">
                             <a href="/web/site/login" class="authorization__link">
@@ -73,12 +77,12 @@
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/shipboard-supply" class="adaptive-menu__link">
                                         Find a supplier
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/become-supplier" class="adaptive-menu__link">
                                         Become a supplier
                                     </a>
                                 </li>
@@ -88,7 +92,7 @@
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/vessels-sale" class="adaptive-menu__link">
                                         Vessels sell/chartering
                                     </a>
                                 </li>
@@ -121,22 +125,22 @@
                     <nav class="secondary-navigation">
                         <ul class="secondary-navigation__list">
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/shipboard-supply" class="secondary-navigation__link">
                                     Find a supplier
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/site/become-supplier" class="secondary-navigation__link">
                                     Become a supplier
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link  secondary-navigation__link--active">
+                                <a href="/web/find/crew" class="secondary-navigation__link  secondary-navigation__link--active">
                                     Crew
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/vessels-sale" class="secondary-navigation__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
@@ -207,6 +211,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
+                    <?php $form = ActiveForm::begin(); ?>
                     <div class="filter">
                         <div class="secondary-headline margin-bottom-light">
                             <h2 class="secondary-headline__title">
@@ -218,11 +223,10 @@
                                 Faculty
                             </h4>
                             <div class="select-style">
-                                <select name="refine" id="" class="select-style__select">
-                                    <option class="select-style__placeholder">navigation</option>
-                                    <option value="">text</option>
-                                    <option value="">text</option>
-                                </select>
+                                <?= $form->field($model, 'faculty')->dropDownList(['navigation'=>'navigation','text'=>'text'],[
+                                    'class'=>'select-style__select',
+                                    'placeholder'=>'navigation',
+                                ]) ?>
                                 <div class="select-style__arrow">&nbsp;</div>
                             </div>
                         </div>
@@ -231,11 +235,10 @@
                                 Level of English
                             </h4>
                             <div class="select-style">
-                                <select name="refine" id="" class="select-style__select">
-                                    <option class="select-style__placeholder">excellent</option>
-                                    <option value="">text</option>
-                                    <option value="">text</option>
-                                </select>
+                                <?= $form->field($model, 'lvleng')->dropDownList(['excellent'=>'excellent','text'=>'text'],[
+                                    'class'=>'select-style__select',
+                                    'placeholder'=>'excellent',
+                                ]) ?>
                                 <div class="select-style__arrow">&nbsp;</div>
                             </div>
                         </div>
@@ -244,11 +247,11 @@
                                 Country
                             </h4>
                             <div class="select-style">
-                                <select name="refine" id="" class="select-style__select">
-                                    <option class="select-style__placeholder">Estonia</option>
-                                    <option value="">text</option>
-                                    <option value="">text</option>
-                                </select>
+                                <?= $form->field($model, 'country')->dropDownList(['excellent'=>'excellent','text'=>'text'],[
+                                    'class'=>'select-style__select',
+                                    'placeholder'=>'Estonia',
+                                ]) ?>
+
                                 <div class="select-style__arrow">&nbsp;</div>
                             </div>
                         </div>
@@ -257,20 +260,18 @@
                                 Port
                             </h4>
                             <div class="select-style">
-                                <select name="refine" id="" class="select-style__select">
-                                    <option class="select-style__placeholder">Tallinn</option>
-                                    <option value="">text</option>
-                                    <option value="">text</option>
-                                </select>
+                                <?= $form->field($model, 'port')->dropDownList(['Tallinn'=>'Tallinn','text'=>'text'],[
+                                    'class'=>'select-style__select',
+                                    'placeholder'=>'Tallinn',
+                                ]) ?>
                                 <div class="select-style__arrow">&nbsp;</div>
                             </div>
                         </div>
                         <div class="filter__item">
-                            <button class="button button--show-results">
-                                Show results
-                            </button>
+                            <?= Html::submitButton('Show results', ['class' => 'button button--show-results', 'name' => 'search']) ?>
                         </div>
                     </div>
+                    <?php ActiveForm::end(); ?>
                 </div>
                 <div class="col-lg-4">
                     <a href='#' class="advertising advertising--find-student">
@@ -416,4 +417,4 @@
     </div>
 </footer>
 </body>
-<script src="js/common.js"></script>
+<script src="../../web/public/js/common.js"></script>

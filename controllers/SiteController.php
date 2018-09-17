@@ -13,9 +13,12 @@ use app\models\User;
 use app\models\SignupForm;
 use app\models\UserProfile;
 use app\models\BecomeSupplier;
+use app\models\UploadImage;
 use app\models\Ajax;
 use app\models\Cv;
 use app\models\CvForm;
+use app\models\Vessel;
+use yii\web\UploadedFile;
 
 
 class SiteController extends Controller
@@ -63,13 +66,13 @@ class SiteController extends Controller
     }
 
 
-    public function actionButton()
-    {
-        if(\Yii::$app->request->isAjax){
-            $_SESSION['a'] = \Yii::$app->request->isAjax;
-            var_dump(\Yii::$app->request->isAjax);
-        }
-    }
+//    public function actionButton()
+//    {
+//        if(\Yii::$app->request->isAjax){
+//            $_SESSION['a'] = \Yii::$app->request->isAjax;
+//            var_dump(\Yii::$app->request->isAjax);
+//        }
+//    }
 
     public function actionSellerAjax()
     {
@@ -90,7 +93,22 @@ class SiteController extends Controller
     public function actionShipAjax()
     {
         if (isset($_POST['profile_seller1'])){
-
+            $profile = json_decode($_POST['profile_seller1'], true);
+            $id = Yii::$app->user->identity->id;
+            $model = Vessel::find()->where(['user_id' => $id])->one();
+            $model->vessel_option = $profile['option'];
+            $model->type = $profile['vtype'];
+            $model->option_type = $profile['ovtype'];
+            $model->length = $profile['length'];
+            $model->draft = $profile['draft'];
+            $model->deadweight = $profile['deadweight'];
+            $model->year = $profile['year'];
+            $model->flag = $profile['flag'];
+            $model->country = $profile['country'];
+            $model->port = $profile['port'];
+            $model->price = $profile['price'];
+            $model->information = $profile['message'];
+            $model->save();
         }
     }
 
@@ -140,8 +158,12 @@ class SiteController extends Controller
             $model = User::find()->where(['id' => $id])->one();
             $model->username = $profile['fname'];
             $model->second_name = $profile['sname'];
+            $model->birthday = $profile['dbirth'];
             $model->country = $profile['country'];
             $model->city = $profile['city'];
+            $model->experience = $profile['experience'];
+            $model->salary = $profile['salary'];
+            $model->currency = $profile['currency'];
             $model->save();
         }
 
@@ -179,6 +201,16 @@ class SiteController extends Controller
 
     }
 
+    public function actionUpload(){
+        $model = new UploadImage();
+        if(Yii::$app->request->isPost){
+            $model->image = UploadedFile::getInstance($model, 'image');
+            $model->upload();
+            return;
+        }
+        return $this->render('upload', ['model' => $model]);
+    }
+
     public function actionCvJob()
     {
         //$cv = new Cv();
@@ -192,9 +224,14 @@ class SiteController extends Controller
         if (!Yii::$app->user->isGuest){
             $status = Yii::$app->user->identity->user_status;
             if ( $status == 1) {
-
+                $upload = new UploadImage();
                 $model = new User();
-                return $this->render('profile', ['model' => $model]);
+                if(Yii::$app->request->isPost){
+                    $upload->image = UploadedFile::getInstance($upload, 'image');
+                    $upload->upload();
+                    return;
+                }
+                return $this->render('profile', ['model' => $model,'upload'=>$upload]);
             }else{
                 $this->redirect(['index']);
             }

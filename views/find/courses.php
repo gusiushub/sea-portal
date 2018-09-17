@@ -1,6 +1,3 @@
-<?php
-$this->title = 'Port service';
-?>
 <body>
 <header class="header">
     <div class="container">
@@ -182,13 +179,13 @@ $this->title = 'Port service';
                             Shipboard supply
                         </h3>
                     </a>
-                    <a href='/web/find/port-services' class="primary-menu__item primary-menu__item--active">
+                    <a href='/web/find/port-services' class="primary-menu__item ">
                         <i class="icon-tap primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             Port services
                         </h3>
                     </a>
-                    <a href='/web/find/inspection-equipment' class="primary-menu__item">
+                    <a href='/web/find/inspection-equipment' class="primary-menu__item ">
                         <i class="icon-list2 primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             Inspection of equipment
@@ -200,7 +197,7 @@ $this->title = 'Port service';
                             Repairs
                         </h3>
                     </a>
-                    <a href='/web/find/courses' class="primary-menu__item">
+                    <a href='/web/find/courses' class="primary-menu__item primary-menu__item--active">
                         <i class="icon-users primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             Courses/air tickets for crew
@@ -495,4 +492,3 @@ $this->title = 'Port service';
     //     return false;
     // })
 </script>
-

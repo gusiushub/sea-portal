@@ -61,7 +61,7 @@ $this->title = 'Start page';
                             } ?>" class="authorization__link authorization__link--white">
                                 Profile
                             </a>
-                            <a href="/web/user/logot" class="authorization__link authorization__link--white">
+                            <a href="/web/user/logout" class="authorization__link authorization__link--white">
                                 Logout
 
                             </a>

@@ -13,8 +13,12 @@ class CompanyController extends Controller
 {
     public function actionLogout()
     {
-        Yii::$app->user->logout();
-        return $this->goHome();
+        if (!Yii::$app->user->isGuest) {
+            Yii::$app->user->logout();
+            return $this->goHome();
+        }else{
+            return $this->goHome();
+        }
     }
 
     public function actionProfile()
@@ -51,13 +55,13 @@ class CompanyController extends Controller
         if (!Yii::$app->user->isGuest){
             $status = Yii::$app->user->identity->user_status;
             if ( $status == 2) {
-        return $this->render('statistics');
-    }else{
-$this->redirect(['index']);
-}
-}else {
-    $this->redirect(['index']);
-}
+                return $this->render('statistics');
+            }else{
+                $this->redirect(['index']);
+            }
+        }else {
+            $this->redirect(['index']);
+        }
     }
 
     public function actionContracts()
@@ -65,10 +69,8 @@ $this->redirect(['index']);
         if (!Yii::$app->user->isGuest){
             $status = Yii::$app->user->identity->user_status;
             if ( $status == 2) {
-        $model = Contracts::find()->select('*')->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->all();
-
-
-        return $this->render('contracts',['model'=>$model]);
+                $model = Contracts::find()->select('*')->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->all();
+                return $this->render('contracts',['model'=>$model]);
             }else{
                 $this->redirect(['index']);
             }
@@ -79,23 +81,60 @@ $this->redirect(['index']);
 
     public function actionAddContracts()
     {
-        $model = new DataSelection();
-        return $this->render('addcontracts',['model' => $model]);
+        if (!Yii::$app->user->isGuest){
+            $status = Yii::$app->user->identity->user_status;
+            if ( $status == 2) {
+                $model = new DataSelection();
+                return $this->render('addcontracts',['model' => $model]);
+            }else{
+                $this->redirect(['index']);
+            }
+        }else {
+            $this->redirect(['index']);
+        }
     }
 
     public function actionChoosePlan()
     {
+        if (!Yii::$app->user->isGuest){
+            $status = Yii::$app->user->identity->user_status;
+            if ( $status == 2) {
         return $this->render('chooseplan');
+            }else{
+                $this->redirect(['index']);
+            }
+        }else {
+            $this->redirect(['index']);
+        }
     }
 
     public function actionPay()
     {
+        if (!Yii::$app->user->isGuest){
+            $status = Yii::$app->user->identity->user_status;
+            if ( $status == 2) {
         return $this->render('pay');
+            }else{
+                $this->redirect(['index']);
+            }
+        }else {
+            $this->redirect(['index']);
+        }
     }
 
     public function actionPlaceAdverticement()
     {
+        if (!Yii::$app->user->isGuest){
+            $status = Yii::$app->user->identity->user_status;
+            if ( $status == 2) {
         return $this->render('terms');
+            }else{
+                $this->redirect(['index']);
+            }
+        }else {
+            $this->redirect(['index']);
+        }
+
     }
 
     public function actionIncomingRequests()
@@ -105,6 +144,15 @@ $this->redirect(['index']);
 
     public function actionTermsConditions()
     {
-        return $this->render('terms');
+        if (!Yii::$app->user->isGuest){
+            $status = Yii::$app->user->identity->user_status;
+            if ( $status == 2) {
+                return $this->render('terms');
+            }else{
+                $this->redirect(['index']);
+            }
+        }else {
+            $this->redirect(['index']);
+        }
+            }
     }
-}

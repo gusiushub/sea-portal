@@ -1,5 +1,5 @@
 <?php
-
+$this->title = 'Shipboard supply';
 ?>
 
 <body>
@@ -26,7 +26,7 @@
 
                         <div class="settings">
                             <div class="settings__item">
-                                <a href="/web/company/profile" class="settings__email">
+                                <a href="/web/user/profile" class="settings__email">
                                     <?php echo Yii::$app->user->identity->email ?>
                                 </a>
                             </div>

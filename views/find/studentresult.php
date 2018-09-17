@@ -1,30 +1,9 @@
 <?php
-function IsChecked($chkname,$value)
-{
-    if(!empty($_POST[$chkname]))
-    {
-        foreach($_POST[$chkname] as $chkval)
-        {
-            if($chkval == $value)
-            {
-                return true;
-            }
-        }
-    }
-    return false;
-}
-var_dump($_GET);
-if (IsChecked('plus','a')){
-    exit;
-}
-if (!empty($_POST['plus'])){
 
-}
 use app\models\User;
-use yii\helpers\Url;
 
-//var_dump($model);exit;
 ?>
+
 <body>
 <header class="header">
     <div class="container">
@@ -82,7 +61,7 @@ use yii\helpers\Url;
                     <?php } ?>
                     <div class="adaptive-menu">
                         <div class="adaptive-menu__button">
-                            <img src="../../web/public/img/icons/burger.png" alt="burger">
+                            <img src="img/icons/burger.png" alt="burger">
                         </div>
                         <nav class="adaptive-menu__navigation">
                             <ul class="adaptive-menu__list">
@@ -107,7 +86,7 @@ use yii\helpers\Url;
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link  adaptive-menu__link--active">
+                                    <a href="#" class="adaptive-menu__link adaptive-menu__link--active">
                                         Crew
                                     </a>
                                 </li>
@@ -198,13 +177,13 @@ use yii\helpers\Url;
         <div class="row">
             <div class="col-lg-9">
                 <div class="primary-menu margin-bottom-medium">
-                    <a href='#' class="primary-menu__item primary-menu__item--active">
+                    <a href='#' class="primary-menu__item">
                         <i class="icon-users primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             find a crew
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='#' class="primary-menu__item primary-menu__item--active">
                         <i class="icon-user-one primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             find a students (Practice on Board)
@@ -219,7 +198,7 @@ use yii\helpers\Url;
                 </div>
                 <div class="secondary-headline margin-bottom-light text-left">
                     <h2 class="secondary-headline__title">
-                        search results for master
+                        search results for navigation
                     </h2>
                 </div>
                 <div class="companies-wrapper companies-wrapper--crew">
@@ -246,7 +225,7 @@ use yii\helpers\Url;
                         <p class="criteria__text">Found <span class="criteria__company-num">(138 candidates)</span></p>
                     </div>
                     <div class="criteria">
-                        <p class="criteria__text">Selected <span class="criteria__company-num">(138 candidates)</span></p>
+                        <p class="criteria__text">Selected <span class="criteria__company-num">(12 candidates)</span></p>
                     </div>
                     <div class="criteria">
                         <p class="criteria__text criteria__text--minifont">(your message will be sent to all selected candidates)</p>
@@ -263,10 +242,8 @@ use yii\helpers\Url;
                 <div class="col-lg-9">
                     <div class="row">
                         <?php
-                        $i = 0;
                         foreach ($model as $cv):
                         $user = User::findOne($cv['user_id']);
-                        $i++;
                         ?>
                         <div class="col-lg-4">
                             <div class="result-box result-box--active">
@@ -300,21 +277,13 @@ use yii\helpers\Url;
                                         <button class="button button--result-box button--crew button--lighten">
                                             show cv
                                         </button>
-
                                         <div class="checkbox-style checkbox-style--crew">
-
-                                                <?php
-                                                //echo Url::to(['post/view', 'id' => 100, '#' => 'content']);
-                                                ?>
-                                            <input value="2121" type="checkbox" id='select<?php echo $i ?>' class="checkbox-style__input">
-
-                                            <label for="select<?php echo $i ?>" class="checkbox-style__label checkbox-style__label--crew button--result-box vertical-center horizontal-center">
+                                            <input type="checkbox" id='select1' class="checkbox-style__input">
+                                            <label for="select1" class="checkbox-style__label checkbox-style__label--crew button--result-box vertical-center horizontal-center">
                                                 <span class="checkbox-style__check checkbox-style__check--accepting checkbox-style__check--crew"></span>
                                                 select
                                             </label>
                                         </div>
-
-
                                     </div>
                                 </div>
                             </div>
@@ -339,7 +308,7 @@ use yii\helpers\Url;
                                                         Country
                                                     </span>
                                             <span class="result-box__desc-line">
-                                                        City
+                                                        Port.
                                                     </span>
                                         </div>
                                     </div>
@@ -367,9 +336,9 @@ use yii\helpers\Url;
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    <form method="#" class="right-send">
+                    <aside class="right-send">
                         <h3 class="right-send__title">
-                            Send a message
+                            contact a candidates
                         </h3>
                         <div class="textinput-container">
                             <input type="text" class="textinput-container__input" placeholder="NAME" name="name">
@@ -406,7 +375,7 @@ use yii\helpers\Url;
                         <button class="button">
                             send
                         </button>
-                    </form>
+                    </aside>
                 </div>
             </div>
         </div>
@@ -416,7 +385,7 @@ use yii\helpers\Url;
             <div class="row margin-bottom-light">
                 <div class="col-lg-6">
                     <div class="logotype-box">
-                        <img src="../../web/public/img/logotype-big.png" alt="logotype" class="logotype-box__footer">
+                        <img src="img/logotype-big.png" alt="logotype" class="logotype-box__footer">
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -492,16 +461,16 @@ use yii\helpers\Url;
                 <div class="col-lg-12">
                     <div class="social-networks">
                         <a href="#" class="social-networks__link">
-                            <img src="../../web/public/img/icons/soc-mail.png" alt="mail">
+                            <img src="img/icons/soc-mail.png" alt="mail">
                         </a>
                         <a href="#" class="social-networks__link">
-                            <img src="../../web/public/img/icons/soc-mobile.png" alt="mobile">
+                            <img src="img/icons/soc-mobile.png" alt="mobile">
                         </a>
                         <a href="#" class="social-networks__link">
-                            <img src="../../web/public/img/icons/soc-skype.png" alt="skype">
+                            <img src="img/icons/soc-skype.png" alt="skype">
                         </a>
                         <a href="#" class="social-networks__link">
-                            <img src="../../web/public/ img/icons/soc-mobile-2.png" alt="mobile">
+                            <img src="img/icons/soc-mobile-2.png" alt="mobile">
                         </a>
                     </div>
                 </div>
@@ -523,33 +492,5 @@ use yii\helpers\Url;
         </div>
     </footer>
 </main>
-<a class="element_a" href="/web/site?a=1">asdasdasdasd</a>
-<form id="form" class="element_a" action="/web/site">
-    <input type="submit" value="jnghassf">
-</form>
 </body>
-<script src="../../web/public/js/common.js"></script>
-<script type="text/javascript">
-
-    $(".checkbox-style [type='checkbox']").change(function() {
-        if(this.checked) {
-            var form = document.getElementById('form');
-            if (!form) return false;
-//alert($('#form').attr("action"), $('.element_a').attr('action')+$(this).val()+"," )
-           // form.action = './web/site'+$(this).val();
-             $('#form').attr("action", $('#form').attr('action')+'id='+$(this).val()+"," )
-        }else{
-            var form = document.getElementById('form');
-            if (!form) return false;
-
-            form.action = './web/site'+'?'+$(this).val();
-
-            var str1 = form.action;
-            var str2 = $(this).val();
-            var st = str1.replace(str2, '');
-            form.action = './web/find/crew';
-            //alert(st);
-        }
-    });
-
-</script>
+<script src="js/common.js"></script>

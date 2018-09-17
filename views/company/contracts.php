@@ -233,15 +233,15 @@
                     </a>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="secondary-headline text-left margin-bottom-light">
-                        <h2 class="secondary-headline__title">
-                            contract 1:
-                        </h2>
-                    </div>
-                </div>
-            </div>
+<!--            <div class="row">-->
+<!--                <div class="col-lg-12">-->
+<!--                    <div class="secondary-headline text-left margin-bottom-light">-->
+<!--                        <h2 class="secondary-headline__title">-->
+<!--                            contract 1:-->
+<!--                        </h2>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
             <?php
             if($model){
                 foreach ($model as $m){

@@ -1,3 +1,8 @@
+<?php
+use app\models\User;
+use yii\bootstrap\ActiveForm;
+use yii\bootstrap\Html;
+?>
 <body>
 <header class="header">
     <div class="container">
@@ -8,9 +13,6 @@
                         <a href="/web/site"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
                     </div>
                     <?php
-
-                    use app\models\User;
-
                     if (Yii::$app->user->isGuest){ ?>
                         <div class="authorization">
                             <a href="/web/site/login" class="authorization__link">
@@ -58,7 +60,7 @@
                     <?php } ?>
                     <div class="adaptive-menu">
                         <div class="adaptive-menu__button">
-                            <img src="img/icons/burger.png" alt="burger">
+                            <img src="../../web/public/img/icons/burger.png" alt="burger">
                         </div>
                         <nav class="adaptive-menu__navigation">
                             <ul class="adaptive-menu__list">
@@ -88,7 +90,7 @@
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/vessels-sale" class="adaptive-menu__link">
                                         Vessels sell/chartering
                                     </a>
                                 </li>
@@ -136,7 +138,7 @@
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/vessels-sale" class="secondary-navigation__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
@@ -207,7 +209,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    <form id="myform" method="POST" action="/web/find/crew-result">
+                    <?php $form = ActiveForm::begin(); ?>
                     <div class="filter">
                         <div class="secondary-headline margin-bottom-light">
                             <h2 class="secondary-headline__title">
@@ -219,11 +221,11 @@
                                 Position
                             </h4>
                             <div class="select-style">
-                                <select name="refine" id="" class="select-style__select">
-                                    <option class="select-style__placeholder">master</option>
-                                    <option value="">text</option>
-                                    <option value="">text</option>
-                                </select>
+                                <?= $form->field($model, 'position')->dropDownList(['Turner / Fitter / Welder'=>'Turner / Fitter / Welder'],[
+                                    'class'=>'select-style__select',
+                                    'placeholder'=>'COUNTRY',
+                                ]) ?>
+
                                 <div class="select-style__arrow">&nbsp;</div>
                             </div>
                         </div>
@@ -232,11 +234,11 @@
                                 Level of English
                             </h4>
                             <div class="select-style">
-                                <select name="users-visited" id="" class="select-style__select">
-                                    <option class="select-style__placeholder">users visited</option>
-                                    <option value="">text</option>
-                                    <option value="">text</option>
-                                </select>
+                                <?= $form->field($model, 'lvleng')->dropDownList(['excellent'=>'excellent'],[
+                                    'class'=>'select-style__select',
+                                    'placeholder'=>'COUNTRY',
+                                ]) ?>
+
                                 <div class="select-style__arrow">&nbsp;</div>
                             </div>
                         </div>
@@ -246,7 +248,10 @@
                                     Salary
                                 </h4>
                                 <div class="textinput-container">
-                                    <input type="text" class="textinput-container__input" placeholder="MAXIMUM" name="maximum">
+                                    <?= $form->field($model, 'salary')->textInput([
+                                        'class' => 'textinput-container__input',
+                                        'placeholder'=>'MAXIMUM',
+                                    ]) ?>
                                 </div>
                             </div>
                             <div class="filter__item filter__item--double-2">
@@ -254,24 +259,21 @@
                                     Curency
                                 </h4>
                                 <div class="select-style">
-                                    <select name="refine" id="" class="select-style__select">
-                                        <option class="select-style__placeholder">eur</option>
-                                        <option value="">text</option>
-                                        <option value="">text</option>
-                                    </select>
+                                    <?= $form->field($model, 'currency')->dropDownList(['eur'=>'eur','text'=>'text'],[
+                                        'class'=>'select-style__select',
+                                        'placeholder'=>'eur',
+                                    ]) ?>
+
                                     <div class="select-style__arrow">&nbsp;</div>
                                 </div>
                                 <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
                             </div>
                         </div>
                         <div class="filter__item">
-                            <input type="submit" class="button button--show-results" >
-<!--                            <button class="button button--show-results">-->
-<!--                                Show results-->
-<!--                            </button>-->
+                            <?= Html::submitButton('send', ['class' => 'button button--show-results', 'name' => 'search']) ?>
                         </div>
                     </div>
-                    </form>
+                    <?php ActiveForm::end(); ?>
                 </div>
                 <div class="col-lg-4">
                     <div class="advertising-wrapper">

@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\User;
+use app\models\Vessel;
 use Yii;
 use yii\web\Controller;
 
@@ -31,7 +32,8 @@ class SellerController extends Controller
 
     public function actionVessel()
     {
-        return $this->render('vessel');
+        $vessel = Vessel::find()->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->one();
+        return $this->render('vessel',['vessel'=>$vessel]);
     }
 
     public function actionOffers()

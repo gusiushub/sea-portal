@@ -1,3 +1,6 @@
+<?php
+//var_dump($vessel['draft']);
+?>
 <body>
 <header class="header">
     <div class="container">
@@ -223,7 +226,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
-                    <img src="img/1233.jpg" alt="ship-photo" class="ship-photo">
+                    <img src="../../web/public/img/1233.jpg" alt="ship-photo" class="ship-photo">
                 </div>
                 <div class="col-lg-8">
                     <div class="row margin-bottom-light">
@@ -233,7 +236,7 @@
                             </h4>
                             <div class="select-style">
                                 <select name="option" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
-                                    <option class="select-style__placeholder">sell vessel</option>
+                                    <option class="select-style__placeholder"><?php echo $vessel['vessel_option']; ?></option>
                                     <option value="">text</option>
                                     <option value="">text</option>
                                 </select>
@@ -248,7 +251,7 @@
                             </h4>
                             <div class="select-style">
                                 <select name="vessel-type" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
-                                    <option class="select-style__placeholder">Dry-cargo ship</option>
+                                    <option class="select-style__placeholder"><?php echo $vessel['type']; ?></option>
                                     <option value="">text</option>
                                     <option value="">text</option>
                                 </select>
@@ -263,8 +266,8 @@
                             </h4>
                             <div class="select-style">
                                 <select name="option-vessel-type" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
-                                    <option class="select-style__placeholder">bulk carriers</option>
-                                    <option value="">text</option>
+                                    <option class="select-style__placeholder"><?php echo $vessel['option_type']; ?></option>
+                                    <option value="ssss">text</option>
                                     <option value="">text</option>
                                 </select>
                                 <div class="select-style__arrow">&nbsp;</div>
@@ -277,7 +280,7 @@
                                 Length, м
                             </h4>
                             <div class="textinput-container">
-                                <input type="text"  class="textinput-container__input textinput-container__input--change field-to-change field-to-change--unactive" disabled="" placeholder="LENGTH" name="length">
+                                <input type="text"  class="textinput-container__input textinput-container__input--change field-to-change field-to-change--unactive" disabled="" value="<?php echo $vessel['length']; ?>" placeholder="<?php echo $vessel['length']; ?>" name="length">
                             </div>
                         </div>
                         <div class="col-lg-4 margin-bottom-light">
@@ -285,7 +288,7 @@
                                 Draft, м
                             </h4>
                             <div class="textinput-container">
-                                <input type="text"  class="textinput-container__input textinput-container__input--change field-to-change field-to-change--unactive" disabled="" placeholder="DRAFT" name="draft">
+                                <input type="text"  class="textinput-container__input textinput-container__input--change field-to-change field-to-change--unactive" disabled="" value="<?php echo $vessel['draft']; ?>" placeholder="<?php echo $vessel['draft']; ?>" name="draft">
                             </div>
                         </div>
                         <div class="col-lg-4 margin-bottom-light">
@@ -293,7 +296,7 @@
                                 Deadweight, т
                             </h4>
                             <div class="textinput-container">
-                                <input type="text"  class="textinput-container__input textinput-container__input--change field-to-change field-to-change--unactive" disabled="" placeholder="DEADWEIGHT" name="deadweight">
+                                <input type="text"  class="textinput-container__input textinput-container__input--change field-to-change field-to-change--unactive" disabled="" value="<?php echo $vessel['deadweight']; ?>" placeholder="<?php echo $vessel['deadweight']; ?>" name="deadweight">
                             </div>
                         </div>
                     </div>
@@ -303,7 +306,7 @@
                                 Year
                             </h4>
                             <div class="textinput-container">
-                                <input type="text"  class="textinput-container__input textinput-container__input--change field-to-change field-to-change--unactive" disabled="" placeholder="LENGTH" name="year">
+                                <input type="text"  class="textinput-container__input textinput-container__input--change field-to-change field-to-change--unactive" disabled="" value="<?php echo $vessel['year']; ?>" placeholder="<?php echo $vessel['year']; ?>" name="year">
                             </div>
                         </div>
                         <div class="col-lg-4 margin-bottom-light">
@@ -311,7 +314,7 @@
                                 Flag
                             </h4>
                             <div class="textinput-container">
-                                <input type="text"  class="textinput-container__input textinput-container__input--change field-to-change field-to-change--unactive" disabled="" placeholder="DRAFT" name="flag">
+                                <input type="text"  class="textinput-container__input textinput-container__input--change field-to-change field-to-change--unactive" disabled="" value="<?php echo $vessel['draft']; ?>" placeholder="<?php echo $vessel['draft']; ?>" name="flag">
                             </div>
                         </div>
                         <div class="col-lg-4 margin-bottom-light">
@@ -320,9 +323,9 @@
                             </h4>
                             <div class="select-style">
                                 <select name="country" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
-                                    <option class="select-style__placeholder">???????</option>
-                                    <option value="">text</option>
-                                    <option value="">text</option>
+                                    <option class="select-style__placeholder"><?php echo $vessel['country']; ?></option>
+                                    <option value="Country">Country</option>
+                                    <option value="text">text</option>
                                 </select>
                                 <div class="select-style__arrow">&nbsp;</div>
                             </div>
@@ -335,9 +338,9 @@
                             </h4>
                             <div class="select-style">
                                 <select name="port" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
-                                    <option class="select-style__placeholder">???????</option>
-                                    <option value="">text</option>
-                                    <option value="">text</option>
+                                    <option class="select-style__placeholder"><?php echo $vessel['port']; ?></option>
+                                    <option value="Port">Port</option>
+                                    <option value="text">text</option>
                                 </select>
                                 <div class="select-style__arrow">&nbsp;</div>
                             </div>
@@ -347,7 +350,7 @@
                                 Price
                             </h4>
                             <div class="textinput-container">
-                                <input type="text"  class="textinput-container__input textinput-container__input--change field-to-change field-to-change--unactive" disabled="" placeholder="???????" name="price">
+                                <input type="text"  class="textinput-container__input textinput-container__input--change field-to-change field-to-change--unactive" disabled="" value="<?php echo $vessel['price']; ?>" placeholder="<?php echo $vessel['price']; ?>" name="price">
                             </div>
                         </div>
                         <div class="col-lg-4 margin-bottom-light">
@@ -356,9 +359,9 @@
                             </h4>
                             <div class="select-style">
                                 <select name="currency" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
-                                    <option class="select-style__placeholder">EUR</option>
-                                    <option value="">text</option>
-                                    <option value="">text</option>
+                                    <option class="select-style__placeholder"><?php echo $vessel['currency']; ?></option>
+                                    <option value="EUR">EUR</option>
+                                    <option value="йййй">text</option>
                                 </select>
                                 <div class="select-style__arrow">&nbsp;</div>
                             </div>
@@ -371,7 +374,7 @@
                                 Other information
                             </h4>
                             <div class="textinput-container">
-                                <textarea name="message" class="textinput-container__textarea field-to-change field-to-change--unactive" disabled="" placeholder="??????"></textarea>
+                                <textarea name="message" class="textinput-container__textarea field-to-change field-to-change--unactive" disabled="" placeholder="<?php echo $vessel['information']; ?>"><?php echo $vessel['information']; ?></textarea>
                             </div>
                         </div>
                     </div>

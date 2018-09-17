@@ -14,7 +14,7 @@ $this->title = 'Sign up';
             <div class="row">
                 <div class="col-lg-12 vertical-center horizontal-between">
                     <div class="logotype-box">
-                        <a href="find-a-supplier-1.html"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
+                        <a href="/web/site"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
                     </div>
                     <div class="authorization">
                         <a href="/web/site/login" class="authorization__link">
@@ -41,7 +41,7 @@ $this->title = 'Sign up';
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="/web/site/find-supplier" class="adaptive-menu__link">
+                                    <a href="/web/find/shipboard-supply" class="adaptive-menu__link">
                                         Find a supplier
                                     </a>
                                 </li>
@@ -51,12 +51,12 @@ $this->title = 'Sign up';
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/crew" class="adaptive-menu__link">
                                         Crew
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/vessels-sale" class="adaptive-menu__link">
                                         Vessels sell/chartering
                                     </a>
                                 </li>
@@ -89,7 +89,7 @@ $this->title = 'Sign up';
                     <nav class="secondary-navigation">
                         <ul class="secondary-navigation__list">
                             <li class="secondary-navigation__item">
-                                <a href="/web/site/find-supplier" class="secondary-navigation__link">
+                                <a href="/web/find/shipboard-supply" class="secondary-navigation__link">
                                     Find a supplier
                                 </a>
                             </li>
@@ -99,12 +99,12 @@ $this->title = 'Sign up';
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/crew" class="secondary-navigation__link">
                                     Crew
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/vessels-sale" class="secondary-navigation__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>

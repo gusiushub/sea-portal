@@ -1,3 +1,6 @@
+<?php
+$this->title = 'Repairs';
+?>
 <body>
 <header class="header">
     <div class="container">
@@ -173,7 +176,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="primary-menu margin-bottom-medium">
-                    <a href='/web/find/shipboard-supply' class="primary-menu__item primary-menu__item--active">
+                    <a href='/web/find/shipboard-supply' class="primary-menu__item ">
                         <i class="icon-sheap primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             Shipboard supply
@@ -191,7 +194,7 @@
                             Inspection of equipment
                         </h3>
                     </a>
-                    <a href='/web/find/repairs' class="primary-menu__item">
+                    <a href='/web/find/repairs' class="primary-menu__item primary-menu__item--active">
                         <i class="icon-tools primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             Repairs
