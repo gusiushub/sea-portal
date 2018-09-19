@@ -1,7 +1,11 @@
 <?php
+//var_dump($_GET);
 use app\models\User;
 use yii\bootstrap\ActiveForm;
 use yii\bootstrap\Html;
+
+$this->title = 'Crew';
+
 ?>
 <body>
 <header class="header">
@@ -209,7 +213,7 @@ use yii\bootstrap\Html;
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    <?php $form = ActiveForm::begin(); ?>
+                    <?php $form = ActiveForm::begin(['action'=>'/web/find/crew']); ?>
                     <div class="filter">
                         <div class="secondary-headline margin-bottom-light">
                             <h2 class="secondary-headline__title">
@@ -221,6 +225,9 @@ use yii\bootstrap\Html;
                                 Position
                             </h4>
                             <div class="select-style">
+
+
+
                                 <?= $form->field($model, 'position')->dropDownList(['Turner / Fitter / Welder'=>'Turner / Fitter / Welder'],[
                                     'class'=>'select-style__select',
                                     'placeholder'=>'COUNTRY',

@@ -4,6 +4,8 @@ namespace app\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
@@ -66,13 +68,34 @@ class SiteController extends Controller
     }
 
 
-//    public function actionButton()
-//    {
-//        if(\Yii::$app->request->isAjax){
-//            $_SESSION['a'] = \Yii::$app->request->isAjax;
-//            var_dump(\Yii::$app->request->isAjax);
-//        }
-//    }
+//зависимые селекты для формы поиска 
+    public function actionSubcat() {
+        if (isset($_POST['val'])){
+            $posts = \app\models\Contracts::find()
+                ->where(['search' => $_POST['val']])
+                ->orderBy('id DESC')
+                ->all();
+
+            $countPosts = 4;
+            if($countPosts>0){
+                foreach($posts as $post){
+                    echo "<option value='".$post->mechanism."'>".$post->mechanism."</option>";
+                }
+            }
+
+        }
+        if (isset($_POST['pole2'])){
+            $posts = \app\models\Contracts::find()
+                ->where(['mechanism' => $_POST['pole2']])
+                ->all();
+            $countPosts = 4;
+            if($countPosts>0){
+                foreach($posts as $post){
+                    echo "<option value='".$post->maker."'>".$post->maker."</option>";
+                }
+            }
+        }
+        }
 
     public function actionSellerAjax()
     {
@@ -202,13 +225,13 @@ class SiteController extends Controller
     }
 
     public function actionUpload(){
-        $model = new UploadImage();
-        if(Yii::$app->request->isPost){
-            $model->image = UploadedFile::getInstance($model, 'image');
-            $model->upload();
-            return;
-        }
-        return $this->render('upload', ['model' => $model]);
+        Yii::$app->mailer->compose()
+            ->setFrom('from@domain.com')
+            ->setTo('to@domain.com')
+            ->setSubject('Тема сообщения')
+            ->setTextBody('Текст сообщения')
+            ->setHtmlBody('<b>текст сообщения в формате HTML</b>')
+            ->send();
     }
 
     public function actionCvJob()

@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 
+use app\models\ContactForm;
 use Yii;
 use yii\web\Controller;
 use app\models\FindModel;
@@ -16,21 +17,18 @@ class FindController extends Controller
     public function actionShipboardSupply()
     {
         $model = new FindModel();
+        if (isset($_POST['FindModel']['search'])){
+
+            $freePlan = Contracts::find()->where(['like', 'search', $_POST['FindModel']['search']])->andWhere(['like', 'mechanism',$_POST['FindModel']['equipment']])->andWhere(['like', 'maker', $_POST['FindModel']['maker']])->andWhere('plan = :plan',[':plan'=>'free'])->andWhere('category = :category',[':category'=>'shipboard supply'])->all();
+
+            $businessPlan = Contracts::find()->where(['like', 'search', $_POST['FindModel']['search']])->andWhere(['like', 'mechanism',$_POST['FindModel']['equipment']])->andWhere(['like', 'maker', $_POST['FindModel']['maker']])->andWhere('plan = :plan',[':plan'=>'buiznes'])->andWhere('category = :category',[':category'=>'shipboard supply'])->all();
+            $businessAdvancedPlan = Contracts::find()->where(['like', 'search', $_POST['FindModel']['search']])->andWhere(['like', 'mechanism',$_POST['FindModel']['equipment']])->andWhere(['like', 'maker', $_POST['FindModel']['maker']])->andWhere('plan = :plan',[':plan'=>'buiznesadvanced'])->andWhere('category = :category',[':category'=>'shipboard supply'])->all();
+            //var_dump($freePlan);exit;
+            return $this->render('shipboardresult',['free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
+        }
         return $this->render('shipboardsupply',['model'=>$model]);
     }
 
-    public function actionShipboardResult()
-    {
-    if (isset($_POST['search'])){
-
-        $freePlan = Contracts::find()->where(['like', 'search', $_POST['search']])->andWhere(['like', 'mechanism',$_POST['equipment']])->andWhere(['like', 'maker', $_POST['maker']])->andWhere('plan = :plan',[':plan'=>'free'])->andWhere('category = :category',[':category'=>'shipboard supply'])->all();
-        $businessPlan = Contracts::find()->where(['like', 'search', $_POST['search']])->andWhere(['like', 'mechanism',$_POST['equipment']])->andWhere(['like', 'maker', $_POST['maker']])->andWhere('plan = :plan',[':plan'=>'buiznes'])->andWhere('category = :category',[':category'=>'shipboard supply'])->all();
-        $businessAdvancedPlan = Contracts::find()->where(['like', 'search', $_POST['search']])->andWhere(['like', 'mechanism',$_POST['equipment']])->andWhere(['like', 'maker', $_POST['maker']])->andWhere('plan = :plan',[':plan'=>'buiznesadvanced'])->andWhere('category = :category',[':category'=>'shipboard supply'])->all();
-
-        return $this->render('shipboardresult',['free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
-        }
-        return $this->render('shipboardresult');
-    }
 
     public function actionPortServices()
     {
@@ -63,17 +61,34 @@ class FindController extends Controller
         return $this->render('repairs');
     }
 
-//    public function actionFindSupplier()
-//    {
-//        return $this->render('findsupplier');
-//    }
 
     public function actionCrew()
     {
         $model = new FindCrew();
+        $mail = new ContactForm();
+
+        if (isset($_GET['agree'])){
+            if ($_GET['agree']=='yes'){
+                $count = count($_GET)-3;
+                for ($i=1; $i<$count+1; $i++) {
+                    $cv[$i] = $_GET['cv'.$i];
+                }
+                $messages = [];
+                foreach ($cv as $c) {
+                    $messages[] = Yii::$app->mailer->compose()
+                        // ...
+                        ->setTo($c)
+                        ->setSubject($_GET['FindCrew']['company'])
+                        ->setTextBody($_GET['FindCrew']['body']);
+                }
+                 Yii::$app->mailer->sendMultiple($messages);
+                $this->redirect('/web/find/crew');
+            }
+        }
+
         if ($model->load(Yii::$app->request->post())){
             if ($model->search()){
-                return $this->render('crewresult', ['model'=>$model->search()]);
+                return $this->render('crewresult', ['model'=>$model,'mail'=>$mail]);
             }
 
         }
@@ -101,19 +116,4 @@ class FindController extends Controller
         return $this->render('student',['model'=>$model]);
     }
 
-//    public function actionCrewResult()
-//    {
-//var_dump($_POST);exit;
-//        if (isset($_POST['search'])){
-//            $businessAdvancedPlan = Cv::find()->where(['like', 'position', $_POST['position']])
-//                ->andWhere(['like', 'lvleng',$_POST['lvleng']])
-//                ->andWhere(['like', 'currency', $_POST['currency']])
-//                ->andWhere('category = :category',[':category'=>'find a job'])
-//                ->andWhere(['>=','salary_from', $_POST['maximum']])
-//                ->all();
-//
-//            var_dump($businessAdvancedPlan);
-//        }
-//        return $this->render('crewresult', ['model'=>$businessAdvancedPlan]);
-//    }
 }

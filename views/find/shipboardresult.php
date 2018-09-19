@@ -1,5 +1,7 @@
 <?php
 
+use app\models\User;
+$this->title = 'Shipboard supply';
 
 ?>
 
@@ -14,7 +16,7 @@
                     </div>
                     <?php
 
-                    use app\models\User;
+
 
                     if (Yii::$app->user->isGuest){ ?>
                         <div class="authorization">

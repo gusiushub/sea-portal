@@ -1,4 +1,8 @@
 <?php
+
+use yii\bootstrap\ActiveForm;
+use yii\bootstrap\Html;
+
 $this->title = 'Shipboard supply';
 ?>
 
@@ -242,7 +246,26 @@ $this->title = 'Shipboard supply';
             </div>
             <div class="row">
                 <div class="col-lg-8">
-                    <form id="myform" method="POST" action="/web/find/shipboard-result">
+<!--                    <form id="myform" method="POST" action="/web/find/shipboard-result">-->
+                        <?php $form = ActiveForm::begin(); ?>
+                        <?php
+                        $items = [
+                            '0' => 'Активный',
+                            'MARINE PAINTS' => 'MARINE PAINTS',
+                            'spare parts and equipment'=>'spare parts and equipment'
+                        ];
+
+                        $dataPost= [
+//                            '0' => '2ццц',
+//                            '1' => 'ыыыы',
+//                            '2'=>'пппп'
+                        ];
+                        ?>
+
+
+
+
+
                     <div class="filter">
                         <div class="secondary-headline margin-bottom-light">
                             <h2 class="secondary-headline__title">
@@ -254,13 +277,25 @@ $this->title = 'Shipboard supply';
                                 Refine your search
                             </h4>
                             <div class="select-style">
-
-                                <select  name="search" id="" class="select-style__select">
-                                    <option value="spare parts and equipment" class="select-style__placeholder">spare parts and equipment</option>
-                                    <option value="spare parts and equipment">spare parts and equipment</option>
-                                    <option value="MARINE PAINTS">MARINE PAINTS</option>
-                                    <option value="MARINE PAINTS">MARINE PAINTS</option>
-                                </select>
+                                <?= $form->field($model, 'search')->dropDownList($items,
+                                    ['id'=>'#sss',
+                                            'prompt'=>'-Choose a Name-',
+                                        'class'=>'select-style__select',
+                                        'onchange'=>'
+                            var value = $(".select-style__select").val(); 
+      $.post("'.Yii::$app->urlManager->createUrl('site/subcat?id=').
+                                            '"+$(this).val(),{ val: value  }).done(function(data) 
+        { 
+           $("select#city").html(data);
+           //alert( "Data Loaded: " + data ); 
+          }); 
+         ']); ?>
+<!--                                <select  name="search" id="" class="select-style__select">-->
+<!--                                    <option value="spare parts and equipment" class="select-style__placeholder">spare parts and equipment</option>-->
+<!--                                    <option value="spare parts and equipment">spare parts and equipment</option>-->
+<!--                                    <option value="MARINE PAINTS">MARINE PAINTS</option>-->
+<!--                                    <option value="MARINE PAINTS">MARINE PAINTS</option>-->
+<!--                                </select>-->
                                 <div class="select-style__arrow">&nbsp;</div>
                             </div>
                         </div>
@@ -269,11 +304,26 @@ $this->title = 'Shipboard supply';
                                 Spare parts and equipment
                             </h4>
                             <div class="select-style">
-                                <select name="equipment" id="" class="select-style__select">
-                                    <option value="pumps" class="select-style__placeholder">pumps</option>
-                                    <option value="COMPRESSORS">COMPRESSORS</option>
-                                    <option value="SEPARATORS">SEPARATORS</option>
-                                </select>
+                                <?= $form->field($model, 'equipment')
+                                    ->dropDownList(
+                                        $dataPost,
+                                        ['id'=>'city',
+                                            'class'=>'select-style__select',
+                                        'onchange'=>'
+                            var value = $(".select-style__select").val(); 
+                            var pp = $("#city option:selected").val();
+      $.post("'.Yii::$app->urlManager->createUrl('site/subcat?id=').
+                                            '"+$(this).val(),{ pole2: pp  }).done(function(data) 
+        { 
+           $("select#maker").html(data);
+          // alert( "Data Loaded:  " + pp + data ); 
+          }); 
+         ']); ?>
+<!--                                <select name="equipment" id="" class="select-style__select">-->
+<!--                                    <option value="pumps" class="select-style__placeholder">pumps</option>-->
+<!--                                    <option value="COMPRESSORS">COMPRESSORS</option>-->
+<!--                                    <option value="SEPARATORS">SEPARATORS</option>-->
+<!--                                </select>-->
                                 <div class="select-style__arrow">&nbsp;</div>
                             </div>
                         </div>
@@ -281,23 +331,38 @@ $this->title = 'Shipboard supply';
                             <h4 class="filter__title">
                                 maker
                             </h4>
+                            <?php
+                            $da =  [
+//                                '0' => '2цssssцц',
+//                                '1' => 'ыыsssыы',
+//                                'cummins'=>'cummins'
+                            ];
+                            ?>
                             <div class="select-style">
-                                <select name="maker" id="" class="select-style__select">
-                                    <option value="adasdasdasd" class="select-style__placeholder">Shipping and Logistics</option>
-                                    <option value="MAK">MAK</option>
-                                    <option value="MTU">MTU</option>
-                                    <option value="cummins">cummins</option>
-                                </select>
+                                <?= $form->field($model, 'maker')
+                                    ->dropDownList(
+                                        $da,
+                                        ['id'=>'maker',
+                                            'class'=>'select-style__select'
+                                        ]
+                                    ); ?>
+    <!--                                <select name="maker" id="" class="select-style__select">-->
+    <!--                                    <option value="adasdasdasd" class="select-style__placeholder">Shipping and Logistics</option>-->
+    <!--                                    <option value="MAK">MAK</option>-->
+    <!--                                    <option value="MTU">MTU</option>-->
+    <!--                                    <option value="cummins">cummins</option>-->
+    <!--                                </select>-->
                                 <div class="select-style__arrow">&nbsp;</div>
                             </div>
                             <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
                         </div>
                         <div class="filter__item">
-                            <input type="submit"  id="request" class="button button--show-results">
+                            <?= Html::submitButton('Sing in', ['class' => 'button button--show-results', 'name' => 'submit']) ?>
+<!--                            <input type="submit" name="submit"  id="request" class="button button--show-results">-->
                         </div>
                     </div>
-</form>
-
+<!--</form>-->
+                    <?php ActiveForm::end(); ?>
                 </div>
                 <div class="col-lg-4">
                     <div class="advertising-wrapper">
@@ -468,7 +533,7 @@ $this->title = 'Shipboard supply';
                     profile1: jsdata,
                     _csrf: _csrf
                 },
-                success: window.location.replace("/web/find/shipboard-result")
+                //success: window.location.replace("/web/find/shipboard-result")
 
             });
 

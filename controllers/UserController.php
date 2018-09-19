@@ -29,4 +29,22 @@ class UserController extends Controller
             return $this->redirect('/web/seller/profile');
         }
     }
+
+    public function actionDynamiccities()
+    {
+        $data=Location::model()->findAll('parent_id=:parent_id',
+            array(':parent_id'=>(int) $_POST['country_id']));
+
+        $data=CHtml::listData($data,'id','name');
+        foreach($data as $value=>$name)
+        {
+            echo CHtml::tag('option',
+                array('value'=>$value),CHtml::encode($name),true);
+        }
+    }
+
+    public function actionAjax()
+    {
+        echo 'asdasdasdasdasdasdasdasdasdasd';
+    }
 }

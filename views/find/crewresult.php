@@ -1,29 +1,11 @@
 <?php
-function IsChecked($chkname,$value)
-{
-    if(!empty($_POST[$chkname]))
-    {
-        foreach($_POST[$chkname] as $chkval)
-        {
-            if($chkval == $value)
-            {
-                return true;
-            }
-        }
-    }
-    return false;
-}
-var_dump($_GET);
-if (IsChecked('plus','a')){
-    exit;
-}
-if (!empty($_POST['plus'])){
 
-}
 use app\models\User;
+use yii\bootstrap\ActiveForm;
+use yii\bootstrap\Html;
 use yii\helpers\Url;
 
-//var_dump($model);exit;
+$this->title = 'Crew';
 ?>
 <body>
 <header class="header">
@@ -198,13 +180,13 @@ use yii\helpers\Url;
         <div class="row">
             <div class="col-lg-9">
                 <div class="primary-menu margin-bottom-medium">
-                    <a href='#' class="primary-menu__item primary-menu__item--active">
+                    <a href='/web/find/crew' class="primary-menu__item primary-menu__item--active">
                         <i class="icon-users primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             find a crew
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/find/student' class="primary-menu__item">
                         <i class="icon-user-one primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             find a students (Practice on Board)
@@ -230,7 +212,7 @@ use yii\helpers\Url;
                                     Select one or more CV
                                 </p>
                                 <p class="companies-headline__found">
-                                    Found: <span class="companies-headline__found-num">138</span> a CV
+                                    Found: <span class="companies-headline__found-num"><?php echo count($model->search()) ?> </span> a CV
                                 </p>
                             </div>
                         </div>
@@ -243,7 +225,7 @@ use yii\helpers\Url;
                         Candidates
                     </h3>
                     <div class="criteria">
-                        <p class="criteria__text">Found <span class="criteria__company-num">(138 candidates)</span></p>
+                        <p class="criteria__text">Found <span class="criteria__company-num">(<?php echo count($model->search())." " ?>candidates)</span></p>
                     </div>
                     <div class="criteria">
                         <p class="criteria__text">Selected <span class="criteria__company-num">(138 candidates)</span></p>
@@ -257,134 +239,184 @@ use yii\helpers\Url;
     </div>
 </header>
 <main>
+    <?php $form = ActiveForm::begin(['method'=>'GET']); ?>
     <section class="find-a-crew-result">
         <div class="container">
             <div class="row">
                 <div class="col-lg-9">
                     <div class="row">
                         <?php
-                        $i = 0;
-                        foreach ($model as $cv):
-                        $user = User::findOne($cv['user_id']);
-                        $i++;
-                        ?>
-                        <div class="col-lg-4">
-                            <div class="result-box result-box--active">
-                                <div class="result-box__top result-box__top--crew">
-                                    <div class="result-box__img-desc">
-                                        <div class="result-box__image">
-                                            <img src="../../web/public/img/image-box.png" alt="image-box" class="result-box__picture">
-                                            <button class="result-box__add-button">&nbsp;</button>
-                                        </div>
-                                        <div class="result-box__description">
+                        $i = 1;
+                        $count = count($model->search());
+                        foreach ($model->search() as $cv):
+                        $user = User::find()->where(['id'=>$cv['user_id']])->andWhere(['tariff'=>'business'])->one();
+                        if ($user!=null) {
+
+                            ?>
+                            <div class="col-lg-4">
+                                <div class="result-box result-box--active">
+                                    <div class="result-box__top result-box__top--crew">
+                                        <div class="result-box__img-desc">
+                                            <div class="result-box__image">
+                                                <?php if (!empty($user['img'])) { ?>
+                                                    <img src="../../web/public/uploads/<?php echo $user['img'] ?>"
+                                                         alt="image-box" class="result-box__picture">
+                                                <?php } else { ?>
+                                                    <img src="../../web/public/img/image-box.png" alt="image-box"
+                                                         class="result-box__picture">
+                                                <?php } ?>
+                                                <button class="result-box__add-button">&nbsp;</button>
+                                            </div>
+                                            <div class="result-box__description">
                                                     <span class="result-box__desc-line">
                                                         <?php echo $user['username'] ?>
                                                     </span>
-                                            <span class="result-box__desc-line">
+                                                <span class="result-box__desc-line">
                                                         <?php echo $user['second_name'] ?>
                                                     </span>
-                                            <span class="result-box__desc-line">
+                                                <span class="result-box__desc-line">
                                                         <?php echo $user['country'] ?>
                                                     </span>
-                                            <span class="result-box__desc-line">
+                                                <span class="result-box__desc-line">
                                                         <?php echo $user['city'] ?>
                                                     </span>
+                                            </div>
+                                        </div>
+                                        <div class="result-box__active-logo">
+                                            <img src="../../web/public/img/logo-active.jpg" alt="active-logo">
                                         </div>
                                     </div>
-                                    <div class="result-box__active-logo">
-                                        <img src="../../web/public/img/logo-active.jpg" alt="active-logo">
-                                    </div>
-                                </div>
-                                <div class="row no-gutters">
-                                    <div class="col-lg-12 horizontal-between crew-buttons-container">
-                                        <button class="button button--result-box button--crew button--lighten">
-                                            show cv
-                                        </button>
+                                    <div class="row no-gutters">
+                                        <div class="col-lg-12 horizontal-between crew-buttons-container">
+                                            <button class="button button--result-box button--crew button--lighten">
+                                                show cv
+                                            </button>
 
-                                        <div class="checkbox-style checkbox-style--crew">
+                                            <div class="checkbox-style checkbox-style--crew">
+                                                <input name="cv<?php echo $i ?>" value="<?php echo $user['email'] ?>"
+                                                       type="checkbox" id='select<?php echo $i ?>'
+                                                       class="checkbox-style__input">
 
-                                                <?php
-                                                //echo Url::to(['post/view', 'id' => 100, '#' => 'content']);
-                                                ?>
-                                            <input value="2121" type="checkbox" id='select<?php echo $i ?>' class="checkbox-style__input">
+                                                <label for="select<?php echo $i ?>"
+                                                       class="checkbox-style__label checkbox-style__label--crew button--result-box vertical-center horizontal-center">
+                                                    <span class="checkbox-style__check checkbox-style__check--accepting checkbox-style__check--crew"></span>
+                                                    select
+                                                </label>
+                                            </div>
 
-                                            <label for="select<?php echo $i ?>" class="checkbox-style__label checkbox-style__label--crew button--result-box vertical-center horizontal-center">
-                                                <span class="checkbox-style__check checkbox-style__check--accepting checkbox-style__check--crew"></span>
-                                                select
-                                            </label>
+
                                         </div>
-
-
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <?php endforeach; ?>
-                        <div class="col-lg-4">
-                            <div class="result-box">
-                                <div class="result-box__top result-box__top--crew">
-                                    <div class="result-box__img-desc">
-                                        <div class="result-box__image">
-                                            <img src="../../web/public/img/image-box.png" alt="image-box" class="result-box__picture">
-                                            <button class="result-box__add-button">&nbsp;</button>
-                                        </div>
-                                        <div class="result-box__description">
+                            <?php
+                            $i++;
+                        }
+                        endforeach;
+                        ?>
+                        <?php
+
+                        foreach ($model->search() as $cv):
+                        $user = User::find()->where(['id'=>$cv['user_id']])->andWhere(['tariff'=>'free'])->one();
+                        if ($user!=null) {
+
+                            ?>
+                            <div class="col-lg-4">
+                                <div class="result-box">
+                                    <div class="result-box__top result-box__top--crew">
+                                        <div class="result-box__img-desc">
+                                            <div class="result-box__image">
+                                                <?php if (!empty($user['img'])) { ?>
+                                                    <img src="../../web/public/uploads/<?php echo $user['img'] ?>"
+                                                         alt="image-box" class="result-box__picture">
+                                                <?php } else { ?>
+                                                    <img src="../../web/public/img/image-box.png" alt="image-box"
+                                                         class="result-box__picture">
+                                                <?php } ?>
+                                                <!--                                            <img src="../../web/public/img/image-box.png" alt="image-box" class="result-box__picture">-->
+                                                <button class="result-box__add-button">&nbsp;</button>
+                                            </div>
+                                            <div class="result-box__description">
                                                     <span class="result-box__desc-line">
-                                                        First name
+                                                        <?php echo $user['username'] ?>
                                                     </span>
-                                            <span class="result-box__desc-line">
-                                                        Second name
+                                                <span class="result-box__desc-line">
+                                                        <?php echo $user['second_name'] ?>
                                                     </span>
-                                            <span class="result-box__desc-line">
-                                                        Country
+                                                <span class="result-box__desc-line">
+                                                        <?php echo $user['country'] ?>
                                                     </span>
-                                            <span class="result-box__desc-line">
-                                                        City
+                                                <span class="result-box__desc-line">
+                                                        <?php echo $user['city'] ?>
                                                     </span>
+                                            </div>
+                                        </div>
+                                        <div class="result-box__active-logo">
+                                            <img src="../../web/public/img/logo-active.jpg" alt="active-logo">
                                         </div>
                                     </div>
-                                    <div class="result-box__active-logo">
-                                        <img src="../../web/public/img/logo-active.jpg" alt="active-logo">
-                                    </div>
-                                </div>
-                                <div class="row no-gutters">
-                                    <div class="col-lg-12 horizontal-between crew-buttons-container">
-                                        <button class="button button--result-box button--crew button--lighten">
-                                            show cv
-                                        </button>
-                                        <div class="checkbox-style checkbox-style--crew">
-                                            <input type="checkbox" id='select10' class="checkbox-style__input">
-                                            <label for="select10" class="checkbox-style__label checkbox-style__label--crew button--result-box vertical-center horizontal-center">
-                                                <span class="checkbox-style__check checkbox-style__check--accepting checkbox-style__check--crew"></span>
-                                                select
-                                            </label>
+                                    <div class="row no-gutters">
+                                        <div class="col-lg-12 horizontal-between crew-buttons-container">
+                                            <button class="button button--result-box button--crew button--lighten">
+                                                show cv
+                                            </button>
+                                            <div class="checkbox-style checkbox-style--crew">
+                                                <input name="cv<?php echo $i ?>" value="<?php echo $user['email'] ?>"
+                                                       type="checkbox" id='select<?php echo $i ?>'
+                                                       class="checkbox-style__input">
+                                                <label for="select<?php echo $i ?>"
+                                                       class="checkbox-style__label checkbox-style__label--crew button--result-box vertical-center horizontal-center">
+                                                    <span class="checkbox-style__check checkbox-style__check--accepting checkbox-style__check--crew"></span>
+                                                    select
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
+                            <?php
+                            $i++;
+                        }
+                        endforeach;
+                        ?>
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    <form method="#" class="right-send">
+                    <div class="right-send">
                         <h3 class="right-send__title">
                             Send a message
                         </h3>
                         <div class="textinput-container">
-                            <input type="text" class="textinput-container__input" placeholder="NAME" name="name">
+                            <?php
+                            ?>
+                            <?= $form->field($model, 'name')->textInput([
+                                    'placeholder' => "NAME",
+                                'class'=>'textinput-container__input'
+                            ]) ?>
                         </div>
                         <div class="textinput-container">
-                            <input type="text" class="textinput-container__input" placeholder="E-MAIL" name="email">
+                            <?= $form->field($model, 'email')->textInput([
+                                'placeholder' => "E-MAIL",
+                                'class'=>'textinput-container__input'
+                            ]) ?>
                         </div>
                         <div class="textinput-container">
-                            <input type="text" class="textinput-container__input" placeholder="PHONE" name="phone">
+                            <?= $form->field($model, 'phone')->textInput([
+                                'placeholder' => "PHONE",
+                                'class'=>'textinput-container__input'
+                            ]) ?>
                         </div>
                         <div class="textinput-container">
-                            <input type="text" class="textinput-container__input" placeholder="COMPANY" name="company">
+                            <?= $form->field($model, 'company')->textInput([
+                                'placeholder' => "COMPANY",
+                                'class'=>'textinput-container__input'
+                            ]) ?>
                         </div>
                         <div class="textinput-container">
-                            <input type="text" class="textinput-container__input" placeholder="ATTACH FILE" name="attach file">
+                            <?= $form->field($model, 'file')->textInput([
+                                'placeholder' => "ATTACH FILE",
+                                'class'=>'textinput-container__input'
+                            ]) ?>
                             <div class="add-plus add-plus--attach-file">
                                 <p class="add-plus__symbol">
                                     +
@@ -392,25 +424,27 @@ use yii\helpers\Url;
                             </div>
                         </div>
                         <div class="textinput-container margin-bottom-medium">
-                            <textarea name="message" class="textinput-container__textarea" placeholder="COMMENTS"></textarea>
+                            <?= $form->field($model, 'body')->textarea([
+                                'placeholder' => "COMMENTS",
+                                'class'=>'textinput-container__textarea'
+                            ]) ?>
                         </div>
                         <div class="accepting">
                             <div class="checkbox-style">
-                                <input type="checkbox" id='accepting' class="checkbox-style__input">
+                                <input name="agree" value="yes" type="checkbox" id='accepting' class="checkbox-style__input">
                                 <label for="accepting" class="checkbox-style__label">
                                     <span class="checkbox-style__check checkbox-style__check--accepting"></span>
                                     <p class="checkbox-style__text">I have read and agree to the <a href="#" class="checkbox-style__link">Terms and Conditions</a></p>
                                 </label>
                             </div>
                         </div>
-                        <button class="button">
-                            send
-                        </button>
-                    </form>
+                        <?= Html::submitButton('send', ['class' => 'button', 'name' => 'mail']) ?>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+    <?php ActiveForm::end(); ?>
     <footer class="footer">
         <div class="container">
             <div class="row margin-bottom-light">
@@ -523,33 +557,59 @@ use yii\helpers\Url;
         </div>
     </footer>
 </main>
-<a class="element_a" href="/web/site?a=1">asdasdasdasd</a>
-<form id="form" class="element_a" action="/web/site">
-    <input type="submit" value="jnghassf">
-</form>
+<!--<a class="element_a" href="/web/site?a=1">asdasdasdasd</a>-->
+<!--<form id="form" class="element_a" action="/web/site">-->
+<!--    <input type="submit" value="jnghassf">-->
+<!--</form>-->
 </body>
 <script src="../../web/public/js/common.js"></script>
 <script type="text/javascript">
 
-    $(".checkbox-style [type='checkbox']").change(function() {
-        if(this.checked) {
-            var form = document.getElementById('form');
-            if (!form) return false;
-//alert($('#form').attr("action"), $('.element_a').attr('action')+$(this).val()+"," )
-           // form.action = './web/site'+$(this).val();
-             $('#form').attr("action", $('#form').attr('action')+'id='+$(this).val()+"," )
-        }else{
-            var form = document.getElementById('form');
-            if (!form) return false;
+//     $(".checkbox-style [type='checkbox']").change(function() {
+//         if(this.checked) {
+//             var form = document.getElementById('forme');
+//             if (!form) return false;
+// //alert($('#form').attr("action"), $('.element_a').attr('action')+$(this).val()+"," )
+//            // form.action = './web/site'+$(this).val();
+//              $('#form').attr("action", $('#form').attr('action')+$(this).val()+"," )
+//         }else{
+//             var form = document.getElementById('form');
+//             if (!form) return false;
+//
+//             form.action = './web/find/crew?'+$(this).val();
+//
+//             var str1 = form.action;
+//             var str2 = $(this).val();
+//             var st = str1.replace(str2, '');
+//             form.action = './web/find/crew?';
+//         }
+//     });
 
-            form.action = './web/site'+'?'+$(this).val();
+</script>
 
-            var str1 = form.action;
-            var str2 = $(this).val();
-            var st = str1.replace(str2, '');
-            form.action = './web/find/crew';
-            //alert(st);
-        }
-    });
-
+<script>
+    // var val = document.getElementById('input_extrafl13').value;
+    // var count = document.getElementById('count').value;
+    // var i;
+    // for (i=1; i<count; i++) {
+    //     //alert("select"+i);
+    //     //alert(i)
+    // var val = 0;
+    // $(".checkbox-style__input [type='checkbox']").change(function() {
+    //     if(this.checked) {
+    //         val++;
+    //         alert(val);
+    //     }
+    // }
+    //     document.getElementsByClassName("checkbox-style__input").addEventListener('change', function () {
+    //         var val = document.getElementsByClassName('checkbox-style__input').value;
+    //         alert(val);
+    //         this.checked ? val = val + "select"+i+" ," : val = val.replace("select"+i+" ,","");
+    //     });
+    // }
+    // alert(i)
+    // document.getElementById('select2').addEventListener('change', function() {
+    //     var val = document.getElementById('input_extrafl13').value;
+    //     this.checked ? document.getElementById('input_extrafl13').value = document.getElementById('input_extrafl13').value + 'select2 ,' : document.getElementById('input_extrafl13').value = val.replace('select2 ,','');
+    // });
 </script>

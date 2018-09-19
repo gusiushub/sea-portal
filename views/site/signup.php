@@ -1,8 +1,13 @@
 <?php
 
 
+use yii\helpers\ArrayHelper;
+use yii\widgets\ActiveForm;
+use kartik\widgets\DepDrop;
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+//use yii\helpers\CHtml;
+//use yii\bootstrap\ActiveForm;
+use yii\helpers\Url;
 
 $this->title = 'Sign up';
 //$this->params['breadcrumbs'][] = $this->title;
@@ -135,7 +140,71 @@ $this->title = 'Sign up';
         <div class="container">
             <div class="row no-gutters">
                 <div class="col-lg-12">
+
                     <?php $form = ActiveForm::begin(); ?>
+
+                    <?php
+                    $items = [
+                        '0' => 'Активный',
+                        '1' => 'Отключен',
+                        '2'=>'Удален'
+                    ];
+
+                    echo $form->field($model, 'city')->dropDownList($items,
+                        ['prompt'=>'-Choose a Name-',
+                            'class'=>'adjust',
+                            'onchange'=>' 
+      $.post("'.Yii::$app->urlManager->createUrl('site/subcat?id=').
+                                '"+$(this).val(),function(data) 
+        { 
+           $("select#city").html(data); 
+          }); 
+         ']);
+
+                    $dataPost= [
+                        '0' => '2ццц',
+                        '1' => 'ыыыы',
+                        '2'=>'пппп'
+                    ];
+
+                    echo $form->field($model, 'city')
+                        ->dropDownList(
+                            $dataPost,
+                            ['id'=>'city',
+                                'class'=>'adjust'
+                            ]
+                        );
+
+
+//                    // Normal parent select
+//                    echo $form->field($model, 'cat')->dropDownList(['1'=>'asdasd','2'=>'asdasd'], ['id' => 'cat-id']);
+//
+//                    // Dependent Dropdown
+//                    echo $form->field($model, 'subcat')->widget(DepDrop::classname(), [
+//                        'options' => ['id' => 'subcat-id'],
+//                        'pluginOptions' => [
+//                            'depends' => ['cat-id'],
+//                            'placeholder' => 'Select...',
+//                            'url' => Url::to(['/site/subcat'])
+//                        ]
+//                    ]);
+
+                    ?>
+
+                    <?php
+//                    $form=$this->beginWidget('CActiveForm', array(
+//                        'id' => 'my-form',
+//                        'enableClientValidation' => true,
+//                        'htmlOptions' => array(
+//                            'enctype' => 'multipart/form-data',
+//                            'autocomplete' => 'off',
+//                            'role' => 'form'
+//                        ),
+//                        'clientOptions' => array(
+//                            'validateOnSubmit' => true,
+//                        )
+//                    ));
+                    ?>
                     <div class="login-up">
                         <div class="secondary-headline margin-bottom-light">
                             <h2 class="secondary-headline__title secondary-headline__title--sign">
@@ -176,6 +245,8 @@ $this->title = 'Sign up';
                                             Country
                                         </h4>
                                         <div class="select-style select-style--sing">
+
+
                                             <?= $form->field($model, 'country')->textInput([
                                                 'class'=>'select-style__select select-style__select--sing select-style__select--sing-1',
                                                 'placeholder'=>'COUNTRY',
@@ -193,6 +264,9 @@ $this->title = 'Sign up';
                                             City
                                         </h4>
                                         <div class="select-style select-style--sing">
+
+
+
                                             <?= $form->field($model, 'city')->textInput([
                                                 'class'=>'select-style__select select-style__select--sing select-style__select--sing-3',
                                                 'placeholder'=>'CITY',
@@ -260,6 +334,12 @@ $this->title = 'Sign up';
                             </div>
                         </div>
                     </div>
+
+                    <?php
+//                    echo CHtml::submitButton($model->isNewRecord ? 'Add' : 'Update', array('class'=>'btn btn-primary'));
+//                    $this->endWidget();
+                    ?>
+
                     <?php ActiveForm::end(); ?>
                 </div>
             </div>

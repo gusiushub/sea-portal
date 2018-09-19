@@ -7,31 +7,31 @@ use yii\base\Model;
 use app\models\Cv;
 
 /**
- * ContactForm is the model behind the contact form.
- */
+* ContactForm is the model behind the contact form.
+*/
 class CvForm extends Model
 {
-    public $user_id;
+public $user_id;
 
-    /**
-     * @return array the validation rules.
-     */
-    public function rules()
-    {
-        return [
-            [['user_id'], 'required'],
-            ];
-    }
-
-    /**
-     * @return array customized attribute labels
-     */
-    public function attributeLabels()
-    {
-        return [
-            'verifyCode' => 'Verification Code',
+/**
+ * @return array the validation rules.
+ */
+public function rules()
+{
+    return [
+        [['user_id'], 'required'],
         ];
-    }
+}
+
+/**
+ * @return array customized attribute labels
+ */
+public function attributeLabels()
+{
+    return [
+        'verifyCode' => 'Verification Code',
+    ];
+}
 
     public function addcv()
     {

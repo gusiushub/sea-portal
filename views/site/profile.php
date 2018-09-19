@@ -54,16 +54,39 @@ $user = $model->attributes;
                         </div>
                         <nav class="adaptive-menu__navigation">
                             <ul class="adaptive-menu__list">
-                                <li class="adaptive-menu__item">
-                                    <a href="/web/site/login" class="adaptive-menu__link">
-                                        Sign In
-                                    </a>
-                                </li>
-                                <li class="adaptive-menu__item">
-                                    <a href="/web/site/signup" class="adaptive-menu__link">
-                                        Sign Up
-                                    </a>
-                                </li>
+                                <?php if (!Yii::$app->user->isGuest){  ?>
+                                    <li class="adaptive-menu__item">
+                                        <a class="adaptive-menu__link" href="<?php if (Yii::$app->user->identity->user_status==1) {
+                                            echo '/web/site/profile';
+                                        }
+                                        if (Yii::$app->user->identity->user_status==2) {
+                                            echo '/web/company/profile';
+                                        }
+                                        if (Yii::$app->user->identity->user_status==3) {
+                                            echo '/web/seller/profile';
+                                        } ?>" class="authorization__link authorization__link--white">
+                                            Profile
+                                        </a>
+                                    </li>
+                                    <li class="adaptive-menu__item">
+                                        <a class="adaptive-menu__link" href="/web/user/logout" class="authorization__link authorization__link--white">
+                                            Logout
+                                        </a>
+                                    </li>
+                                <?php } else{ ?>
+
+                                    <li class="adaptive-menu__item">
+                                        <a href="/web/site/login" class="adaptive-menu__link">
+                                            Sign In
+                                        </a>
+                                    </li>
+                                    <li class="adaptive-menu__item">
+                                        <a href="/web/site/signup" class="adaptive-menu__link">
+                                            Sign Up
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                                
                                 <li class="adaptive-menu__item">
                                     <a href="/web/find/shipboard-supply" class="adaptive-menu__link">
                                         Find a supplier
@@ -213,14 +236,16 @@ $user = $model->attributes;
 
 <!--                        <img src="../../web/public/img/company-logo-big.jpg" alt="company-logo" class="profile__photo margin-bottom-light">-->
                         <img src="../../web/public/uploads/<?php echo Yii::$app->user->identity->img ?>" alt="company-logo" class="profile__photo margin-bottom-light">
+<!--                        <button class="profile__upload-photo margin-bottom-medium">-->
+<!--                            select file-->
+<!--                        </button>-->
+                        <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
+                        <?= $form->field($upload, 'image')->fileInput(['options' => ['id' => 'image']]) ?>
                         <button class="profile__upload-photo margin-bottom-medium">
                             select file
                         </button>
-                        <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
-                        <?= $form->field($upload, 'image')->fileInput() ?>
-                        <button>Загрузить</button>
                         <?php ActiveForm::end() ?>
-<!--                        <input type="file" class="profile__upload-photo margin-bottom-medium" name="file" value="select file">-->
+<!--                        <input type="file" style='display:none' class="profile__upload-photo margin-bottom-medium" name="file" value="select file">-->
                     </div>
                 </div>
                 <div class="col-lg-9">
@@ -527,14 +552,25 @@ $user = $model->attributes;
         </div>
     </div>
 </footer>
+<!--<input style="display:none;" type="file" id="image"/>-->
+<!--<button id="file">Загрузить файл</button>-->
 </body>
 <script src="../../web/public/js/common.js"></script>
 <script src="../../web/public/js/info-change.js"></script>
 <script src="../../web/public/js/from-to.js"></script>
 <script src="../../web/public/js/ajax-forms.js"></script>
 <script>
-    var input = document.querySelector("input[type='file']");
-    input.onchange = function () {
-        this.form.submit();
-    }
+    // $(function() {
+    //     $("#file").click(function(){
+    //         $("#image").click();
+    //     });
+    //     $("#image").change(function(){
+    //         image = $("#image").val().replace(/C:\\fakepath\\/i, '');
+    //         if(image == 0){
+    //             $("#image").next().hide().html('Загрузить файл').fadeIn(400);
+    //         }else{
+    //             $("#image").next().hide().html(image).fadeIn(400);
+    //         }
+    //     });
+    // });
 </script>
