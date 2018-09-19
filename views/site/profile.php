@@ -3,7 +3,7 @@
 //use kartik\file\FileInput;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'About the company';
+$this->title = 'Profile';
 $user = $model->attributes;
 
 ?>
@@ -86,7 +86,7 @@ $user = $model->attributes;
                                         </a>
                                     </li>
                                 <?php } ?>
-                                
+
                                 <li class="adaptive-menu__item">
                                     <a href="/web/find/shipboard-supply" class="adaptive-menu__link">
                                         Find a supplier
@@ -233,12 +233,14 @@ $user = $model->attributes;
             <div class="row">
                 <div class="col-lg-3">
                     <div class="profile">
-
-<!--                        <img src="../../web/public/img/company-logo-big.jpg" alt="company-logo" class="profile__photo margin-bottom-light">-->
+                        <?php if (!empty(Yii::$app->user->identity->img)){ ?>
                         <img src="../../web/public/uploads/<?php echo Yii::$app->user->identity->img ?>" alt="company-logo" class="profile__photo margin-bottom-light">
 <!--                        <button class="profile__upload-photo margin-bottom-medium">-->
 <!--                            select file-->
 <!--                        </button>-->
+                       <?php }else{  ?>
+                        <img src="../../web/public/img/company-logo-big.jpg" alt="company-logo" class="profile__photo margin-bottom-light">
+                        <?php } ?>
                         <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
                         <?= $form->field($upload, 'image')->fileInput(['options' => ['id' => 'image']]) ?>
                         <button class="profile__upload-photo margin-bottom-medium">

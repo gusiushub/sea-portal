@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-lg-12 vertical-center horizontal-between">
                     <div class="logotype-box">
-                        <a href="#"><img src="img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
+                        <a href="#"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
                     </div>
                     <div class="settings">
                         <div class="settings__item">
@@ -41,37 +41,60 @@
                     </div>
                     <div class="adaptive-menu">
                         <div class="adaptive-menu__button">
-                            <img src="img/icons/burger.png" alt="burger">
+                            <img src="../../web/public/img/icons/burger.png" alt="burger">
                         </div>
                         <nav class="adaptive-menu__navigation">
                             <ul class="adaptive-menu__list">
+                                <?php if (!Yii::$app->user->isGuest){  ?>
+                                    <li class="adaptive-menu__item">
+                                        <a class="adaptive-menu__link" href="<?php if (Yii::$app->user->identity->user_status==1) {
+                                            echo '/web/site/profile';
+                                        }
+                                        if (Yii::$app->user->identity->user_status==2) {
+                                            echo '/web/company/profile';
+                                        }
+                                        if (Yii::$app->user->identity->user_status==3) {
+                                            echo '/web/seller/profile';
+                                        } ?>" class="authorization__link authorization__link--white">
+                                            Profile
+                                        </a>
+                                    </li>
+                                    <li class="adaptive-menu__item">
+                                        <a class="adaptive-menu__link" href="/web/user/logout" class="authorization__link authorization__link--white">
+                                            Logout
+                                        </a>
+                                    </li>
+                                <?php } else{ ?>
+
+                                    <li class="adaptive-menu__item">
+                                        <a href="/web/site/login" class="adaptive-menu__link">
+                                            Sign In
+                                        </a>
+                                    </li>
+                                    <li class="adaptive-menu__item">
+                                        <a href="/web/site/signup" class="adaptive-menu__link">
+                                            Sign Up
+                                        </a>
+                                    </li>
+                                <?php } ?>
+
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
-                                        Sign In
-                                    </a>
-                                </li>
-                                <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
-                                        Sign Up
-                                    </a>
-                                </li>
-                                <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/shipboard-supply" class="adaptive-menu__link">
                                         Find a supplier
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/become-supplier" class="adaptive-menu__link">
                                         Become a supplier
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/crew" class="adaptive-menu__link">
                                         Crew
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/vessels-sale" class="adaptive-menu__link">
                                         Vessels sell/chartering
                                     </a>
                                 </li>

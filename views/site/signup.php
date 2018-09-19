@@ -143,37 +143,37 @@ $this->title = 'Sign up';
 
                     <?php $form = ActiveForm::begin(); ?>
 
-                    <?php
-                    $items = [
-                        '0' => 'Активный',
-                        '1' => 'Отключен',
-                        '2'=>'Удален'
-                    ];
-
-                    echo $form->field($model, 'city')->dropDownList($items,
-                        ['prompt'=>'-Choose a Name-',
-                            'class'=>'adjust',
-                            'onchange'=>' 
-      $.post("'.Yii::$app->urlManager->createUrl('site/subcat?id=').
-                                '"+$(this).val(),function(data) 
-        { 
-           $("select#city").html(data); 
-          }); 
-         ']);
-
-                    $dataPost= [
-                        '0' => '2ццц',
-                        '1' => 'ыыыы',
-                        '2'=>'пппп'
-                    ];
-
-                    echo $form->field($model, 'city')
-                        ->dropDownList(
-                            $dataPost,
-                            ['id'=>'city',
-                                'class'=>'adjust'
-                            ]
-                        );
+<!--                    --><?php
+//                    $items = [
+//                        '0' => 'Активный',
+//                        '1' => 'Отключен',
+//                        '2'=>'Удален'
+//                    ];
+//
+//                    echo $form->field($model, 'city')->dropDownList($items,
+//                        ['prompt'=>'-Choose a Name-',
+//                            'class'=>'adjust',
+//                            'onchange'=>'
+//      $.post("'.Yii::$app->urlManager->createUrl('site/subcat?id=').
+//                                '"+$(this).val(),function(data)
+//        {
+//           $("select#city").html(data);
+//          });
+//         ']);
+//
+//                    $dataPost= [
+//                        '0' => '2ццц',
+//                        '1' => 'ыыыы',
+//                        '2'=>'пппп'
+//                    ];
+//
+//                    echo $form->field($model, 'city')
+//                        ->dropDownList(
+//                            $dataPost,
+//                            ['id'=>'city',
+//                                'class'=>'adjust'
+//                            ]
+//                        );
 
 
 //                    // Normal parent select

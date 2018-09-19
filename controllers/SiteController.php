@@ -175,6 +175,16 @@ class SiteController extends Controller
 
     public function actionAjax()
     {
+        if (isset($_POST['change'])){
+            $id = Yii::$app->user->identity->id;
+            $model = User::find()->where(['id' => $id])->one();
+            $password = $str = str_replace('"', "", $_POST['change']);
+            //$model->password_hash = $password;
+            $model->setPassword($password);
+            $model->generateAuthKey();
+            $model->save();
+        }
+
         if (isset($_POST['profile_personal1'])){
             $profile = json_decode($_POST['profile_personal1'], true);
             $id = Yii::$app->user->identity->id;
