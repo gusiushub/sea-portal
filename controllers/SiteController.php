@@ -99,6 +99,16 @@ class SiteController extends Controller
 
     public function actionSellerAjax()
     {
+        if (isset($_POST['change'])){
+            $id = Yii::$app->user->identity->id;
+            $model = User::find()->where(['id' => $id])->one();
+            $password = $str = str_replace('"', "", $_POST['change']);
+            //$model->password_hash = $password;
+            $model->setPassword($password);
+            $model->generateAuthKey();
+            $model->save();
+        }
+
         if (isset($_POST['profile_seller1'])){
             $profile = json_decode($_POST['profile_seller1'], true);
             $id = Yii::$app->user->identity->id;
@@ -261,7 +271,6 @@ class SiteController extends Controller
                 $model = new User();
                 if(Yii::$app->request->isPost){
                     $file = UploadedFile::getInstance($upload, 'image');
-                    //var_dump(Yii::$app->user->identity->img);exit;
                     if ($upload->uploadFile($file,Yii::$app->user->identity->img)){
                         return $this->redirect('/web/site/profile');
                     }

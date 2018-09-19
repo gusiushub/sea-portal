@@ -10,7 +10,9 @@
                     <div class="settings">
                         <div class="settings__item">
                             <a href="/web/seller/profile" class="settings__email">
-                                <?php echo Yii::$app->user->identity->email ?>
+                                <?php use yii\bootstrap\ActiveForm;
+
+                                echo Yii::$app->user->identity->email ?>
                             </a>
                         </div>
                         <div class="settings__item">
@@ -236,10 +238,21 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="profile">
-                        <img src="../../web/public/img/company-logo-big.jpg" alt="company-logo" class="profile__photo margin-bottom-light">
+                        <?php if (!empty(Yii::$app->user->identity->img)){ ?>
+                            <img src="../../web/public/uploads/<?php echo Yii::$app->user->identity->img ?>" alt="company-logo" class="profile__photo margin-bottom-light">
+                        <?php }else{  ?>
+                            <img src="../../web/public/img/company-logo-big.jpg" alt="company-logo" class="profile__photo margin-bottom-light">
+                        <?php } ?>
+                        <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
+                        <?= $form->field($upload, 'image')->fileInput(['options' => ['id' => 'image']]) ?>
                         <button class="profile__upload-photo margin-bottom-medium">
                             select file
                         </button>
+                        <?php ActiveForm::end() ?>
+<!--                        <img src="../../web/public/img/company-logo-big.jpg" alt="company-logo" class="profile__photo margin-bottom-light">-->
+<!--                        <button class="profile__upload-photo margin-bottom-medium">-->
+<!--                            select file-->
+<!--                        </button>-->
                     </div>
                 </div>
                 <div class="col-lg-9">

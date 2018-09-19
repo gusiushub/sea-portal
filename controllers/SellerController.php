@@ -4,8 +4,10 @@ namespace app\controllers;
 
 use app\models\User;
 use app\models\Vessel;
+use app\models\UploadImage;
 use Yii;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 
 class SellerController extends Controller
 {
@@ -17,11 +19,20 @@ class SellerController extends Controller
 
     public function actionProfile()
     {
+        $user = new User();
+        $upload = new UploadImage();
         if (!Yii::$app->user->isGuest){
             $status = Yii::$app->user->identity->user_status;
             if ( $status == 3) {
+                if(Yii::$app->request->isPost){
+                $file = UploadedFile::getInstance($upload, 'image');
+                if ($upload->uploadFile($file,Yii::$app->user->identity->img)){
+                    return $this->redirect('/web/seller/profile');
+                }
+                    return $this->render('profile', ['user' => $user,'upload'=>$upload]);
+                }
                 $user = new User();
-                return $this->render('profile', ['user' => $user]);
+                return $this->render('profile', ['user' => $user,'upload'=>$upload]);
             }else{
                 $this->redirect(['index']);
             }
