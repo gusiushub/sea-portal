@@ -399,31 +399,42 @@
     <?php
     $k=1;
     $ost = count($statistics);
-    foreach($statistics as $value){ ?>
-    <input type="hidden" value="<?php echo $value['request'] ?>" id="val<?php echo $k ?>">
+    foreach($statistics as $value){
+    if ($value['request']!=null) {
+var_dump($value['request']);
+        //$date = date("M-d-Y", mktime(0, 0, 0, date('m'), date('d') - $i, date('Y')));
+        ?>
+        <input type="hidden" value="<?php echo $value['request'] ?>" id="val<?php echo $k ?>">
+        <?php
+    }else{
+        ?>
+        <input type="hidden" value="<?php echo 0 ?>" id="val<?php echo $k ?>">
     <?php
+    }
     $k++;
     } ?>
 
     <?php
     $k=1;
     //var_dump($statistics[3]);exit;
-    for($j=0;$j<$ost;$j++){ ?>
+    for($j=1;$j<$ost;$j++){ ?>
         <input type="hidden" value="" id="val<?php echo $ost+$j ?>">
         <?php
         $k++;
     }
 
     $date = app\models\Statistics::find()->where(['user_id'=>Yii::$app->user->id])->limit(7)->orderby(['id'=>SORT_DESC])->all();
-//var_dump($date[1]['date']);
-$n = count($date);
+    $n = count($date);
     for($i=0;$i<8;$i++){
         if (isset($date[$i]['date'])){
         ?>
         <input type="hidden" value="<?php echo $date[$i]['date'] ?>" id="date<?php echo $i ?>">
         <?php
-    }else{?>
-            <input type="hidden" value="" id="date<?php echo $i ?>">
+    }else{
+            $date = date("M-d-Y", mktime(0, 0, 0, date('m'), date('d') - $i, date('Y')));
+            //var_dump($date);exit;
+            ?>
+            <input type="hidden" value="<?php echo $date ?>" id="date<?php echo $i ?>">
     <?php
         }
     }

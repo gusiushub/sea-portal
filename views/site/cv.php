@@ -259,6 +259,7 @@ use app\models\Location;
                             <div class="col-lg-12 col-md-6 col-sm-6 col-6">
                                 <a href="#" class="contract-line__info contract-line__info--link contract-line__info--uppercase">
                                     CV<?php echo $count; $count++;?>
+                                    <input type="hidden" name="name" value="<?php echo 'cv'.$count; $count++;?>">
                                 </a>
                             </div>
                         </div>
@@ -337,22 +338,6 @@ use app\models\Location;
             </div>
             <?php } ?>
 
-
-
-            <?php
-            $items = [
-                '0' => 'Активный',
-                'practice' => 'find a practice',
-                'job'=>'find a job'
-            ];
-
-            $dataPost= [
-//                            '0' => '2ццц',
-//                            '1' => 'ыыыы',
-//                            '2'=>'пппп'
-            ];
-            ?>
-
             <div class="contract-description block-underline block-underline-top">
                 <div class="row">
                     <div class="col-lg-2">
@@ -364,9 +349,6 @@ use app\models\Location;
                             </div>
                             <div class="col-lg-12 col-md-6 col-sm-6 col-6 margin-bottom-medium">
                                 <div class="select-style">
-
-
-
                                     <select name="category" id="category" class="select-style__select field-to-change field-to-change--unactive" disabled="">
                                         <option  class="select-style__placeholder">find a practice</option>
                                         <option value="find a practice">find a practice</option>
@@ -387,9 +369,18 @@ use app\models\Location;
                                 </div>
                                 <div class="col-lg-12 col-md-6 col-sm-6 col-6 margin-bottom-medium">
                                     <div class="select-style">
+                                        <?php
+                                        $faculty = Crew::find()->select('faculty')->all();
+                                        ?>
                                         <select name="faculty" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
-                                            <option value="Navigation" class="select-style__placeholder">Navigation</option>
-                                            <option value="Navigation">Navigation</option>
+                                            <option value="" class="select-style__placeholder">faculty</option>
+                                            <?php foreach ($faculty as $fac){
+                                            if (!empty($fac['faculty'])) {
+                                            ?>
+                                            <option value="<?php echo $fac['faculty'] ?>"><?php echo $fac['faculty'] ?></option>
+                                                <?php
+                                            }
+                                            } ?>
                                         </select>
                                         <div class="select-style__arrow">&nbsp;</div>
                                     </div>
@@ -409,10 +400,14 @@ use app\models\Location;
                                         $lvleng = Crew::find()->select('lvleng')->all();
                                         ?>
                                         <select name="levelofeng" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
-                                            <option value="" class="select-style__placeholder">excellent</option>
-                                            <?php foreach ($lvleng as $lvl){ ?>
-                                            <option value="<?php echo $lvl['lvleng'] ?>"><?php echo $lvl['lvleng'] ?></option>
-                                            <?php  } ?>
+                                            <option value="" class="select-style__placeholder">level english</option>
+                                            <?php foreach ($lvleng as $lvl){
+                                                if (!empty($lvl['lvleng'])) {
+                                                    ?>
+                                                    <option value="<?php echo $lvl['lvleng'] ?>"><?php echo $lvl['lvleng'] ?></option>
+                                                    <?php
+                                                }
+                                                } ?>
                                         </select>
                                         <div class="select-style__arrow">&nbsp;</div>
                                     </div>
@@ -432,7 +427,7 @@ use app\models\Location;
                                         $location = Location::find()->select('name')->where(['location_type'=>0])->all();
                                         ?>
                                         <select name="country" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
-                                            <option value="" class="select-style__placeholder">Estonia</option>
+                                            <option value="" class="select-style__placeholder">Country</option>
                                             <?php foreach ($location as $loc){ ?>
                                             <option value="<?php echo $loc['name'] ?>"><?php echo $loc['name'] ?></option>
                                             <?php  } ?>
@@ -455,7 +450,7 @@ use app\models\Location;
                                         $location = Location::find()->select('name')->where(['location_type'=>2])->all();
                                         ?>
                                         <select name="port" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
-                                            <option value="" class="select-style__placeholder">Tallinn</option>
+                                            <option value="" class="select-style__placeholder">Port</option>
                                             <?php foreach ($location as $loc){ ?>
                                             <option value="<?php echo $loc['name'] ?>"><?php echo $loc['name'] ?></option>
                                             <?php  } ?>

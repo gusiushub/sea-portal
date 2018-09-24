@@ -49,7 +49,8 @@ class SellerController extends Controller
 
     public function actionOffers()
     {
-        return $this->render('offers');
+        $userOffers = Vessel::find()->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->all();
+        return $this->render('offers',['userOffers'=>$userOffers]);
     }
 
     public function actionPricing()

@@ -8,6 +8,7 @@ use yii\web\Controller;
 use app\models\User;
 use app\models\DataSelection;
 use app\models\Contracts;
+//use app\models\DataSelection;
 
 class CompanyController extends Controller
 {
@@ -18,6 +19,30 @@ class CompanyController extends Controller
             return $this->goHome();
         }else{
             return $this->goHome();
+        }
+    }
+
+    public function actionAjax()
+    {
+        $date = date('Y/m/d',strtotime(date('Y-m-d').' +1 month'));
+        if (isset($_POST['check'])){
+            $ajax = json_decode($_POST['check'], true);
+            //var_dump($ajax);
+
+            $id = Yii::$app->user->identity->id;
+            $num = Contracts::find()->where(['user_id'=>$id])->all();
+            $model = new Contracts();
+            $model->user_id = $id;
+            $model->date = date('Y/m/d');
+            $model->date_of_expiry = $date;
+            $model->search = $ajax[1];
+            $model->mechanism = $ajax[2];
+            $model->maker = $ajax[3];
+            $model->category = $ajax[0];
+            $model->plan = 'free';
+            $model->status = 'paid';
+            $model->name = count($num);
+            return $model->save();
         }
     }
 
@@ -84,8 +109,8 @@ class CompanyController extends Controller
         if (!Yii::$app->user->isGuest){
             $status = Yii::$app->user->identity->user_status;
             if ( $status == 2) {
-                $model = new DataSelection();
-                return $this->render('addcontracts',['model' => $model]);
+                //$model = new DataSelection();
+                return $this->render('addcontracts');//,['model' => $model]);
             }else{
                 $this->redirect(['index']);
             }

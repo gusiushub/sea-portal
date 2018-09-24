@@ -387,9 +387,13 @@ use app\models\Crew;
                                     ?>
                                     <select name="levelofeng" id="" class="select-style__select field-to-change field-to-change field-to-change--unactive" disabled="">
                                         <option class="select-style__placeholder">excellent</option>
-                                        <?php foreach ($lvleng as $lvl){ ?>
-                                            <option value="<?php echo $lvl['lvleng'] ?>"><?php echo $lvl['lvleng'] ?></option>
-                                        <?php  } ?>
+                                        <?php foreach ($lvleng as $lvl) {
+                                            if (!empty($lvl['lvleng'])) {
+                                                ?>?>
+
+                                                <option value="<?php echo $lvl['lvleng'] ?>"><?php echo $lvl['lvleng'] ?></option>
+                                            <?php }
+                                        }?>
                                     </select>
                                     <div class="select-style__arrow">&nbsp;</div>
                                 </div>
@@ -417,8 +421,8 @@ use app\models\Crew;
                                 <div class="select-style">
                                     <select name="currency" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
                                         <option class="select-style__placeholder">EUR</option>
-                                        <option value="">text</option>
-                                        <option value="">text</option>
+                                        <option value="EUR">EUR</option>
+                                        <option value="USD">USD</option>
                                     </select>
                                     <div class="select-style__arrow">&nbsp;</div>
                                 </div>

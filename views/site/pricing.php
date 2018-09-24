@@ -231,6 +231,27 @@
                             upper lines of the search.
                         </p>
                     </div>
+                    <br>
+                    <br>
+                    <div class="col-lg-12">
+                    <div class="sub-title margin-bottom-light text-center">
+                        <h3 class="sub-title__title">
+                            select a cv:
+                        </h3>
+                    </div>
+                    <h4 class="filter__title">
+                        cv
+                    </h4>
+                    <div class="select-style">
+                        <select name="option" id="" class="select-style__select">
+                            <option class="select-style__placeholder">select a cv</option>
+                            <?php foreach ($cv as $userCv){ ?>
+                            <option value="<?php echo $userCv['name'] ?>"><?php echo $userCv['name'] ?></option>
+                            <?php } ?>
+                        </select>
+                        <div class="select-style__arrow">&nbsp;</div>
+                    </div>
+                    </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="row">

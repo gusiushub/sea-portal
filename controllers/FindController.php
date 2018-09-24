@@ -5,6 +5,8 @@ namespace app\controllers;
 
 use app\models\ContactForm;
 use app\models\User;
+use app\models\Vessel;
+use app\models\VesselSale;
 use Yii;
 use yii\web\Controller;
 use app\models\FindModel;
@@ -69,26 +71,6 @@ class FindController extends Controller
         $model = new FindCrew();
         $mail = new ContactForm();
 
-//        if (isset($_GET['agree'])){
-//
-//            if ($_GET['agree']=='yes'){
-//                $count = count($_GET)-3;
-//                for ($i=1; $i<$count+1; $i++) {
-//                    $cv[$i] = $_GET['cv'.$i];
-//                }
-//                $messages = [];
-//                foreach ($cv as $c) {
-//                    $messages[] = Yii::$app->mailer->compose()
-//                        // ...
-//                        ->setTo($c)
-//                        ->setSubject($_GET['FindCrew']['company'])
-//                        ->setTextBody($_GET['FindCrew']['body']);
-//                }
-//                 Yii::$app->mailer->sendMultiple($messages);
-//                $this->redirect('/web/find/crew');
-//            }
-//        }
-
         if (isset($_GET['agree'])){
             if ($_GET['agree']=='yes'){
 
@@ -132,7 +114,7 @@ class FindController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post())){
-            //var_dump($_POST);exit;
+
             if ($model->search()){
                 return $this->render('crewresult', ['model'=>$model,'mail'=>$mail]);
             }
@@ -143,29 +125,32 @@ class FindController extends Controller
 
     public function actionVesselsSale()
     {
-        return $this->render('vesselssale');
+        if (Yii::$app->request->isPost){
+
+            $findVesselsPlus = Vessel::find()->where(['like', 'type', $_POST['VesselSale']['type']])
+                ->andWhere(['like', 'vessel_option',$_POST['VesselSale']['vesOption']])
+                ->andWhere(['like', 'flag', $_POST['VesselSale']['flag']])
+                ->andWhere('category = :category',[':category'=>'vessel sale'])
+                ->andWhere('plan = :plan',[':plan'=>'business'])
+                ->all();
+
+            $findVessels = Vessel::find()->where(['like', 'type', $_POST['VesselSale']['type']])
+                ->andWhere(['like', 'vessel_option',$_POST['VesselSale']['vesOption']])
+                ->andWhere(['like', 'flag', $_POST['VesselSale']['flag']])
+                ->andWhere('category = :category',[':category'=>'vessel sale'])
+                ->andWhere('plan = :plan',[':plan'=>'free'])
+                ->all();
+
+            return $this->render('vesselsresult',['findVessels'=>$findVessels,'findVesselsPlus'=>$findVesselsPlus]);
+        }
+        $model = new VesselSale();
+        return $this->render('vesselssale',['model'=>$model]);
     }
 
     public function actionChartering()
     {
         return $this->render('chartering');
     }
-
-//    public function actionUpdatePart($part, $id = null)
-//    {
-//        if (is_null($id)) {
-//            //var_dump('asdasd');exit;
-//            $model = new FindStudent();
-//            return $this->render('student',['model'=>$model,'Ipjax'=>'asdasdasdasd']);
-//        }
-//        else if (!$model = Model::find()->where('id = :id', ['id' => $id])->one()) {
-//            //throw new NotFoundHttpException("...");
-//        }
-
-//        return $this->renderPartial('controller/form_part_' . $part, [
-//            'model' => $model,
-//        ]);
-//    }
 
     public function actionAjaxCrew()
     {
@@ -178,6 +163,13 @@ class FindController extends Controller
             }
         }
     }
+
+
+    public function actionAboutShip()
+    {
+        return $this->render('ship');
+    }
+
 
     public function actionAjaxShipboarb()
     {

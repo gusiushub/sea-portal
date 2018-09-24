@@ -319,13 +319,13 @@
 <!--                    </div>-->
 <!--                </div>-->
 <!--            </div>-->
-            <div class="contract-information block-underline-top block-underline margin-bottom-light">
+            <div id="form" class="contract-information block-underline-top block-underline margin-bottom-light">
                 <div class="row contract-information__desktop">
                     <div class="col-lg-12 horizontal-between">
-                        <div class="contract-information__column">
+                        <div id="group1" class="contract-information__column">
                             <div class="contract-information__line">
                                 <div class="checkbox-style checkbox-style--unactive">
-                                    <input type="checkbox" id='shipboard' class="checkbox-style__input" disabled>
+                                    <input name="check" value="Shipboard supply, transport and logistics" type="checkbox" id='shipboard' class="checkbox-style__input" disabled>
                                     <label for="shipboard" class="checkbox-style__label checkbox-style__label--profile">
                                         <span class="checkbox-style__check checkbox-style__check--profile"></span>
                                         <p class="checkbox-style__text checkbox-style__text--profile">Shipboard supply, transport and logistics</p>
@@ -334,7 +334,7 @@
                             </div>
                             <div class="contract-information__line">
                                 <div class="checkbox-style checkbox-style--unactive">
-                                    <input type="checkbox" id='port-service' class="checkbox-style__input" disabled>
+                                    <input name="check" value="PORT SERVICE" type="checkbox" id='port-service' class="checkbox-style__input" disabled>
                                     <label for="port-service" class="checkbox-style__label checkbox-style__label--profile">
                                         <span class="checkbox-style__check checkbox-style__check--profile"></span>
                                         <p class="checkbox-style__text checkbox-style__text--profile">PORT SERVICE</p>
@@ -343,7 +343,7 @@
                             </div>
                             <div class="contract-information__line">
                                 <div class="checkbox-style checkbox-style--unactive">
-                                    <input type="checkbox" id='inspection' class="checkbox-style__input" disabled>
+                                    <input name="check" value="INSPECTION OF EQUIPMEN" type="checkbox" id='inspection' class="checkbox-style__input" disabled>
                                     <label for="inspection" class="checkbox-style__label checkbox-style__label--profile">
                                         <span class="checkbox-style__check checkbox-style__check--profile"></span>
                                         <p class="checkbox-style__text checkbox-style__text--profile">INSPECTION OF EQUIPMEN</p>
@@ -388,10 +388,10 @@
                             </div>
                         </div>
                         <!--info column-->
-                        <div class="contract-information__column">
+                        <div id="group2" class="contract-information__column">
                             <div class="contract-information__line">
                                 <div class="checkbox-style checkbox-style--unactive">
-                                    <input type="checkbox" id='spare' class="checkbox-style__input" disabled>
+                                    <input name="check" value="Spare parts and equipment" type="checkbox" id='spare' class="checkbox-style__input" disabled>
                                     <label for="spare" class="checkbox-style__label checkbox-style__label--profile">
                                         <span class="checkbox-style__check checkbox-style__check--profile"></span>
                                         <p class="checkbox-style__text checkbox-style__text--profile">Spare parts and equipment</p>
@@ -409,7 +409,7 @@
                             </div>
                             <div class="contract-information__line">
                                 <div class="checkbox-style checkbox-style--unactive">
-                                    <input type="checkbox" id='provision' class="checkbox-style__input" disabled>
+                                    <input name="check" value="Provision & Bonded Store" type="checkbox" id='provision' class="checkbox-style__input" disabled>
                                     <label for="provision" class="checkbox-style__label checkbox-style__label--profile">
                                         <span class="checkbox-style__check checkbox-style__check--profile"></span>
                                         <p class="checkbox-style__text checkbox-style__text--profile">Provision & Bonded Store</p>
@@ -427,7 +427,7 @@
                             </div>
                             <div class="contract-information__line">
                                 <div class="checkbox-style checkbox-style--unactive">
-                                    <input type="checkbox" id='chemicals' class="checkbox-style__input" disabled>
+                                    <input name="check" value="Spare parts and equipment" type="checkbox" id='chemicals' class="checkbox-style__input" disabled>
                                     <label for="chemicals" class="checkbox-style__label checkbox-style__label--profile">
                                         <span class="checkbox-style__check checkbox-style__check--profile"></span>
                                         <p class="checkbox-style__text checkbox-style__text--profile">Marine chemicals</p>
@@ -472,7 +472,7 @@
                             </div>
                         </div>
                         <!--info column-->
-                        <div class="contract-information__column">
+                        <div id="group3" class="contract-information__column">
                             <div class="contract-information__line">
                                 <div class="checkbox-style checkbox-style--unactive">
                                     <input type="checkbox" id='engines' class="checkbox-style__input" disabled>
@@ -682,7 +682,7 @@
                             </div>
                         </div>
                         <!--info column-->
-                        <div class="contract-information__column">
+                        <div id="group4" class="contract-information__column">
                             <div class="contract-information__line">
                                 <div class="checkbox-style checkbox-style--unactive">
                                     <input type="checkbox" id='alpha' class="checkbox-style__input" disabled>
@@ -811,7 +811,7 @@
                             </div>
                             <div class="contract-information__line">
                                 <div class="checkbox-style checkbox-style--unactive">
-                                    <input type="checkbox" id='man' class="checkbox-style__input" disabled>
+                                    <input name="check" value="man b&w" type="checkbox" id='man' class="checkbox-style__input" disabled>
                                     <label for="man" class="checkbox-style__label checkbox-style__label--profile">
                                         <span class="checkbox-style__check checkbox-style__check--profile"></span>
                                         <p class="checkbox-style__text checkbox-style__text--profile">man b&w</p>
@@ -820,7 +820,7 @@
                             </div>
                             <div class="contract-information__line">
                                 <div class="checkbox-style checkbox-style--unactive">
-                                    <input type="checkbox" id='mitsubishi' class="checkbox-style__input" disabled>
+                                    <input name="check" value="mitsubishi" type="checkbox" id='mitsubishi' class="checkbox-style__input" disabled>
                                     <label for="mitsubishi" class="checkbox-style__label checkbox-style__label--profile">
                                         <span class="checkbox-style__check checkbox-style__check--profile"></span>
                                         <p class="checkbox-style__text checkbox-style__text--profile">mitsubishi</p>
@@ -829,7 +829,7 @@
                             </div>
                             <div class="contract-information__line">
                                 <div class="checkbox-style checkbox-style--unactive">
-                                    <input type="checkbox" id='mitsui' class="checkbox-style__input" disabled>
+                                    <input name="check" value="mitsui diesel" type="checkbox" id='mitsui' class="checkbox-style__input" disabled>
                                     <label for="mitsui" class="checkbox-style__label checkbox-style__label--profile">
                                         <span class="checkbox-style__check checkbox-style__check--profile"></span>
                                         <p class="checkbox-style__text checkbox-style__text--profile">mitsui diesel</p>
@@ -838,7 +838,7 @@
                             </div>
                             <div class="contract-information__line">
                                 <div class="checkbox-style checkbox-style--unactive">
-                                    <input type="checkbox" id='mirrless' class="checkbox-style__input" disabled>
+                                    <input name="check" value="mirrless blackstone" type="checkbox" id='mirrless' class="checkbox-style__input" disabled>
                                     <label for="mirrless" class="checkbox-style__label checkbox-style__label--profile">
                                         <span class="checkbox-style__check checkbox-style__check--profile"></span>
                                         <p class="checkbox-style__text checkbox-style__text--profile">mirrless blackstone</p>
@@ -847,7 +847,7 @@
                             </div>
                             <div class="contract-information__line">
                                 <div class="checkbox-style checkbox-style--unactive">
-                                    <input type="checkbox" id='mtu' class="checkbox-style__input" disabled>
+                                    <input name="check" value="mtu" type="checkbox" id='mtu' class="checkbox-style__input" disabled>
                                     <label for="mtu" class="checkbox-style__label checkbox-style__label--profile">
                                         <span class="checkbox-style__check checkbox-style__check--profile"></span>
                                         <p class="checkbox-style__text checkbox-style__text--profile">mtu</p>
@@ -1061,7 +1061,7 @@
                         <div class="contract-information__list contract-information__list--level-1">
                             <div class="contract-information__line">
                                 <div class="checkbox-style checkbox-style--unactive">
-                                    <input type="checkbox" id='shipboard2' class="checkbox-style__input" disabled>
+                                    <input name="check" value="Spare parts and equipment" type="checkbox" id='shipboard2' class="checkbox-style__input" disabled>
                                     <label for="shipboard2" class="checkbox-style__label checkbox-style__label--profile">
                                         <span class="checkbox-style__check checkbox-style__check--profile"></span>
                                         <p class="checkbox-style__text checkbox-style__text--profile">Shipboard supply, transport and logistics</p>
@@ -1779,6 +1779,7 @@
                                     </label>
                                 </div>
                             </div>
+                            <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" >
                             <div class="contract-information__line">
                                 <div class="checkbox-style checkbox-style--unactive">
                                     <input type="checkbox" id='rumo2' class="checkbox-style__input" disabled>
@@ -1793,7 +1794,6 @@
                     </div>
                 </div>
                 <!--mobile-version-->
-
                 <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
 
                 <div class="row">
@@ -2019,4 +2019,99 @@
         }
 
     });
+</script>
+
+<script>
+
+    var program = [];
+
+    function scanChecboxes() {
+        program = [];
+
+        $('input:checkbox:checked').each(function () {
+            program.push($(this).val());
+        });
+    }
+    $('#group1 input:checkbox').click(function(){
+        if ($(this).is(':checked')) {
+            $('#group1 input:checkbox').not(this).prop('checked', false);
+            $(this).scanCheckboxes;
+        }
+    });
+
+    $('#group2 input:checkbox').click(function(){
+        if ($(this).is(':checked')) {
+            $('#group2 input:checkbox').not(this).prop('checked', false);
+            $(this).scanCheckboxes;
+        }
+    });
+
+    $('#group3 input:checkbox').click(function(){
+        if ($(this).is(':checked')) {
+            $('#group3 input:checkbox').not(this).prop('checked', false);
+        }
+    });
+
+    $('#group4 input:checkbox').click(function(){
+        if ($(this).is(':checked')) {
+            $('#group4 input:checkbox').not(this).prop('checked', false);
+            $('input:checkbox:checked').each(function(){
+                //alert($(this).val());
+            });
+        }
+    });
+
+    $('#contentButton').click(function(){
+        if($(this).text().trim() === 'edit') {
+            var vals = $(':checkbox').map(function(i,el){
+                if($(el).prop('checked')){
+
+                    return $(el).val();
+                }
+            }).get();
+           // var arr=$('input:checkbox:checked').map(function() {return this.value;}).get();
+            var _csrf = $('input[name="_csrf"]').val();
+            var jsdata = JSON.stringify(vals);
+            //var arr = [jsdata];
+            console.log(jsdata);
+                 // check = {
+                 //     arr[1],
+                 //     arr[2],
+                 //     arr[3],
+                 //     arr[4]
+                 // };
+
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "ajax",
+                    //dataType: "json",
+                    data: {check: jsdata, _csrf:_csrf},
+                    //cashe: false,
+                    success: function(data){
+                        alert(data);
+                    }
+                });
+        }
+        });
+    // $('#form input:checkbox:checked').each(function() {
+    //     var vals = $(':checkbox').map(function (i, el) {
+    //         if ($(el).prop('checked')) {
+    //             return $(el).val();
+    //         }
+    //     }).get();
+    //     $.ajax(
+    //         {
+    //             type: "POST",
+    //             url: "prinat_bludo.php",
+    //             dataType: "json",
+    //             data: {chArr: vals},
+    //             cashe: false,
+    //             success: function (data) {
+    //             }
+    //         });
+    // }
+    // });
+
+
 </script>

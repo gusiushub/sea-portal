@@ -3341,3 +3341,488 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1537737932.073770999908447265625,
     'REQUEST_TIME' => 1537737932,
 ]
+[24-Sep-2018 09:54:35 UTC] An Error occurred while handling another error:
+yii\web\HeadersAlreadySentException: Headers already sent in /home/u653637018/public_html/controllers/SiteController.php on line 385. in /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/u653637018/public_html/vendor/yiisoft/yii2/web/ErrorHandler.php(135): yii\web\Response->send()
+#2 /home/u653637018/public_html/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\web\HeadersAlreadySentException))
+#3 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\HeadersAlreadySentException))
+#4 {main}
+Previous exception:
+yii\web\HeadersAlreadySentException: Headers already sent in /home/u653637018/public_html/controllers/SiteController.php on line 385. in /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/u653637018/public_html/vendor/yiisoft/yii2/base/Application.php(392): yii\web\Response->send()
+#2 /home/u653637018/public_html/web/index.php(12): yii\base\Application->run()
+#3 {main}
+$_SERVER = [
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate',
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en;q=0.9',
+    'HTTP_CONNECTION' => 'Keep-Alive',
+    'CONTENT_LENGTH' => '0',
+    'HTTP_COOKIE' => 'PHPSESSID=d24ff0d73b4a5c7afb46dad34613c85d; _identity=10047f4c5d4662739336e98f0b1769ae9e67615a4e0cf2a04a3440ac329ecac1a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A48%3A%22%5B112%2C%22KCw_RtnnsSC3nnnBnhKV8o9N6pkvrL5S%22%2C2592000%5D%22%3B%7D; _csrf=688710802c0973059c8ecdada2997c9730f8d3777a0a1de6a0da2c20e5446bc5a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22lj2FqPqx3BF2R8k0EXRvIg_9nFkjafyt%22%3B%7D',
+    'HTTP_HOST' => 'parsavito.xyz',
+    'HTTP_REFERER' => 'http://parsavito.xyz/web/site/profile',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 YaBrowser/18.6.1.770 Yowser/2.5 Safari/537.36',
+    'HTTP_CACHE_CONTROL' => 'max-age=0',
+    'HTTP_X_FORWARDED_FOR' => '195.88.192.65',
+    'HTTP_X_FORWARDED_PROTO' => 'http',
+    'HTTP_X_REAL_IP' => '195.88.192.65',
+    'HTTP_X_FORWARDED_PORT' => '80',
+    'HTTP_X_PORT' => '80',
+    'HTTP_X_USERNAME' => 'u653637018',
+    'HTTP_X_ORDER_ID' => '40761464',
+    'HTTP_X_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1',
+    'REDIRECT_UNIQUE_ID' => 'W6i0WoeHTq2aJHSHl5kttAAAAAU',
+    'REDIRECT_PHP_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'REDIRECT_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'W6i0WoeHTq2aJHSHl5kttAAAAAU',
+    'PHP_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'parsavito.xyz',
+    'SERVER_ADDR' => '185.224.137.219',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '195.88.192.65',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'SERVER_ADMIN' => 'support@hostinger.com',
+    'SCRIPT_FILENAME' => '/home/u653637018/public_html/web/index.php',
+    'REMOTE_PORT' => '64979',
+    'REDIRECT_URL' => '/web/site/pricing',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/web/site/pricing',
+    'SCRIPT_NAME' => '/web/index.php',
+    'PHP_SELF' => '/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1537782875.05088710784912109375,
+    'REQUEST_TIME' => 1537782875,
+]
+[24-Sep-2018 09:54:52 UTC] An Error occurred while handling another error:
+yii\web\HeadersAlreadySentException: Headers already sent in /home/u653637018/public_html/controllers/SiteController.php on line 385. in /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/u653637018/public_html/vendor/yiisoft/yii2/web/ErrorHandler.php(135): yii\web\Response->send()
+#2 /home/u653637018/public_html/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\web\HeadersAlreadySentException))
+#3 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\HeadersAlreadySentException))
+#4 {main}
+Previous exception:
+yii\web\HeadersAlreadySentException: Headers already sent in /home/u653637018/public_html/controllers/SiteController.php on line 385. in /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/u653637018/public_html/vendor/yiisoft/yii2/base/Application.php(392): yii\web\Response->send()
+#2 /home/u653637018/public_html/web/index.php(12): yii\base\Application->run()
+#3 {main}
+$_SERVER = [
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate',
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en;q=0.9',
+    'HTTP_CONNECTION' => 'Keep-Alive',
+    'CONTENT_LENGTH' => '0',
+    'HTTP_COOKIE' => 'PHPSESSID=d24ff0d73b4a5c7afb46dad34613c85d; _identity=10047f4c5d4662739336e98f0b1769ae9e67615a4e0cf2a04a3440ac329ecac1a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A48%3A%22%5B112%2C%22KCw_RtnnsSC3nnnBnhKV8o9N6pkvrL5S%22%2C2592000%5D%22%3B%7D; _csrf=688710802c0973059c8ecdada2997c9730f8d3777a0a1de6a0da2c20e5446bc5a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22lj2FqPqx3BF2R8k0EXRvIg_9nFkjafyt%22%3B%7D',
+    'HTTP_HOST' => 'parsavito.xyz',
+    'HTTP_REFERER' => 'http://parsavito.xyz/web/site/profile',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 YaBrowser/18.6.1.770 Yowser/2.5 Safari/537.36',
+    'HTTP_CACHE_CONTROL' => 'max-age=0',
+    'HTTP_X_FORWARDED_FOR' => '195.88.192.65',
+    'HTTP_X_FORWARDED_PROTO' => 'http',
+    'HTTP_X_REAL_IP' => '195.88.192.65',
+    'HTTP_X_FORWARDED_PORT' => '80',
+    'HTTP_X_PORT' => '80',
+    'HTTP_X_USERNAME' => 'u653637018',
+    'HTTP_X_ORDER_ID' => '40761464',
+    'HTTP_X_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1',
+    'REDIRECT_UNIQUE_ID' => 'W6i0bC8U5HZYsPmuP4ynDAAAAAM',
+    'REDIRECT_PHP_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'REDIRECT_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'W6i0bC8U5HZYsPmuP4ynDAAAAAM',
+    'PHP_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'parsavito.xyz',
+    'SERVER_ADDR' => '185.224.137.219',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '195.88.192.65',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'SERVER_ADMIN' => 'support@hostinger.com',
+    'SCRIPT_FILENAME' => '/home/u653637018/public_html/web/index.php',
+    'REMOTE_PORT' => '33144',
+    'REDIRECT_URL' => '/web/site/pricing',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/web/site/pricing',
+    'SCRIPT_NAME' => '/web/index.php',
+    'PHP_SELF' => '/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1537782892.8206460475921630859375,
+    'REQUEST_TIME' => 1537782892,
+]
+[24-Sep-2018 09:54:53 UTC] An Error occurred while handling another error:
+yii\web\HeadersAlreadySentException: Headers already sent in /home/u653637018/public_html/controllers/SiteController.php on line 385. in /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/u653637018/public_html/vendor/yiisoft/yii2/web/ErrorHandler.php(135): yii\web\Response->send()
+#2 /home/u653637018/public_html/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\web\HeadersAlreadySentException))
+#3 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\HeadersAlreadySentException))
+#4 {main}
+Previous exception:
+yii\web\HeadersAlreadySentException: Headers already sent in /home/u653637018/public_html/controllers/SiteController.php on line 385. in /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/u653637018/public_html/vendor/yiisoft/yii2/base/Application.php(392): yii\web\Response->send()
+#2 /home/u653637018/public_html/web/index.php(12): yii\base\Application->run()
+#3 {main}
+$_SERVER = [
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate',
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en;q=0.9',
+    'HTTP_CONNECTION' => 'Keep-Alive',
+    'CONTENT_LENGTH' => '0',
+    'HTTP_COOKIE' => 'PHPSESSID=d24ff0d73b4a5c7afb46dad34613c85d; _identity=10047f4c5d4662739336e98f0b1769ae9e67615a4e0cf2a04a3440ac329ecac1a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A48%3A%22%5B112%2C%22KCw_RtnnsSC3nnnBnhKV8o9N6pkvrL5S%22%2C2592000%5D%22%3B%7D; _csrf=688710802c0973059c8ecdada2997c9730f8d3777a0a1de6a0da2c20e5446bc5a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22lj2FqPqx3BF2R8k0EXRvIg_9nFkjafyt%22%3B%7D',
+    'HTTP_HOST' => 'parsavito.xyz',
+    'HTTP_REFERER' => 'http://parsavito.xyz/web/site/profile',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 YaBrowser/18.6.1.770 Yowser/2.5 Safari/537.36',
+    'HTTP_CACHE_CONTROL' => 'max-age=0',
+    'HTTP_X_FORWARDED_FOR' => '195.88.192.65',
+    'HTTP_X_FORWARDED_PROTO' => 'http',
+    'HTTP_X_REAL_IP' => '195.88.192.65',
+    'HTTP_X_FORWARDED_PORT' => '80',
+    'HTTP_X_PORT' => '80',
+    'HTTP_X_USERNAME' => 'u653637018',
+    'HTTP_X_ORDER_ID' => '40761464',
+    'HTTP_X_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1',
+    'REDIRECT_UNIQUE_ID' => 'W6i0bcDdsPyu0OYlYI56PQAAAA0',
+    'REDIRECT_PHP_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'REDIRECT_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'W6i0bcDdsPyu0OYlYI56PQAAAA0',
+    'PHP_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'parsavito.xyz',
+    'SERVER_ADDR' => '185.224.137.219',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '195.88.192.65',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'SERVER_ADMIN' => 'support@hostinger.com',
+    'SCRIPT_FILENAME' => '/home/u653637018/public_html/web/index.php',
+    'REMOTE_PORT' => '33846',
+    'REDIRECT_URL' => '/web/site/pricing',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/web/site/pricing',
+    'SCRIPT_NAME' => '/web/index.php',
+    'PHP_SELF' => '/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1537782893.739428043365478515625,
+    'REQUEST_TIME' => 1537782893,
+]
+[24-Sep-2018 09:54:57 UTC] An Error occurred while handling another error:
+yii\web\HeadersAlreadySentException: Headers already sent in /home/u653637018/public_html/controllers/SiteController.php on line 385. in /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/u653637018/public_html/vendor/yiisoft/yii2/web/ErrorHandler.php(135): yii\web\Response->send()
+#2 /home/u653637018/public_html/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\web\HeadersAlreadySentException))
+#3 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\HeadersAlreadySentException))
+#4 {main}
+Previous exception:
+yii\web\HeadersAlreadySentException: Headers already sent in /home/u653637018/public_html/controllers/SiteController.php on line 385. in /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/u653637018/public_html/vendor/yiisoft/yii2/base/Application.php(392): yii\web\Response->send()
+#2 /home/u653637018/public_html/web/index.php(12): yii\base\Application->run()
+#3 {main}
+$_SERVER = [
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate',
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en;q=0.9',
+    'HTTP_CONNECTION' => 'Keep-Alive',
+    'CONTENT_LENGTH' => '0',
+    'HTTP_COOKIE' => 'PHPSESSID=d24ff0d73b4a5c7afb46dad34613c85d; _identity=10047f4c5d4662739336e98f0b1769ae9e67615a4e0cf2a04a3440ac329ecac1a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A48%3A%22%5B112%2C%22KCw_RtnnsSC3nnnBnhKV8o9N6pkvrL5S%22%2C2592000%5D%22%3B%7D; _csrf=688710802c0973059c8ecdada2997c9730f8d3777a0a1de6a0da2c20e5446bc5a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22lj2FqPqx3BF2R8k0EXRvIg_9nFkjafyt%22%3B%7D',
+    'HTTP_HOST' => 'parsavito.xyz',
+    'HTTP_REFERER' => 'http://parsavito.xyz/web/site/profile',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 YaBrowser/18.6.1.770 Yowser/2.5 Safari/537.36',
+    'HTTP_CACHE_CONTROL' => 'max-age=0',
+    'HTTP_X_FORWARDED_FOR' => '195.88.192.65',
+    'HTTP_X_FORWARDED_PROTO' => 'http',
+    'HTTP_X_REAL_IP' => '195.88.192.65',
+    'HTTP_X_FORWARDED_PORT' => '80',
+    'HTTP_X_PORT' => '80',
+    'HTTP_X_USERNAME' => 'u653637018',
+    'HTTP_X_ORDER_ID' => '40761464',
+    'HTTP_X_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1',
+    'REDIRECT_UNIQUE_ID' => 'W6i0cXfavD1JcVMqnzu4lwAAAAw',
+    'REDIRECT_PHP_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'REDIRECT_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'W6i0cXfavD1JcVMqnzu4lwAAAAw',
+    'PHP_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'parsavito.xyz',
+    'SERVER_ADDR' => '185.224.137.219',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '195.88.192.65',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'SERVER_ADMIN' => 'support@hostinger.com',
+    'SCRIPT_FILENAME' => '/home/u653637018/public_html/web/index.php',
+    'REMOTE_PORT' => '36522',
+    'REDIRECT_URL' => '/web/site/pricing',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/web/site/pricing',
+    'SCRIPT_NAME' => '/web/index.php',
+    'PHP_SELF' => '/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1537782897.0784780979156494140625,
+    'REQUEST_TIME' => 1537782897,
+]
+[24-Sep-2018 09:54:58 UTC] An Error occurred while handling another error:
+yii\web\HeadersAlreadySentException: Headers already sent in /home/u653637018/public_html/controllers/SiteController.php on line 385. in /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/u653637018/public_html/vendor/yiisoft/yii2/web/ErrorHandler.php(135): yii\web\Response->send()
+#2 /home/u653637018/public_html/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\web\HeadersAlreadySentException))
+#3 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\HeadersAlreadySentException))
+#4 {main}
+Previous exception:
+yii\web\HeadersAlreadySentException: Headers already sent in /home/u653637018/public_html/controllers/SiteController.php on line 385. in /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/u653637018/public_html/vendor/yiisoft/yii2/base/Application.php(392): yii\web\Response->send()
+#2 /home/u653637018/public_html/web/index.php(12): yii\base\Application->run()
+#3 {main}
+$_SERVER = [
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate',
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en;q=0.9',
+    'HTTP_CONNECTION' => 'Keep-Alive',
+    'CONTENT_LENGTH' => '0',
+    'HTTP_COOKIE' => 'PHPSESSID=d24ff0d73b4a5c7afb46dad34613c85d; _identity=10047f4c5d4662739336e98f0b1769ae9e67615a4e0cf2a04a3440ac329ecac1a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A48%3A%22%5B112%2C%22KCw_RtnnsSC3nnnBnhKV8o9N6pkvrL5S%22%2C2592000%5D%22%3B%7D; _csrf=688710802c0973059c8ecdada2997c9730f8d3777a0a1de6a0da2c20e5446bc5a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22lj2FqPqx3BF2R8k0EXRvIg_9nFkjafyt%22%3B%7D',
+    'HTTP_HOST' => 'parsavito.xyz',
+    'HTTP_REFERER' => 'http://parsavito.xyz/web/site/profile',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 YaBrowser/18.6.1.770 Yowser/2.5 Safari/537.36',
+    'HTTP_CACHE_CONTROL' => 'max-age=0',
+    'HTTP_X_FORWARDED_FOR' => '195.88.192.65',
+    'HTTP_X_FORWARDED_PROTO' => 'http',
+    'HTTP_X_REAL_IP' => '195.88.192.65',
+    'HTTP_X_FORWARDED_PORT' => '80',
+    'HTTP_X_PORT' => '80',
+    'HTTP_X_USERNAME' => 'u653637018',
+    'HTTP_X_ORDER_ID' => '40761464',
+    'HTTP_X_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1',
+    'REDIRECT_UNIQUE_ID' => 'W6i0ccQ2HBpx6fTJ0opaSwAAACM',
+    'REDIRECT_PHP_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'REDIRECT_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'W6i0ccQ2HBpx6fTJ0opaSwAAACM',
+    'PHP_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'parsavito.xyz',
+    'SERVER_ADDR' => '185.224.137.219',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '195.88.192.65',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'SERVER_ADMIN' => 'support@hostinger.com',
+    'SCRIPT_FILENAME' => '/home/u653637018/public_html/web/index.php',
+    'REMOTE_PORT' => '37400',
+    'REDIRECT_URL' => '/web/site/pricing',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/web/site/pricing',
+    'SCRIPT_NAME' => '/web/index.php',
+    'PHP_SELF' => '/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1537782897.994113922119140625,
+    'REQUEST_TIME' => 1537782897,
+]
+[24-Sep-2018 09:54:58 UTC] An Error occurred while handling another error:
+yii\web\HeadersAlreadySentException: Headers already sent in /home/u653637018/public_html/controllers/SiteController.php on line 385. in /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/u653637018/public_html/vendor/yiisoft/yii2/web/ErrorHandler.php(135): yii\web\Response->send()
+#2 /home/u653637018/public_html/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\web\HeadersAlreadySentException))
+#3 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\HeadersAlreadySentException))
+#4 {main}
+Previous exception:
+yii\web\HeadersAlreadySentException: Headers already sent in /home/u653637018/public_html/controllers/SiteController.php on line 385. in /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/u653637018/public_html/vendor/yiisoft/yii2/base/Application.php(392): yii\web\Response->send()
+#2 /home/u653637018/public_html/web/index.php(12): yii\base\Application->run()
+#3 {main}
+$_SERVER = [
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate',
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en;q=0.9',
+    'HTTP_CONNECTION' => 'Keep-Alive',
+    'CONTENT_LENGTH' => '0',
+    'HTTP_COOKIE' => 'PHPSESSID=d24ff0d73b4a5c7afb46dad34613c85d; _identity=10047f4c5d4662739336e98f0b1769ae9e67615a4e0cf2a04a3440ac329ecac1a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A48%3A%22%5B112%2C%22KCw_RtnnsSC3nnnBnhKV8o9N6pkvrL5S%22%2C2592000%5D%22%3B%7D; _csrf=688710802c0973059c8ecdada2997c9730f8d3777a0a1de6a0da2c20e5446bc5a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22lj2FqPqx3BF2R8k0EXRvIg_9nFkjafyt%22%3B%7D',
+    'HTTP_HOST' => 'parsavito.xyz',
+    'HTTP_REFERER' => 'http://parsavito.xyz/web/site/profile',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 YaBrowser/18.6.1.770 Yowser/2.5 Safari/537.36',
+    'HTTP_CACHE_CONTROL' => 'max-age=0',
+    'HTTP_X_FORWARDED_FOR' => '195.88.192.65',
+    'HTTP_X_FORWARDED_PROTO' => 'http',
+    'HTTP_X_REAL_IP' => '195.88.192.65',
+    'HTTP_X_FORWARDED_PORT' => '80',
+    'HTTP_X_PORT' => '80',
+    'HTTP_X_USERNAME' => 'u653637018',
+    'HTTP_X_ORDER_ID' => '40761464',
+    'HTTP_X_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1',
+    'REDIRECT_UNIQUE_ID' => 'W6i0chue0OzNeEfhwTKwpgAAABs',
+    'REDIRECT_PHP_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'REDIRECT_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'W6i0chue0OzNeEfhwTKwpgAAABs',
+    'PHP_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'parsavito.xyz',
+    'SERVER_ADDR' => '185.224.137.219',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '195.88.192.65',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'SERVER_ADMIN' => 'support@hostinger.com',
+    'SCRIPT_FILENAME' => '/home/u653637018/public_html/web/index.php',
+    'REMOTE_PORT' => '38162',
+    'REDIRECT_URL' => '/web/site/pricing',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/web/site/pricing',
+    'SCRIPT_NAME' => '/web/index.php',
+    'PHP_SELF' => '/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1537782898.8750340938568115234375,
+    'REQUEST_TIME' => 1537782898,
+]
+[24-Sep-2018 21:06:37 UTC] An Error occurred while handling another error:
+yii\web\HeadersAlreadySentException: Headers already sent in /home/u653637018/public_html/controllers/FindController.php on line 144. in /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/u653637018/public_html/vendor/yiisoft/yii2/web/ErrorHandler.php(135): yii\web\Response->send()
+#2 /home/u653637018/public_html/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\web\HeadersAlreadySentException))
+#3 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\HeadersAlreadySentException))
+#4 {main}
+Previous exception:
+yii\web\HeadersAlreadySentException: Headers already sent in /home/u653637018/public_html/controllers/FindController.php on line 144. in /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/u653637018/public_html/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/u653637018/public_html/vendor/yiisoft/yii2/base/Application.php(392): yii\web\Response->send()
+#2 /home/u653637018/public_html/web/index.php(12): yii\base\Application->run()
+#3 {main}
+$_SERVER = [
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate',
+    'HTTP_ACCEPT_LANGUAGE' => 'ru,en;q=0.9',
+    'HTTP_CONNECTION' => 'Keep-Alive',
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded',
+    'CONTENT_LENGTH' => '458',
+    'HTTP_COOKIE' => 'PHPSESSID=7d8ffcc8dff36146044eccd7b8f21de0; _identity=d6541186d98efd6a810256a1a1eb83088a4affa0020a5a1caea1c1dbca94a089a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A47%3A%22%5B94%2C%22I2tyn_UVhdDeJfQJC0mV2LWnLiY_l6dG%22%2C2592000%5D%22%3B%7D; _csrf=8557761470250764fbe0ab4cc2dbe603ee2814a8bbdd6ebce9b6022d91a2db4fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22m4U3XtVPKj17FdsW6Ffk8KFDi7YCuLiY%22%3B%7D',
+    'HTTP_HOST' => 'parsavito.xyz',
+    'HTTP_REFERER' => 'http://parsavito.xyz/web/find/vessels-sale',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 YaBrowser/18.6.1.770 Yowser/2.5 Safari/537.36',
+    'HTTP_CACHE_CONTROL' => 'max-age=0',
+    'HTTP_X_FORWARDED_FOR' => '195.88.192.65',
+    'HTTP_X_FORWARDED_PROTO' => 'http',
+    'HTTP_X_REAL_IP' => '195.88.192.65',
+    'HTTP_X_FORWARDED_PORT' => '80',
+    'HTTP_X_PORT' => '80',
+    'HTTP_X_USERNAME' => 'u653637018',
+    'HTTP_X_ORDER_ID' => '40761464',
+    'HTTP_X_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1',
+    'HTTP_ORIGIN' => 'http://parsavito.xyz',
+    'REDIRECT_UNIQUE_ID' => 'W6lR3N-P9xP5f@JKEdQkeAAAAGE',
+    'REDIRECT_PHP_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'REDIRECT_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'W6lR3N-P9xP5f@JKEdQkeAAAAGE',
+    'PHP_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'parsavito.xyz',
+    'SERVER_ADDR' => '185.224.137.219',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '195.88.192.65',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/u653637018/public_html',
+    'SERVER_ADMIN' => 'support@hostinger.com',
+    'SCRIPT_FILENAME' => '/home/u653637018/public_html/web/index.php',
+    'REMOTE_PORT' => '17119',
+    'REDIRECT_URL' => '/web/find/vessels-sale',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'POST',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/web/find/vessels-sale',
+    'SCRIPT_NAME' => '/web/index.php',
+    'PHP_SELF' => '/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1537823196.53925609588623046875,
+    'REQUEST_TIME' => 1537823196,
+]

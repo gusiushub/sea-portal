@@ -152,6 +152,32 @@ class SiteController extends Controller
         }
         }
 
+
+        public function actionSellerajaxform()
+        {
+            $date = date('Y/m/d',strtotime(date('Y-m-d').' +1 year'));
+            if (isset($_POST['profile_seller7'])){
+                $ajax = json_decode($_POST['profile_seller7'], true);
+                $vessels = new Vessel();
+                $vessels->category = $ajax['category'];
+                $vessels->type = $ajax['vtype'];
+                $vessels->option_type = $ajax['option'];
+                $vessels->length = $ajax['length'];
+                $vessels->draft = $ajax['draft'];
+                $vessels->deadweight = $ajax['dweight'];
+                $vessels->year = $ajax['year'];
+                $vessels->country = $ajax['country'];
+                $vessels->port = $ajax['port'];
+                $vessels->date = date('Y/m/d');
+                $vessels->date_expire = $date;
+                $vessels->user_id = Yii::$app->user->id;
+               $vessels->price = $ajax['price'];
+//                $vessels->currency = $ajax['currency'];
+//            $vessels->flag = $ajax['flag'];
+                return $vessels->save();
+            }
+        }
+
     public function actionSellerAjax()
     {
         if (isset($_POST['change'])){
@@ -176,6 +202,8 @@ class SiteController extends Controller
             $model->city = $profile['city'];
             $model->save();
         }
+
+
     }
 
     public function actionShipAjax()
@@ -206,7 +234,7 @@ class SiteController extends Controller
         if (isset($_POST['profile_personal4_1'])){
             $ajax = json_decode($_POST['profile_personal4_1'], true);
             if ($ajax['country']!="" && $ajax['faculty']!="" && $ajax['levelofeng'] && $ajax['category'] && $ajax['port']) {
-
+               // $statistics = new Statistics();
                 $cv = new Cv();
                 $cv->user_id = Yii::$app->user->identity->id;
                 $cv->date = date('Y/m/d');
@@ -216,9 +244,28 @@ class SiteController extends Controller
                 $cv->lvleng = $ajax['levelofeng'];
                 $cv->country = $ajax['country'];
                 $cv->port = $ajax['port'];
+                $cv->name = $ajax['name'];
                 $cv->plan = 'free';
                 $cv->status = 'paid';
-
+//                $user_statistics = Statistics::find()->where(['user_id'=>Yii::$app->user->id])->all();
+//                if ($statistics->date!=date('Y.m.d')){
+//
+//                }
+                //$user = User::find()->select('id')->where(['email' => $mail])->one();
+//                $statistics = Statistics::find()->where(['user_id'=>Yii::$app->user->id])
+//                    ->andWhere(['date'=>date('Y.m.d')])->one();
+//                if ($statistics['date']==date('Y.m.d')) {
+//                    $statistics->request = $statistics['request'] + 1;
+//                    $statistics->user_id = Yii::$app->user->id;
+//                    $statistics->date = date('Y.m.d');
+//                    $statistics->save() ? $statistics : null;
+//                }else{
+//                    $statisticsNew = new Statistics();
+//                    $statisticsNew->request = $statistics['request'] + 1;
+//                    $statisticsNew->user_id = Yii::$app->user->id;
+//                    $statisticsNew->date = date('Y.m.d');
+//                    $statisticsNew->save() ? $statisticsNew : null;
+//                }
 
                 return $cv->save();
             }
@@ -341,11 +388,11 @@ class SiteController extends Controller
 
     public function actionPricing()
     {
-        $cv = Cv::find()->select('*')->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->all();
+        $cv = Cv::find()->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->all();
 
         if (!Yii::$app->user->isGuest ){
             if (!empty($cv)) {
-                return $this->render('pricing');
+                return $this->render('pricing',['cv'=>$cv]);
             }else{
                return $this->redirect(['profile']);
             }
@@ -356,8 +403,6 @@ class SiteController extends Controller
 
     public function actionCv()
     {
-
-
         if (!Yii::$app->user->isGuest){
 
             $userCv = Cv::find()->select('*')->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->all();
@@ -392,10 +437,22 @@ class SiteController extends Controller
                         $get[$i]='';
                     }
                 }
+
+                //var_dump($statistics);
+                if (empty($statistics)){
+
+                    $statistica = new Statistics();
+                    $statistica->user_id = Yii::$app->user->id;
+                    $statistica->request = 0;
+                    $statistica->visit = 0;
+                    $statistica->date = date('Y.m.d');
+                    $statistica->save();
+                }
+                //var_dump('asdasdasd');exit;
                 return $this->render('statistics',['statistics'=>$statistics]);
             }else{
                     return $this->redirect(['profile']);
-                }
+            }
         }else {
             $this->redirect(['index']);
         }

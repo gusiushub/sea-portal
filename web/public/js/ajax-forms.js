@@ -253,6 +253,7 @@ $('#personal4_1').click(function(){
     if($(this).text().trim() === 'save') {
         var category = $('select[name="category"]').val(),
             faculty = $('select[name="faculty"]').val(),
+            name = $('input[name="name"]').val(),
             levelofeng = $('select[name="levelofeng"]').val(),
             country = $('select[name="country"]').val(),
             port = $('select[name="port"]').val(),
@@ -262,7 +263,8 @@ $('#personal4_1').click(function(){
                 faculty,
                 levelofeng,
                 country,
-                port
+                port,
+                name
             };
         var jsdata = JSON.stringify(profile_personal4_1);
         $.ajax({

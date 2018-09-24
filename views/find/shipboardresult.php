@@ -31,7 +31,7 @@ $this->title = 'Shipboard supply';
 
                         <div class="settings">
                             <div class="settings__item">
-                                <a href="/web/company/profile" class="settings__email">
+                                <a href="/web/user/profile" class="settings__email">
                                     <?php echo Yii::$app->user->identity->email ?>
                                 </a>
                             </div>
@@ -48,7 +48,7 @@ $this->title = 'Shipboard supply';
                                 <div class="settings__hidden-menu">
                                     <ul class="settings__list">
                                         <li class="settings__list-item">
-                                            <a href="#" class="settings__link">
+                                            <a href="/web/user/profile" class="settings__link">
                                                 Profile
                                             </a>
                                         </li>
@@ -317,14 +317,15 @@ $this->title = 'Shipboard supply';
                                         <img src="../../web/public/img/company-logo.png" alt="company logo" class="company-box__image">
                                     </div>
                                     <div class="company-box__description">
-                                        <h5 class="company-box__company-name">
+                                        <h5  class="company-box__company-name">
                                             <?php echo $prof['username']?>
                                         </h5>
-                                        <a href="#" class="company-box__site-link">
+                                        <a  href="#" class="company-box__site-link">
                                             <?php echo $prof['website']?>
                                         </a>
+                                        <input id="<?php echo $prof['id'] ?>" name="username" class="inputid"  type="hidden" value="<?php echo $prof['id'] ?>">
                                     </div>
-                                    <div class="add-plus add-plus--company-box">
+                                    <div class="add-plus add-plus--company-box recommend">
                                         <p class="add-plus__symbol">
                                             +
                                         </p>
@@ -365,7 +366,7 @@ $this->title = 'Shipboard supply';
                             <div class="col-lg-4">
                                 <div class="company-box company-box--empty">
                                     <div class="company-box__description">
-                                        <h5 class="company-box__company-name">
+                                        <h5 id="free-username" class="company-box__company-name">
                                             <?php echo $prof['username']?>
                                         </h5>
                                         <a href="#" class="company-box__site-link">
@@ -568,3 +569,17 @@ $this->title = 'Shipboard supply';
 </footer>
 </body>
 <script src="../../web/public/js/common.js"></script>
+<script>
+    $('.recommend').click(function () {
+        function makeCounter() {
+            var currentCount = 1;
+            return function() {
+                return currentCount++;
+            };
+        }
+        var counter = makeCounter();
+
+       var id = $('#id').val();
+       console.log(id);
+    });
+</script>

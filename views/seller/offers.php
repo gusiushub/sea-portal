@@ -56,12 +56,12 @@
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/shipboard-supply" class="adaptive-menu__link">
                                         Find a supplier
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/become-supplier" class="adaptive-menu__link">
                                         Become a supplier
                                     </a>
                                 </li>
@@ -71,7 +71,7 @@
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/vessels-sale" class="adaptive-menu__link">
                                         Vessels sell/chartering
                                     </a>
                                 </li>
@@ -152,7 +152,7 @@
                         Profile
                     </h1>
                     <a href="#" class="settings__email settings__email--head">
-                        wilkinson@gmail.com
+                        <?php echo Yii::$app->user->identity->email ?>
                     </a>
                 </div>
             </div>
@@ -219,6 +219,9 @@
                     </div>
                 </div>
             </div>
+            <?php $count = 1; ?>
+
+            <?php foreach ($userOffers as $userOffer){ ?>
             <div class="contract-line">
                 <div class="row">
                     <div class="col-lg-2">
@@ -244,7 +247,7 @@
                             </div>
                             <div class="col-lg-12 col-md-6 col-sm-6 col-6">
                                         <span class="contract-line__info">
-                                            31/02/2018
+                                           <?php echo $userOffer['date'] ?>
                                         </span>
                             </div>
                         </div>
@@ -258,7 +261,7 @@
                             </div>
                             <div class="col-lg-12 col-md-6 col-sm-6 col-6">
                                         <span class="contract-line__info">
-                                            31/02/2019
+                                            <?php echo $userOffer['date_expire'] ?>
                                         </span>
                             </div>
                         </div>
@@ -272,7 +275,7 @@
                             </div>
                             <div class="col-lg-12 col-md-6 col-sm-6 col-6">
                                         <span class="contract-line__info contract-line__info--uppercase">
-                                            sell vessel
+                                           <?php echo $userOffer['type'] ?>
                                         </span>
                             </div>
                         </div>
@@ -286,7 +289,7 @@
                             </div>
                             <div class="col-lg-12 col-md-6 col-sm-6 col-6">
                                         <span class="contract-line__info contract-line__info--uppercase">
-                                            star status
+                                            <?php echo $userOffer['plan'] ?>
                                         </span>
                             </div>
                         </div>
@@ -300,13 +303,14 @@
                             </div>
                             <div class="col-lg-12 col-md-6 col-sm-6 col-6">
                                         <span class="contract-line__info contract-line__info--uppercase">
-                                            paid
+                                            <?php echo $userOffer['status'] ?>
                                         </span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <?php } ?>
             <div class="contract-description block-underline block-underline-top">
                 <div class="row">
                     <div class="col-lg-8">
@@ -322,7 +326,7 @@
                                         <div class="select-style">
                                             <select name="category" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
                                                 <option class="select-style__placeholder">find a practice</option>
-                                                <option value="">text</option>
+                                                <option value="dd">text</option>
                                                 <option value="">text</option>
                                             </select>
                                             <div class="select-style__arrow">&nbsp;</div>
@@ -341,7 +345,7 @@
                                         <div class="select-style">
                                             <select name="vtype" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
                                                 <option class="select-style__placeholder">find a practice</option>
-                                                <option value="">text</option>
+                                                <option value="dd">text</option>
                                                 <option value="">text</option>
                                             </select>
                                             <div class="select-style__arrow">&nbsp;</div>
@@ -360,7 +364,7 @@
                                         <div class="select-style">
                                             <select name="option" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
                                                 <option class="select-style__placeholder">find a practice</option>
-                                                <option value="">text</option>
+                                                <option value="dd">text</option>
                                                 <option value="">text</option>
                                             </select>
                                             <div class="select-style__arrow">&nbsp;</div>
@@ -441,7 +445,7 @@
                                     </div>
                                     <div class="col-lg-12 col-md-6 col-sm-6 col-6 margin-bottom-light">
                                         <div class="textinput-container">
-                                            <input type="text" class="textinput-container__input textinput-container__input--change field-to-change field-to-change--unactive" disabled="" placeholder="???" name="year">
+                                            <input type="text" class="textinput-container__input textinput-container__input--change field-to-change field-to-change--unactive" disabled="" placeholder="???" name="flag">
                                         </div>
                                     </div>
                                 </div>
@@ -455,9 +459,9 @@
                                     </div>
                                     <div class="col-lg-12 col-md-6 col-sm-6 col-6 margin-bottom-light">
                                         <div class="select-style">
-                                            <select name="option" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
+                                            <select name="country" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
                                                 <option class="select-style__placeholder">????????????</option>
-                                                <option value="">text</option>
+                                                <option value="dd">text</option>
                                                 <option value="">text</option>
                                             </select>
                                             <div class="select-style__arrow">&nbsp;</div>
@@ -474,19 +478,20 @@
                                     </div>
                                     <div class="col-lg-12 col-md-6 col-sm-6 col-6 margin-bottom-light">
                                         <div class="select-style">
-                                            <select name="option" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
+                                            <select name="port" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
                                                 <option class="select-style__placeholder">?????????????</option>
-                                                <option value="">text</option>
-                                                <option value="">text</option>
+                                                <option value="dd">text</option>
+                                                <option value="dd">text</option>
                                             </select>
                                             <div class="select-style__arrow">&nbsp;</div>
                                         </div>
                                     </div>
-                                    <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
+
 
                                 </div>
                             </div>
                         </div>
+                        <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
                     </div>
                     <div class="col-lg-4">
                         <div class="row">

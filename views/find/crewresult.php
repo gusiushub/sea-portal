@@ -80,22 +80,22 @@ $this->title = 'Crew';
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/shipboard-supply" class="adaptive-menu__link">
                                         Find a supplier
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/become-supplier" class="adaptive-menu__link">
                                         Become a supplier
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link  adaptive-menu__link--active">
+                                    <a href="/web/find/crew" class="adaptive-menu__link  adaptive-menu__link--active">
                                         Crew
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/vessels-sale" class="adaptive-menu__link">
                                         Vessels sell/chartering
                                     </a>
                                 </li>
@@ -126,72 +126,39 @@ $this->title = 'Crew';
             <div class="row">
                 <div class="col-lg-12">
                     <nav class="secondary-navigation">
-                        <ul class="adaptive-menu__list">
-                            <?php if (!Yii::$app->user->isGuest){  ?>
-                                <li class="adaptive-menu__item">
-                                    <a class="adaptive-menu__link" href="<?php if (Yii::$app->user->identity->user_status==1) {
-                                        echo '/web/site/profile';
-                                    }
-                                    if (Yii::$app->user->identity->user_status==2) {
-                                        echo '/web/company/profile';
-                                    }
-                                    if (Yii::$app->user->identity->user_status==3) {
-                                        echo '/web/seller/profile';
-                                    } ?>" class="authorization__link authorization__link--white">
-                                        Profile
-                                    </a>
-                                </li>
-                                <li class="adaptive-menu__item">
-                                    <a class="adaptive-menu__link" href="/web/user/logout" class="authorization__link authorization__link--white">
-                                        Logout
-                                    </a>
-                                </li>
-                            <?php } else{ ?>
-
-                                <li class="adaptive-menu__item">
-                                    <a href="/web/site/login" class="adaptive-menu__link">
-                                        Sign In
-                                    </a>
-                                </li>
-                                <li class="adaptive-menu__item">
-                                    <a href="/web/site/signup" class="adaptive-menu__link">
-                                        Sign Up
-                                    </a>
-                                </li>
-                            <?php } ?>
-
-                            <li class="adaptive-menu__item">
-                                <a href="/web/find/shipboard-supply" class="adaptive-menu__link">
+                        <ul class="secondary-navigation__list">
+                            <li class="secondary-navigation__item">
+                                <a href="/web/find/shipboard-supply" class="secondary-navigation__link secondary-navigation__link--active">
                                     Find a supplier
                                 </a>
                             </li>
-                            <li class="adaptive-menu__item">
-                                <a href="/web/site/become-supplier" class="adaptive-menu__link">
+                            <li class="secondary-navigation__item">
+                                <a href="/web/site/become-supplier" class="secondary-navigation__link">
                                     Become a supplier
                                 </a>
                             </li>
-                            <li class="adaptive-menu__item">
-                                <a href="/web/find/crew" class="adaptive-menu__link">
+                            <li class="secondary-navigation__item">
+                                <a href="/web/find/crew" class="secondary-navigation__link">
                                     Crew
                                 </a>
                             </li>
-                            <li class="adaptive-menu__item">
-                                <a href="/web/find/vessels-sale" class="adaptive-menu__link">
+                            <li class="secondary-navigation__item">
+                                <a href="/web/find/vessels-sale" class="secondary-navigation__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
-                            <li class="adaptive-menu__item">
-                                <a href="#" class="adaptive-menu__link">
+                            <li class="secondary-navigation__item">
+                                <a href="#" class="secondary-navigation__link">
                                     Chartering market
                                 </a>
                             </li>
-                            <li class="adaptive-menu__item">
-                                <a href="#" class="adaptive-menu__link">
+                            <li class="secondary-navigation__item">
+                                <a href="#" class="secondary-navigation__link">
                                     Contacts
                                 </a>
                             </li>
-                            <li class="adaptive-menu__item">
-                                <a href="#" class="adaptive-menu__link">
+                            <li class="secondary-navigation__item">
+                                <a href="#" class="secondary-navigation__link">
                                     Faq
                                 </a>
                             </li>

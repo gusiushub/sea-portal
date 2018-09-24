@@ -59,7 +59,6 @@ use yii\bootstrap\Html;
                                 </div>
                             </div>
                         </div>
-
                     <?php } ?>
                     <div class="adaptive-menu">
                         <div class="adaptive-menu__button">
@@ -88,12 +87,12 @@ use yii\bootstrap\Html;
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/crew" class="adaptive-menu__link">
                                         Crew
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/vessels-sale" class="adaptive-menu__link">
                                         Vessels sell/chartering
                                     </a>
                                 </li>
@@ -141,7 +140,7 @@ use yii\bootstrap\Html;
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/vessels-sale" class="secondary-navigation__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
@@ -284,7 +283,6 @@ use yii\bootstrap\Html;
                                                 'class'=>'textinput-container__input textinput-container__input--sing textinput-container__input--sing-4',
                                                 'placeholder'=>'WEBSITE ADRESS',
                                             ]) ?>
-<!--                                            <input type="text" class="textinput-container__input textinput-container__input--sing textinput-container__input--sing-4" placeholder="WEBSITE ADRESS" name="website">-->
                                         </div>
                                     </div>
                                     <div class="col-lg-6 margin-bottom-light">
@@ -296,7 +294,6 @@ use yii\bootstrap\Html;
                                                 'class'=>'textinput-container__input textinput-container__input--sing textinput-container__input--sing-1',
                                                 'placeholder'=>'EMAIL',
                                                 ]) ?>
-<!--                                            <input type="text" class="textinput-container__input textinput-container__input--sing textinput-container__input--sing-1" placeholder="EMAIL" name="email">-->
                                         </div>
                                     </div>
                                 </div>
@@ -323,7 +320,6 @@ use yii\bootstrap\Html;
                                                 'class'=>'textinput-container__input textinput-container__input--sing textinput-container__input--sing-2 textinput-container__input--pass',
                                                 'placeholder'=>'PASSWORD'
                                             ]) ?>
-<!--                                            <input type="password" class="textinput-container__input textinput-container__input--sing textinput-container__input--sing-2 textinput-container__input--pass" placeholder="PASSWORD" name="password">-->
                                             <button class="password-eye">
                                                 &nbsp;
                                             </button>
