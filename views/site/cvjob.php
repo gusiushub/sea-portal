@@ -1,3 +1,8 @@
+<?php
+use app\models\Location;
+use app\models\Crew;
+?>
+
 <body>
 <header class="header">
     <div class="container">
@@ -353,10 +358,15 @@
                             </div>
                             <div class="col-lg-12 col-md-6 col-sm-6 col-6 margin-bottom-medium">
                                 <div class="select-style">
+                                    <?php
+                                    $positions = Crew::find()->all();
+                                    //var_dump($positions);exit;
+                                    ?>
                                     <select name="position" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
                                         <option class="select-style__placeholder">Turner / Fitter / Welder</option>
-                                        <option value="">text</option>
-                                        <option value="">text</option>
+                                        <?php foreach ($positions as $position){ ?>
+                                            <option value="<?php echo $position['position'] ?>"><?php echo $position['position'] ?></option>
+                                        <?php  } ?>
                                     </select>
                                     <div class="select-style__arrow">&nbsp;</div>
                                 </div>
@@ -372,10 +382,14 @@
                             </div>
                             <div class="col-lg-12 col-md-6 col-sm-6 col-6 margin-bottom-medium">
                                 <div class="select-style">
+                                    <?php
+                                    $lvleng = Crew::find()->select('lvleng')->all();
+                                    ?>
                                     <select name="levelofeng" id="" class="select-style__select field-to-change field-to-change field-to-change--unactive" disabled="">
                                         <option class="select-style__placeholder">excellent</option>
-                                        <option value="">text</option>
-                                        <option value="">text</option>
+                                        <?php foreach ($lvleng as $lvl){ ?>
+                                            <option value="<?php echo $lvl['lvleng'] ?>"><?php echo $lvl['lvleng'] ?></option>
+                                        <?php  } ?>
                                     </select>
                                     <div class="select-style__arrow">&nbsp;</div>
                                 </div>

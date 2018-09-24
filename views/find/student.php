@@ -1,10 +1,12 @@
 <?php
+
 use app\models\User;
+use app\models\Location;
+use app\models\Cv;
 use yii\bootstrap\ActiveForm;
 use yii\bootstrap\Html;
 
 ?>
-
 <body>
 <header class="header">
     <div class="container">
@@ -28,7 +30,7 @@ use yii\bootstrap\Html;
 
                         <div class="settings">
                             <div class="settings__item">
-                                <a href="/web/company/profile" class="settings__email">
+                                <a href="/web/user/profile" class="settings__email">
                                     <?php echo Yii::$app->user->identity->email ?>
                                 </a>
                             </div>
@@ -45,7 +47,7 @@ use yii\bootstrap\Html;
                                 <div class="settings__hidden-menu">
                                     <ul class="settings__list">
                                         <li class="settings__list-item">
-                                            <a href="#" class="settings__link">
+                                            <a href="/web/user/profile" class="settings__link">
                                                 Profile
                                             </a>
                                         </li>
@@ -60,22 +62,46 @@ use yii\bootstrap\Html;
                         </div>
 
                     <?php } ?>
+                    
                     <div class="adaptive-menu">
                         <div class="adaptive-menu__button">
-                            <img src="img/icons/burger.png" alt="burger">
+                            <img src="../../web/public/img/icons/burger.png" alt="burger">
                         </div>
                         <nav class="adaptive-menu__navigation">
                             <ul class="adaptive-menu__list">
-                                <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
-                                        Sign In
-                                    </a>
-                                </li>
-                                <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
-                                        Sign Up
-                                    </a>
-                                </li>
+                                <?php if (!Yii::$app->user->isGuest){  ?>
+                                    <li class="adaptive-menu__item">
+                                        <a class="adaptive-menu__link" href="<?php if (Yii::$app->user->identity->user_status==1) {
+                                            echo '/web/site/profile';
+                                        }
+                                        if (Yii::$app->user->identity->user_status==2) {
+                                            echo '/web/company/profile';
+                                        }
+                                        if (Yii::$app->user->identity->user_status==3) {
+                                            echo '/web/seller/profile';
+                                        } ?>" class="authorization__link authorization__link--white">
+                                            Profile
+                                        </a>
+                                    </li>
+                                    <li class="adaptive-menu__item">
+                                        <a class="adaptive-menu__link" href="/web/user/logout" class="authorization__link authorization__link--white">
+                                            Logout
+                                        </a>
+                                    </li>
+                                <?php } else{ ?>
+
+                                    <li class="adaptive-menu__item">
+                                        <a href="/web/site/login" class="adaptive-menu__link">
+                                            Sign In
+                                        </a>
+                                    </li>
+                                    <li class="adaptive-menu__item">
+                                        <a href="/web/site/signup" class="adaptive-menu__link">
+                                            Sign Up
+                                        </a>
+                                    </li>
+                                <?php } ?>
+
                                 <li class="adaptive-menu__item">
                                     <a href="/web/find/shipboard-supply" class="adaptive-menu__link">
                                         Find a supplier
@@ -87,7 +113,7 @@ use yii\bootstrap\Html;
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link adaptive-menu__link--active">
+                                    <a href="/web/find/crew" class="adaptive-menu__link">
                                         Crew
                                     </a>
                                 </li>
@@ -190,7 +216,11 @@ use yii\bootstrap\Html;
                             find a students (Practice on Board)
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <?php if (Yii::$app->user->isGuest){ ?>
+                    <a href='/web/site/login' class="primary-menu__item">
+                        <?php }else{ ?>
+                        <a href='/web/user/profile' class="primary-menu__item">
+                            <?php } ?>
                         <i class="icon-list1 primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             place a CV Crew/Students
@@ -211,11 +241,12 @@ use yii\bootstrap\Html;
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
+
                     <?php $form = ActiveForm::begin(); ?>
                     <div class="filter">
                         <div class="secondary-headline margin-bottom-light">
                             <h2 class="secondary-headline__title">
-                                find a crew
+                                find a students
                             </h2>
                         </div>
                         <div class="filter__item margin-bottom-light">
@@ -223,49 +254,113 @@ use yii\bootstrap\Html;
                                 Faculty
                             </h4>
                             <div class="select-style">
-                                <?= $form->field($model, 'faculty')->dropDownList(['navigation'=>'navigation','text'=>'text'],[
-                                    'class'=>'select-style__select',
-                                    'placeholder'=>'navigation',
-                                ]) ?>
+                                <?php
+                                $faculty = app\models\Crew::find()->all();
+                                $arr = array_diff(\yii\helpers\ArrayHelper::map($faculty, 'faculty', 'faculty'),array(''));
+                                ?>
+
+                                <?= $form->field($model, 'faculty')->dropDownList($arr,
+                                    ['id'=>'faculty',
+                                        'prompt'=>'Faculty',
+                                        'class'=>'select-style__select',
+                                    ]); ?>
+
                                 <div class="select-style__arrow">&nbsp;</div>
                             </div>
                         </div>
+                        <div style="display: none" class="form-group city-select">
                         <div class="filter__item margin-bottom-light">
+                            <?php
+                            $lvleng = Cv::find()->where(['faculty' => 'navigation'])->all();
+                            ?>
                             <h4 class="filter__title">
                                 Level of English
                             </h4>
                             <div class="select-style">
-                                <?= $form->field($model, 'lvleng')->dropDownList(['excellent'=>'excellent','text'=>'text'],[
-                                    'class'=>'select-style__select',
-                                    'placeholder'=>'excellent',
-                                ]) ?>
+
+
+                                <?= $form->field($model, 'lvleng')
+                                    ->dropDownList(
+                                        \yii\helpers\ArrayHelper::map($lvleng, 'lvleng', 'lvleng'),
+                                        ['id' => 'lvleng',
+                                            'prompt' => 'Level of English',
+                                            'class' => 'select-style__select',
+                                        ]);
+                                ?>
+
                                 <div class="select-style__arrow">&nbsp;</div>
-                            </div>
+                           </div>
                         </div>
+                        </div>
+
+                        <div style="display: none" class="form-group city-select2">
                         <div class="filter__item margin-bottom-light">
                             <h4 class="filter__title">
                                 Country
                             </h4>
                             <div class="select-style">
-                                <?= $form->field($model, 'country')->dropDownList(['excellent'=>'excellent','text'=>'text'],[
-                                    'class'=>'select-style__select',
-                                    'placeholder'=>'Estonia',
-                                ]) ?>
+                                <?php
+                                $lvleng = Cv::find()->all();
+                                $value = Cv::find()
+                                    ->select(['country'] )
+                                    ->distinct()
+                                    ->all();
+                                $arr = [];
+                                $i=0;
+                                foreach ($value as $val){
+                                    if (!empty($val['country'])) {
+                                        $arr[$i] = $val['country'];
+                                    }
+                                    $i++;
+                                }
+
+                                //$arr = array_diff(\yii\helpers\ArrayHelper::map($lvleng, 'country', 'country'),array(''));
+
+                                ?>
+
+                                <?= $form->field($model, 'country')
+                                    ->dropDownList(
+                                        $arr,
+                                        ['id'=>'country',
+                                            'post'=>Yii::$app->request->post('string'),
+                                            'prompt'=>'Country',
+                                            'class'=>'select-style__select'
+                                        ]); ?>
 
                                 <div class="select-style__arrow">&nbsp;</div>
                             </div>
                         </div>
+                        </div>
+
+                        <div style="display: none" class="form-group city-select3">
                         <div class="filter__item margin-bottom-medium">
                             <h4 class="filter__title">
                                 Port
                             </h4>
                             <div class="select-style">
-                                <?= $form->field($model, 'port')->dropDownList(['Tallinn'=>'Tallinn','text'=>'text'],[
-                                    'class'=>'select-style__select',
-                                    'placeholder'=>'Tallinn',
-                                ]) ?>
+                                <?php
+                                $value = Cv::find()
+                                    ->select(['port'] )
+                                    ->distinct()
+                                    ->all();
+                                $arr = [];
+                                $i=0;
+                                foreach ($value as $val){
+                                    $arr[$i] = $val['port'];
+                                    $i++;
+                                }
+                                ?>
+
+                                <?= $form->field($model, 'port')->dropDownList($arr,[
+                                                                    'id'=>'port',
+                                                                    'prompt'=>'port',
+                                                                    'class'=>'select-style__select',
+                                                                    'placeholder'=>'port',
+                                                                ]) ?>
                                 <div class="select-style__arrow">&nbsp;</div>
+                                <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
                             </div>
+                        </div>
                         </div>
                         <div class="filter__item">
                             <?= Html::submitButton('Show results', ['class' => 'button button--show-results', 'name' => 'search']) ?>
@@ -418,3 +513,31 @@ use yii\bootstrap\Html;
 </footer>
 </body>
 <script src="../../web/public/js/common.js"></script>
+
+<script>
+
+    $(function(){
+        $('#faculty').change(function(){
+            var faculty = $(this).val();
+            $('#lvleng').load('ajax-student', {faculty: faculty}, function(){
+                $('.city-select').fadeIn('fast');
+            });
+        });
+    });
+    $(function(){
+        $('#lvleng').change(function(){
+            var lvleng = $(this).val();
+            $('#country').load('ajax-student', {lvleng: lvleng}, function(){
+                $('.city-select2').fadeIn('fast');
+            });
+        });
+    });
+    $(function(){
+        $('#country').change(function(){
+            var country = $(this).val();
+            $('#port').load('ajax-student', {country: country}, function(){
+                $('.city-select3').fadeIn('fast');
+            });
+        });
+    });
+</script>

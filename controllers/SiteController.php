@@ -3,19 +3,23 @@
 namespace app\controllers;
 
 use Yii;
+use yii\bootstrap\Html;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\User;
+use app\models\Statistics;
 use app\models\SignupForm;
 use app\models\UserProfile;
 use app\models\BecomeSupplier;
 use app\models\UploadImage;
+use app\models\Location;
 use app\models\Ajax;
 use app\models\Cv;
 use app\models\CvForm;
@@ -66,6 +70,57 @@ class SiteController extends Controller
             ],
         ];
     }
+
+
+    public function actionSelectAjax()
+    {
+        $regions = Location::find()->where(['parent_id'=>$_POST['id_country']])->all();
+        $city = [];
+        foreach ($regions as $region) {
+            $city = Location::find()->where(['parent_id' => $region['location_id']])->all();
+        }
+        echo '<select size="1" name="region" >';
+        foreach ($city as $numRow) {
+            echo '<option value="' . $numRow['name'] . '">' . $numRow['name'] . '</option>';
+        };
+        echo '</select>';
+    }
+
+//    public function actionStudentAjax()
+//    {
+//        if (isset($_POST['val'])) {
+//            $posts = \app\models\Cv::find()
+//                ->where(['faculty' => $_POST['val']])
+//                ->all();
+//
+//                foreach($posts as $post){
+//                    echo "<option value='".$post->lvleng."'>".$post->lvleng."</option>";
+//                }
+//        }
+//        if (isset($_POST['pole2'])) {
+//
+//            $posts = \app\models\Cv::find()
+//                ->where(['lvleng' => $_POST['pole2']])
+//                ->all();
+//
+//            foreach($posts as $post){
+//                echo "<option value='".$post->country."'>".$post->country."</option>";
+//            }
+//        }
+//
+//        if (isset($_POST['country'])) {
+//
+//            $posts = \app\models\Cv::find()
+//                ->where(['lvleng' => $_POST['pp']])
+//                ->all();
+//
+//            foreach($posts as $post){
+//                echo "<option value='".$post->port."'>".$post->port."</option>";
+//            }
+//        }
+//    }
+
+
 
 
 //зависимые селекты для формы поиска 
@@ -147,45 +202,53 @@ class SiteController extends Controller
 
     public function actionCvAjax()
     {
+        $date = date('Y/m/d',strtotime(date('Y-m-d').' +1 month'));
         if (isset($_POST['profile_personal4_1'])){
             $ajax = json_decode($_POST['profile_personal4_1'], true);
-            $cv = new Cv();
-            $cv->user_id = Yii::$app->user->identity->id;
-            $cv->date = date('Y/m/d');
-            $cv->date_expiry = date('Y/m/d');
-            $cv->category = $ajax['category'];
-            $cv->faculty = $ajax['faculty'];
-            $cv->lvleng = $ajax['levelofeng'];
-            $cv->country = $ajax['country'];
-            $cv->port = $ajax['port'];
-            $cv->plan = 'free';
-            $cv->status = 'paid';
+            if ($ajax['country']!="" && $ajax['faculty']!="" && $ajax['levelofeng'] && $ajax['category'] && $ajax['port']) {
 
-            return $cv->save();
+                $cv = new Cv();
+                $cv->user_id = Yii::$app->user->identity->id;
+                $cv->date = date('Y/m/d');
+                $cv->date_expiry = $date;
+                $cv->category = $ajax['category'];
+                $cv->faculty = $ajax['faculty'];
+                $cv->lvleng = $ajax['levelofeng'];
+                $cv->country = $ajax['country'];
+                $cv->port = $ajax['port'];
+                $cv->plan = 'free';
+                $cv->status = 'paid';
+
+
+                return $cv->save();
+            }
         }
 
         if (isset($_POST['profile_personal4_1_job'])){
             $ajax = json_decode($_POST['profile_personal4_1_job'], true);
-            $cv = new Cv();
-            $cv->user_id = Yii::$app->user->identity->id;
-            $cv->date = date('Y/m/d');
-            $cv->date_expiry = date('Y/m/d');
-            $cv->category = $ajax['category'];
-            $cv->salary_to = $ajax['salary_min'];
-            $cv->salary_from = $ajax['salary_max'];
-            $cv->currency = $ajax['currency'];
-            $cv->position = $ajax['position'];
-            $cv->plan = 'free';
-            $cv->status = 'paid';
+            if ($ajax['salary_min']!="" && $ajax['salary_max'] && $ajax['currency'] && $ajax['position']){
+                $cv = new Cv();
+                $cv->user_id = Yii::$app->user->identity->id;
+                $cv->date = date('Y/m/d');
+                $cv->date_expiry = $date;
+                $cv->category = $ajax['category'];
+                $cv->salary_to = $ajax['salary_min'];
+                $cv->salary_from = $ajax['salary_max'];
+                $cv->lvleng = $ajax['levelofeng'];
+                $cv->currency = $ajax['currency'];
+                $cv->position = $ajax['position'];
+                $cv->plan = 'free';
+                $cv->status = 'paid';
 
-            return $cv->save();
+                return $cv->save();
+            }
         }
     }
 
 
     public function actionAjax()
     {
-        if (isset($_POST['change'])){
+        if (isset($_POST['change']) && $_POST['change']!='password'){
             $id = Yii::$app->user->identity->id;
             $model = User::find()->where(['id' => $id])->one();
             $password = $str = str_replace('"', "", $_POST['change']);
@@ -244,19 +307,10 @@ class SiteController extends Controller
 
     }
 
-    public function actionUpload(){
-        Yii::$app->mailer->compose()
-            ->setFrom('from@domain.com')
-            ->setTo('to@domain.com')
-            ->setSubject('Тема сообщения')
-            ->setTextBody('Текст сообщения')
-            ->setHtmlBody('<b>текст сообщения в формате HTML</b>')
-            ->send();
-    }
+
 
     public function actionCvJob()
     {
-        //$cv = new Cv();
         $userCv = Cv::find()->select('*')->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->all();
 
         return $this->render('cvjob',['userCv'=>$userCv]);
@@ -287,8 +341,14 @@ class SiteController extends Controller
 
     public function actionPricing()
     {
-        if (Yii::$app->user->isGuest==false){
-            return $this->render('pricing');
+        $cv = Cv::find()->select('*')->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->all();
+
+        if (!Yii::$app->user->isGuest ){
+            if (!empty($cv)) {
+                return $this->render('pricing');
+            }else{
+               return $this->redirect(['profile']);
+            }
         }else {
             $this->redirect(['index']);
         }
@@ -296,10 +356,13 @@ class SiteController extends Controller
 
     public function actionCv()
     {
-        if (Yii::$app->user->isGuest==false){
-            $userCv = Cv::find()->select('*')->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->all();
 
-            return $this->render('cv',['userCv'=>$userCv]);
+
+        if (!Yii::$app->user->isGuest){
+
+            $userCv = Cv::find()->select('*')->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->all();
+            $model = new CvForm();
+            return $this->render('cv',['userCv'=>$userCv,'model'=>$model]);
         }else {
             $this->redirect(['index']);
         }
@@ -307,7 +370,7 @@ class SiteController extends Controller
 
     public function actionTerms()
     {
-        if (Yii::$app->user->isGuest==false){
+        if (!Yii::$app->user->isGuest){
             return $this->render('terms');
         }else {
             $this->redirect(['index']);
@@ -316,8 +379,23 @@ class SiteController extends Controller
 
     public function actionStatistics()
     {
-        if (Yii::$app->user->isGuest==false){
-            return $this->render('statistics');
+        if (!Yii::$app->user->isGuest){
+            $cv = Cv::find()->select('*')->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->all();
+            if (!empty($cv)) {
+                $statistics = Statistics::find()->orderBy('id DESC')->limit(7)->where(['user_id'=>Yii::$app->user->id])
+                    ->all();
+                //var_dump($statistics[0]['date']);
+                for ($i=0;$i<7;$i++){
+                    if (isset($statistics[$i]['date'])){
+                        $get[$i]=$statistics[$i]['date'];
+                    }else{
+                        $get[$i]='';
+                    }
+                }
+                return $this->render('statistics',['statistics'=>$statistics]);
+            }else{
+                    return $this->redirect(['profile']);
+                }
         }else {
             $this->redirect(['index']);
         }
@@ -351,7 +429,9 @@ class SiteController extends Controller
     public function actionSignup()
     {
         $model = new SignupForm();
-
+        $country = Location::find()->where(['location_type'=>0])->all();
+        //$city = Location::find()->where(['location_type'=>2])->all();
+        //var_dump($country);
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user)) {
@@ -361,7 +441,7 @@ class SiteController extends Controller
         }
 
         return $this->render('signup', [
-            'model' => $model,
+            'model' => $model,'country'=>$country
         ]);
     }
 

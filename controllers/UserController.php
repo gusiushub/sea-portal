@@ -5,10 +5,18 @@ namespace app\controllers;
 
 
 use Yii;
+//use yii\bootstrap\Html;
 use yii\web\Controller;
 
 class UserController extends Controller
 {
+
+
+    public function actionIndex()
+    {
+        $Ipjax = Yii::$app->request->get('id') ?: null;
+        return $this->render('index', ['Ipjax' => $Ipjax]);
+    }
 
     public function actionLogout()
     {
@@ -30,21 +38,35 @@ class UserController extends Controller
         }
     }
 
-    public function actionDynamiccities()
-    {
-        $data=Location::model()->findAll('parent_id=:parent_id',
-            array(':parent_id'=>(int) $_POST['country_id']));
 
-        $data=CHtml::listData($data,'id','name');
-        foreach($data as $value=>$name)
-        {
-            echo CHtml::tag('option',
-                array('value'=>$value),CHtml::encode($name),true);
-        }
+    public function actionLocation()
+    {
+
+        //$ajax = json_decode($_POST['id'], true);
+       echo 'asdasdasd' ;
+       echo $_POST['val'];
+        //if (isset($_POST['country'])){
+        //echo $_POST;
+        //return $_POST['id'];
+//            $region = \app\models\Location::find()->where(['parent_id'=>$_POST['id']])->all();
+//            foreach ($region as $reg) {
+//                $city = \app\models\Location::find()->where(['parent_id' => $reg['parent_id']])->all();
+//
+//
+//                foreach ($city as $post) {
+//                    echo "<option value='" . $post['name'] . "'>" . $post['name'] . "</option>";
+//                }
+//            }
+//return $city;
+        // }
+
+
     }
 
-    public function actionAjax()
-    {
-        echo 'asdasdasdasdasdasdasdasdasdasd';
-    }
+//    public function actionAjax()
+//    {
+//        $data = array('id'=>2);
+//        $data=Html::listData($data,'id','name');
+//        echo 'asdasdasdasdasdasdasdasdasdasd';
+//    }
 }

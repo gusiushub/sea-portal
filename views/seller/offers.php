@@ -482,6 +482,8 @@
                                             <div class="select-style__arrow">&nbsp;</div>
                                         </div>
                                     </div>
+                                    <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
+
                                 </div>
                             </div>
                         </div>
@@ -716,3 +718,4 @@
 </body>
 <script src="../../web/public/js/common.js"></script>
 <script src="../../web/public/js/info-change.js"></script>
+<script src="../../web/public/js/ajax-forms.js"></script>

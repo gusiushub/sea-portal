@@ -1,5 +1,6 @@
 <?php
-
+use app\models\Crew;
+use app\models\Location;
 ?>
 
 <body>
@@ -14,7 +15,16 @@
                     <div class="settings">
                         <div class="settings__item">
                             <a href="#" class="settings__email">
-                                <?php echo Yii::$app->user->identity->email ?>
+                                <?php use app\models\Cv;
+                                use app\models\User;
+                                use yii\bootstrap\ActiveForm;
+                                use yii\bootstrap\Html;
+                                use yii\helpers\ArrayHelper;
+                                use yii\widgets\DetailView;
+                                use yii\widgets\ListView;
+                                use yii\widgets\Pjax;
+
+                                echo Yii::$app->user->identity->email ?>
                             </a>
                         </div>
                         <div class="settings__item">
@@ -235,6 +245,7 @@
                 </div>
             </div>
             <?php $count = 1; ?>
+
             <?php foreach ($userCv as $cv){ ?>
             <div class="contract-line">
                 <div class="row">
@@ -325,6 +336,23 @@
                 </div>
             </div>
             <?php } ?>
+
+
+
+            <?php
+            $items = [
+                '0' => 'Активный',
+                'practice' => 'find a practice',
+                'job'=>'find a job'
+            ];
+
+            $dataPost= [
+//                            '0' => '2ццц',
+//                            '1' => 'ыыыы',
+//                            '2'=>'пппп'
+            ];
+            ?>
+
             <div class="contract-description block-underline block-underline-top">
                 <div class="row">
                     <div class="col-lg-2">
@@ -336,116 +364,133 @@
                             </div>
                             <div class="col-lg-12 col-md-6 col-sm-6 col-6 margin-bottom-medium">
                                 <div class="select-style">
-                                    <select name="category" id="selected" class="select-style__select field-to-change field-to-change--unactive" disabled="">
-                                        <option class="select-style__placeholder">find a practice</option>
-                                        <option value="">find a practice</option>
-                                        <option value="">find a job</option>
+
+
+
+                                    <select name="category" id="category" class="select-style__select field-to-change field-to-change--unactive" disabled="">
+                                        <option  class="select-style__placeholder">find a practice</option>
+                                        <option value="find a practice">find a practice</option>
+                                        <option value="find a job">find a job</option>
                                     </select>
                                     <div class="select-style__arrow">&nbsp;</div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                <h4 class="contract-description__headline">
-                                    faculty
-                                </h4>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6 margin-bottom-medium">
-                                <div class="select-style">
-                                    <select name="faculty" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
-                                        <option class="select-style__placeholder">Navigation</option>
-                                        <option value="">text</option>
-                                        <option value="">text</option>
-                                    </select>
-                                    <div class="select-style__arrow">&nbsp;</div>
+<!--                    <div style="display: none" class="city-select">-->
+                        <div class="col-lg-2">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                    <h4 class="contract-description__headline">
+                                        faculty
+                                    </h4>
+                                </div>
+                                <div class="col-lg-12 col-md-6 col-sm-6 col-6 margin-bottom-medium">
+                                    <div class="select-style">
+                                        <select name="faculty" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
+                                            <option value="Navigation" class="select-style__placeholder">Navigation</option>
+                                            <option value="Navigation">Navigation</option>
+                                        </select>
+                                        <div class="select-style__arrow">&nbsp;</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                <h4 class="contract-description__headline">
-                                    level of english
-                                </h4>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6 margin-bottom-medium">
-                                <div class="select-style">
-                                    <select name="levelofeng" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
-                                        <option class="select-style__placeholder">excellent</option>
-                                        <option value="">text</option>
-                                        <option value="">text</option>
-                                    </select>
-                                    <div class="select-style__arrow">&nbsp;</div>
+                        <div class="col-lg-2">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                    <h4 class="contract-description__headline">
+                                        level of english
+                                    </h4>
+                                </div>
+                                <div class="col-lg-12 col-md-6 col-sm-6 col-6 margin-bottom-medium">
+                                    <div class="select-style">
+                                        <?php
+                                        $lvleng = Crew::find()->select('lvleng')->all();
+                                        ?>
+                                        <select name="levelofeng" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
+                                            <option value="" class="select-style__placeholder">excellent</option>
+                                            <?php foreach ($lvleng as $lvl){ ?>
+                                            <option value="<?php echo $lvl['lvleng'] ?>"><?php echo $lvl['lvleng'] ?></option>
+                                            <?php  } ?>
+                                        </select>
+                                        <div class="select-style__arrow">&nbsp;</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                <h4 class="contract-description__headline">
-                                    Country
-                                </h4>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6 margin-bottom-medium">
-                                <div class="select-style">
-                                    <select name="country" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
-                                        <option class="select-style__placeholder">Estonia</option>
-                                        <option value="">text</option>
-                                        <option value="">text</option>
-                                    </select>
-                                    <div class="select-style__arrow">&nbsp;</div>
+                        <div class="col-lg-2">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                    <h4 class="contract-description__headline">
+                                        Country
+                                    </h4>
+                                </div>
+                                <div class="col-lg-12 col-md-6 col-sm-6 col-6 margin-bottom-medium">
+                                    <div class="select-style">
+                                        <?php
+                                        $location = Location::find()->select('name')->where(['location_type'=>0])->all();
+                                        ?>
+                                        <select name="country" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
+                                            <option value="" class="select-style__placeholder">Estonia</option>
+                                            <?php foreach ($location as $loc){ ?>
+                                            <option value="<?php echo $loc['name'] ?>"><?php echo $loc['name'] ?></option>
+                                            <?php  } ?>
+                                        </select>
+                                        <div class="select-style__arrow">&nbsp;</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                <h4 class="contract-description__headline">
-                                    Port
-                                </h4>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6 margin-bottom-medium">
-                                <div class="select-style">
-                                    <select name="port" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
-                                        <option class="select-style__placeholder">Tallinn</option>
-                                        <option value="">text</option>
-                                        <option value="">text</option>
-                                    </select>
-                                    <div class="select-style__arrow">&nbsp;</div>
+                        <div class="col-lg-2">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                    <h4 class="contract-description__headline">
+                                        Port
+                                    </h4>
+                                </div>
+                                <div class="col-lg-12 col-md-6 col-sm-6 col-6 margin-bottom-medium">
+                                    <div class="select-style">
+                                        <?php
+                                        $location = Location::find()->select('name')->where(['location_type'=>2])->all();
+                                        ?>
+                                        <select name="port" id="" class="select-style__select field-to-change field-to-change--unactive" disabled="">
+                                            <option value="" class="select-style__placeholder">Tallinn</option>
+                                            <?php foreach ($location as $loc){ ?>
+                                            <option value="<?php echo $loc['name'] ?>"><?php echo $loc['name'] ?></option>
+                                            <?php  } ?>
+                                        </select>
+                                        <div class="select-style__arrow">&nbsp;</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                <h4 class="contract-description__headline">
-                                    CV
-                                </h4>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-6 margin-bottom-medium">
-                                <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" >
-                                <div class="contract-description__cv-block">
-                                    <a href="#" class="contract-description__cv-link">
-                                        view
-                                    </a>
+                        <div class="col-lg-2">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                    <h4 class="contract-description__headline">
+                                        CV
+                                    </h4>
+                                </div>
+                                <div class="col-lg-12 col-md-6 col-sm-6 col-6 margin-bottom-medium">
+
+                                    <div class="contract-description__cv-block">
+                                        <a href="#" class="contract-description__cv-link">
+                                            view
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
                 <div class="row">
+                    <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" >
                     <div class="col-lg-2 offset-lg-10">
                         <button id="personal4_1" class="button button--fields-change">Edit</button>
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-lg-12">
                     <div class="secondary-headline text-left margin-bottom-light">
@@ -583,19 +628,19 @@
         </div>
     </div>
 </footer>
+
 </body>
 <script src="../../web/public/js/common.js"></script>
 <script src="../../web/public/js/ajax-forms.js"></script>
 <script src="../../web/public/js/info-change.js"></script>
 <script>
-
-    $( "#selected" ).change(function() {
-        var category = $("#selected option:selected").text();
-        if (category=='find a job'){
-            var url = "http://parsavito.xyz/web/site/cv-job";
-            $(location).attr('href',url);
-        }
-    });
+   $( "#category" ).change(function() {
+       var category = $("#category option:selected").text();
+       if (category=='find a job'){
+           var url = "http://parsavito.xyz/web/site/cv-job";
+           $(location).attr('href',url);
+       }
+   });
 
 
 </script>

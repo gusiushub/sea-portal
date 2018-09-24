@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\base\Model;
+use app\models\Location;
 
 /**
 * Signup form
@@ -14,10 +15,9 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
-    public $country;
-    public $city;
+   // public $country;
+   // public $city;
     public $second_name;
-   // public $first_name;
     public $phone;
 
     /**
@@ -38,10 +38,9 @@ class SignupForm extends Model
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
             ['phone', 'required'],
-            ['city', 'required'],
-           // ['first_name', 'required'],
+            //['city', 'required'],
             ['second_name', 'required'],
-            ['country', 'required'],
+            //['country', 'required'],
         ];
     }
 
@@ -51,9 +50,9 @@ class SignupForm extends Model
         return [
         'verifyCode' => 'Verification Code',
             'username'=>'',
-            'country'=>'',
+
             'phone'=>'',
-            'city'=>'',
+
             'email'=>'',
             'second_name'=>'',
             'password'=>'',
@@ -76,10 +75,12 @@ class SignupForm extends Model
             $user->username = $this->username;
             $user->email = $this->email;
             $user->phone = $this->phone;
-            $user->country = $this->country;
-            $user->city = $this->city;
+        $loc = Location::find()->where(['location_id'=>$_POST['country']])->one();
+            //var_dump($loc);
+            $user->country = $loc['name'];
+            $user->city = $_POST['city'];
             $user->second_name = $this->second_name;
-            //$user->first_name = $this->first_name;
+            $user->tariff = 'free';
             $user->user_status = 1;
             $user->setPassword($this->password);
             $user->generateAuthKey();

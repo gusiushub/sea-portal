@@ -11,7 +11,6 @@ class FindCrew extends Model
 {
     public $name;
     public $email;
-    //public $subject;
     public $body;
     public $position;
     public $lvleng;
@@ -21,6 +20,9 @@ class FindCrew extends Model
     public $company ;
     public $file ;
     public $agree ;
+    public $faculty ;
+    public $country ;
+    public $port ;
     /**
      * @return array the validation rules.
      */
@@ -60,11 +62,12 @@ class FindCrew extends Model
 
     public function search()
     {
-        $businessAdvancedPlan = Cv::find()->where(['like', 'position', $this->position])
-            ->andWhere(['like', 'lvleng',$this->lvleng])
-            ->andWhere(['like', 'currency', $this->currency])
+        //var_dump($_POST['FindCrew']['position']);exit;
+        $businessAdvancedPlan = Cv::find()->where(['like', 'position', $_POST['FindCrew']['position']])
+            ->andWhere(['like', 'lvleng',$_POST['FindCrew']['lvleng']])
+            ->andWhere(['like', 'currency', $_POST['FindCrew']['currency']])
             ->andWhere('category = :category',[':category'=>'find a job'])
-            ->andWhere(['>=','salary_from', $this->salary])
+            ->andWhere(['>=','salary_from', $_POST['FindCrew']['salary']])
             ->all();
         return $businessAdvancedPlan;
     }

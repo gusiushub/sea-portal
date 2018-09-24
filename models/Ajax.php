@@ -47,4 +47,27 @@ class Ajax extends Model
         $user->generateAuthKey();
         return $user->save() ? $user : null;
     }
+
+    public function actionLocation()
+    {
+
+        //$ajax = json_decode($_POST['id'], true);
+        echo $_POST['val'];
+        //if (isset($_POST['country'])){
+        //echo $_POST;
+        //return $_POST['id'];
+//            $region = \app\models\Location::find()->where(['parent_id'=>$_POST['id']])->all();
+//            foreach ($region as $reg) {
+//                $city = \app\models\Location::find()->where(['parent_id' => $reg['parent_id']])->all();
+//
+//
+//                foreach ($city as $post) {
+//                    echo "<option value='" . $post['name'] . "'>" . $post['name'] . "</option>";
+//                }
+//            }
+//return $city;
+        // }
+
+
+    }
 }

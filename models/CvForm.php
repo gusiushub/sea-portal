@@ -11,7 +11,11 @@ use app\models\Cv;
 */
 class CvForm extends Model
 {
-public $user_id;
+//public $user_id;
+public $category;
+public $faculty;
+public $id;
+
 
 /**
  * @return array the validation rules.
@@ -19,7 +23,7 @@ public $user_id;
 public function rules()
 {
     return [
-        [['user_id'], 'required'],
+        [['category'], 'string'],
         ];
 }
 
@@ -29,7 +33,8 @@ public function rules()
 public function attributeLabels()
 {
     return [
-        'verifyCode' => 'Verification Code',
+        'category' => '',
+        'faculty' => '',
     ];
 }
 

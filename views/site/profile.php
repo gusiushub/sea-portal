@@ -1,6 +1,5 @@
 <?php
 
-//use kartik\file\FileInput;
 use yii\bootstrap\ActiveForm;
 
 $this->title = 'Profile';
@@ -98,7 +97,7 @@ $user = $model->attributes;
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="/web/site/crew" class="adaptive-menu__link">
+                                    <a href="/web/find/crew" class="adaptive-menu__link">
                                         Crew
                                     </a>
                                 </li>
@@ -235,9 +234,6 @@ $user = $model->attributes;
                     <div class="profile">
                         <?php if (!empty(Yii::$app->user->identity->img)){ ?>
                         <img src="../../web/public/uploads/<?php echo Yii::$app->user->identity->img ?>" alt="company-logo" class="profile__photo margin-bottom-light">
-<!--                        <button class="profile__upload-photo margin-bottom-medium">-->
-<!--                            select file-->
-<!--                        </button>-->
                        <?php }else{  ?>
                         <img src="../../web/public/img/company-logo-big.jpg" alt="company-logo" class="profile__photo margin-bottom-light">
                         <?php } ?>
@@ -390,7 +386,7 @@ $user = $model->attributes;
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-                                            <input  type="text" class="textinput-container__input textinput-container__input--change-pass textinput-container__input--change-unactive" disabled="" value="7ngdc5cn" disabled="" placeholder="PASSWORD" name="password" >
+                                            <input  type="password" class="textinput-container__input textinput-container__input--change-pass textinput-container__input--change-unactive" disabled="" value="password" disabled="" placeholder="PASSWORD" name="password" >
                                         </div>
                                     </div>
                                 </div>

@@ -5,11 +5,11 @@
             <div class="row">
                 <div class="col-lg-12 vertical-center horizontal-between">
                     <div class="logotype-box">
-                        <a href="#"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
+                        <a href="/web/site"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
                     </div>
                     <div class="settings">
                         <div class="settings__item">
-                            <a href="#" class="settings__email">
+                            <a href="/web/site/profile" class="settings__email">
                                 <?php echo Yii::$app->user->identity->email ?>
                             </a>
                         </div>
@@ -26,12 +26,12 @@
                             <div class="settings__hidden-menu">
                                 <ul class="settings__list">
                                     <li class="settings__list-item">
-                                        <a href="#" class="settings__link">
+                                        <a href="/web/site/profile" class="settings__link">
                                             Profile
                                         </a>
                                     </li>
                                     <li class="settings__list-item">
-                                        <a href="#" class="settings__link">
+                                        <a href="/web/user/logout" class="settings__link">
                                             Sign Out
                                         </a>
                                     </li>
@@ -127,22 +127,22 @@
                     <nav class="secondary-navigation">
                         <ul class="secondary-navigation__list">
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/shipboard-supply" class="secondary-navigation__link">
                                     Find a supplier
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/site/become-supplier" class="secondary-navigation__link">
                                     Become a supplier
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/crew" class="secondary-navigation__link">
                                     Crew
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/vessels-sale" class="secondary-navigation__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>

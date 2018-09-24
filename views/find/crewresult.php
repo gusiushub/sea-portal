@@ -6,6 +6,7 @@ use yii\bootstrap\Html;
 use yii\helpers\Url;
 
 $this->title = 'Crew';
+
 ?>
 <body>
 <header class="header">
@@ -125,39 +126,72 @@ $this->title = 'Crew';
             <div class="row">
                 <div class="col-lg-12">
                     <nav class="secondary-navigation">
-                        <ul class="secondary-navigation__list">
-                            <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                        <ul class="adaptive-menu__list">
+                            <?php if (!Yii::$app->user->isGuest){  ?>
+                                <li class="adaptive-menu__item">
+                                    <a class="adaptive-menu__link" href="<?php if (Yii::$app->user->identity->user_status==1) {
+                                        echo '/web/site/profile';
+                                    }
+                                    if (Yii::$app->user->identity->user_status==2) {
+                                        echo '/web/company/profile';
+                                    }
+                                    if (Yii::$app->user->identity->user_status==3) {
+                                        echo '/web/seller/profile';
+                                    } ?>" class="authorization__link authorization__link--white">
+                                        Profile
+                                    </a>
+                                </li>
+                                <li class="adaptive-menu__item">
+                                    <a class="adaptive-menu__link" href="/web/user/logout" class="authorization__link authorization__link--white">
+                                        Logout
+                                    </a>
+                                </li>
+                            <?php } else{ ?>
+
+                                <li class="adaptive-menu__item">
+                                    <a href="/web/site/login" class="adaptive-menu__link">
+                                        Sign In
+                                    </a>
+                                </li>
+                                <li class="adaptive-menu__item">
+                                    <a href="/web/site/signup" class="adaptive-menu__link">
+                                        Sign Up
+                                    </a>
+                                </li>
+                            <?php } ?>
+
+                            <li class="adaptive-menu__item">
+                                <a href="/web/find/shipboard-supply" class="adaptive-menu__link">
                                     Find a supplier
                                 </a>
                             </li>
-                            <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                            <li class="adaptive-menu__item">
+                                <a href="/web/site/become-supplier" class="adaptive-menu__link">
                                     Become a supplier
                                 </a>
                             </li>
-                            <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link secondary-navigation__link--active">
+                            <li class="adaptive-menu__item">
+                                <a href="/web/find/crew" class="adaptive-menu__link">
                                     Crew
                                 </a>
                             </li>
-                            <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                            <li class="adaptive-menu__item">
+                                <a href="/web/find/vessels-sale" class="adaptive-menu__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
-                            <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                            <li class="adaptive-menu__item">
+                                <a href="#" class="adaptive-menu__link">
                                     Chartering market
                                 </a>
                             </li>
-                            <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                            <li class="adaptive-menu__item">
+                                <a href="#" class="adaptive-menu__link">
                                     Contacts
                                 </a>
                             </li>
-                            <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                            <li class="adaptive-menu__item">
+                                <a href="#" class="adaptive-menu__link">
                                     Faq
                                 </a>
                             </li>
@@ -192,7 +226,11 @@ $this->title = 'Crew';
                             find a students (Practice on Board)
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <?php if (Yii::$app->user->isGuest){ ?>
+                    <a href='/web/site/login' class="primary-menu__item">
+                        <?php }else{ ?>
+                        <a href='/web/user/profile' class="primary-menu__item">
+                            <?php } ?>
                         <i class="icon-list1 primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             place a CV Crew/Students
@@ -250,7 +288,7 @@ $this->title = 'Crew';
                         $count = count($model->search());
                         foreach ($model->search() as $cv):
                         $user = User::find()->where(['id'=>$cv['user_id']])->andWhere(['tariff'=>'business'])->one();
-                        if ($user!=null) {
+                        if ($user!=null) :
 
                             ?>
                             <div class="col-lg-4">
@@ -311,7 +349,7 @@ $this->title = 'Crew';
                             </div>
                             <?php
                             $i++;
-                        }
+                        endif;
                         endforeach;
                         ?>
                         <?php
@@ -319,7 +357,6 @@ $this->title = 'Crew';
                         foreach ($model->search() as $cv):
                         $user = User::find()->where(['id'=>$cv['user_id']])->andWhere(['tariff'=>'free'])->one();
                         if ($user!=null) {
-
                             ?>
                             <div class="col-lg-4">
                                 <div class="result-box">
@@ -333,7 +370,6 @@ $this->title = 'Crew';
                                                     <img src="../../web/public/img/image-box.png" alt="image-box"
                                                          class="result-box__picture">
                                                 <?php } ?>
-                                                <!--                                            <img src="../../web/public/img/image-box.png" alt="image-box" class="result-box__picture">-->
                                                 <button class="result-box__add-button">&nbsp;</button>
                                             </div>
                                             <div class="result-box__description">
@@ -387,8 +423,7 @@ $this->title = 'Crew';
                             Send a message
                         </h3>
                         <div class="textinput-container">
-                            <?php
-                            ?>
+                            <?php   ?>
                             <?= $form->field($model, 'name')->textInput([
                                     'placeholder' => "NAME",
                                 'class'=>'textinput-container__input'
@@ -549,7 +584,7 @@ $this->title = 'Crew';
                     </div>
                     <div class="copyright">
                         <p class="copyright__design-by">
-                            Design by HoteyCompany
+
                         </p>
                     </div>
                 </div>
@@ -557,59 +592,7 @@ $this->title = 'Crew';
         </div>
     </footer>
 </main>
-<!--<a class="element_a" href="/web/site?a=1">asdasdasdasd</a>-->
-<!--<form id="form" class="element_a" action="/web/site">-->
-<!--    <input type="submit" value="jnghassf">-->
-<!--</form>-->
+
 </body>
 <script src="../../web/public/js/common.js"></script>
-<script type="text/javascript">
 
-//     $(".checkbox-style [type='checkbox']").change(function() {
-//         if(this.checked) {
-//             var form = document.getElementById('forme');
-//             if (!form) return false;
-// //alert($('#form').attr("action"), $('.element_a').attr('action')+$(this).val()+"," )
-//            // form.action = './web/site'+$(this).val();
-//              $('#form').attr("action", $('#form').attr('action')+$(this).val()+"," )
-//         }else{
-//             var form = document.getElementById('form');
-//             if (!form) return false;
-//
-//             form.action = './web/find/crew?'+$(this).val();
-//
-//             var str1 = form.action;
-//             var str2 = $(this).val();
-//             var st = str1.replace(str2, '');
-//             form.action = './web/find/crew?';
-//         }
-//     });
-
-</script>
-
-<script>
-    // var val = document.getElementById('input_extrafl13').value;
-    // var count = document.getElementById('count').value;
-    // var i;
-    // for (i=1; i<count; i++) {
-    //     //alert("select"+i);
-    //     //alert(i)
-    // var val = 0;
-    // $(".checkbox-style__input [type='checkbox']").change(function() {
-    //     if(this.checked) {
-    //         val++;
-    //         alert(val);
-    //     }
-    // }
-    //     document.getElementsByClassName("checkbox-style__input").addEventListener('change', function () {
-    //         var val = document.getElementsByClassName('checkbox-style__input').value;
-    //         alert(val);
-    //         this.checked ? val = val + "select"+i+" ," : val = val.replace("select"+i+" ,","");
-    //     });
-    // }
-    // alert(i)
-    // document.getElementById('select2').addEventListener('change', function() {
-    //     var val = document.getElementById('input_extrafl13').value;
-    //     this.checked ? document.getElementById('input_extrafl13').value = document.getElementById('input_extrafl13').value + 'select2 ,' : document.getElementById('input_extrafl13').value = val.replace('select2 ,','');
-    // });
-</script>

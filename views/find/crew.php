@@ -1,6 +1,7 @@
 <?php
-//var_dump($_GET);
+
 use app\models\User;
+use app\models\Crew;
 use yii\bootstrap\ActiveForm;
 use yii\bootstrap\Html;
 
@@ -30,7 +31,7 @@ $this->title = 'Crew';
 
                         <div class="settings">
                             <div class="settings__item">
-                                <a href="/web/company/profile" class="settings__email">
+                                <a href="/web/user/profile" class="settings__email">
                                     <?php echo Yii::$app->user->identity->email ?>
                                 </a>
                             </div>
@@ -68,16 +69,39 @@ $this->title = 'Crew';
                         </div>
                         <nav class="adaptive-menu__navigation">
                             <ul class="adaptive-menu__list">
-                                <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
-                                        Sign In
-                                    </a>
-                                </li>
-                                <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
-                                        Sign Up
-                                    </a>
-                                </li>
+                                <?php if (!Yii::$app->user->isGuest){  ?>
+                                    <li class="adaptive-menu__item">
+                                        <a class="adaptive-menu__link" href="<?php if (Yii::$app->user->identity->user_status==1) {
+                                            echo '/web/site/profile';
+                                        }
+                                        if (Yii::$app->user->identity->user_status==2) {
+                                            echo '/web/company/profile';
+                                        }
+                                        if (Yii::$app->user->identity->user_status==3) {
+                                            echo '/web/seller/profile';
+                                        } ?>" class="authorization__link authorization__link--white">
+                                            Profile
+                                        </a>
+                                    </li>
+                                    <li class="adaptive-menu__item">
+                                        <a class="adaptive-menu__link" href="/web/user/logout" class="authorization__link authorization__link--white">
+                                            Logout
+                                        </a>
+                                    </li>
+                                <?php } else{ ?>
+
+                                    <li class="adaptive-menu__item">
+                                        <a href="/web/site/login" class="adaptive-menu__link">
+                                            Sign In
+                                        </a>
+                                    </li>
+                                    <li class="adaptive-menu__item">
+                                        <a href="/web/site/signup" class="adaptive-menu__link">
+                                            Sign Up
+                                        </a>
+                                    </li>
+                                <?php } ?>
+
                                 <li class="adaptive-menu__item">
                                     <a href="/web/find/shipboard-supply" class="adaptive-menu__link">
                                         Find a supplier
@@ -89,7 +113,7 @@ $this->title = 'Crew';
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="/web/find/crew" class="adaptive-menu__link adaptive-menu__link--active">
+                                    <a href="/web/find/crew" class="adaptive-menu__link">
                                         Crew
                                     </a>
                                 </li>
@@ -192,7 +216,11 @@ $this->title = 'Crew';
                             find a students (Practice on Board)
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <?php if (Yii::$app->user->isGuest){ ?>
+                    <a href='/web/site/login' class="primary-menu__item">
+                        <?php }else{ ?>
+                        <a href='/web/user/profile' class="primary-menu__item">
+                        <?php } ?>
                         <i class="icon-list1 primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             place a CV Crew/Students
@@ -226,24 +254,34 @@ $this->title = 'Crew';
                             </h4>
                             <div class="select-style">
 
+                                <?php
+                                $positions = Crew::find()->all();
+                                ?>
 
-
-                                <?= $form->field($model, 'position')->dropDownList(['Turner / Fitter / Welder'=>'Turner / Fitter / Welder'],[
+                                <?= $form->field($model, 'position')->dropDownList(\yii\helpers\ArrayHelper::map($positions,'position','position'),[
+                                    'prompt'=>'Position',
                                     'class'=>'select-style__select',
+                                    'id'=>'position',
                                     'placeholder'=>'COUNTRY',
                                 ]) ?>
 
                                 <div class="select-style__arrow">&nbsp;</div>
                             </div>
                         </div>
+                        <div style="display: none" class="form-group city-select">
                         <div class="filter__item margin-bottom-light">
                             <h4 class="filter__title">
                                 Level of English
                             </h4>
                             <div class="select-style">
-                                <?= $form->field($model, 'lvleng')->dropDownList(['excellent'=>'excellent'],[
-                                    'class'=>'select-style__select',
+                                <?php
+                                $lvleng = Crew::find()->all();
+                                ?>
+                                <?= $form->field($model, 'lvleng')->dropDownList(array_diff(\yii\helpers\ArrayHelper::map($lvleng,'lvleng','lvleng'),array('')),[
+                                    'prompt'=>'Level of English',
+                                        'class'=>'select-style__select',
                                     'placeholder'=>'COUNTRY',
+                                    'id'=>'lvleng'
                                 ]) ?>
 
                                 <div class="select-style__arrow">&nbsp;</div>
@@ -256,6 +294,7 @@ $this->title = 'Crew';
                                 </h4>
                                 <div class="textinput-container">
                                     <?= $form->field($model, 'salary')->textInput([
+                                        //'prompt'=>'Salary',
                                         'class' => 'textinput-container__input',
                                         'placeholder'=>'MAXIMUM',
                                     ]) ?>
@@ -267,7 +306,8 @@ $this->title = 'Crew';
                                 </h4>
                                 <div class="select-style">
                                     <?= $form->field($model, 'currency')->dropDownList(['eur'=>'eur','text'=>'text'],[
-                                        'class'=>'select-style__select',
+                                        'prompt'=>'Curency',
+                                            'class'=>'select-style__select',
                                         'placeholder'=>'eur',
                                     ]) ?>
 
@@ -276,9 +316,11 @@ $this->title = 'Crew';
                                 <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
                             </div>
                         </div>
-                        <div class="filter__item">
-                            <?= Html::submitButton('send', ['class' => 'button button--show-results', 'name' => 'search']) ?>
                         </div>
+                        <div class="filter__item">
+                            <?= Html::submitButton('Show results', ['class' => 'button button--show-results', 'name' => 'search']) ?>
+                        </div>
+
                     </div>
                     <?php ActiveForm::end(); ?>
                 </div>
@@ -415,7 +457,7 @@ $this->title = 'Crew';
             <div class="col-lg-12 horizontal-between">
                 <div class="copyright">
                     <p class="copyright__content">
-                        © MarineNotes, 2018
+
                     </p>
                 </div>
                 <div class="copyright">
@@ -429,3 +471,14 @@ $this->title = 'Crew';
 </footer>
 </body>
 <script src="../../web/public/js/common.js"></script>
+<script>
+
+    $(function(){
+        $('#position').change(function(){
+            var position = $(this).val();
+            $('#lvleng').load('ajax-crew', {position: position}, function(){
+                $('.city-select').fadeIn('fast');
+            });
+        });
+    });
+</script>

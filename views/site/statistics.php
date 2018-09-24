@@ -89,7 +89,7 @@
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="/web/site/crew" class="adaptive-menu__link">
+                                    <a href="/web/find/crew" class="adaptive-menu__link">
                                         Crew
                                     </a>
                                 </li>
@@ -232,8 +232,8 @@
                 <div class="col-lg-3 vertical-center">
                     <div class="select-style">
                         <select name="refine" id="" class="select-style__select">
-                            <option class="select-style__placeholder">users visited</option>
-                            <option value="">text</option>
+                            <option class="select-style__placeholder">response to summary</option>
+                            <option value="response">users visited</option>
                             <option value="">text</option>
                         </select>
                         <div class="select-style__arrow">&nbsp;</div>
@@ -246,7 +246,8 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <h3 class="statistics__title margin-bottom-light">
-                                    users visited
+                                    response to summary
+<!--                                    users visited-->
                                 </h3>
                             </div>
                         </div>
@@ -395,11 +396,67 @@
             </div>
         </div>
     </div>
+    <?php
+    $k=1;
+    $ost = count($statistics);
+    foreach($statistics as $value){ ?>
+    <input type="hidden" value="<?php echo $value['request'] ?>" id="val<?php echo $k ?>">
+    <?php
+    $k++;
+    } ?>
+
+    <?php
+    $k=1;
+    //var_dump($statistics[3]);exit;
+    for($j=0;$j<$ost;$j++){ ?>
+        <input type="hidden" value="" id="val<?php echo $ost+$j ?>">
+        <?php
+        $k++;
+    }
+
+    $date = app\models\Statistics::find()->where(['user_id'=>Yii::$app->user->id])->limit(7)->orderby(['id'=>SORT_DESC])->all();
+//var_dump($date[1]['date']);
+$n = count($date);
+    for($i=0;$i<8;$i++){
+        if (isset($date[$i]['date'])){
+        ?>
+        <input type="hidden" value="<?php echo $date[$i]['date'] ?>" id="date<?php echo $i ?>">
+        <?php
+    }else{?>
+            <input type="hidden" value="" id="date<?php echo $i ?>">
+    <?php
+        }
+    }
+    ?>
+
+
 </footer>
 </body>
 <script src="../../web/public/js/common.js"></script>
 <script src="../../web/public/libs/Chart.min.js"></script>
 <script>
+
+    function $_GET(key) {
+        var p = window.location.search;
+        p = p.match(new RegExp(key + '=([^&=]+)'));
+        return p ? p[1] : false;
+    }
+
+    var input1 = document.getElementById('val1').value;
+    var input2 = document.getElementById('val2').value;
+    var input3 = document.getElementById('val3').value;
+    var input4 = document.getElementById('val4').value;
+    var input5 = document.getElementById('val5').value;
+    var input6 = document.getElementById('val6').value;
+    var input7 = document.getElementById('val7').value;
+    var input8 = document.getElementById('date1').value;
+    var input9 = document.getElementById('date2').value;
+    var input10 = document.getElementById('date3').value;
+    var input11 = document.getElementById('date4').value;
+    var input12 = document.getElementById('date5').value;
+    var input13 = document.getElementById('date6').value;
+    var input14 = document.getElementById('date7').value;
+
     var ctx = document.getElementById("chart-statistics").getContext('2d');
     var myBarChart = new Chart(ctx, {
         options: {
@@ -436,18 +493,18 @@
         // The data for our dataset
         data: {
             labels: [
-                "2015-10-01",
-                "2015-10-02",
-                "2015-10-01",
-                "2015-10-01",
-                "2015-10-01",
-                "2015-10-01",
-                "2015-10-01"
+                input14,
+                input13,
+                input12,
+                input11,
+                input10,
+                input9,
+                input8
             ],
             datasets: [{
                 backgroundColor: "rgb(206, 225, 240)",
                 borderColor: "rgb(72, 137, 191)",
-                data: [0, 3, 50, 150, 70, 250, 230, 400]
+                data: [input7, input6, input5, input4, input3, input2, input1, 20]
             }]
         }
     });

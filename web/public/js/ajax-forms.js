@@ -102,7 +102,7 @@ $('#profile-seller7-change').click(function(){
             port = $('select[name="port"]').find('option:checked').text(),
             price = $('input[name="price"]').val(),
             currency = $('input[name="currency"]').val(),
-            _csrf = $('input[name="price"]').val(),
+            _csrf = $('input[name="_csrf"]').val(),
             profile_seller7 = {
                 category,
                 vtype,
@@ -248,8 +248,9 @@ $('#profile1_change').click(function(){
     }
 });
 
+
 $('#personal4_1').click(function(){
-    if($(this).text() === 'Edit') {
+    if($(this).text().trim() === 'save') {
         var category = $('select[name="category"]').val(),
             faculty = $('select[name="faculty"]').val(),
             levelofeng = $('select[name="levelofeng"]').val(),
@@ -275,8 +276,38 @@ $('#personal4_1').click(function(){
     }
 });
 
+
+// $('#personal4_1').click(function(){
+//     if($(this).text() === 'Edit') {
+//         var category = $('select[name="category"]').val(),
+//             faculty = $('select[name="faculty"]').val(),
+//             levelofeng = $('select[name="levelofeng"]').val(),
+//             country = $('select[name="country"]').val(),
+//             port = $('select[name="port"]').val(),
+//             _csrf = $('input[name="_csrf"]').val(),
+//             profile_personal4_1 = {
+//                 category,
+//                 faculty,
+//                 levelofeng,
+//                 country,
+//                 port
+//             };
+//         var jsdata = JSON.stringify(profile_personal4_1);
+//         $.ajax({
+//             type: "POST",
+//             url: "/web/site/cv-ajax",
+//             data: {
+//                 profile_personal4_1: jsdata,
+//                 _csrf: _csrf
+//             }
+//         });
+//     }
+// });
+
+
+
 $('#personal4_1_job').click(function(){
-    if($(this).text() === 'Edit') {
+    if($(this).text() === 'save') {
         var category = $('select[name="category"]').val(),
             position = $('select[name="position"]').val(),
             levelofeng = $('select[name="levelofeng"]').val(),
@@ -303,6 +334,37 @@ $('#personal4_1_job').click(function(){
         });
     }
 });
+
+
+
+// $('#personal4_1_job').click(function(){
+//     if($(this).text() === 'Edit') {
+//         var category = $('select[name="category"]').val(),
+//             position = $('select[name="position"]').val(),
+//             levelofeng = $('select[name="levelofeng"]').val(),
+//             salary_min = $('input[name="salary_min"]').val(),
+//             salary_max = $('input[name="salary_max"]').val(),
+//             currency = $('select[name="currency"]').val(),
+//             _csrf = $('input[name="_csrf"]').val(),
+//             profile_personal4_1_job = {
+//                 category,
+//                 position,
+//                 levelofeng,
+//                 salary_min,
+//                 salary_max,
+//                 currency
+//             };
+//         var jsdata = JSON.stringify(profile_personal4_1_job);
+//         $.ajax({
+//             type: "POST",
+//             url: "/web/site/cv-ajax",
+//             data: {
+//                 profile_personal4_1_job: jsdata,
+//                 _csrf: _csrf
+//             }
+//         });
+//     }
+// });
 
 $('#profile4-1_edit').click(function(){
     if($(this).text() === 'edit') {
