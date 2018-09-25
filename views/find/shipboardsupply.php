@@ -322,7 +322,7 @@ $this->title = 'Find a supplier';
                             <?php $contracts = \app\models\Contracts::find()->all(); ?>
                                 <?= $form->field($model, 'search')->dropDownList(\yii\helpers\ArrayHelper::map($contracts,'search','search'),
                                     ['id'=>'search',
-                                        'prompt'=>'-Choose a Name-',
+                                        'prompt'=>'Refine your search',
                                         'class'=>'select-style__select'
                                         ]); ?>
 

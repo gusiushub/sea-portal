@@ -1,6 +1,6 @@
 <?php
 
-use app\models\User;
+//use app\models\User;
 use app\models\Location;
 use app\models\Cv;
 use yii\bootstrap\ActiveForm;

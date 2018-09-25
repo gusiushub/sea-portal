@@ -1,6 +1,4 @@
 <?php
-
-use app\models\User;
 use app\models\Crew;
 use yii\bootstrap\ActiveForm;
 use yii\bootstrap\Html;
@@ -305,7 +303,7 @@ $this->title = 'Crew';
                                     Curency
                                 </h4>
                                 <div class="select-style">
-                                    <?= $form->field($model, 'currency')->dropDownList(['eur'=>'eur','text'=>'text'],[
+                                    <?= $form->field($model, 'currency')->dropDownList(['eur'=>'eur','USD'=>'USD'],[
                                         'prompt'=>'Curency',
                                             'class'=>'select-style__select',
                                         'placeholder'=>'eur',
@@ -470,7 +468,7 @@ $this->title = 'Crew';
     </div>
 </footer>
 </body>
-<script src="../../web/public/js/common.js"></script>
+<!--<script src="../../web/public/js/common.js"></script>-->
 <script>
 
     $(function(){

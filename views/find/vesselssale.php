@@ -232,8 +232,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    <?php $form = ActiveForm::begin(); ?>
+
                     <div class="filter margin-bottom-light">
+                        <?php $form = ActiveForm::begin(); ?>
                         <div class="secondary-headline margin-bottom-light">
                             <h2 class="secondary-headline__title">
                                 Find a vessel
@@ -255,7 +256,7 @@
                                 <?= $form->field($model, 'type')->dropDownList(array_diff(\yii\helpers\ArrayHelper::map($offers,'type','type'),array('')),[
                                     'prompt'=>'Level of English',
                                     'class'=>'select-style__select',
-                                    'placeholder'=>'COUNTRY',
+                                    //'placeholder'=>'COUNTRY',
                                     'id'=>'type'
                                 ]) ?>
 
@@ -416,8 +417,9 @@
                         <div class="filter__item">
                             <?= Html::submitButton('Show results', ['class' => 'button button--show-results', 'name' => 'search']) ?>
                         </div>
+                        <?php ActiveForm::end(); ?>
                     </div>
-                    <?php ActiveForm::end(); ?>
+
                 </div>
                 <div class="col-lg-4">
                     <a href='#' class="advertising advertising--find-vessel">
