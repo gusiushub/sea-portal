@@ -18,6 +18,7 @@ class BecomeSupplier extends Model
     public $country;
     public $city;
     public $website;
+    public $user_status;
 
     /**
      * @inheritdoc
@@ -40,6 +41,7 @@ class BecomeSupplier extends Model
             ['city', 'required'],
             ['phone', 'required'],
             ['website', 'required'],
+            ['user_status', 'required'],
         ];
     }
 
@@ -47,7 +49,15 @@ class BecomeSupplier extends Model
     public function attributeLabels()
     {
         return [
-            'verifyCode' => 'Verification Code',
+            'username'=>'',
+            'country'=>'',
+            'phone'=>'',
+            'city'=>'',
+            'email'=>'',
+            'second_name'=>'',
+            'password'=>'',
+            'website'=>'',
+            'user_status'=>'',
         ];
     }
 
@@ -72,7 +82,7 @@ class BecomeSupplier extends Model
         $user->city = $this->city;
         $user->phone = $this->phone;
         $user->website = $this->website;
-        $user->user_status = 1;
+        $user->user_status = $this->user_status;
         return $user->save() ? $user : null;
     }
 

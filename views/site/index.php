@@ -1,6 +1,5 @@
 <?php
 
-use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 
@@ -23,16 +22,49 @@ $this->title = 'Start page';
                             </div>
                             <nav class="adaptive-menu__navigation adaptive-menu__navigation--main-page">
                                 <ul class="adaptive-menu__list">
+                                <?php if (!Yii::$app->user->isGuest){  ?>
                                     <li class="adaptive-menu__item">
-                                        <a href="/web/site/login" class="adaptive-menu__link">
-                                            Sign In
-                                        </a>
+                                    <a class="adaptive-menu__link" href="<?php if (Yii::$app->user->identity->user_status==1) {
+                                        echo '/web/site/profile';
+                                    }
+                                    if (Yii::$app->user->identity->user_status==2) {
+                                        echo '/web/company/profile';
+                                    }
+                                    if (Yii::$app->user->identity->user_status==3) {
+                                        echo '/web/seller/profile';
+                                    } ?>" class="authorization__link authorization__link--white">
+                                        Profile
+                                    </a>
                                     </li>
                                     <li class="adaptive-menu__item">
-                                        <a href="/web/site/signup" class="adaptive-menu__link">
-                                            Sign Up
-                                        </a>
+                                    <a class="adaptive-menu__link" href="/web/user/logout" class="authorization__link authorization__link--white">
+                                        Logout
+                                    </a>
                                     </li>
+                                <?php } else{ ?>
+
+                                    <li class="adaptive-menu__item">
+                                    <a href="/web/site/login" class="adaptive-menu__link">
+                                        Sign In
+                                    </a>
+                                    </li>
+                                    <li class="adaptive-menu__item">
+                                    <a href="/web/site/signup" class="adaptive-menu__link">
+                                        Sign Up
+                                    </a>
+                                    </li>
+                                <?php } ?>
+<!--                                <ul class="adaptive-menu__list">-->
+<!--                                    <li class="adaptive-menu__item">-->
+<!--                                        <a href="/web/site/login" class="adaptive-menu__link">-->
+<!--                                            Sign In-->
+<!--                                        </a>-->
+<!--                                    </li>-->
+<!--                                    <li class="adaptive-menu__item">-->
+<!--                                        <a href="/web/site/signup" class="adaptive-menu__link">-->
+<!--                                            Sign Up-->
+<!--                                        </a>-->
+<!--                                    </li>-->
                                     <li class="adaptive-menu__item">
                                         <a href="#" class="adaptive-menu__link">
                                             Contacts
@@ -49,6 +81,23 @@ $this->title = 'Start page';
                     </div>
                     <div class="col-lg-6">
                         <div class="authorization">
+                            <?php if (!Yii::$app->user->isGuest){  ?>
+                            <a href="<?php if (Yii::$app->user->identity->user_status==1) {
+                                echo '/web/site/profile';
+                            }
+                            if (Yii::$app->user->identity->user_status==2) {
+                                echo '/web/company/profile';
+                            }
+                            if (Yii::$app->user->identity->user_status==3) {
+                                echo '/web/seller/profile';
+                            } ?>" class="authorization__link authorization__link--white">
+                                Profile
+                            </a>
+                            <a href="/web/user/logout" class="authorization__link authorization__link--white">
+                                Logout
+
+                            </a>
+                            <?php } else{ ?>
                             <a href="/web/site/login" class="authorization__link authorization__link--white">
                                 Sign In
                             </a>
@@ -56,6 +105,7 @@ $this->title = 'Start page';
                                 Sign Up
 
                             </a>
+                            <?php } ?>
                             <a href="#" class="authorization__link authorization__link--white">
                                 Faq
                             </a>
@@ -94,7 +144,7 @@ $this->title = 'Start page';
             <div class="row">
                 <div class="col-lg-12">
                     <div class="five-buttons horizontal-between">
-                        <a href='/web/site/find-supplier' class="five-buttons__item">
+                        <a href='/web/find/shipboard-supply' class="five-buttons__item">
                             <div class="icon-wrapper">
                                 <img src="../../web/public/img/icons/zoom-5btn.png" alt="zoom" class="five-buttons__icon">
                             </div>
@@ -110,7 +160,7 @@ $this->title = 'Start page';
                                 Become a supplier
                             </h4>
                         </a>
-                        <a href='#' class="five-buttons__item">
+                        <a href='/web/find/crew' class="five-buttons__item">
                             <div class="icon-wrapper">
                                 <img src="../../web/public/img/icons/case-5btn.png" alt="case" class="five-buttons__icon">
                             </div>
@@ -118,7 +168,7 @@ $this->title = 'Start page';
                                 Crew
                             </h4>
                         </a>
-                        <a href='#' class="five-buttons__item">
+                        <a href='/web/find/vessels-sale' class="five-buttons__item">
                             <div class="icon-wrapper">
                                 <img src="../../web/public/img/icons/ship-5btn.png" alt="ship" class="five-buttons__icon">
                             </div>

@@ -1,7 +1,8 @@
 <?php
-use yii\helpers\Html;
+
 use yii\bootstrap\ActiveForm;
 
+$this->title = 'Profile';
 $user = $model->attributes;
 
 ?>
@@ -12,7 +13,7 @@ $user = $model->attributes;
             <div class="row">
                 <div class="col-lg-12 vertical-center horizontal-between">
                     <div class="logotype-box">
-                        <a href="#"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
+                        <a href="/web/site"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
                     </div>
                     <div class="settings">
                         <div class="settings__item">
@@ -38,20 +39,9 @@ $user = $model->attributes;
                                         </a>
                                     </li>
                                     <li class="settings__list-item">
-<!--                                        <a href="/web/site/logout" class="settings__link">-->
-<!--                                            Sign Out-->
-<!--                                        </a>-->
-<!--                                        <form method="POST" action="/web/site/logout">-->
-<!--                                            <input type="submit" class="settings__link">-->
-<!--                                        </form>-->
-                                        <?php
-                                        echo  Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Sign Out',
-                    ['class' => 'btn btn-link settings__link']
-                )
-                . Html::endForm();
-                                        ?>
+                                        <a href="/web/user/logout" class="settings__link">
+                                            Sign Out
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -63,33 +53,56 @@ $user = $model->attributes;
                         </div>
                         <nav class="adaptive-menu__navigation">
                             <ul class="adaptive-menu__list">
+                                <?php if (!Yii::$app->user->isGuest){  ?>
+                                    <li class="adaptive-menu__item">
+                                        <a class="adaptive-menu__link" href="<?php if (Yii::$app->user->identity->user_status==1) {
+                                            echo '/web/site/profile';
+                                        }
+                                        if (Yii::$app->user->identity->user_status==2) {
+                                            echo '/web/company/profile';
+                                        }
+                                        if (Yii::$app->user->identity->user_status==3) {
+                                            echo '/web/seller/profile';
+                                        } ?>" class="authorization__link authorization__link--white">
+                                            Profile
+                                        </a>
+                                    </li>
+                                    <li class="adaptive-menu__item">
+                                        <a class="adaptive-menu__link" href="/web/user/logout" class="authorization__link authorization__link--white">
+                                            Logout
+                                        </a>
+                                    </li>
+                                <?php } else{ ?>
+
+                                    <li class="adaptive-menu__item">
+                                        <a href="/web/site/login" class="adaptive-menu__link">
+                                            Sign In
+                                        </a>
+                                    </li>
+                                    <li class="adaptive-menu__item">
+                                        <a href="/web/site/signup" class="adaptive-menu__link">
+                                            Sign Up
+                                        </a>
+                                    </li>
+                                <?php } ?>
+
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
-                                        Sign In
-                                    </a>
-                                </li>
-                                <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
-                                        Sign Up
-                                    </a>
-                                </li>
-                                <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/shipboard-supply" class="adaptive-menu__link">
                                         Find a supplier
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/become-supplier" class="adaptive-menu__link">
                                         Become a supplier
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/crew" class="adaptive-menu__link">
                                         Crew
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/vessels-sale" class="adaptive-menu__link">
                                         Vessels sell/chartering
                                     </a>
                                 </li>
@@ -122,22 +135,22 @@ $user = $model->attributes;
                     <nav class="secondary-navigation">
                         <ul class="secondary-navigation__list">
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/shipboard-supply" class="secondary-navigation__link">
                                     Find a supplier
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/site/become-supplier" class="secondary-navigation__link">
                                     Become a supplier
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/crew" class="secondary-navigation__link">
                                     Crew
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/vessels-sale" class="secondary-navigation__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
@@ -169,8 +182,8 @@ $user = $model->attributes;
                     <h1 class="main-headline__title">
                         Profile
                     </h1>
-                    <a href="#" class="settings__email settings__email--head">
-                        <?php echo $user['email'] ; ?>
+                    <a href="/web/site/profile" class="settings__email settings__email--head">
+                        <?php echo Yii::$app->user->identity->email ?>
                     </a>
                 </div>
             </div>
@@ -178,7 +191,7 @@ $user = $model->attributes;
         <div class="row">
             <div class="col-lg-12">
                 <div class="primary-menu margin-bottom-medium">
-                    <a href='#' class="primary-menu__item primary-menu__item--active">
+                    <a href='/web/site/profile' class="primary-menu__item primary-menu__item--active">
                         <i class="icon-town primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             personal information
@@ -219,14 +232,21 @@ $user = $model->attributes;
             <div class="row">
                 <div class="col-lg-3">
                     <div class="profile">
+                        <?php if (!empty(Yii::$app->user->identity->img)){ ?>
+                        <img src="../../web/public/uploads/<?php echo Yii::$app->user->identity->img ?>" alt="company-logo" class="profile__photo margin-bottom-light">
+                       <?php }else{  ?>
                         <img src="../../web/public/img/company-logo-big.jpg" alt="company-logo" class="profile__photo margin-bottom-light">
+                        <?php } ?>
+                        <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
+                        <?= $form->field($upload, 'image')->fileInput(['options' => ['id' => 'image']]) ?>
                         <button class="profile__upload-photo margin-bottom-medium">
                             select file
                         </button>
+                        <?php ActiveForm::end() ?>
+<!--                        <input type="file" style='display:none' class="profile__upload-photo margin-bottom-medium" name="file" value="select file">-->
                     </div>
                 </div>
                 <div class="col-lg-9">
-
                     <div class="row ">
                         <div class="col-lg-6">
                             <div class="profile__setting">
@@ -238,14 +258,7 @@ $user = $model->attributes;
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-<!--                                            --><?//= $form->field($model, 'username')->textInput([
-//                                                'class' => 'textinput-container__input textinput-container__input--change textinput-container__input--change-unactive',
-//                                                'placeholder'=>'ANDERS',
-//                                                'disabled'=>'',
-//                                                'name'=>'fname',
-//                                                'type'=>'text   '
-//                                            ]) ?>
-                                            <input type="text" class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="ANDERS" name="fname">
+                                            <input type="text" class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="ANDERS" name="fname" value="<?php echo Yii::$app->user->identity->username ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -259,7 +272,7 @@ $user = $model->attributes;
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="POWERS" name="sname">
+                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="POWERS" name="sname" value="<?php echo Yii::$app->user->identity->second_name ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -273,7 +286,7 @@ $user = $model->attributes;
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="17.02.1972" name="dbirth">
+                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="17.02.1972" name="dbirth" value="<?php echo Yii::$app->user->identity->birthday ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -287,7 +300,7 @@ $user = $model->attributes;
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="ESTONIA" name="country">
+                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="ESTONIA" name="country" value="<?php echo Yii::$app->user->identity->country ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -301,7 +314,7 @@ $user = $model->attributes;
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="TALLINN" name="city">
+                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="TALLINN" name="city" value="<?php echo Yii::$app->user->identity->city ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -314,23 +327,20 @@ $user = $model->attributes;
                                                 </span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                        <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" >
                                         <div class="textinput-container">
-                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="22 YEARS" name="experience">
+                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="22 YEARS" name="experience" value="<?php echo Yii::$app->user->identity->experience ?>">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 offset-lg-3 col-md-3 col-sm-3 col-3">
-
-                            <button class="button button--profile button--profile-change">
+                            <button id="profile_personal1" class="button button--profile button--profile-change">
                                 edit
                             </button>
                         </div>
                     </div>
-<!--                    --><?php //ActiveForm::end(); ?>
-
-
                     <div class="row block-underline">
                         <div class="col-lg-6">
                             <div class="profile__setting">
@@ -342,7 +352,7 @@ $user = $model->attributes;
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="100000" name="salary">
+                                            <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="100000" name="salary" value="<?php echo Yii::$app->user->identity->salary ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -358,14 +368,13 @@ $user = $model->attributes;
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-                                            <input  type="text" class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="EUR" name="currency">
+                                            <input  type="text" class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="EUR" name="currency" value="<?php echo Yii::$app->user->identity->currency ?>">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <div class="row block-underline">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-6 vertical-center">
                             <div class="profile__setting profile__setting--no-margin">
@@ -377,14 +386,14 @@ $user = $model->attributes;
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
-                                            <input  type="text" class="textinput-container__input textinput-container__input--change-pass textinput-container__input--change-unactive" disabled="" value="7ngdc5cn" disabled="" placeholder="PASSWORD" name="currency">
+                                            <input  type="password" class="textinput-container__input textinput-container__input--change-pass textinput-container__input--change-unactive" disabled="" value="password" disabled="" placeholder="PASSWORD" name="password" >
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 offset-lg-3 col-md-3 col-sm-3 col-3">
-                            <button class="button button--profile button--profile--change-pass">
+                            <button id="profile_personal1_changebtn" class="button button--profile button--profile--change-pass">
                                 change
                             </button>
                         </div>
@@ -420,7 +429,7 @@ $user = $model->attributes;
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-4 col-5">
-                            <button class="button button--profile button--profile--from-to">
+                            <button id="profile_personal1_selectbtn" class="button button--profile button--profile--from-to">
                                 select
                             </button>
                         </div>
@@ -446,27 +455,27 @@ $user = $model->attributes;
                         </h4>
                         <ul class="footer-nav__list">
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/find/shipboard-supply" class="footer-nav__link">
                                     Find a supplier
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/become-supplier" class="footer-nav__link">
                                     Become a supplier
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/find/crew" class="footer-nav__link">
                                     Crew
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/find/shipboard-supply" class="footer-nav__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/find/shipboard-supply" class="footer-nav__link">
                                     Chartering market
                                 </a>
                             </li>
@@ -478,27 +487,27 @@ $user = $model->attributes;
                         </h4>
                         <ul class="footer-nav__list">
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/contacts" class="footer-nav__link">
                                     Contacts
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/faq" class="footer-nav__link">
                                     Faq
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/terms-conditions" class="footer-nav__link">
                                     Terms and Conditions
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/login" class="footer-nav__link">
                                     Sign In
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/signup" class="footer-nav__link">
                                     Sign Up
                                 </a>
                             </li>
@@ -534,16 +543,32 @@ $user = $model->attributes;
                 </div>
                 <div class="copyright">
                     <p class="copyright__design-by">
-                        Design by HoteyCompany
+
                     </p>
                 </div>
             </div>
         </div>
     </div>
 </footer>
-
+<!--<input style="display:none;" type="file" id="image"/>-->
+<!--<button id="file">Загрузить файл</button>-->
 </body>
-
 <script src="../../web/public/js/common.js"></script>
 <script src="../../web/public/js/info-change.js"></script>
 <script src="../../web/public/js/from-to.js"></script>
+<script src="../../web/public/js/ajax-forms.js"></script>
+<script>
+    // $(function() {
+    //     $("#file").click(function(){
+    //         $("#image").click();
+    //     });
+    //     $("#image").change(function(){
+    //         image = $("#image").val().replace(/C:\\fakepath\\/i, '');
+    //         if(image == 0){
+    //             $("#image").next().hide().html('Загрузить файл').fadeIn(400);
+    //         }else{
+    //             $("#image").next().hide().html(image).fadeIn(400);
+    //         }
+    //     });
+    // });
+</script>

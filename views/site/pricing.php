@@ -26,12 +26,12 @@
                             <div class="settings__hidden-menu">
                                 <ul class="settings__list">
                                     <li class="settings__list-item">
-                                        <a href="#" class="settings__link">
+                                        <a href="/web/site/profile" class="settings__link">
                                             Profile
                                         </a>
                                     </li>
                                     <li class="settings__list-item">
-                                        <a href="#" class="settings__link">
+                                        <a href="/web/user/logout" class="settings__link">
                                             Sign Out
                                         </a>
                                     </li>
@@ -45,33 +45,56 @@
                         </div>
                         <nav class="adaptive-menu__navigation">
                             <ul class="adaptive-menu__list">
+                                <?php if (!Yii::$app->user->isGuest){  ?>
+                                    <li class="adaptive-menu__item">
+                                        <a class="adaptive-menu__link" href="<?php if (Yii::$app->user->identity->user_status==1) {
+                                            echo '/web/site/profile';
+                                        }
+                                        if (Yii::$app->user->identity->user_status==2) {
+                                            echo '/web/company/profile';
+                                        }
+                                        if (Yii::$app->user->identity->user_status==3) {
+                                            echo '/web/seller/profile';
+                                        } ?>" class="authorization__link authorization__link--white">
+                                            Profile
+                                        </a>
+                                    </li>
+                                    <li class="adaptive-menu__item">
+                                        <a class="adaptive-menu__link" href="/web/user/logout" class="authorization__link authorization__link--white">
+                                            Logout
+                                        </a>
+                                    </li>
+                                <?php } else{ ?>
+
+                                    <li class="adaptive-menu__item">
+                                        <a href="/web/site/login" class="adaptive-menu__link">
+                                            Sign In
+                                        </a>
+                                    </li>
+                                    <li class="adaptive-menu__item">
+                                        <a href="/web/site/signup" class="adaptive-menu__link">
+                                            Sign Up
+                                        </a>
+                                    </li>
+                                <?php } ?>
+
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
-                                        Sign In
-                                    </a>
-                                </li>
-                                <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
-                                        Sign Up
-                                    </a>
-                                </li>
-                                <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/shipboard-supply" class="adaptive-menu__link">
                                         Find a supplier
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/become-supplier" class="adaptive-menu__link">
                                         Become a supplier
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/crew" class="adaptive-menu__link">
                                         Crew
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/vessels-sale" class="adaptive-menu__link">
                                         Vessels sell/chartering
                                     </a>
                                 </li>
@@ -104,22 +127,22 @@
                     <nav class="secondary-navigation">
                         <ul class="secondary-navigation__list">
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/shipboard-supply" class="secondary-navigation__link">
                                     Find a supplier
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/site/become-supplier" class="secondary-navigation__link">
                                     Become a supplier
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/crew" class="secondary-navigation__link">
                                     Crew
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/vessels-sale" class="secondary-navigation__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
@@ -152,7 +175,7 @@
                         Profile
                     </h1>
                     <a href="#" class="settings__email settings__email--head">
-                        wilkinson@gmail.com
+                        <?php echo Yii::$app->user->identity->email ?>
                     </a>
                 </div>
             </div>
@@ -207,6 +230,27 @@
                             your CV among others and by posting it in the
                             upper lines of the search.
                         </p>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="col-lg-12">
+                    <div class="sub-title margin-bottom-light text-center">
+                        <h3 class="sub-title__title">
+                            select a cv:
+                        </h3>
+                    </div>
+                    <h4 class="filter__title">
+                        cv
+                    </h4>
+                    <div class="select-style">
+                        <select name="option" id="" class="select-style__select">
+                            <option class="select-style__placeholder">select a cv</option>
+                            <?php foreach ($cv as $userCv){ ?>
+                            <option value="<?php echo $userCv['name'] ?>"><?php echo $userCv['name'] ?></option>
+                            <?php } ?>
+                        </select>
+                        <div class="select-style__arrow">&nbsp;</div>
+                    </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -343,27 +387,27 @@
                         </h4>
                         <ul class="footer-nav__list">
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/find/shipboard-supply" class="footer-nav__link">
                                     Find a supplier
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/become-supplier" class="footer-nav__link">
                                     Become a supplier
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/find/crew" class="footer-nav__link">
                                     Crew
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/find/shipboard-supply" class="footer-nav__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/find/shipboard-supply" class="footer-nav__link">
                                     Chartering market
                                 </a>
                             </li>
@@ -375,27 +419,27 @@
                         </h4>
                         <ul class="footer-nav__list">
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/contacts" class="footer-nav__link">
                                     Contacts
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/faq" class="footer-nav__link">
                                     Faq
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/terms-conditions" class="footer-nav__link">
                                     Terms and Conditions
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/login" class="footer-nav__link">
                                     Sign In
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/signup" class="footer-nav__link">
                                     Sign Up
                                 </a>
                             </li>
@@ -431,7 +475,7 @@
                 </div>
                 <div class="copyright">
                     <p class="copyright__design-by">
-                        Design by HoteyCompany
+
                     </p>
                 </div>
             </div>

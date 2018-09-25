@@ -1,14 +1,11 @@
 <?php
 
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model app\models\LoginForm */
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 $this->title = 'Sign in';
-$this->params['breadcrumbs'][] = $this->title;
+//$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <body>
@@ -18,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="row">
                 <div class="col-lg-12 vertical-center horizontal-between">
                     <div class="logotype-box">
-                        <a href="find-a-supplier-1.html"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
+                        <a href="/web/site"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
                     </div>
                     <div class="authorization">
                         <a href="/web/site/login" class="authorization__link authorization__link--active">
@@ -45,22 +42,22 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/shipboard-supply" class="adaptive-menu__link">
                                         Find a supplier
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/become-supplier" class="adaptive-menu__link">
                                         Become a supplier
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/crew" class="adaptive-menu__link">
                                         Crew
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/vessels-sale" class="adaptive-menu__link">
                                         Vessels sell/chartering
                                     </a>
                                 </li>
@@ -93,22 +90,22 @@ $this->params['breadcrumbs'][] = $this->title;
                     <nav class="secondary-navigation">
                         <ul class="secondary-navigation__list">
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/shipboard-supply" class="secondary-navigation__link">
                                     Find a supplier
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/site/become-supplier" class="secondary-navigation__link">
                                     Become a supplier
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/crew" class="secondary-navigation__link">
                                     Crew
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/vessels-sale" class="secondary-navigation__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
