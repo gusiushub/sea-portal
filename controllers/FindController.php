@@ -4,6 +4,7 @@ namespace app\controllers;
 
 
 use app\models\ContactForm;
+use app\models\Request;
 use app\models\User;
 use app\models\Vessel;
 use app\models\VesselSale;
@@ -167,7 +168,6 @@ class FindController extends Controller
 
     public function actionAboutShip()
     {
-
         $user = User::findOne($_GET['id']);
         $ship = Vessel::find()->where('user_id=:user_id',[':user_id'=>$user['id']])->all();
         if (!empty($_GET['agree'])){
@@ -178,10 +178,19 @@ class FindController extends Controller
                     ->setSubject($_GET['company'])
                     ->setTextBody($_GET['message'])
                     ->send();
+                $request = new Request();
+                $request->user_id = $_GET['id'];
+                $request->user_from = Yii::$app->user->id;
+                $request->name = $_GET['name'];
+                $request->email = $_GET['email'];
+                $request->phone = $_GET['phone'];
+                $request->company = $_GET['company'];
+                $request->category = 'find a practice';
+                $request->message = $_GET['message'];
+                $request->save();
                 $this->redirect('/web/find/about-ship?id='.$_GET['id']);
             }
         }
-        //var_dump($ship);exit;
         return $this->render('ship',['ship'=>$ship,'user'=>$user]);
     }
 

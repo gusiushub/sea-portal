@@ -10,7 +10,9 @@
                     <div class="settings">
                         <div class="settings__item">
                             <a href="/web/seller/profile" class="settings__email">
-                                <?php echo Yii::$app->user->identity->email ?>
+                                <?php use app\models\User;
+
+                                echo Yii::$app->user->identity->email ?>
                             </a>
                         </div>
                         <div class="settings__item">
@@ -119,7 +121,7 @@
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/vessels-sale" class="secondary-navigation__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
@@ -152,7 +154,7 @@
                         Profile
                     </h1>
                     <a href="#" class="settings__email settings__email--head">
-                        wilkinson@gmail.com
+                        <?php echo Yii::$app->user->identity->email ?>
                     </a>
                 </div>
             </div>
@@ -220,25 +222,30 @@
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-5 col-6 vertical-center">
                     <div class="select-style">
-                        <select name="date" id="" class="select-style__select">
+                        <select name="date" id="date" class="select-style__select">
                             <option class="select-style__placeholder">date</option>
-                            <option value="">text</option>
-                            <option value="">text</option>
+                            <option value="www">text</option>
+                            <option value="ssss">text</option>
                         </select>
                         <div class="select-style__arrow">&nbsp;</div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-5 col-6 vertical-center">
                     <div class="select-style">
-                        <select name="category" id="" class="select-style__select">
+                        <select name="category" id="category" class="select-style__select">
                             <option class="select-style__placeholder">category</option>
-                            <option value="">text</option>
+                            <option value="www">text</option>
                             <option value="">text</option>
                         </select>
                         <div class="select-style__arrow">&nbsp;</div>
                     </div>
                 </div>
+                <input id="token" type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
             </div>
+            <?php
+            foreach ($requests as $request){
+            $user = User::findOne($request['user_from']);
+            ?>
             <div class="request">
                 <div class="row">
                     <div class="col-lg-4">
@@ -253,7 +260,7 @@
                             </div>
                             <div class="col-lg-8 col-md-8 col-sm-8 col-8">
                                 <div class="request__detail">
-                                    anders powers
+                                    <?php echo $request['name'] ?>
                                 </div>
                             </div>
                         </div>
@@ -265,7 +272,7 @@
                             </div>
                             <div class="col-lg-8 col-md-8 col-sm-8 col-8">
                                 <div class="request__detail">
-                                    anderspowers@list.ru
+                                    <?php echo $request['email'] ?>
                                 </div>
                             </div>
                         </div>
@@ -277,7 +284,7 @@
                             </div>
                             <div class="col-lg-8 col-md-8 col-sm-8 col-8">
                                 <div class="request__detail">
-                                    +7926*******
+                                    <?php echo $request['phone'] ?>
                                 </div>
                             </div>
                         </div>
@@ -289,7 +296,7 @@
                             </div>
                             <div class="col-lg-8 col-md-8 col-sm-8 col-8">
                                 <div class="request__detail">
-                                    anders ltd.
+                                    <?php echo $request['company'] ?>
                                 </div>
                             </div>
                         </div>
@@ -301,7 +308,7 @@
                             </div>
                             <div class="col-lg-8 col-md-8 col-sm-8 col-8">
                                 <div class="request__detail request__detail--last">
-                                    sell vessel/ chartering
+                                    <?php echo $request['category'] ?>
                                 </div>
                             </div>
                         </div>
@@ -311,7 +318,7 @@
                             Incoming message
                         </h4>
                         <div class="textinput-container margin-bottom-light">
-                            <textarea name="message" class="textinput-container__textarea"></textarea>
+                            <textarea name="message" class="textinput-container__textarea"><?php echo $request['message'] ?></textarea>
                         </div>
                         <div class="row horizontal-between">
                             <div class="col-lg-4 col-md-6 col-sm-6 col-6">
@@ -328,184 +335,7 @@
                     </div>
                 </div>
             </div>
-            <div class="request">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <h4 class="request__headline">
-                            23/05/2018
-                        </h4>
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                <h4 class="request__position">
-                                    Name
-                                </h4>
-                            </div>
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-8">
-                                <div class="request__detail">
-                                    anders powers
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                <h4 class="request__position">
-                                    E-mail
-                                </h4>
-                            </div>
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-8">
-                                <div class="request__detail">
-                                    anderspowers@list.ru
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                <h4 class="request__position">
-                                    Phone
-                                </h4>
-                            </div>
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-8">
-                                <div class="request__detail">
-                                    +7926*******
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                <h4 class="request__position">
-                                    Company
-                                </h4>
-                            </div>
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-8">
-                                <div class="request__detail">
-                                    anders ltd.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                <h4 class="request__position">
-                                    category
-                                </h4>
-                            </div>
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-8">
-                                <div class="request__detail request__detail--last">
-                                    sell vessel/ chartering
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-8">
-                        <h4 class="request__headline">
-                            Incoming message
-                        </h4>
-                        <div class="textinput-container margin-bottom-light">
-                            <textarea name="message" class="textinput-container__textarea"></textarea>
-                        </div>
-                        <div class="row horizontal-between">
-                            <div class="col-lg-4 col-md-6 col-sm-6 col-6">
-                                <button class="button button--profile">
-                                    attached files
-                                </button>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6 col-6">
-                                <button class="button button--profile">
-                                    answer
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="request">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <h4 class="request__headline">
-                            23/05/2018
-                        </h4>
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                <h4 class="request__position">
-                                    Name
-                                </h4>
-                            </div>
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-8">
-                                <div class="request__detail">
-                                    anders powers
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                <h4 class="request__position">
-                                    E-mail
-                                </h4>
-                            </div>
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-8">
-                                <div class="request__detail">
-                                    anderspowers@list.ru
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                <h4 class="request__position">
-                                    Phone
-                                </h4>
-                            </div>
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-8">
-                                <div class="request__detail">
-                                    +7926*******
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                <h4 class="request__position">
-                                    Company
-                                </h4>
-                            </div>
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-8">
-                                <div class="request__detail">
-                                    anders ltd.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                <h4 class="request__position">
-                                    category
-                                </h4>
-                            </div>
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-8">
-                                <div class="request__detail request__detail--last">
-                                    sell vessel/ chartering
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-8">
-                        <h4 class="request__headline">
-                            Incoming message
-                        </h4>
-                        <div class="textinput-container margin-bottom-light">
-                            <textarea name="message" class="textinput-container__textarea"></textarea>
-                        </div>
-                        <div class="row horizontal-between">
-                            <div class="col-lg-4 col-md-6 col-sm-6 col-6">
-                                <button class="button button--profile">
-                                    attached files
-                                </button>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6 col-6">
-                                <button class="button button--profile">
-                                    answer
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
         </div>
     </section>
 </main>
@@ -621,4 +451,25 @@
     </div>
 </footer>
 </body>
-<script src="js/common.js"></script>
+<script src="../../web/public/js/common.js"></script>
+
+<script>
+    $( "#category" ).change(function() {
+        //var category = $("#category option:selected").text();
+        $.post("request", {    // Указываем php файл
+            category: $('#category').val(),        // Передаем идентивикатор элемента
+            _csrf: $('#token').val()
+        }, function (category) {
+            alert($('#category').html(category))   // Получаем данные после обработки
+        });
+    });
+    $( "#date" ).change(function() {
+        $.post("request", {    // Указываем php файл
+            date: $('#date').val(),         // Передаем идентивикатор элемента
+            _csrf: $('#token').val()
+        }, function (date) {
+            $(this).html(date)   // Получаем данные после обработки
+        });
+    });
+
+</script>

@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Request;
 use app\models\User;
 use app\models\Vessel;
 use app\models\UploadImage;
@@ -69,7 +70,21 @@ class SellerController extends Controller
 
     public function actionRequest()
     {
-        return $this->render('request');
+        if (isset($_POST['date'])){
+            var_dump('sdsdfsd');exit;
+            $requests = Request::find()->where('user_id = :user_id',[':user_id'=>Yii::$app->user->id])->andWhere('date = :date',[':date'=>Yii::$app->user->id])->all();
+            return $this->render('request',['requests'=>$requests]);
+        }
+        if (isset($_POST['category'])){
+            $requests = Request::find()->where('user_id = :user_id',[':user_id'=>Yii::$app->user->id])->andWhere('category = :category',[':category'=>Yii::$app->user->id])->all();
+            return $this->render('request',['requests'=>$requests]);
+        }
+        if (isset($_POST['date'])){
+            $requests = Request::find()->where('user_id = :user_id',[':user_id'=>Yii::$app->user->id])->andWhere('date = :date',[':date'=>Yii::$app->user->id])->andWhere('category = :category',[':category'=>Yii::$app->user->id])->all();
+            return $this->render('request',['requests'=>$requests]);
+        }
+        $requests = Request::find()->where('user_id = :user_id',[':user_id'=>Yii::$app->user->id])->all();
+        return $this->render('request',['requests'=>$requests]);
     }
 
 }
