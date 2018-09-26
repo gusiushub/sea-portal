@@ -167,7 +167,22 @@ class FindController extends Controller
 
     public function actionAboutShip()
     {
-        return $this->render('ship');
+
+        $user = User::findOne($_GET['id']);
+        $ship = Vessel::find()->where('user_id=:user_id',[':user_id'=>$user['id']])->all();
+        if (!empty($_GET['agree'])){
+            if ($_GET['agree']=='yes'){
+                Yii::$app->mailer->compose()
+                    ->setFrom(Yii::$app->user->identity->email)
+                    ->setTo($user['email'])
+                    ->setSubject($_GET['company'])
+                    ->setTextBody($_GET['message'])
+                    ->send();
+                $this->redirect('/web/find/about-ship?id='.$_GET['id']);
+            }
+        }
+        //var_dump($ship);exit;
+        return $this->render('ship',['ship'=>$ship,'user'=>$user]);
     }
 
 

@@ -1,8 +1,9 @@
 <?php
 
 use app\models\User;
+use yii\bootstrap\ActiveForm;
+use yii\bootstrap\Html;
 
-$user = User::findOne($_GET['id']);
 
 ?>
 
@@ -211,7 +212,7 @@ $user = User::findOne($_GET['id']);
                                         <p class="ship-info__line ship-info__line--bold">Vessel type:</p>
                                     </div>
                                     <div class="col-lg-5 col-md-5 col-sm-5 col-5">
-                                        <p class="ship-info__line">Dry-cargo ship</p>
+                                        <p class="ship-info__line"><?php echo $ship[0]['type'] ?></p>
                                     </div>
                                 </div>
                                 <div class="row no-gutters">
@@ -219,7 +220,7 @@ $user = User::findOne($_GET['id']);
                                         <p class="ship-info__line ship-info__line--bold">Option for vessel type:</p>
                                     </div>
                                     <div class="col-lg-5 col-md-5 col-sm-5 col-5">
-                                        <p class="ship-info__line">Bulk carrier</p>
+                                        <p class="ship-info__line"><?php echo $ship[0]['option_type'] ?></p>
                                     </div>
                                 </div>
                                 <div class="row no-gutters">
@@ -227,7 +228,7 @@ $user = User::findOne($_GET['id']);
                                         <p class="ship-info__line ship-info__line--bold">Length, м:</p>
                                     </div>
                                     <div class="col-lg-5 col-md-5 col-sm-5 col-5">
-                                        <p class="ship-info__line">23</p>
+                                        <p class="ship-info__line"><?php echo $ship[0]['option_type'] ?></p>
                                     </div>
                                 </div>
                                 <div class="row no-gutters">
@@ -235,7 +236,7 @@ $user = User::findOne($_GET['id']);
                                         <p class="ship-info__line ship-info__line--bold">Draft, м:</p>
                                     </div>
                                     <div class="col-lg-5 col-md-5 col-sm-5 col-5">
-                                        <p class="ship-info__line">15</p>
+                                        <p class="ship-info__line"><?php echo $ship[0]['draft'] ?></p>
                                     </div>
                                 </div>
                                 <div class="row no-gutters">
@@ -243,7 +244,7 @@ $user = User::findOne($_GET['id']);
                                         <p class="ship-info__line ship-info__line--bold">Deadweight, т:</p>
                                     </div>
                                     <div class="col-lg-5 col-md-5 col-sm-5 col-5">
-                                        <p class="ship-info__line">10</p>
+                                        <p class="ship-info__line"><?php echo $ship[0]['deadweight'] ?></p>
                                     </div>
                                 </div>
                                 <div class="row no-gutters">
@@ -251,7 +252,7 @@ $user = User::findOne($_GET['id']);
                                         <p class="ship-info__line ship-info__line--bold">Year:</p>
                                     </div>
                                     <div class="col-lg-5 col-md-5 col-sm-5 col-5">
-                                        <p class="ship-info__line">2008</p>
+                                        <p class="ship-info__line"><?php echo $ship[0]['year'] ?></p>
                                     </div>
                                 </div>
                                 <div class="row no-gutters">
@@ -259,7 +260,7 @@ $user = User::findOne($_GET['id']);
                                         <p class="ship-info__line ship-info__line--bold">Flag</p>
                                     </div>
                                     <div class="col-lg-5 col-md-5 col-sm-5 col-5">
-                                        <p class="ship-info__line">Estonia</p>
+                                        <p class="ship-info__line"><?php echo $ship[0]['flag'] ?></p>
                                     </div>
                                 </div>
                                 <div class="row no-gutters">
@@ -267,7 +268,7 @@ $user = User::findOne($_GET['id']);
                                         <p class="ship-info__line ship-info__line--bold">Country:</p>
                                     </div>
                                     <div class="col-lg-5 col-md-5 col-sm-5 col-5">
-                                        <p class="ship-info__line">Estonia</p>
+                                        <p class="ship-info__line"><?php echo $ship[0]['country'] ?></p>
                                     </div>
                                 </div>
                                 <div class="row no-gutters">
@@ -275,7 +276,7 @@ $user = User::findOne($_GET['id']);
                                         <p class="ship-info__line ship-info__line--bold">Port:</p>
                                     </div>
                                     <div class="col-lg-5 col-md-5 col-sm-5 col-5">
-                                        <p class="ship-info__line">Tallinn</p>
+                                        <p class="ship-info__line"><?php echo $ship[0]['port'] ?></p>
                                     </div>
                                 </div>
                                 <div class="row no-gutters">
@@ -283,7 +284,7 @@ $user = User::findOne($_GET['id']);
                                         <p class="ship-info__line ship-info__line--bold">Price:</p>
                                     </div>
                                     <div class="col-lg-5 col-md-5 col-sm-5 col-5">
-                                        <p class="ship-info__line">38.000 EUR</p>
+                                        <p class="ship-info__line"><?php echo $ship[0]['price'] ?> EUR</p>
                                     </div>
                                 </div>
                             </div>
@@ -293,13 +294,14 @@ $user = User::findOne($_GET['id']);
                                 <p class="ship-info__line ship-info__line--bold">Other information:</p>
                             </div>
                             <div class="col-lg-12">
-                                <p class="ship-info__line ship-info__line--light">This User Agreement regulates relations between MarineNotes OÜ (www.marinenotes.com) and user of www.marinenotes.com web resource (hereinafter the “User”) emerging from the use of www.marinenotes.com under the conditions specified in the User Agreement. Commission of acts aimed at the use of www.marinenotes.com, including searching, surfing, registration on the Website or sending messages via the contact form on www.marinenotes.com</p>
+                                <p class="ship-info__line ship-info__line--light"><?php echo $ship[0]['information'] ?></p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    <form method="#" class="right-send">
+<!--                    <form method="#" class="right-send">-->
+                    <?php $form = ActiveForm::begin(['method'=>'GET']); ?>
                         <h3 class="right-send__title">
                             send a message
                         </h3>
@@ -328,17 +330,19 @@ $user = User::findOne($_GET['id']);
                         </div>
                         <div class="accepting">
                             <div class="checkbox-style">
-                                <input type="checkbox" id='accepting' class="checkbox-style__input">
+                                <input name="agree" type="checkbox" id='accepting' class="checkbox-style__input" value="yes">
                                 <label for="accepting" class="checkbox-style__label">
                                     <span class="checkbox-style__check checkbox-style__check--accepting"></span>
                                     <p class="checkbox-style__text">I have read and agree to the <a href="#" class="checkbox-style__link">Terms and Conditions</a></p>
                                 </label>
                             </div>
                         </div>
-                        <button class="button">
-                            send
-                        </button>
-                    </form>
+                    <?= Html::submitButton('send', ['class' => 'button', 'name' => 'mail']) ?>
+<!--                        <button class="button">-->
+<!--                            send-->
+<!--                        </button>-->
+<!--                    </form>-->
+                    <?php ActiveForm::end(); ?>
                 </div>
             </div>
         </div>
