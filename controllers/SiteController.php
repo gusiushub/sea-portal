@@ -373,24 +373,24 @@ class SiteController extends Controller
             if ( $status == 1) {
                 $upload = new UploadImage();
                 $model = new User();
-                        if(isset($_SESSION)){
-
-                            $user = User::find()->where('id=:id',[':id'=>Yii::$app->user->id])->one();
-                            $user->img = $_SESSION['file_name'];
-                            $user->save();
-                            $session = Yii::$app->session;
-                            if ($session->isActive) {
-                                $session->destroy();
-                                $session->close();
-                            }
-                            return $this->render('prof', ['upload'=>$upload]);
-                    }
+//                        if(isset($_SESSION)){
+//
+//                            $user = User::find()->where('id=:id',[':id'=>Yii::$app->user->id])->one();
+//                            $user->img = $_SESSION['file_name'];
+//                            $user->save();
+//                            $session = Yii::$app->session;
+//                            if ($session->isActive) {
+//                                $session->destroy();
+//                                $session->close();
+//                            }
+                          //  return $this->render('prof', ['upload'=>$upload]);
+                    //}
                 return $this->render('profile', ['model' => $model,'upload'=>$upload]);
             }else{
                 $this->redirect(['index']);
             }
-        }else {
-            $this->redirect(['index']);
+//        }else {
+//            $this->redirect(['index']);
         }
     }
 
