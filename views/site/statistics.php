@@ -399,11 +399,12 @@
     <?php
     $k=1;
     $ost = count($statistics);
+
     foreach($statistics as $value){
-    if ($value['request']!=null) {
-var_dump($value['request']);
-        //$date = date("M-d-Y", mktime(0, 0, 0, date('m'), date('d') - $i, date('Y')));
-        ?>
+
+        //print_r($value);
+    if (isset($value['request'])) {
+    ?>
         <input type="hidden" value="<?php echo $value['request'] ?>" id="val<?php echo $k ?>">
         <?php
     }else{
@@ -417,28 +418,30 @@ var_dump($value['request']);
     <?php
     $k=1;
     //var_dump($statistics[3]);exit;
-    for($j=1;$j<$ost;$j++){ ?>
-        <input type="hidden" value="" id="val<?php echo $ost+$j ?>">
+    for($j=1;$ost<7;$j++){
+        //var_dump($ost+$j);exit;
+        ?>
+        <input type="hidden" value="<?php echo 0 ?>" id="val<?php echo $ost+$j ?>">
         <?php
-        $k++;
+        $ost++;
     }
 
     $date = app\models\Statistics::find()->where(['user_id'=>Yii::$app->user->id])->limit(7)->orderby(['id'=>SORT_DESC])->all();
-    $n = count($date);
-    for($i=0;$i<8;$i++){
-        if (isset($date[$i]['date'])){
-        ?>
-        <input type="hidden" value="<?php echo $date[$i]['date'] ?>" id="date<?php echo $i ?>">
-        <?php
-    }else{
-            $date = date("M-d-Y", mktime(0, 0, 0, date('m'), date('d') - $i, date('Y')));
-            //var_dump($date);exit;
-            ?>
-            <input type="hidden" value="<?php echo $date ?>" id="date<?php echo $i ?>">
-    <?php
-        }
-    }
-    ?>
+//    $n = count($date);
+//    for($i=0;$i<8;$i++){
+//        if (isset($date[$i]['date'])){
+//        ?>
+<!--        <input type="hidden" value="--><?php //echo $date[$i]['date'] ?><!--" id="date--><?php //echo $i ?><!--">-->
+<!--        --><?php
+//    }else{
+//            $date = date("M-d-Y", mktime(0, 0, 0, date('m'), date('d') - $i, date('Y')));
+//            //var_dump($date);exit;
+//            ?>
+<!--            <input type="hidden" value="--><?php //echo $date ?><!--" id="date--><?php //echo $i ?><!--">-->
+<!--    --><?php
+//        }
+//    }
+//    ?>
 
 
 </footer>
@@ -447,28 +450,75 @@ var_dump($value['request']);
 <script src="../../web/public/libs/Chart.min.js"></script>
 <script>
 
-    function $_GET(key) {
-        var p = window.location.search;
-        p = p.match(new RegExp(key + '=([^&=]+)'));
-        return p ? p[1] : false;
-    }
+    // function $_GET(key) {
+    //     var p = window.location.search;
+    //     p = p.match(new RegExp(key + '=([^&=]+)'));
+    //     return p ? p[1] : false;
+    // }
 
+    for (i=0;i<7;i++) {
+        if (document.getElementById('val'+i)!=null) {
+            var name = 'input'+ i;
+            name = document.getElementById('val' + i).value;
+        }
+    }
     var input1 = document.getElementById('val1').value;
     var input2 = document.getElementById('val2').value;
     var input3 = document.getElementById('val3').value;
-    var input4 = document.getElementById('val4').value;
-    var input5 = document.getElementById('val5').value;
-    var input6 = document.getElementById('val6').value;
-    var input7 = document.getElementById('val7').value;
-    var input8 = document.getElementById('date1').value;
-    var input9 = document.getElementById('date2').value;
-    var input10 = document.getElementById('date3').value;
-    var input11 = document.getElementById('date4').value;
-    var input12 = document.getElementById('date5').value;
-    var input13 = document.getElementById('date6').value;
-    var input14 = document.getElementById('date7').value;
+   //  var input4 = document.getElementById('val4').value;
+   //  var input5 = document.getElementById('val5').value;
+   //  var input6 = document.getElementById('val6').value;
+   //  var input7 = document.getElementById('val7').value;
+    // var input8 = document.getElementById('date1').value;
+    // var input9 = document.getElementById('date2').value;
+    // var input10 = document.getElementById('date3').value;
+    // var input11 = document.getElementById('date4').value;
+    // var input12 = document.getElementById('date5').value;
+    // var input13 = document.getElementById('date6').value;
+    // var input14 = document.getElementById('date7').value;
+    //alert(document.getElementById('val2').value);
 
     var ctx = document.getElementById("chart-statistics").getContext('2d');
+    // Date.prototype.yyyymmdd = function() {
+    //     var mm = this.getMonth() + 1; // getMonth() is zero-based
+    //     var dd = this.getDate();
+    //
+    //     return [this.getFullYear(),
+    //         (mm>9 ? '' : '0') + mm,
+    //         (dd>9 ? '' : '0') + dd
+    //     ].join('');
+    // };
+
+    var today = new Date(),
+        seven = new Date(), e = String(seven).split(' ');
+    var month =1+seven.getMonth();
+    var  date7 = e[2]-6+'/'+month+'/'+e[3];
+        six = new Date(), e = String(six).split(' ');
+    var month =1+six.getMonth();
+    var  date6 = e[2]-5+'/'+month+'/'+e[3];
+        five = new Date(), e = String(five).split(' ');
+    var month =1+five.getMonth();
+    var  date5 = e[2]-4+'/'+month+'/'+e[3];
+        four = new Date(), e = String(four).split(' ');
+    var month =1+four.getMonth();
+    var  date4 = e[2]-3+'/'+month+'/'+e[3];
+        three = new Date(), e = String(three).split(' ');
+    var month =1+three.getMonth();
+    var  date3 = e[2]-2+'/'+month+'/'+e[3];
+        two = new Date(), e = String(two).split(' ');
+    var month =1+two.getMonth();
+    var  date2 = e[2]-1+'/'+month+'/'+e[3];
+        one = new Date(), e = String(one).split(' ');
+        var month =1+one.getMonth();
+        var  date1 = e[2]+'/'+month+'/'+e[3];
+    // seven.setDate(today.getDate()-6);
+    //     six.setDate(today.getDate()-5);
+    //     five.setDate(today.getDate()-4);
+    //     four.setDate(today.getDate()-3);
+    //     three.setDate(today.getDate()-2);
+    //     two.setDate(today.getDate()-1);
+    //     one.setDate(today.getDate());
+
     var myBarChart = new Chart(ctx, {
         options: {
             elements: {
@@ -504,18 +554,18 @@ var_dump($value['request']);
         // The data for our dataset
         data: {
             labels: [
-                input14,
-                input13,
-                input12,
-                input11,
-                input10,
-                input9,
-                input8
+                date7,
+                date6,
+                date5,
+                date4,
+                date3,
+                date2,
+                date1
             ],
             datasets: [{
                 backgroundColor: "rgb(206, 225, 240)",
                 borderColor: "rgb(72, 137, 191)",
-                data: [input7, input6, input5, input4, input3, input2, input1, 20]
+                data: [0, 0,0, 0, input3, input2, input1, 20]
             }]
         }
     });

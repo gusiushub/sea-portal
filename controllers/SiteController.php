@@ -2,6 +2,9 @@
 
 namespace app\controllers;
 
+use app\models\Advertisement;
+use app\models\AjaxUploadFile;
+use app\models\Request;
 use Yii;
 use yii\bootstrap\Html;
 use yii\filters\AccessControl;
@@ -233,7 +236,7 @@ class SiteController extends Controller
         $date = date('Y/m/d',strtotime(date('Y-m-d').' +1 month'));
         if (isset($_POST['profile_personal4_1'])){
             $ajax = json_decode($_POST['profile_personal4_1'], true);
-            if ($ajax['country']!="" && $ajax['faculty']!="" && $ajax['levelofeng'] && $ajax['category'] && $ajax['port']) {
+            if (!empty($ajax['category'])) {
                // $statistics = new Statistics();
                 $cv = new Cv();
                 $cv->user_id = Yii::$app->user->identity->id;
@@ -244,7 +247,7 @@ class SiteController extends Controller
                 $cv->lvleng = $ajax['levelofeng'];
                 $cv->country = $ajax['country'];
                 $cv->port = $ajax['port'];
-                $cv->name = $ajax['name'];
+                //$cv->name = $ajax['name'];
                 $cv->plan = 'free';
                 $cv->status = 'paid';
 //                $user_statistics = Statistics::find()->where(['user_id'=>Yii::$app->user->id])->all();
@@ -370,13 +373,18 @@ class SiteController extends Controller
             if ( $status == 1) {
                 $upload = new UploadImage();
                 $model = new User();
-                if(Yii::$app->request->isPost){
-                    $file = UploadedFile::getInstance($upload, 'image');
-                    if ($upload->uploadFile($file,Yii::$app->user->identity->img)){
-                        return $this->redirect('/web/site/profile');
+                        if(isset($_SESSION)){
+
+                            $user = User::find()->where('id=:id',[':id'=>Yii::$app->user->id])->one();
+                            $user->img = $_SESSION['file_name'];
+                            $user->save();
+                            $session = Yii::$app->session;
+                            if ($session->isActive) {
+                                $session->destroy();
+                                $session->close();
+                            }
+                            return $this->render('prof', ['upload'=>$upload]);
                     }
-                    return $this->render('profile', ['model' => $model,'upload'=>$upload]);
-                }
                 return $this->render('profile', ['model' => $model,'upload'=>$upload]);
             }else{
                 $this->redirect(['index']);
@@ -425,9 +433,12 @@ class SiteController extends Controller
     public function actionStatistics()
     {
         if (!Yii::$app->user->isGuest){
-            $cv = Cv::find()->select('*')->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->all();
-            if (!empty($cv)) {
-                $statistics = Statistics::find()->orderBy('id DESC')->limit(7)->where(['user_id'=>Yii::$app->user->id])
+            $statistics = Statistics::find()->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->andWhere('date = :date',[':date'=>date('Y.m.d')])->all();
+            //var_dump($statistics);
+            if (!empty($statistics)) {
+                $statistics = Statistics::find()->orderBy('id DESC')->limit(7)
+                    ->where('user_id = :user_id',[':user_id'=>Yii::$app->user->id])
+                    ->andWhere('date = :date',[':date'=>date('Y.m.d')])
                     ->all();
                 //var_dump($statistics[0]['date']);
                 for ($i=0;$i<7;$i++){
@@ -455,6 +466,40 @@ class SiteController extends Controller
             }
         }else {
             $this->redirect(['index']);
+        }
+    }
+
+    public function actionAjaxAdv()
+    {
+        //$session['isselect']=0;
+        $session = Yii::$app->session;
+        //var_dump($session['category_select']);
+        $session['category_select'] = $_POST['field1'];
+        $session['select'] =$_POST['field2'];
+//        $session['captcha'] = [
+//            'number' => 5,
+//            'lifetime' => 3600,
+//        ];
+       // var_dump($session['file_name']);
+        if (isset($_POST['field1'])){
+            //$_POST['field1']
+//            if (isset($session['isselect'])){
+//                if ($session['isselect']==1){
+//                    $session['isselect'] = 0;
+//                    return $session['isselect'];
+//                }
+//            }
+            //$session['isselect'] ++;
+            if ( isset($_SESSION['file_name'])){
+
+                    $selected = Advertisement::find()->where('selected=:selected', [':selected' => $_POST['field2']])->andWhere('ctegory=:category',[':category'=>$_POST['field1']])->one();
+                    $selected->user_id = Yii::$app->user->id;
+                    $selected->img = $session['file_name'];
+                    unset($_SESSION['file_name']);
+                    unset($_SESSION['isselect']);
+                    $selected->save();
+                    return $this->redirect('/web/find/shipboard-supply');
+            }
         }
     }
 

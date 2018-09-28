@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 
+use app\models\Advertisement;
 use app\models\ContactForm;
 use app\models\Request;
 use app\models\User;
@@ -21,6 +22,7 @@ class FindController extends Controller
 {
     public function actionShipboardSupply()
     {
+        $place = Advertisement::find()->all();
         $model = new FindModel();
         if (isset($_POST['FindModel']['search'])){
 
@@ -29,9 +31,9 @@ class FindController extends Controller
             $businessPlan = Contracts::find()->where(['like', 'search', $_POST['FindModel']['search']])->andWhere(['like', 'mechanism',$_POST['FindModel']['equipment']])->andWhere(['like', 'maker', $_POST['FindModel']['maker']])->andWhere('plan = :plan',[':plan'=>'buiznes'])->andWhere('category = :category',[':category'=>'shipboard supply'])->all();
             $businessAdvancedPlan = Contracts::find()->where(['like', 'search', $_POST['FindModel']['search']])->andWhere(['like', 'mechanism',$_POST['FindModel']['equipment']])->andWhere(['like', 'maker', $_POST['FindModel']['maker']])->andWhere('plan = :plan',[':plan'=>'buiznesadvanced'])->andWhere('category = :category',[':category'=>'shipboard supply'])->all();
 
-            return $this->render('shipboardresult',['free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
+            return $this->render('shipboardresult',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
         }
-        return $this->render('shipboardsupply',['model'=>$model]);
+        return $this->render('shipboardsupply',['place'=>$place,'model'=>$model]);
     }
 
 
@@ -182,6 +184,7 @@ class FindController extends Controller
                 $request->user_id = $_GET['id'];
                 $request->user_from = Yii::$app->user->id;
                 $request->name = $_GET['name'];
+                $request->date = date('Y/m/d');
                 $request->email = $_GET['email'];
                 $request->phone = $_GET['phone'];
                 $request->company = $_GET['company'];

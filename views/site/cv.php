@@ -632,7 +632,7 @@ use app\models\Location;
    $( "#category" ).change(function() {
        var category = $("#category option:selected").text();
        if (category=='find a job'){
-           var url = "http://parsavito.xyz/web/site/cv-job";
+           var url = 'http://seaportal/web/site/cv-job'; //"http://parsavito.xyz/web/site/cv-job";
            $(location).attr('href',url);
        }
    });

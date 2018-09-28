@@ -384,10 +384,58 @@
             </div>
         </div>
     </div>
+    <?php
+    $k=1;
+    $ost = count($statistics);
+
+    foreach($statistics as $value){
+        if (!empty($value['request'])) {
+            ?>
+            <input type="hidden" value="<?php echo $value['request'] ?>" id="val<?php echo $k ?>">
+            <?php
+        }else{
+            ?>
+            <input type="hidden" value="<?php echo 0 ?>" id="val<?php echo $k ?>">
+            <?php
+        }
+        $k++;
+    } ?>
 </footer>
+<?php
+$k = 1;
+foreach($statistics as $value){
+    if (!empty($value['request'])) {
+        ?>
+        <input type="hidden" value="<?php echo $value['request'] ?>" id="val<?php echo $k ?>">
+        <?php
+    }else{
+        ?>
+        <input type="hidden" value="<?php echo 0 ?>" id="val<?php echo $k ?>">
+        <?php
+    }
+    $k++;
+} ?>
 </body>
 <script src="../../web/public/libs/Chart.min.js"></script>
 <script>
+//     for (var i=1;i<8;i++) {
+//         //var name = 'input'+i;
+// var inp = document.getElementById('val'+i).val();
+//         if (inp!=null){
+//            document.getElementById('val'+i).value;
+//             alert(document.getElementById('val1').value);
+//         } else {
+//             document.getElementById('val'+i).value = 0;
+//         }
+
+
+    //}
+    // var input2 = document.getElementById('val2').value;
+    // var input3 = document.getElementById('val3').value;
+    // var input4 = document.getElementById('val4').value;
+    // var input5 = document.getElementById('val5').value;
+    // var input6 = document.getElementById('val6').value;
+    // var input7 = document.getElementById('val7').value;
     var ctx = document.getElementById("chart-statistics").getContext('2d');
     var myBarChart = new Chart(ctx, {
         options: {
@@ -435,9 +483,11 @@
             datasets: [{
                 backgroundColor: "rgb(206, 225, 240)",
                 borderColor: "rgb(72, 137, 191)",
-                data: [0, 25, 50, 150, 70, 250, 230, 400]
+                data: [2, 3, 4, 5, 2, 4, 5, 20]
             }]
         }
     });
+
+
 </script>
-<script src="js/common.js"></script>
+<script src="../../web/public/js/common.js"></script>

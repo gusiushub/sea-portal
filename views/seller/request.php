@@ -247,6 +247,7 @@
             $user = User::findOne($request['user_from']);
             ?>
             <div class="request">
+                <form action="" method="post">
                 <div class="row">
                     <div class="col-lg-4">
                         <h4 class="request__headline">
@@ -258,6 +259,7 @@
                                     Name
                                 </h4>
                             </div>
+                            <input name="user_id" type="text" style="display: none" value="<?php echo $request['user_id'] ?>">
                             <div class="col-lg-8 col-md-8 col-sm-8 col-8">
                                 <div class="request__detail">
                                     <?php echo $request['name'] ?>
@@ -306,6 +308,7 @@
                                     category
                                 </h4>
                             </div>
+                            <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" >
                             <div class="col-lg-8 col-md-8 col-sm-8 col-8">
                                 <div class="request__detail request__detail--last">
                                     <?php echo $request['category'] ?>
@@ -327,13 +330,15 @@
                                 </button>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-6 col-6">
-                                <button class="button button--profile">
-                                    answer
-                                </button>
+                                <input type="submit" name="ans" class="button button--profile" value="answer"class="button button--profile">
+<!--                                <button class="button button--profile">-->
+<!--                                    class="button button--profile"-->
+<!--                                </button>-->
                             </div>
                         </div>
                     </div>
                 </div>
+                </form>
             </div>
             <?php } ?>
         </div>

@@ -380,13 +380,13 @@ $this->title = 'Find a supplier';
                 <div class="col-lg-4">
                     <div class="advertising-wrapper">
                         <a href='#' class="advertising">
-                            <p class="advertising__content">advertising</p>
+                            <p class="advertising__content"><img width="395px" height="195px"  src="../../web/public/uploads/<?php echo $place[0]['img']?>" ></p>
                         </a>
                         <a href='#' class="advertising">
-                            <p class="advertising__content">advertising</p>
+                            <p class="advertising__content"><img width="395px" height="195px"  src="../../web/public/uploads/<?php echo $place[1]['img']?>" ></p>
                         </a>
                         <a href='#' class="advertising">
-                            <p class="advertising__content">advertising</p>
+                            <p class="advertising__content"><img width="395px" height="195px"  src="../../web/public/uploads/<?php echo $place[2]['img']?>" ></p>
                         </a>
                     </div>
                 </div>
@@ -394,17 +394,17 @@ $this->title = 'Find a supplier';
             <div class="row">
                 <div class="col-lg-4">
                     <a href='#' class="advertising">
-                        <p class="advertising__content">advertising</p>
+                        <p class="advertising__content"><img width="395px" height="195px"  src="../../web/public/uploads/<?php echo $place[3]['img']?>" ></p>
                     </a>
                 </div>
                 <div class="col-lg-4">
                     <a href='#' class="advertising">
-                        <p class="advertising__content">advertising</p>
+                        <p class="advertising__content"><img width="395px" height="195px"  src="../../web/public/uploads/<?php echo $place[4]['img']?>" ></p>
                     </a>
                 </div>
                 <div class="col-lg-4">
                     <a href='#' class="advertising">
-                        <p class="advertising__content">advertising</p>
+                        <p class="advertising__content"><img width="395px" height="195px"  src="../../web/public/uploads/<?php echo $place[5]['img']?>" ></p>
                     </a>
                 </div>
             </div>

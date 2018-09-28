@@ -240,10 +240,18 @@ $this->title = 'About the company';
             <div class="row">
                 <div class="col-lg-3">
                     <div class="profile">
+                        <?php if (!empty(Yii::$app->user->identity->img)){ ?>
+                            <img src="../../web/public/uploads/<?php echo Yii::$app->user->identity->img ?>" alt="company-logo" class="profile__photo margin-bottom-light">
+                        <?php }else{  ?>
                         <img src="../../web/public/img/company-logo-big.jpg" alt="company-logo" class="profile__photo margin-bottom-light">
+                        <?php } ?>
+                        <!--                        <button class="profile__upload-photo margin-bottom-medium">-->
+<!--                            select file-->
+<!--                        </button>-->
                         <button class="profile__upload-photo margin-bottom-medium">
-                            select file
+                            <label class="submit" for="uploadbtn" >select file</label>
                         </button>
+                        <input style="opacity: 0; " type="file" multiple="multiple" accept=".txt,image/*" name="upload" id="uploadbtn">
                     </div>
                 </div>
                 <div class="col-lg-9">
@@ -502,3 +510,47 @@ $this->title = 'About the company';
 <script src="../../web/public/js/common.js"></script>
 <script src="../../web/public/js/info-change.js"></script>
 <script src="../../web/public/js/ajax-forms.js"></script>
+<script>
+    var _csrf = $('input[name="_csrf"]').val();
+
+    var files;
+    $('input[type=file]').change(function(){
+        files = this.files;
+        event.stopPropagation(); // Остановка происходящего
+        event.preventDefault();  // Полная остановка происходящего
+        var data = new FormData();
+        $.each( files, function( key, value ){
+            data.append( key, value );
+        });
+        $.ajax({
+            url: '/web/ajax.php?avatar',
+            type: 'POST',
+            data: data,
+            cache: false,
+            dataType: 'json',
+            processData: false, // Не обрабатываем файлы (Don't process the files)
+            contentType: false, // Так jQuery скажет серверу что это строковой запрос
+            success: function( respond, textStatus, jqXHR ){
+                // Если все ОК
+                if( typeof respond.error === 'undefined' ){
+                    // Файлы успешно загружены, делаем что нибудь здесь
+
+                    // выведем пути к загруженным файлам в блок '.ajax-respond'
+
+                    var files_path = respond.files;
+
+                    var html = '';
+                    // $.each( files_path, function( key, val ){ html += val +'<br>'; } );
+                    // $('.ajax-respond').html( html );
+                }
+                else{
+                    console.log('ОШИБКИ ОТВЕТА сервера: ' + respond.error );
+                }
+            },
+            error: function( jqXHR, textStatus, errorThrown ){
+                // alert(respond);
+                console.log('ОШИБКИ AJAX запроса: ' + textStatus );
+            }
+        });
+    });
+</script>

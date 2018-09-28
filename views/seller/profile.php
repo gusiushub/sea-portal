@@ -244,12 +244,19 @@
                             <img src="../../web/public/img/company-logo-big.jpg" alt="company-logo" class="profile__photo margin-bottom-light">
                         <?php } ?>
                         <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
-                        <?= $form->field($upload, 'image')->fileInput(['options' => ['id' => 'image']]) ?>
+                        <?= $form->field($upload, 'image')->fileInput(['options' => ['id' => 'uploadbtn'],'style'=>"opacity: 0",'name'=>'upload','id' => 'uploadbtn']) ?>
                         <button class="profile__upload-photo margin-bottom-medium">
-                            select file
+                            <label class="submit" for="uploadbtn" >select file</label>
                         </button>
                         <?php ActiveForm::end() ?>
-<!--                        <img src="../../web/public/img/company-logo-big.jpg" alt="company-logo" class="profile__photo margin-bottom-light">-->
+<!--                        <form method="get" action="">-->
+<!--                        <button class="profile__upload-photo margin-bottom-medium">-->
+<!--                            <label class="submit" for="uploadbtn" >select file</label>-->
+<!--                        </button>-->
+<!--                        <input style="opacity: 0; " type="file" multiple="multiple" accept=".txt,image/*" name="upload" id="uploadbtn">-->
+<!--                        </form>-->
+
+                            <!--                        <img src="../../web/public/img/company-logo-big.jpg" alt="company-logo" class="profile__photo margin-bottom-light">-->
 <!--                        <button class="profile__upload-photo margin-bottom-medium">-->
 <!--                            select file-->
 <!--                        </button>-->
@@ -310,7 +317,7 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div class="textinput-container">
                                             <input type="text"  class="textinput-container__input textinput-container__input--change textinput-container__input--change-unactive" disabled="" placeholder="VLORE" name="city" value="<?php echo Yii::$app->user->identity->city ?>">
-                                        </div>!
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -503,3 +510,40 @@
 <script src="../../web/public/js/info-change.js"></script>
 <script src="../../web/public/js/from-to.js"></script>
 <script src="../../web/public/js/ajax-forms.js"></script>
+<script>
+    var _csrf = $('input[name="_csrf"]').val();
+
+    var files;
+    $('input[type=file]').change(function(){
+        files = this.files;
+        event.stopPropagation(); // Остановка происходящего
+        event.preventDefault();  // Полная остановка происходящего
+        var data = new FormData();
+        $.each( files, function( key, value ){
+            data.append( key, value );
+        });
+        $.ajax({
+            url: '/web/ajax.php?avatar',
+            type: 'POST',
+            data: data,
+            cache: false,
+            dataType: 'json',
+            processData: false, // Не обрабатываем файлы (Don't process the files)
+            contentType: false, // Так jQuery скажет серверу что это строковой запрос
+            success: function(data){
+                alert(data);
+        }
+
+    })
+    });
+
+    // function save()
+    // {
+    //     $.post('/web/site/ajax-adv', { file_name: 1, field2 :1,field3: 0,_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+</script>

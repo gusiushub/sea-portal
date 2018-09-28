@@ -52,6 +52,14 @@ class CompanyController extends Controller
             $status = Yii::$app->user->identity->user_status;
             if ( $status == 2) {
                 $user = new User();
+                if(isset($_SESSION['avatar'])){
+                    $user = User::find()->where('id=:id',[':id'=>Yii::$app->user->id])->one();
+                    $user->img = $_SESSION['avatar'];
+                    $user->save();
+                    unset($_SESSION['avatar']);
+
+                    return $this->render('prof', ['user' => $user]);
+                }
                  return $this->render('prof', ['user' => $user]);
             }else{
                 $this->redirect(['index']);
