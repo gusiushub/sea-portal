@@ -21,32 +21,27 @@ class SellerController extends Controller
 
     public function actionProfile()
     {
-        //$user = new User();
+        $user_id = User::findOne(Yii::$app->user->id);
+        $user = new User();
         $upload = new UploadImage();
         if (!Yii::$app->user->isGuest){
             $status = Yii::$app->user->identity->user_status;
             if ( $status == 3) {
                 //$user = new User();
-
-
-
-
-
-
-
-
-
-
-                $upload = new UploadImage();
-                $model = new User();
+                //if ($_POST['upload']){
+//                $upload = new UploadImage();
+//                $model = new User();
                 if(Yii::$app->request->isPost){
                     $file = UploadedFile::getInstance($upload, 'image');
-                    if ($upload->uploadFile($file, Yii::$app->user->identity->img)){
-                        return $this->redirect('/web/site/profile');
+                    var_dump($file);exit;
+                    if ($user_id->saveImage($upload->uploadFile($file, Yii::$app->user->identity->img) )){
+
+                        return $this->redirect('/web/seller/profile');
                     }
-                    return $this->render('profile', ['model' => $model,'upload'=>$upload]);
+                    return $this->render('profile', ['user' => $user,'upload'=>$upload]);
                 }
-                return $this->render('profile', ['model' => $model,'upload'=>$upload]);
+$user = new User();
+                return $this->render('profile', ['user' => $user,'upload'=>$upload]);
                 }
             }else{
                 $this->redirect(['index']);
@@ -83,34 +78,37 @@ class SellerController extends Controller
 
     public function actionRequest()
     {
-        if (isset($_POST['date'])){
-            //var_dump('sdsdfsd');exit;
-            $requests = Request::find()->where('user_id = :user_id',[':user_id'=>Yii::$app->user->id])->andWhere('date = :date',[':date'=>Yii::$app->user->id])->all();
-            return $this->render('request',['requests'=>$requests]);
-        }
-        if (isset($_POST['category'])){
-            $requests = Request::find()->where('user_id = :user_id',[':user_id'=>Yii::$app->user->id])->andWhere('category = :category',[':category'=>Yii::$app->user->id])->all();
-            return $this->render('request',['requests'=>$requests]);
-        }
-        if (isset($_POST['date'])){
-            $requests = Request::find()->where('user_id = :user_id',[':user_id'=>Yii::$app->user->id])->andWhere('date = :date',[':date'=>Yii::$app->user->id])->andWhere('category = :category',[':category'=>Yii::$app->user->id])->all();
-            return $this->render('request',['requests'=>$requests]);
-        }
+//        if (isset($_POST['date'])){
+//            //var_dump('sdsdfsd');exit;
+//            $requests = Request::find()->where('user_id = :user_id',[':user_id'=>Yii::$app->user->id])->andWhere('date = :date',[':date'=>Yii::$app->user->id])->all();
+//            return $this->render('request',['requests'=>$requests]);
+//        }
+//        if (isset($_POST['category'])){
+//            $requests = Request::find()->where('user_id = :user_id',[':user_id'=>Yii::$app->user->id])->andWhere('category = :category',[':category'=>Yii::$app->user->id])->all();
+//            return $this->render('request',['requests'=>$requests]);
+//        }
+//        if (isset($_POST['date'])){
+//            $requests = Request::find()->where('user_id = :user_id',[':user_id'=>Yii::$app->user->id])->andWhere('date = :date',[':date'=>Yii::$app->user->id])->andWhere('category = :category',[':category'=>Yii::$app->user->id])->all();
+//            return $this->render('request',['requests'=>$requests]);
+//        }
         if(isset($_POST['ans'])){
-            $requests = Request::find()->where('user_id = :user_id',[':user_id'=>$_POST['user_id']])->one();
+            //$requests = Request::find()->where('user_id = :user_id',[':user_id'=>$_POST['user_id']])->one();
             $request = new Request();
-            $user = User::findOne($requests['user_id']);
-            $request->user_id = Yii::$app->user->id;
+            $user = User::findOne($_POST['id']);
+            $request->user_id = $_POST['id'];
             $request->user_from = Yii::$app->user->id;
             //'_csrf'= $_POST['_csrf'];
-            $request->name = $user['username'];
+            $request->name = $_POST['username'];
             $request->date = date('Y/m/d');
-            $request->email = $requests['email'];
-            $request->phone = $requests['phone'];
-            $request->company = $requests['company'];
-            $request->category = 'find a practice';
+            $request->email = $_POST['email'];
+            $request->phone = $_POST['phone'];
+            $request->company = $_POST['company'];
+            $request->category = $_POST['category'];
             $request->message = $_POST['message'];
             $request->save();
+            $request = Request::find()->where('user_id = :user_id',[':user_id'=>Yii::$app->user->id])->all();
+
+            return $this->render('request',['requests'=>$request]);
         }
         $requests = Request::find()->where('user_id = :user_id',[':user_id'=>Yii::$app->user->id])->all();
         return $this->render('request',['requests'=>$requests]);

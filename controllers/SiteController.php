@@ -371,8 +371,15 @@ class SiteController extends Controller
         if (!Yii::$app->user->isGuest){
             $status = Yii::$app->user->identity->user_status;
             if ( $status == 1) {
+//                $upload = new UploadImage();
+//                $model = new User();
                 $upload = new UploadImage();
                 $model = new User();
+                if(Yii::$app->request->isPost){
+                    $file = UploadedFile::getInstance($upload, 'image');
+                    if ($upload->uploadFile($file, Yii::$app->user->identity->img)){
+                        return $this->redirect('/web/site/profile');
+                    }
 //                        if(isset($_SESSION)){
 //
 //                            $user = User::find()->where('id=:id',[':id'=>Yii::$app->user->id])->one();
@@ -391,6 +398,7 @@ class SiteController extends Controller
             }
 //        }else {
 //            $this->redirect(['index']);
+        }
         }
     }
 

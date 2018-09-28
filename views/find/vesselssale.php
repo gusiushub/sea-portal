@@ -290,18 +290,18 @@
                                         Length, м
                                     </h4>
                                     <div class="filter__input-double-wrapper">
-                                        <?= $form->field($model, 'leigthFrom')->textInput([
-                                            //'prompt'=>'Salary',
-                                            'class' => 'filter__input--double filter__input',
-                                            'placeholder'=>'FROM',
-                                        ]) ?>
-                                        <?= $form->field($model, 'leigthTo')->textInput([
-                                            //'prompt'=>'Salary',
-                                            'class' => 'filter__input--double filter__input',
-                                            'placeholder'=>'TO',
-                                        ]) ?>
-<!--                                        <input type="text" placeholder="FROM" class="filter__input--double filter__input">-->
-<!--                                        <input type="text" placeholder="TO" class="filter__input--double filter__input">-->
+<!--                                        --><?//= $form->field($model, 'leigthFrom')->textInput([
+//                                            //'prompt'=>'Salary',
+//                                            'class' => 'filter__input--double filter__input',
+//                                            'placeholder'=>'FROM',
+//                                        ]) ?>
+<!--                                        --><?//= $form->field($model, 'leigthTo')->textInput([
+//                                            //'prompt'=>'Salary',
+//                                            'class' => 'filter__input--double filter__input',
+//                                            'placeholder'=>'TO',
+//                                        ]) ?>
+                                        <input type="text" name="leigthFrom" placeholder="FROM" class="filter__input--double filter__input">
+                                        <input type="text" name="leigthTo" placeholder="TO" class="filter__input--double filter__input">
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -309,18 +309,18 @@
                                         Draft, м
                                     </h4>
                                     <div class="filter__input-double-wrapper">
-                                        <?= $form->field($model, 'draftFrom')->textInput([
-                                            //'prompt'=>'Salary',
-                                            'class' => 'filter__input--double filter__input',
-                                            'placeholder'=>'FROM',
-                                        ]) ?>
-                                        <?= $form->field($model, 'draftTo')->textInput([
-                                            //'prompt'=>'Salary',
-                                            'class' => 'filter__input--double filter__input',
-                                            'placeholder'=>'TO',
-                                        ]) ?>
-<!--                                        <input type="text" placeholder="FROM" class="filter__input--double filter__input">-->
-<!--                                        <input type="text" placeholder="TO" class="filter__input--double filter__input">-->
+<!--                                        --><?//= $form->field($model, 'draftFrom')->textInput([
+//                                            //'prompt'=>'Salary',
+//                                            'class' => 'filter__input--double filter__input',
+//                                            'placeholder'=>'FROM',
+//                                        ]) ?>
+<!--                                        --><?//= $form->field($model, 'draftTo')->textInput([
+//                                            //'prompt'=>'Salary',
+//                                            'class' => 'filter__input--double filter__input',
+//                                            'placeholder'=>'TO',
+//                                        ]) ?>
+                                        <input type="text" name="draftFrom" placeholder="FROM" class="filter__input--double filter__input">
+                                        <input type="text" name="draftTo" placeholder="TO" class="filter__input--double filter__input">
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -328,18 +328,18 @@
                                         Deadweight, т
                                     </h4>
                                     <div class="filter__input-double-wrapper">
-                                        <?= $form->field($model, 'deadweightFrom')->textInput([
-                                            //'prompt'=>'Salary',
-                                            'class' => 'filter__input--double filter__input',
-                                            'placeholder'=>'FROM',
-                                        ]) ?>
-                                        <?= $form->field($model, 'deadweightTo')->textInput([
-                                            //'prompt'=>'Salary',
-                                            'class' => 'filter__input--double filter__input',
-                                            'placeholder'=>'TO',
-                                        ]) ?>
-<!--                                        <input type="text" placeholder="FROM" class="filter__input--double filter__input">-->
-<!--                                        <input type="text" placeholder="TO" class="filter__input--double filter__input">-->
+<!--                                        --><?//= $form->field($model, 'deadweightFrom')->textInput([
+//                                            //'prompt'=>'Salary',
+//                                            'class' => 'filter__input--double filter__input',
+//                                            'placeholder'=>'FROM',
+//                                        ]) ?>
+<!--                                        --><?//= $form->field($model, 'deadweightTo')->textInput([
+//                                            //'prompt'=>'Salary',
+//                                            'class' => 'filter__input--double filter__input',
+//                                            'placeholder'=>'TO',
+//                                        ]) ?>
+                                        <input type="text" name="deadweightFrom" placeholder="FROM" class="filter__input--double filter__input">
+                                        <input type="text" name="deadweightTo" placeholder="TO" class="filter__input--double filter__input">
                                     </div>
                                 </div>
                             </div>
@@ -350,30 +350,30 @@
                                     <h4 class="filter__title">
                                         Flag
                                     </h4>
-                                    <?= $form->field($model, 'flag')->textInput([
-                                        'prompt'=>'??????',
-                                        'class' => 'filter__input filter__input--one',
-                                        'placeholder'=>'FROM',
-                                    ]) ?>
-<!--                                    <input type="text" placeholder="??????" class="filter__input filter__input--one">-->
+<!--                                    --><?//= $form->field($model, 'flag')->textInput([
+//                                        'prompt'=>'??????',
+//                                        'class' => 'filter__input filter__input--one',
+//                                        'placeholder'=>'FROM',
+//                                    ]) ?>
+                                    <input type="text" name="flag" placeholder="??????" class="filter__input filter__input--one">
                                 </div>
                                 <div class="col-lg-4">
                                     <h4 class="filter__title">
                                         Year
                                     </h4>
                                     <div class="filter__input-double-wrapper">
-                                        <?= $form->field($model, 'yearFrom')->textInput([
-                                            'prompt'=>'FROM',
-                                            'class' => 'filter__input--double filter__input',
-                                            'placeholder'=>'FROM',
-                                        ]) ?>
-                                        <?= $form->field($model, 'yearTo')->textInput([
-                                            'prompt'=>'TO',
-                                            'class' => 'filter__input--double filter__input',
-                                            'placeholder'=>'TO',
-                                        ]) ?>
-<!--                                        <input type="text" placeholder="FROM" class="filter__input--double filter__input">-->
-<!--                                        <input type="text" placeholder="TO" class="filter__input--double filter__input">-->
+<!--                                        --><?//= $form->field($model, 'yearFrom')->textInput([
+//                                            'prompt'=>'FROM',
+//                                            'class' => 'filter__input--double filter__input',
+//                                            'placeholder'=>'FROM',
+//                                        ]) ?>
+<!--                                        --><?//= $form->field($model, 'yearTo')->textInput([
+//                                            'prompt'=>'TO',
+//                                            'class' => 'filter__input--double filter__input',
+//                                            'placeholder'=>'TO',
+//                                        ]) ?>
+                                        <input type="text" name="yearFrom" placeholder="FROM" class="filter__input--double filter__input">
+                                        <input type="text" name="yearTo" placeholder="TO" class="filter__input--double filter__input">
                                     </div>
                                 </div>
                             </div>
@@ -385,18 +385,18 @@
                                         Price
                                     </h4>
                                     <div class="filter__input-double-wrapper">
-                                        <?= $form->field($model, 'priceFrom')->textInput([
-                                            //'prompt'=>'Salary',
-                                            'class' => 'filter__input--double filter__input',
-                                            'placeholder'=>'FROM',
-                                        ]) ?>
-                                        <?= $form->field($model, 'priceTo')->textInput([
-                                            //'prompt'=>'Salary',
-                                            'class' => 'filter__input--double filter__input',
-                                            'placeholder'=>'TO',
-                                        ]) ?>
-<!--                                        <input type="text" placeholder="FROM" class="filter__input--double filter__input">-->
-<!--                                        <input type="text" placeholder="TO" class="filter__input--double filter__input">-->
+<!--                                        --><?//= $form->field($model, 'priceFrom')->textInput([
+//                                            //'prompt'=>'Salary',
+//                                            'class' => 'filter__input--double filter__input',
+//                                            'placeholder'=>'FROM',
+//                                        ]) ?>
+<!--                                        --><?//= $form->field($model, 'priceTo')->textInput([
+//                                            //'prompt'=>'Salary',
+//                                            'class' => 'filter__input--double filter__input',
+//                                            'placeholder'=>'TO',
+//                                        ]) ?>
+                                        <input type="text" name="priceFrom" placeholder="FROM" class="filter__input--double filter__input">
+                                        <input type="text" name="priceTo" placeholder="TO" class="filter__input--double filter__input">
                                     </div>
                                 </div>
                                 <div class="col-lg-4">

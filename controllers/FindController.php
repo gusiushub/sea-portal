@@ -153,6 +153,7 @@ class FindController extends Controller
                 ->andWhere(['like', 'flag', $_POST['VesselSale']['flag']])
                 ->andWhere('category = :category',[':category'=>'vessel sale'])
                 ->andWhere('plan = :plan',[':plan'=>'business'])
+                ->andWhere(['price between ', 'id', [1,2,3]])
                 ->all();
 
             $findVessels = Vessel::find()->where(['like', 'type', $_POST['VesselSale']['type']])
@@ -232,11 +233,6 @@ class FindController extends Controller
                 }
             }
         }
-//        $contracts = Contracts::find()
-//            //->where('mechanism = :equipment', ['equipment' => $_POST['equipment']])
-//            ->all();
-
-        //var_dump($contracts);exit;equipment
         if (isset($_POST['equipment'])){
             $contracts = Contracts::find()
                 ->select(['maker'])

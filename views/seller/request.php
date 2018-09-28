@@ -244,10 +244,19 @@
             </div>
             <?php
             foreach ($requests as $request){
+
             $user = User::findOne($request['user_from']);
+            //var_dump($user['username'] );
             ?>
+
             <div class="request">
                 <form action="" method="post">
+                    <input name="id" type="text" style="display: none" value="<?php echo $user['id'] ?>">
+                    <input name="username" type="text" style="display: none" value="<?php echo $user['username'] ?>">
+                    <input name="company" type="text" style="display: none" value="<?php echo $request['company'] ?>">
+                    <input name="category" type="text" style="display: none" value="<?php echo $request['category'] ?>">
+                    <input name="email" type="text" style="display: none" value="<?php echo $user['email'] ?>">
+                    <input name="phone" type="text" style="display: none" value="<?php echo $user['phone'] ?>">
                 <div class="row">
                     <div class="col-lg-4">
                         <h4 class="request__headline">
