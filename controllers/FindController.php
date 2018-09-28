@@ -24,12 +24,30 @@ class FindController extends Controller
     {
         $place = Advertisement::find()->all();
         $model = new FindModel();
-        if (isset($_POST['FindModel']['search'])){
+        if (isset($_POST['submit'])){
 
-            $freePlan = Contracts::find()->where(['like', 'search', $_POST['FindModel']['search']])->andWhere(['like', 'mechanism',$_POST['FindModel']['equipment']])->andWhere(['like', 'maker', $_POST['FindModel']['maker']])->andWhere('plan = :plan',[':plan'=>'free'])->andWhere('category = :category',[':category'=>'shipboard supply'])->all();
-
-            $businessPlan = Contracts::find()->where(['like', 'search', $_POST['FindModel']['search']])->andWhere(['like', 'mechanism',$_POST['FindModel']['equipment']])->andWhere(['like', 'maker', $_POST['FindModel']['maker']])->andWhere('plan = :plan',[':plan'=>'buiznes'])->andWhere('category = :category',[':category'=>'shipboard supply'])->all();
-            $businessAdvancedPlan = Contracts::find()->where(['like', 'search', $_POST['FindModel']['search']])->andWhere(['like', 'mechanism',$_POST['FindModel']['equipment']])->andWhere(['like', 'maker', $_POST['FindModel']['maker']])->andWhere('plan = :plan',[':plan'=>'buiznesadvanced'])->andWhere('category = :category',[':category'=>'shipboard supply'])->all();
+            $freePlan = Contracts::find()
+                ->where( 'search=:search',[':search'=> $_POST['FindModel']['search']])
+                ->andWhere('mechanism=:mechanism',[':mechanism'=>$_POST['FindModel']['equipment']])
+//                ->andWhere(['like', 'maker', $_POST['FindModel']['maker']])
+                ->andWhere('plan = :plan',[':plan'=>'free'])
+                ->andWhere('category = :category',[':category'=>'shipboard supply'])
+                ->all();
+            //var_dump($freePlan);
+            $businessPlan = Contracts::find()
+                ->where('search=:search',[':search'=> $_POST['FindModel']['search']])
+                ->andWhere('mechanism=:mechanism',[':mechanism'=>$_POST['FindModel']['equipment']])
+                ->andWhere( 'maker=:maker', [':maker'=>$_POST['FindModel']['maker']])
+                ->andWhere('plan = :plan',[':plan'=>'buiznes'])
+                ->andWhere('category = :category',[':category'=>'shipboard supply'])
+                ->all();
+            $businessAdvancedPlan = Contracts::find()
+                ->where(['like', 'search', $_POST['FindModel']['search']])
+                ->andWhere(['like', 'mechanism',$_POST['FindModel']['equipment']])
+                ->andWhere(['like', 'maker', $_POST['FindModel']['maker']])
+                ->andWhere('plan = :plan',[':plan'=>'buiznesadvanced'])
+                ->andWhere('category = :category',[':category'=>'shipboard supply'])
+                ->all();
 
             return $this->render('shipboardresult',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
         }
@@ -158,7 +176,9 @@ class FindController extends Controller
     public function actionAjaxCrew()
     {
         if (isset($_POST['position'])){
-            $contracts = Crew::find()->where('position = :position', ['position' => $_POST['position']])->all();
+            $contracts = Crew::find()
+                ->where('position = :position', ['position' => $_POST['position']])
+                ->all();
             foreach ($contracts as $contract){
                 if (!empty($contract['lvleng'])) {
                     echo '<option value="' . $contract['lvleng'] . '">' . $contract['lvleng'] . '</option>';
@@ -201,16 +221,33 @@ class FindController extends Controller
     public function actionAjaxShipboarb()
     {
         if (isset($_POST['search'])){
-            $contracts = Contracts::find()->where('search = :search', ['search' => $_POST['search']])->all();
+            $contracts = Contracts::find()
+                ->select(['mechanism'])
+                ->distinct()
+                ->where('search = :search', [':search' => $_POST['search']])
+                ->all();
             foreach ($contracts as $contract){
-                echo '<option value="'.$contract['mechanism'].'">'.$contract['mechanism'].'</option>';
+                if (!empty($contract['mechanism'])) {
+                    echo '<option value="' . $contract['mechanism'] . '">' . $contract['mechanism'] . '</option>';
+                }
             }
         }
+//        $contracts = Contracts::find()
+//            //->where('mechanism = :equipment', ['equipment' => $_POST['equipment']])
+//            ->all();
 
+        //var_dump($contracts);exit;equipment
         if (isset($_POST['equipment'])){
-            $contracts = Contracts::find()->where('mechanism = :equipment', ['equipment' => $_POST['equipment']])->all();
+            $contracts = Contracts::find()
+                ->select(['maker'])
+                ->distinct()
+                ->where('equipment = :equipment', [':equipment' => $_POST['equipment']])
+                ->all();
+
             foreach ($contracts as $contract){
-                echo '<option value="'.$contract['maker'].'">'.$contract['maker'].'</option>';
+                if (!empty($contract['maker'])) {
+                    echo '<option value="'.$contract['maker'].'">'.$contract['maker'].'</option>';
+                }
             }
         }
 
@@ -219,8 +256,11 @@ class FindController extends Controller
     public function actionAjaxStudent()
     {
         if (isset($_POST['faculty'])){
-            $cvs = Cv::find()->select(['lvleng'])
-                ->distinct()->where('faculty = :faculty', ['faculty' => $_POST['faculty']])->all();
+            $cvs = Cv::find()
+                ->select(['lvleng'])
+                ->distinct()
+                ->where('faculty = :faculty', ['faculty' => $_POST['faculty']])
+                ->all();
             foreach($cvs as $cv){
                 if (!empty($cv['lvleng'])) {
                     echo "<option  value='" . $cv['lvleng'] . "'>" . $cv['lvleng'] . "</option>";

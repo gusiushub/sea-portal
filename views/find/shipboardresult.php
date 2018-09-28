@@ -262,7 +262,11 @@ $this->title = 'Shipboard supply';
                             <div class="col-lg-4">
                                 <div class="company-box">
                                     <div class="company-box__logo">
-                                        <img src="../../web/public/img/company-logo.png" alt="company logo" class="company-box__image">
+                                        <?php if (!empty($prof['img'])){ ?>
+                                        <img src="../../web/public/uploads/<?php echo $prof['img'] ?>" alt="company logo" class="company-box__image">
+                                        <?php }else{?>
+                                            <img src="../../web/public/img/company-logo.png" alt="company logo" class="company-box__image">
+                                        <?php } ?>
                                     </div>
                                     <div class="company-box__description">
                                         <h5 class="company-box__company-name">

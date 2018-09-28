@@ -331,47 +331,50 @@ $this->title = 'Find a supplier';
                         </div>
                         <div class="filter__item margin-bottom-light">
                             <div style="display: none" class="form-group city-select">
-                            <h4 class="filter__title">
-                                Spare parts and equipment
-                            </h4>
-                            <div class="select-style">
-                                <?= $form->field($model, 'equipment')
-                                    ->dropDownList(
-                                        $dataPost,
-                                        ['id'=>'equipment',
-                                            'class'=>'select-style__select',
-                              ]); ?>
+                                <h4 class="filter__title">
+                                    Spare parts and equipment
+                                </h4>
+                                <div class="select-style">
+                                    <?= $form
+                                        ->field($model, 'equipment')
+                                        ->dropDownList(
+                                            $dataPost,
+                                            ['id'=>'equipment',
+                                                'class'=>'select-style__select',
+                                  ]); ?>
 
-                                <div class="select-style__arrow">&nbsp;</div>
-                            </div>
+                                    <div class="select-style__arrow">&nbsp;</div>
+                                </div>
                             </div>
                         </div>
                         <div class="filter__item margin-bottom-medium">
                             <div style="display: none" class="form-group city-select2">
-                            <h4 class="filter__title">
-                                maker
-                            </h4>
-                            <?php
-                            $da =  [
-                                '0' => '2цssssцц',
-                            ];
-                            ?>
-                            <div class="select-style">
-                                <?= $form->field($model, 'maker')
-                                    ->dropDownList(
-                                        $da,
-                                        ['id'=>'maker',
-                                            'class'=>'select-style__select'
-                                        ]
-                                    ); ?>
+                                <h4 class="filter__title">
+                                    maker
+                                </h4>
+                                <?php
+                                $da =  [
+                                    '0' => '2цssssцц',
+                                ];
+                                $maker = \app\models\Contracts::find()->select('maker')->distinct()->all();
+                                ?>
+                                <div class="select-style">
+                                    <?= $form->field($model, 'maker')
+                                        ->dropDownList(
+                                            \yii\helpers\ArrayHelper::map($contracts,'maker','maker'),
+                                            ['id'=>'maker',
+                                                'class'=>'select-style__select'
+                                            ]
+                                        ); ?>
 
-                                <div class="select-style__arrow">&nbsp;</div>
-                            </div>
-                            <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
+                                    <div class="select-style__arrow">&nbsp;</div>
+                                </div>
+
                             </div>
                         </div>
+<!--                        <input type="hidden" name="_csrf" value="--><?//=Yii::$app->request->getCsrfToken()?><!--" />-->
                         <div class="filter__item">
-                            <?= Html::submitButton('Sing in', ['class' => 'button button--show-results', 'name' => 'submit']) ?>
+                            <?= Html::submitButton('Sing in', ['class' => 'button button--show-results', 'name' => 'submit','value'=>'ok']) ?>
                         </div>
                     </div>
 

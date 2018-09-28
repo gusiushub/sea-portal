@@ -16,6 +16,8 @@ class FindModel extends Model
     {
         return [
             [['search'], 'required'],
+            [['equipment'], 'required'],
+            [['maker'], 'required'],
         ];
     }
 

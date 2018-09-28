@@ -472,35 +472,35 @@ class SiteController extends Controller
     public function actionAjaxAdv()
     {
         //$session['isselect']=0;
-        $session = Yii::$app->session;
-        //var_dump($session['category_select']);
-        $session['category_select'] = $_POST['field1'];
-        $session['select'] =$_POST['field2'];
+//        $session = Yii::$app->session;
+//        //var_dump($session['category_select']);
+//        $session['category_select'] = $_POST['field1'];
+//        $session['select'] =$_POST['field2'];
 //        $session['captcha'] = [
 //            'number' => 5,
 //            'lifetime' => 3600,
 //        ];
-       // var_dump($session['file_name']);
-        if (isset($_POST['field1'])){
-            //$_POST['field1']
-//            if (isset($session['isselect'])){
-//                if ($session['isselect']==1){
-//                    $session['isselect'] = 0;
-//                    return $session['isselect'];
-//                }
+//       // var_dump($session['file_name']);
+//        if (isset($_POST['field1'])){
+//            //$_POST['field1']
+////            if (isset($session['isselect'])){
+////                if ($session['isselect']==1){
+////                    $session['isselect'] = 0;
+////                    return $session['isselect'];
+////                }
+////            }
+//            //$session['isselect'] ++;
+//            if ( isset($_SESSION['file_name'])){
+//
+//                    $selected = Advertisement::find()->where('selected=:selected', [':selected' => $_POST['field2']])->andWhere('ctegory=:category',[':category'=>$_POST['field1']])->one();
+//                    $selected->user_id = Yii::$app->user->id;
+//                    $selected->img = $session['file_name'];
+//                    unset($_SESSION['file_name']);
+//                    unset($_SESSION['isselect']);
+//                    $selected->save();
+//                    return $this->redirect('/web/find/shipboard-supply');
 //            }
-            //$session['isselect'] ++;
-            if ( isset($_SESSION['file_name'])){
-
-                    $selected = Advertisement::find()->where('selected=:selected', [':selected' => $_POST['field2']])->andWhere('ctegory=:category',[':category'=>$_POST['field1']])->one();
-                    $selected->user_id = Yii::$app->user->id;
-                    $selected->img = $session['file_name'];
-                    unset($_SESSION['file_name']);
-                    unset($_SESSION['isselect']);
-                    $selected->save();
-                    return $this->redirect('/web/find/shipboard-supply');
-            }
-        }
+//        }
     }
 
     public function actionBecomeSupplier()
