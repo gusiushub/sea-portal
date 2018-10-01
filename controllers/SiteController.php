@@ -176,7 +176,7 @@ class SiteController extends Controller
                 $vessels->user_id = Yii::$app->user->id;
                $vessels->price = $ajax['price'];
 //                $vessels->currency = $ajax['currency'];
-//            $vessels->flag = $ajax['flag'];
+                $vessels->flag = $ajax['flag'];
                 return $vessels->save();
             }
         }

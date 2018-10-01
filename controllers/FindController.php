@@ -57,33 +57,201 @@ class FindController extends Controller
 
     public function actionPortServices()
     {
+        $place = Advertisement::find()->all();
         $model = new FindModel();
+        if (isset($_POST['submit'])){
+
+            $freePlan = Contracts::find()
+                ->where( 'search=:search',[':search'=> $_POST['FindModel']['search']])
+                ->andWhere('mechanism=:mechanism',[':mechanism'=>$_POST['FindModel']['equipment']])
+//                ->andWhere(['like', 'maker', $_POST['FindModel']['maker']])
+                ->andWhere('plan = :plan',[':plan'=>'free'])
+                ->andWhere('category = :category',[':category'=>'port services'])
+                ->all();
+            //var_dump($freePlan);
+            $businessPlan = Contracts::find()
+                ->where('search=:search',[':search'=> $_POST['FindModel']['search']])
+                ->andWhere('mechanism=:mechanism',[':mechanism'=>$_POST['FindModel']['equipment']])
+                ->andWhere( 'maker=:maker', [':maker'=>$_POST['FindModel']['maker']])
+                ->andWhere('plan = :plan',[':plan'=>'buiznes'])
+                ->andWhere('category = :category',[':category'=>'port services'])
+                ->all();
+            $businessAdvancedPlan = Contracts::find()
+                ->where(['like', 'search', $_POST['FindModel']['search']])
+                ->andWhere(['like', 'mechanism',$_POST['FindModel']['equipment']])
+                ->andWhere(['like', 'maker', $_POST['FindModel']['maker']])
+                ->andWhere('plan = :plan',[':plan'=>'buiznesadvanced'])
+                ->andWhere('category = :category',[':category'=>'port services'])
+                ->all();
+
+            return $this->render('portservices',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
+        }
         return $this->render('portservices',['model'=>$model]);
     }
 
     public function actionInspectionEquipment()
     {
-        return $this->render('inspection');
+        $place = Advertisement::find()->all();
+        $model = new FindModel();
+        if (isset($_POST['submit'])){
+
+            $freePlan = Contracts::find()
+                ->where( 'search=:search',[':search'=> $_POST['FindModel']['search']])
+                ->andWhere('mechanism=:mechanism',[':mechanism'=>$_POST['FindModel']['equipment']])
+//                ->andWhere(['like', 'maker', $_POST['FindModel']['maker']])
+                ->andWhere('plan = :plan',[':plan'=>'free'])
+                ->andWhere('category = :category',[':category'=>'inspection of equipment'])
+                ->all();
+            $businessPlan = Contracts::find()
+                ->where('search=:search',[':search'=> $_POST['FindModel']['search']])
+                ->andWhere('mechanism=:mechanism',[':mechanism'=>$_POST['FindModel']['equipment']])
+                ->andWhere( 'maker=:maker', [':maker'=>$_POST['FindModel']['maker']])
+                ->andWhere('plan = :plan',[':plan'=>'buiznes'])
+                ->andWhere('category = :category',[':category'=>'inspection of equipment'])
+                ->all();
+            $businessAdvancedPlan = Contracts::find()
+                ->where(['like', 'search', $_POST['FindModel']['search']])
+                ->andWhere(['like', 'mechanism',$_POST['FindModel']['equipment']])
+                ->andWhere(['like', 'maker', $_POST['FindModel']['maker']])
+                ->andWhere('plan = :plan',[':plan'=>'buiznesadvanced'])
+                ->andWhere('category = :category',[':category'=>'inspection of equipment'])
+                ->all();
+
+            return $this->render('inspection',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
+        }
+        return $this->render('inspection',['model'=>$model]);
     }
 
     public function actionCourses()
     {
-        return $this->render('courses');
+        $place = Advertisement::find()->all();
+        $model = new FindModel();
+        if (isset($_POST['submit'])){
+
+            $freePlan = Contracts::find()
+                ->where( 'search=:search',[':search'=> $_POST['FindModel']['search']])
+                ->andWhere('mechanism=:mechanism',[':mechanism'=>$_POST['FindModel']['equipment']])
+//                ->andWhere(['like', 'maker', $_POST['FindModel']['maker']])
+                ->andWhere('plan = :plan',[':plan'=>'free'])
+                ->andWhere('category = :category',[':category'=>'courses'])
+                ->all();
+            $businessPlan = Contracts::find()
+                ->where('search=:search',[':search'=> $_POST['FindModel']['search']])
+                ->andWhere('mechanism=:mechanism',[':mechanism'=>$_POST['FindModel']['equipment']])
+                ->andWhere( 'maker=:maker', [':maker'=>$_POST['FindModel']['maker']])
+                ->andWhere('plan = :plan',[':plan'=>'buiznes'])
+                ->andWhere('category = :category',[':category'=>'courses'])
+                ->all();
+            $businessAdvancedPlan = Contracts::find()
+                ->where(['like', 'search', $_POST['FindModel']['search']])
+                ->andWhere(['like', 'mechanism',$_POST['FindModel']['equipment']])
+                ->andWhere(['like', 'maker', $_POST['FindModel']['maker']])
+                ->andWhere('plan = :plan',[':plan'=>'buiznesadvanced'])
+                ->andWhere('category = :category',[':category'=>'courses'])
+                ->all();
+
+            return $this->render('courses',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
+        }
+        return $this->render('courses',['model'=>$model]);
     }
 
     public function actionLegalServices()
     {
-        return $this->render('legal');
+        $place = Advertisement::find()->all();
+        $model = new FindModel();
+        if (isset($_POST['submit'])){
+
+            $freePlan = Contracts::find()
+                ->where( 'search=:search',[':search'=> $_POST['FindModel']['search']])
+                ->andWhere('mechanism=:mechanism',[':mechanism'=>$_POST['FindModel']['equipment']])
+//                ->andWhere(['like', 'maker', $_POST['FindModel']['maker']])
+                ->andWhere('plan = :plan',[':plan'=>'free'])
+                ->andWhere('category = :category',[':category'=>'legal services'])
+                ->all();
+            $businessPlan = Contracts::find()
+                ->where('search=:search',[':search'=> $_POST['FindModel']['search']])
+                ->andWhere('mechanism=:mechanism',[':mechanism'=>$_POST['FindModel']['equipment']])
+                ->andWhere( 'maker=:maker', [':maker'=>$_POST['FindModel']['maker']])
+                ->andWhere('plan = :plan',[':plan'=>'buiznes'])
+                ->andWhere('category = :category',[':category'=>'legal services'])
+                ->all();
+            $businessAdvancedPlan = Contracts::find()
+                ->where(['like', 'search', $_POST['FindModel']['search']])
+                ->andWhere(['like', 'mechanism',$_POST['FindModel']['equipment']])
+                ->andWhere(['like', 'maker', $_POST['FindModel']['maker']])
+                ->andWhere('plan = :plan',[':plan'=>'buiznesadvanced'])
+                ->andWhere('category = :category',[':category'=>'legal services'])
+                ->all();
+
+            return $this->render('legal',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
+        }
+        return $this->render('legal',['model'=>$model]);
     }
 
     public function actionFisherySector()
     {
-        return $this->render('fishery');
+        $place = Advertisement::find()->all();
+        $model = new FindModel();
+        if (isset($_POST['submit'])){
+
+            $freePlan = Contracts::find()
+                ->where( 'search=:search',[':search'=> $_POST['FindModel']['search']])
+                ->andWhere('mechanism=:mechanism',[':mechanism'=>$_POST['FindModel']['equipment']])
+//                ->andWhere(['like', 'maker', $_POST['FindModel']['maker']])
+                ->andWhere('plan = :plan',[':plan'=>'free'])
+                ->andWhere('category = :category',[':category'=>'fishery'])
+                ->all();
+            $businessPlan = Contracts::find()
+                ->where('search=:search',[':search'=> $_POST['FindModel']['search']])
+                ->andWhere('mechanism=:mechanism',[':mechanism'=>$_POST['FindModel']['equipment']])
+                ->andWhere( 'maker=:maker', [':maker'=>$_POST['FindModel']['maker']])
+                ->andWhere('plan = :plan',[':plan'=>'buiznes'])
+                ->andWhere('category = :category',[':category'=>'fishery'])
+                ->all();
+            $businessAdvancedPlan = Contracts::find()
+                ->where(['like', 'search', $_POST['FindModel']['search']])
+                ->andWhere(['like', 'mechanism',$_POST['FindModel']['equipment']])
+                ->andWhere(['like', 'maker', $_POST['FindModel']['maker']])
+                ->andWhere('plan = :plan',[':plan'=>'buiznesadvanced'])
+                ->andWhere('category = :category',[':category'=>'fishery'])
+                ->all();
+
+            return $this->render('fishery',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
+        }
+        return $this->render('fishery',['model'=>$model]);
     }
 
     public function actionRepairs()
     {
-        return $this->render('repairs');
+        $place = Advertisement::find()->all();
+        $model = new FindModel();
+        if (isset($_POST['submit'])){
+
+            $freePlan = Contracts::find()
+                ->where( 'search=:search',[':search'=> $_POST['FindModel']['search']])
+                ->andWhere('mechanism=:mechanism',[':mechanism'=>$_POST['FindModel']['equipment']])
+//                ->andWhere(['like', 'maker', $_POST['FindModel']['maker']])
+                ->andWhere('plan = :plan',[':plan'=>'free'])
+                ->andWhere('category = :category',[':category'=>'repairs'])
+                ->all();
+            $businessPlan = Contracts::find()
+                ->where('search=:search',[':search'=> $_POST['FindModel']['search']])
+                ->andWhere('mechanism=:mechanism',[':mechanism'=>$_POST['FindModel']['equipment']])
+                ->andWhere( 'maker=:maker', [':maker'=>$_POST['FindModel']['maker']])
+                ->andWhere('plan = :plan',[':plan'=>'buiznes'])
+                ->andWhere('category = :category',[':category'=>'repairs'])
+                ->all();
+            $businessAdvancedPlan = Contracts::find()
+                ->where(['like', 'search', $_POST['FindModel']['search']])
+                ->andWhere(['like', 'mechanism',$_POST['FindModel']['equipment']])
+                ->andWhere(['like', 'maker', $_POST['FindModel']['maker']])
+                ->andWhere('plan = :plan',[':plan'=>'buiznesadvanced'])
+                ->andWhere('category = :category',[':category'=>'repairs'])
+                ->all();
+
+            return $this->render('repairs',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
+        }
+        return $this->render('repairs',['model'=>$model]);
     }
 
 

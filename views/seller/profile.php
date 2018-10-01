@@ -243,8 +243,8 @@
                         <?php }else{  ?>
                             <img src="../../web/public/img/company-logo-big.jpg" alt="company-logo" class="profile__photo margin-bottom-light">
                         <?php } ?>
-                        <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
-                        <?= $form->field($upload, 'image')->fileInput( ['id' => 'uploadbtn','style'=>"opacity: 0"]) ?>
+                        <?php $form = ActiveForm::begin(['options' => ['id'=>'myform','enctype' => 'multipart/form-data']]) ?>
+                        <?= $form->field($upload, 'image')->fileInput( ['id' => 'uploadbtn','style'=>"opacity: 0","onchange"=>"if (this.selectedIndex) this.form.submit ()"]) ?>
                         <button class="profile__upload-photo margin-bottom-medium">
                             <label class="submit" for="uploadbtn" >select file</label>
                         </button>
@@ -368,7 +368,7 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" >
                                         <div class="textinput-container">
-                                            <input type="text" class="textinput-container__input textinput-container__input--change-pass textinput-container__input--change-unactive" value="7ngdc5cn" disabled="" placeholder="PASSWORD" name="password">
+                                            <input type="password" class="textinput-container__input textinput-container__input--change-pass textinput-container__input--change-unactive" value="aaaaaa" disabled="" placeholder="PASSWORD" name="password">
                                         </div>
                                     </div>
                                 </div>
@@ -382,11 +382,22 @@
                     </div>
                     <div class="row horizontal-center">
                         <div class="col-lg-7">
+                            <?php
+                            $vessel = \app\models\Vessel::find()->where('user_id=:id',[':id'=>Yii::$app->user->id])->one();
+                            if (isset($vessel)){
+                            ?>
                             <a href="/web/seller/vessel">
                                 <button class="button button--profile">
                                     place your offer (sell or chartering)
                                 </button>
                             </a>
+                            <?php }else{ ?>
+                                <a href="/web/seller/offers">
+                                    <button class="button button--profile">
+                                        place your offer (sell or chartering)
+                                    </button>
+                                </a>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -510,6 +521,13 @@
 <script src="../../web/public/js/info-change.js"></script>
 <script src="../../web/public/js/from-to.js"></script>
 <script src="../../web/public/js/ajax-forms.js"></script>
+<script type="text/javascript">
+    jQuery(function(){
+        $("#uploadbtn").change(function(){ // событие выбора файла
+            $("#myform").submit(); // отправка формы
+        });
+    });
+</script>
 <script>
     // var _csrf = $('input[name="_csrf"]').val();
     //

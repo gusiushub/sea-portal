@@ -1,4 +1,8 @@
 <?php
+
+use yii\bootstrap\ActiveForm;
+use yii\bootstrap\Html;
+
 $this->title = 'Repairs';
 ?>
 <body>
@@ -241,73 +245,101 @@ $this->title = 'Repairs';
             </div>
             <div class="row">
                 <div class="col-lg-8">
-                    <form id="myform" method="POST" action="/web/find/shipboard-result">
-                        <div class="filter">
-                            <div class="secondary-headline margin-bottom-light">
-                                <h2 class="secondary-headline__title">
-                                    shipboard supply, transport and logistics
-                                </h2>
-                            </div>
-                            <div class="filter__item margin-bottom-light">
-                                <h4 class="filter__title">
-                                    Refine your search
-                                </h4>
-                                <div class="select-style">
+                    <?php $form = ActiveForm::begin(); ?>
+                    <?php
+                    //                        $items = [
+                    //                            '0' => 'Активный',
+                    //                            'MARINE PAINTS' => 'MARINE PAINTS',
+                    //                            'spare parts and equipment'=>'spare parts and equipment'
+                    //                        ];
 
-                                    <select  name="search" id="" class="select-style__select">
-                                        <option value="spare parts and equipment" class="select-style__placeholder">spare parts and equipment</option>
-                                        <option value="spare parts and equipment">spare parts and equipment</option>
-                                        <option value="MARINE PAINTS">MARINE PAINTS</option>
-                                        <option value="MARINE PAINTS">MARINE PAINTS</option>
-                                    </select>
-                                    <div class="select-style__arrow">&nbsp;</div>
-                                </div>
+                    $dataPost= [
+                        '0' => '2ццц',
+                    ];
+                    ?>
+
+                    <div class="filter">
+                        <div class="secondary-headline margin-bottom-light">
+                            <h2 class="secondary-headline__title">
+                                shipboard supply, transport and logistics
+                            </h2>
+                        </div>
+                        <div class="filter__item margin-bottom-light">
+                            <h4 class="filter__title">
+                                Refine your search
+                            </h4>
+                            <div class="select-style">
+                                <?php $contracts = \app\models\Contracts::find()->all(); ?>
+                                <?= $form->field($model, 'search')->dropDownList(\yii\helpers\ArrayHelper::map($contracts,'search','search'),
+                                    ['id'=>'search',
+                                        'prompt'=>'Refine your search',
+                                        'class'=>'select-style__select'
+                                    ]); ?>
+
+                                <div class="select-style__arrow">&nbsp;</div>
                             </div>
-                            <div class="filter__item margin-bottom-light">
+                        </div>
+                        <div class="filter__item margin-bottom-light">
+                            <div style="display: none" class="form-group city-select">
                                 <h4 class="filter__title">
                                     Spare parts and equipment
                                 </h4>
                                 <div class="select-style">
-                                    <select name="equipment" id="" class="select-style__select">
-                                        <option value="pumps" class="select-style__placeholder">pumps</option>
-                                        <option value="COMPRESSORS">COMPRESSORS</option>
-                                        <option value="SEPARATORS">SEPARATORS</option>
-                                    </select>
+                                    <?= $form
+                                        ->field($model, 'equipment')
+                                        ->dropDownList(
+                                            $dataPost,
+                                            ['id'=>'equipment',
+                                                'class'=>'select-style__select',
+                                            ]); ?>
+
                                     <div class="select-style__arrow">&nbsp;</div>
                                 </div>
                             </div>
-                            <div class="filter__item margin-bottom-medium">
+                        </div>
+                        <div class="filter__item margin-bottom-medium">
+                            <div style="display: none" class="form-group city-select2">
                                 <h4 class="filter__title">
                                     maker
                                 </h4>
+                                <?php
+                                $da =  [
+                                    '0' => '2цssssцц',
+                                ];
+                                $maker = \app\models\Contracts::find()->select('maker')->distinct()->all();
+                                ?>
                                 <div class="select-style">
-                                    <select name="maker" id="" class="select-style__select">
-                                        <option value="adasdasdasd" class="select-style__placeholder">Shipping and Logistics</option>
-                                        <option value="MAK">MAK</option>
-                                        <option value="MTU">MTU</option>
-                                        <option value="cummins">cummins</option>
-                                    </select>
+                                    <?= $form->field($model, 'maker')
+                                        ->dropDownList(
+                                            \yii\helpers\ArrayHelper::map($contracts,'maker','maker'),
+                                            ['id'=>'maker',
+                                                'class'=>'select-style__select'
+                                            ]
+                                        ); ?>
+
                                     <div class="select-style__arrow">&nbsp;</div>
                                 </div>
-                                <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
-                            </div>
-                            <div class="filter__item">
-                                <input type="submit"  id="request" class="button button--show-results">
+
                             </div>
                         </div>
-                    </form>
+                        <!--                        <input type="hidden" name="_csrf" value="--><?//=Yii::$app->request->getCsrfToken()?><!--" />-->
+                        <div class="filter__item">
+                            <?= Html::submitButton('Sing in', ['class' => 'button button--show-results', 'name' => 'submit','value'=>'ok']) ?>
+                        </div>
+                    </div>
 
+                    <?php ActiveForm::end(); ?>
                 </div>
                 <div class="col-lg-4">
                     <div class="advertising-wrapper">
                         <a href='#' class="advertising">
-                            <p class="advertising__content">advertising</p>
+                            <p class="advertising__content"><img width="395px" height="195px"  src="../../web/public/uploads/<?php echo $place[0]['img']?>" ></p>
                         </a>
                         <a href='#' class="advertising">
-                            <p class="advertising__content">advertising</p>
+                            <p class="advertising__content"><img width="395px" height="195px"  src="../../web/public/uploads/<?php echo $place[1]['img']?>" ></p>
                         </a>
                         <a href='#' class="advertising">
-                            <p class="advertising__content">advertising</p>
+                            <p class="advertising__content"><img width="395px" height="195px"  src="../../web/public/uploads/<?php echo $place[2]['img']?>" ></p>
                         </a>
                     </div>
                 </div>
@@ -315,17 +347,17 @@ $this->title = 'Repairs';
             <div class="row">
                 <div class="col-lg-4">
                     <a href='#' class="advertising">
-                        <p class="advertising__content">advertising</p>
+                        <p class="advertising__content"><img width="395px" height="195px"  src="../../web/public/uploads/<?php echo $place[3]['img']?>" ></p>
                     </a>
                 </div>
                 <div class="col-lg-4">
                     <a href='#' class="advertising">
-                        <p class="advertising__content">advertising</p>
+                        <p class="advertising__content"><img width="395px" height="195px"  src="../../web/public/uploads/<?php echo $place[4]['img']?>" ></p>
                     </a>
                 </div>
                 <div class="col-lg-4">
                     <a href='#' class="advertising">
-                        <p class="advertising__content">advertising</p>
+                        <p class="advertising__content"><img width="395px" height="195px"  src="../../web/public/uploads/<?php echo $place[5]['img']?>" ></p>
                     </a>
                 </div>
             </div>
@@ -358,12 +390,12 @@ $this->title = 'Repairs';
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/find/crew" class="footer-nav__link">
                                     Crew
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/find/vessels-sale" class="footer-nav__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
@@ -445,54 +477,30 @@ $this->title = 'Repairs';
 </footer>
 </body>
 <script src="../../web/public/js/common.js"></script>
-<script>
-    var Btn = document.querySelector('#request');
-    Btn.onclick = function(){
 
-        var search = $('select[name="search"]').val(),
-            equipment = $('select[name="equipment"]').val(),
-            maker = $('select[name="maker"]').val(),
-            _csrf = $('input[name="_csrf"]').val(),
-            profile1 = {
-                search,
-                equipment,
-                maker,
-                _csrf
-            };
-        var jsdata = JSON.stringify(profile1);
-        $.ajax({
-            type: "POST",
-            url: "/web/find/shipboard-result",
-            data: {
-                profile1: jsdata,
-                _csrf: _csrf
-            },
-            success: window.location.replace("/web/find/shipboard-result")
+<script>
+
+    $(function(){
+
+        $('#search').change(function(){
+            var search = $(this).val();
+            $('#equipment').load('ajax-shipboarb', {search: search}, function(){
+                $('.city-select').fadeIn('fast');
+            });
 
         });
 
-    };
+    });
 
+    $(function(){
 
+        $('#equipment').change(function(){
+            var equipment = $(this).val();
+            $('#maker').load('ajax-shipboarb', {equipment: equipment}, function(){
+                $('.city-select2').fadeIn('fast');
+            });
 
-    // $("#myform").submit( function(e){
-    //     var form = $(this);
-    //     $.ajax({
-    //         url    : '/web/find/shipboard-result',
-    //         type   : 'POST',
-    //         async: true,
-    //         cache: false,
-    //         data   : form.serialize(),
-    //         success: function (response)
-    //         {
-    //             window.location.replace("/web/find/shipboard-result");
-    //         },
-    //         error  : function (e)
-    //         {
-    //             console.log(e);
-    //         }
-    //     });
-    //     return false;
-    // })
+        });
+
+    });
 </script>
-

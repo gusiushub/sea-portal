@@ -22,6 +22,7 @@ class SellerController extends Controller
     public function actionProfile()
     {
         $user_id = User::findOne(Yii::$app->user->id);
+        //$img = new UploadImage();
         $user = new User();
         $upload = new UploadImage();
         if (!Yii::$app->user->isGuest){
@@ -32,9 +33,9 @@ class SellerController extends Controller
 //                $upload = new UploadImage();
 //                $model = new User();
                 if(Yii::$app->request->isPost){
+                    //var_dump('asdasd');exit;
                     $file = UploadedFile::getInstance($upload, 'image');
-                    var_dump($file);exit;
-                    if ($user_id->saveImage($upload->uploadFile($file, Yii::$app->user->identity->img) )){
+                    if ($upload->uploadFile($file, Yii::$app->user->identity->img) ){
 
                         return $this->redirect('/web/seller/profile');
                     }
@@ -76,7 +77,6 @@ $user = new User();
             //->orderby(['id'=>SORT_DESC])
             ->limit(7)
             ->all();
-   // var_dump($statistics);
         return $this->render('statistics',['statistics'=>$statistics]);
     }
     public function actionTerm()

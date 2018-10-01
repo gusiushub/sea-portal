@@ -119,7 +119,7 @@
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/vessels-sale" class="secondary-navigation__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
@@ -178,7 +178,7 @@
                             incoming requests
                         </h3>
                     </a>
-                    <a href='/web/seller/offers' class="primary-menu__item">
+                    <a href='/web/seller/statistics' class="primary-menu__item">
                         <i class="icon-charting primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             statistics
@@ -190,7 +190,7 @@
                             my offers
                         </h3>
                     </a>
-                    <a href='/web/seller/offers' class="primary-menu__item">
+                    <a href='/web/seller/advertisement' class="primary-menu__item">
                         <i class="icon-window primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             place an adverticement
@@ -529,43 +529,43 @@
                 <div class="row margin-bottom-medium">
                     <div class="col-lg-12 horizontal-between flex-wrap">
                         <div class="change-image">
-                            <img src="img/заглушка.png" alt="" class="change-image__image">
+                            <img src="../../web/public/img/заглушка.png" alt="" class="change-image__image">
                             <h2 class="change-image__appeared-text">Change picture</h2>
                         </div>
                         <div class="change-image">
-                            <img src="img/заглушка.png" alt="">
+                            <img src="../../web/public/img/заглушка.png" alt="">
                             <h2 class="change-image__appeared-text">Change picture</h2>
                         </div>
                         <div class="change-image">
-                            <img src="img/заглушка.png" alt="">
+                            <img src="../../web/public/img/заглушка.png" alt="">
                             <h2 class="change-image__appeared-text">Change picture</h2>
                         </div>
                         <div class="change-image">
-                            <img src="img/заглушка.png" alt="">
+                            <img src="../../web/public/img/заглушка.png" alt="">
                             <h2 class="change-image__appeared-text">Change picture</h2>
                         </div>
                         <div class="change-image">
-                            <img src="img/заглушка.png" alt="">
+                            <img src="../../web/public/img/заглушка.png" alt="">
                             <h2 class="change-image__appeared-text">Change picture</h2>
                         </div>
                         <div class="change-image">
-                            <img src="img/заглушка.png" alt="">
+                            <img src="../../web/public/img/заглушка.png" alt="">
                             <h2 class="change-image__appeared-text">Change picture</h2>
                         </div>
                         <div class="change-image">
-                            <img src="img/заглушка.png" alt="">
+                            <img src="../../web/public/img/заглушка.png" alt="">
                             <h2 class="change-image__appeared-text">Change picture</h2>
                         </div>
                         <div class="change-image">
-                            <img src="img/заглушка.png" alt="">
+                            <img src="../../web/public/img/заглушка.png" alt="">
                             <h2 class="change-image__appeared-text">Change picture</h2>
                         </div>
                         <div class="change-image">
-                            <img src="img/заглушка.png" alt="">
+                            <img src="../../web/public/img/заглушка.png" alt="">
                             <h2 class="change-image__appeared-text">Change picture</h2>
                         </div>
                         <div class="change-image">
-                            <img src="img/заглушка.png" alt="">
+                            <img src="../../web/public/img/заглушка.png" alt="">
                             <h2 class="change-image__appeared-text">Change picture</h2>
                         </div>
                     </div>

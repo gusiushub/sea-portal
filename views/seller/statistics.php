@@ -427,7 +427,7 @@ foreach($statistics as $value){
 //         } else {
 //             document.getElementById('val'+i).value = 0;
 //         }
-console.log($('.hidden').length);
+
 var count = $('.hidden').length;
 count = count+1;
 // var input = $('<input/>', {
@@ -445,7 +445,7 @@ if (ost!=0){
         input[i] = 0;
     }
 }
-console.log(input);
+
     //}
     // var input2 = document.getElementById('val2').value;
     // var input3 = document.getElementById('val3').value;
