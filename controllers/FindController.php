@@ -316,6 +316,7 @@ class FindController extends Controller
 
     public function actionVesselsSale()
     {
+        $place = Advertisement::find()->all();
         if (Yii::$app->request->isPost){
 
             $findVesselsPlus = Vessel::find()
@@ -357,10 +358,10 @@ class FindController extends Controller
                 ->andWhere('plan = :plan',[':plan'=>'free'])
                 ->all();
 
-            return $this->render('vesselsresult',['findVessels'=>$findVessels,'findVesselsPlus'=>$findVesselsPlus]);
+            return $this->render('vesselsresult',['place'=>$place,'findVessels'=>$findVessels,'findVesselsPlus'=>$findVesselsPlus]);
         }
         $model = new VesselSale();
-        return $this->render('vesselssale',['model'=>$model]);
+        return $this->render('vesselssale',['place'=>$place,'model'=>$model]);
     }
 
     public function actionChartering()
