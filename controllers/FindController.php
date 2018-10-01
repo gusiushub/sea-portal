@@ -148,7 +148,8 @@ class FindController extends Controller
     {
         if (Yii::$app->request->isPost){
 
-            $findVesselsPlus = Vessel::find()->where(['like', 'type', $_POST['VesselSale']['type']])
+            $findVesselsPlus = Vessel::find()
+                ->where(['like', 'type', $_POST['VesselSale']['type']])
                 ->andWhere(['like', 'vessel_option',$_POST['VesselSale']['vesOption']])
                 ->andWhere(['like', 'flag', $_POST['VesselSale']['flag']])
                 ->andWhere('category = :category',[':category'=>'vessel sale'])
@@ -156,7 +157,8 @@ class FindController extends Controller
                 ->andWhere(['price between ', 'id', [1,2,3]])
                 ->all();
 
-            $findVessels = Vessel::find()->where(['like', 'type', $_POST['VesselSale']['type']])
+            $findVessels = Vessel::find()
+                ->where(['like', 'type', $_POST['VesselSale']['type']])
                 ->andWhere(['like', 'vessel_option',$_POST['VesselSale']['vesOption']])
                 ->andWhere(['like', 'flag', $_POST['VesselSale']['flag']])
                 ->andWhere('category = :category',[':category'=>'vessel sale'])

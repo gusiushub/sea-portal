@@ -220,23 +220,37 @@
                         </h3>
                     </div>
                 </div>
+
                 <div class="col-lg-3 col-md-3 col-sm-5 col-6 vertical-center">
                     <div class="select-style">
-                        <select name="date" id="date" class="select-style__select">
-                            <option class="select-style__placeholder">date</option>
-                            <option value="www">text</option>
-                            <option value="ssss">text</option>
-                        </select>
+                        <form  action="/web/seller/request" method="post">
+                            <input id="token" type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
+                            <select onchange="if (this.selectedIndex) this.form.submit ()" name="date" id="date" class="select-style__select">
+                                <option class="select-style__placeholder">date</option>
+                                <?php foreach ($date as $day){ ?>
+                                    <?php if(!empty($day['date'])){ ?>
+                                        <option value="<?php echo $day['date'] ?>"><?php echo $day['date'] ?></option>
+                                    <?php } ?>
+                                <?php } ?>
+                            </select>
+                        </form>
                         <div class="select-style__arrow">&nbsp;</div>
                     </div>
                 </div>
+
                 <div class="col-lg-3 col-md-3 col-sm-5 col-6 vertical-center">
                     <div class="select-style">
-                        <select name="category" id="category" class="select-style__select">
-                            <option class="select-style__placeholder">category</option>
-                            <option value="www">text</option>
-                            <option value="">text</option>
-                        </select>
+                        <form  action="/web/seller/request" method="post">
+                            <input id="token" type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
+                            <select onchange="if (this.selectedIndex) this.form.submit ()" name="category" id="category" class="select-style__select">
+                                <option class="select-style__placeholder">category</option>
+                                <?php foreach ($category as $cat){ ?>
+                                    <?php if(!empty($cat['category'])){ ?>
+                                        <option value="<?php echo $cat['category'] ?>"><?php echo $cat['category'] ?></option>
+                                    <?php } ?>
+                                <?php } ?>
+                            </select>
+                        </form>
                         <div class="select-style__arrow">&nbsp;</div>
                     </div>
                 </div>
@@ -244,13 +258,11 @@
             </div>
             <?php
             foreach ($requests as $request){
-
             $user = User::findOne($request['user_from']);
-            //var_dump($user['username'] );
             ?>
 
             <div class="request">
-                <form action="" method="post">
+                <form action="/web/seller/request" method="post">
                     <input name="id" type="text" style="display: none" value="<?php echo $user['id'] ?>">
                     <input name="username" type="text" style="display: none" value="<?php echo $user['username'] ?>">
                     <input name="company" type="text" style="display: none" value="<?php echo $request['company'] ?>">
@@ -260,7 +272,7 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <h4 class="request__headline">
-                            23/05/2018
+                            <?php echo $request['date'] ?>
                         </h4>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-4">
@@ -339,7 +351,7 @@
                                 </button>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-6 col-6">
-                                <input type="submit" name="ans" class="button button--profile" value="answer"class="button button--profile">
+                                <input type="submit" name="ans" class="button button--profile" value="answer">
 <!--                                <button class="button button--profile">-->
 <!--                                    class="button button--profile"-->
 <!--                                </button>-->

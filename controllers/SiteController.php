@@ -402,6 +402,28 @@ class SiteController extends Controller
         }
     }
 
+
+//    public function actionForm()
+//    {
+//        if(isset($_POST['fio'],$_FILES['avatar'])){
+//            // тут производим сохранение полученных из формы данных. С этой задачей, думаю, сможете справиться самостоятельно,
+//            // приведу в качестве примера просто возврат принятых сервером данных:
+//
+//            $req = false; // изначально переменная для "ответа" - false
+//            // Приведём полученную информацию в удобочитаемый вид
+//            ob_start();
+//            echo '<pre>';
+//            print_r($_POST);
+//            print_r($_FILES['avatar']);
+//            echo '</pre>';
+//            $req = ob_get_contents();
+//            ob_end_clean();
+//            echo json_encode($req); // вернем полученное в ответе
+//            exit;
+//        }
+//    }
+
+
     public function actionPricing()
     {
         $cv = Cv::find()->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->all();
@@ -421,7 +443,10 @@ class SiteController extends Controller
     {
         if (!Yii::$app->user->isGuest){
 
-            $userCv = Cv::find()->select('*')->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->all();
+            $userCv = Cv::find()
+                ->select('*')
+                ->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])
+                ->all();
             $model = new CvForm();
             return $this->render('cv',['userCv'=>$userCv,'model'=>$model]);
         }else {
@@ -441,10 +466,15 @@ class SiteController extends Controller
     public function actionStatistics()
     {
         if (!Yii::$app->user->isGuest){
-            $statistics = Statistics::find()->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->andWhere('date = :date',[':date'=>date('Y.m.d')])->all();
+            $statistics = Statistics::find()
+                ->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])
+                ->andWhere('date = :date',[':date'=>date('Y.m.d')])
+                ->all();
             //var_dump($statistics);
             if (!empty($statistics)) {
-                $statistics = Statistics::find()->orderBy('id DESC')->limit(7)
+                $statistics = Statistics::find()
+                    ->orderBy('id DESC')
+                    ->limit(7)
                     ->where('user_id = :user_id',[':user_id'=>Yii::$app->user->id])
                     ->andWhere('date = :date',[':date'=>date('Y.m.d')])
                     ->all();

@@ -391,7 +391,7 @@
     foreach($statistics as $value){
         if (!empty($value['request'])) {
             ?>
-            <input type="hidden" value="<?php echo $value['request'] ?>" id="val<?php echo $k ?>">
+            <input type="hidden" class="hidden" value="<?php echo $value['request'] ?>" id="val<?php echo $k ?>">
             <?php
         }else{
             ?>
@@ -427,8 +427,25 @@ foreach($statistics as $value){
 //         } else {
 //             document.getElementById('val'+i).value = 0;
 //         }
-
-
+console.log($('.hidden').length);
+var count = $('.hidden').length;
+count = count+1;
+// var input = $('<input/>', {
+//     value: 'Удаление',
+//     type: 'button',
+//     'class': 'DeleteDynamicExtraField'
+// }).appendTo(div);
+var input = [];
+for (var i=1;i<count;i++){
+    input[i] = document.getElementById('val'+i).value;
+}
+var ost = 7-count;
+if (ost!=0){
+    for (var i=count;i<8;i++){
+        input[i] = 0;
+    }
+}
+console.log(input);
     //}
     // var input2 = document.getElementById('val2').value;
     // var input3 = document.getElementById('val3').value;
@@ -483,7 +500,7 @@ foreach($statistics as $value){
             datasets: [{
                 backgroundColor: "rgb(206, 225, 240)",
                 borderColor: "rgb(72, 137, 191)",
-                data: [2, 3, 4, 5, 2, 4, 5, 20]
+                data: [input[1],input[2], input[3], input[4],input[5], input[6], input[7], 20]
             }]
         }
     });

@@ -907,7 +907,51 @@
         </div>
     </div>
 </div>
-<div class="ajax-respond">ssssssssssss</div>
+<!--<script>-->
+<!--    // Описываем общие установки для всех ajax-запросов-->
+<!--    $.ajaxSetup({-->
+<!--        url: 'path/to/handler.php', // путь к php-обработчику-->
+<!--        type: 'POST', // метод передачи данных-->
+<!--        dataType: 'json', // тип ожидаемых данных в ответе-->
+<!--        beforeSend: function(){ // Функция вызывается перед отправкой запроса-->
+<!--            console.debug('Запрос отправлен. Ждите ответа.');-->
+<!--            // тут можно, к примеру, начинать показ прелоадера, в общем, на ваше усмотрение-->
+<!--        },-->
+<!--        error: function(req, text, error){ // отслеживание ошибок во время выполнения ajax-запроса-->
+<!--            console.error('Упс! Ошибочка: ' + text + ' | ' + error);-->
+<!--        },-->
+<!--        complete: function(){ // функция вызывается по окончании запроса-->
+<!--            console.debug('Запрос полностью завершен!');-->
+<!--            // тут завершаем показ прелоадера, если вы его показывали-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+<!--<form action="/web/site/form" method="post" id="my_form" enctype="multipart/form-data"><br>-->
+<!--    <label for="fio">Ф.И.О:</label><br>-->
+<!--    <input type="text" name="fio" id="fio"><br><br>-->
+<!--    <label for="avatar">Аватар:</label><br>-->
+<!--    <input type="file" name="avatar" id="avatar"><br><br>-->
+<!--    <input type="submit" id="submit" value="Отправить"><br>-->
+<!--</form><br>-->
+<!--<script>-->
+<!--    $(function(){-->
+<!--        $('#my_form').on('submit', function(e){-->
+<!--            e.preventDefault();-->
+<!--            var $that = $(this),-->
+<!--                formData = new FormData($that.get(0)); // создаем новый экземпляр объекта и передаем ему нашу форму (*)-->
+<!--            $.ajax({-->
+<!--                contentType: false, // важно - убираем форматирование данных по умолчанию-->
+<!--                processData: false, // важно - убираем преобразование строк по умолчанию-->
+<!--                data: formData,-->
+<!--                success: function(json){-->
+<!--                    if(json){-->
+<!--                        // тут что-то делаем с полученным результатом-->
+<!--                    }-->
+<!--                }-->
+<!--            });-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
 <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" >
 <!--motd-end-->
 </body>
@@ -983,6 +1027,9 @@
 
 <script>
     var _csrf = $('input[name="_csrf"]').val();
+
+
+
 
     // Переменная куда будут располагаться данные файлов
 

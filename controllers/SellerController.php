@@ -50,13 +50,17 @@ $user = new User();
 
     public function actionVessel()
     {
-        $vessel = Vessel::find()->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->one();
+        $vessel = Vessel::find()
+            ->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])
+            ->one();
         return $this->render('vessel',['vessel'=>$vessel]);
     }
 
     public function actionOffers()
     {
-        $userOffers = Vessel::find()->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->all();
+        $userOffers = Vessel::find()
+            ->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])
+            ->all();
         return $this->render('offers',['userOffers'=>$userOffers]);
     }
 
@@ -67,8 +71,12 @@ $user = new User();
 
     public function actionStatistics()
     {
-        $statistics = Statistics::find()->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->andWhere('date = :date',[':date'=>date('Y.m.d')])->all();
-    //var_dump($statistics);
+        $statistics = Statistics::find()
+            ->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])
+            //->orderby(['id'=>SORT_DESC])
+            ->limit(7)
+            ->all();
+   // var_dump($statistics);
         return $this->render('statistics',['statistics'=>$statistics]);
     }
     public function actionTerm()
@@ -78,20 +86,18 @@ $user = new User();
 
     public function actionRequest()
     {
-//        if (isset($_POST['date'])){
-//            //var_dump('sdsdfsd');exit;
-//            $requests = Request::find()->where('user_id = :user_id',[':user_id'=>Yii::$app->user->id])->andWhere('date = :date',[':date'=>Yii::$app->user->id])->all();
-//            return $this->render('request',['requests'=>$requests]);
-//        }
-//        if (isset($_POST['category'])){
-//            $requests = Request::find()->where('user_id = :user_id',[':user_id'=>Yii::$app->user->id])->andWhere('category = :category',[':category'=>Yii::$app->user->id])->all();
-//            return $this->render('request',['requests'=>$requests]);
-//        }
-//        if (isset($_POST['date'])){
-//            $requests = Request::find()->where('user_id = :user_id',[':user_id'=>Yii::$app->user->id])->andWhere('date = :date',[':date'=>Yii::$app->user->id])->andWhere('category = :category',[':category'=>Yii::$app->user->id])->all();
-//            return $this->render('request',['requests'=>$requests]);
-//        }
-        if(isset($_POST['ans'])){
+        $select_date = Request::find()
+            ->select(['date'])
+            ->distinct()
+            ->where('user_id = :user_id',[':user_id'=>Yii::$app->user->id])
+            ->all();
+        $select_category = Request::find()
+            ->select(['category'])
+            ->distinct()
+            ->where('user_from = :user_id',[':user_id'=>Yii::$app->user->id])
+            ->all();
+
+        if(($_POST['ans'])=='answer'){
             //$requests = Request::find()->where('user_id = :user_id',[':user_id'=>$_POST['user_id']])->one();
             $request = new Request();
             $user = User::findOne($_POST['id']);
@@ -103,15 +109,38 @@ $user = new User();
             $request->email = $_POST['email'];
             $request->phone = $_POST['phone'];
             $request->company = $_POST['company'];
-            $request->category = $_POST['category'];
+            $request->category = 'find a practice';
             $request->message = $_POST['message'];
             $request->save();
-            $request = Request::find()->where('user_id = :user_id',[':user_id'=>Yii::$app->user->id])->all();
-
-            return $this->render('request',['requests'=>$request]);
+            //$requests = Request::find()->where('user_id = :user_id',[':user_id'=>Yii::$app->user->id])->all();
+            //return $this->render('request',['requests'=>$requests,'date'=>$select_date,'category'=>$select_category]);
         }
-        $requests = Request::find()->where('user_id = :user_id',[':user_id'=>Yii::$app->user->id])->all();
-        return $this->render('request',['requests'=>$requests]);
+
+        if (isset($_POST['date'])){
+            //var_dump('sdsdfsd');exit;
+            $requests = Request::find()
+                ->where('date = :date',[':date'=>$_POST['date']])
+                ->andWhere('user_id = :user_id',[':user_id'=>Yii::$app->user->id])
+                ->all();
+            //var_dump($requests);
+            return $this->render('request',['requests'=>$requests,'date'=>$select_date,'category'=>$select_category]);
+        }
+        if (isset($_POST['category'])){
+            $requests = Request::find()
+                ->where('user_id = :user_id',[':user_id'=>Yii::$app->user->id])
+                ->andWhere('category = :category',[':category'=>$_POST['category']])
+                ->all();
+            return $this->render('request',['requests'=>$requests,'date'=>$select_date,'category'=>$select_category]);
+        }
+//        if (isset($_POST['date'])){
+//            $requests = Request::find()->where('user_id = :user_id',[':user_id'=>Yii::$app->user->id])->andWhere('date = :date',[':date'=>Yii::$app->user->id])->andWhere('category = :category',[':category'=>Yii::$app->user->id])->all();
+//            return $this->render('request',['requests'=>$requests]);
+//        }
+
+        $requests = Request::find()
+            ->where('user_id = :user_id',[':user_id'=>Yii::$app->user->id])
+            ->all();
+        return $this->render('request',['requests'=>$requests,'date'=>$select_date,'category'=>$select_category]);
     }
 
     public function actionAdvertisement()
