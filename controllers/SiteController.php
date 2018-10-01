@@ -2,15 +2,8 @@
 
 namespace app\controllers;
 
-use app\models\Advertisement;
-use app\models\AjaxUploadFile;
-use app\models\Request;
 use Yii;
-use yii\bootstrap\Html;
 use yii\filters\AccessControl;
-use yii\helpers\ArrayHelper;
-use yii\helpers\Json;
-use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
@@ -19,7 +12,6 @@ use app\models\ContactForm;
 use app\models\User;
 use app\models\Statistics;
 use app\models\SignupForm;
-use app\models\UserProfile;
 use app\models\BecomeSupplier;
 use app\models\UploadImage;
 use app\models\Location;
@@ -357,8 +349,6 @@ class SiteController extends Controller
 
     }
 
-
-
     public function actionCvJob()
     {
         $userCv = Cv::find()->select('*')->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->all();
@@ -389,75 +379,67 @@ class SiteController extends Controller
 
     }
 
-
-//    public function actionForm()
-//    {
-//        if(isset($_POST['fio'],$_FILES['avatar'])){
-//            // тут производим сохранение полученных из формы данных. С этой задачей, думаю, сможете справиться самостоятельно,
-//            // приведу в качестве примера просто возврат принятых сервером данных:
-//
-//            $req = false; // изначально переменная для "ответа" - false
-//            // Приведём полученную информацию в удобочитаемый вид
-//            ob_start();
-//            echo '<pre>';
-//            print_r($_POST);
-//            print_r($_FILES['avatar']);
-//            echo '</pre>';
-//            $req = ob_get_contents();
-//            ob_end_clean();
-//            echo json_encode($req); // вернем полученное в ответе
-//            exit;
-//        }
-//    }
-
-
     public function actionPricing()
     {
         $cv = Cv::find()->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->all();
 
-        if (!Yii::$app->user->isGuest ){
-            if (!empty($cv)) {
-                return $this->render('pricing',['cv'=>$cv]);
-            }else{
-               return $this->redirect(['profile']);
+        if (!Yii::$app->user->isGuest) {
+            $status = Yii::$app->user->identity->user_status;
+            if ($status == 1) {
+                if (!empty($cv)) {
+                    return $this->render('pricing', ['cv' => $cv]);
+                } else {
+                    return $this->redirect(['profile']);
+                }
+            } else {
+                $this->redirect(['index']);
             }
-        }else {
-            $this->redirect(['index']);
         }
     }
 
     public function actionCv()
     {
-        if (!Yii::$app->user->isGuest){
+        if (!Yii::$app->user->isGuest) {
+            $status = Yii::$app->user->identity->user_status;
+            if ($status == 1) {
 
-            $userCv = Cv::find()
-                ->select('*')
-                ->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])
-                ->all();
-            $model = new CvForm();
-            return $this->render('cv',['userCv'=>$userCv,'model'=>$model]);
-        }else {
-            $this->redirect(['index']);
+                $userCv = Cv::find()
+                    ->select('*')
+                    ->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])
+                    ->all();
+                $model = new CvForm();
+                return $this->render('cv', ['userCv' => $userCv, 'model' => $model]);
+            } else {
+                $this->redirect(['index']);
+            }
         }
     }
 
     public function actionTerms()
     {
-        if (!Yii::$app->user->isGuest){
-            return $this->render('terms');
-        }else {
-            $this->redirect(['index']);
+        if (!Yii::$app->user->isGuest) {
+            $status = Yii::$app->user->identity->user_status;
+            if ($status == 1) {
+                return $this->render('terms');
+            } else {
+                $this->redirect(['index']);
+            }
         }
     }
 
     public function actionStatistics()
     {
-        $statistics = Statistics::find()
-            ->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])
-            //->orderby(['id'=>SORT_DESC])
-            ->limit(7)
-            ->all();
-        return $this->render('statistics',['statistics'=>$statistics]);
+        if (!Yii::$app->user->isGuest) {
+            $status = Yii::$app->user->identity->user_status;
+            if ($status == 1) {
+                $statistics = Statistics::find()
+                    ->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])
+                    //->orderby(['id'=>SORT_DESC])
+                    ->limit(7)
+                    ->all();
+                return $this->render('statistics', ['statistics' => $statistics]);
+            }
+        }
     }
 
     public function actionAjaxAdv()

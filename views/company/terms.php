@@ -71,7 +71,7 @@
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/vessels-sale" class="adaptive-menu__link">
                                         Vessels sell/chartering
                                     </a>
                                 </li>
@@ -104,12 +104,12 @@
                     <nav class="secondary-navigation">
                         <ul class="secondary-navigation__list">
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/site/find-supplier" class="secondary-navigation__link">
                                     Find a supplier
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/site/become-supplier" class="secondary-navigation__link">
                                     Become a supplier
                                 </a>
                             </li>
@@ -119,7 +119,7 @@
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/vessels-sale" class="secondary-navigation__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
@@ -152,7 +152,7 @@
                         Profile
                     </h1>
                     <a href="#" class="settings__email settings__email--head">
-                        wilkinson@gmail.com
+                        <?php echo Yii::$app->user->identity->email ?>
                     </a>
                 </div>
             </div>
@@ -172,7 +172,7 @@
                             pricing
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/company/statistics' class="primary-menu__item">
                         <i class="icon-charting primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             statistics
@@ -184,13 +184,13 @@
                             contracts
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/company/advertisement' class="primary-menu__item">
                         <i class="icon-window primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             Place an adverticement
                         </h3>
                     </a>
-                    <a href='/web/company/requests' class="primary-menu__item">
+                    <a href='/web/company/request' class="primary-menu__item">
                         <i class="icon-message primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             incoming requests
@@ -683,7 +683,7 @@
         <div class="row margin-bottom-light">
             <div class="col-lg-6">
                 <div class="logotype-box">
-                    <img src="img/logotype-big.png" alt="logotype" class="logotype-box__footer">
+                    <img src="../../web/public/img/logotype-big.png" alt="logotype" class="logotype-box__footer">
                 </div>
             </div>
             <div class="col-lg-6">
@@ -709,7 +709,7 @@
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/find/vessels-sale" class="footer-nav__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
@@ -741,12 +741,12 @@
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/login" class="footer-nav__link">
                                     Sign In
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="#" class="footer-nav__link">
+                                <a href="/web/site/signup" class="footer-nav__link">
                                     Sign Up
                                 </a>
                             </li>
@@ -759,16 +759,16 @@
             <div class="col-lg-12">
                 <div class="social-networks">
                     <a href="#" class="social-networks__link">
-                        <img src="img/icons/soc-mail.png" alt="mail">
+                        <img src="../../web/public/img/icons/soc-mail.png" alt="mail">
                     </a>
                     <a href="#" class="social-networks__link">
-                        <img src="img/icons/soc-mobile.png" alt="mobile">
+                        <img src="../../web/public/img/icons/soc-mobile.png" alt="mobile">
                     </a>
                     <a href="#" class="social-networks__link">
-                        <img src="img/icons/soc-skype.png" alt="skype">
+                        <img src="../../web/public/img/icons/soc-skype.png" alt="skype">
                     </a>
                     <a href="#" class="social-networks__link">
-                        <img src="img/icons/soc-mobile-2.png" alt="mobile">
+                        <img src="../../web/public/img/icons/soc-mobile-2.png" alt="mobile">
                     </a>
                 </div>
             </div>
@@ -790,4 +790,4 @@
     </div>
 </footer>
 </body>
-<script src="js/common.js"></script>
+<script src="../../web/public/js/common.js"></script>

@@ -265,7 +265,7 @@
                         <?php
                     }
                 }
-                var_dump($findVessels);
+                //var_dump($findVessels);
                 foreach ($findVessels as $findVessel) {
                     $user = User::findOne($findVessel['user_id']);
                 if (!empty($findVessel)){

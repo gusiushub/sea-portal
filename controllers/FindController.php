@@ -34,7 +34,6 @@ class FindController extends Controller
                 ->andWhere('plan = :plan',[':plan'=>'free'])
                 ->andWhere('category = :category',[':category'=>'shipboard supply'])
                 ->all();
-            //var_dump($freePlan);
             $businessPlan = Contracts::find()
                 ->where('search=:search',[':search'=> $_POST['FindModel']['search']])
                 ->andWhere('mechanism=:mechanism',[':mechanism'=>$_POST['FindModel']['equipment']])
@@ -366,8 +365,9 @@ class FindController extends Controller
 
     public function actionChartering()
     {
+        $model = new VesselSale();
         $place = Advertisement::find()->all();
-        return $this->render('chartering',['place'=>$place]);
+        return $this->render('chartering',['place'=>$place,'model'=>$model]);
     }
 
     public function actionAjaxCrew()

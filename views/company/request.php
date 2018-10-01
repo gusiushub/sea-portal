@@ -1,20 +1,18 @@
-<?php
-$this->title = 'About the company';
-?>
 <body>
-
 <header class="header">
     <div class="container">
         <div class="top-navbar top-navbar--no-buttons">
             <div class="row">
                 <div class="col-lg-12 vertical-center horizontal-between">
                     <div class="logotype-box">
-                        <a href="#"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
+                        <a href="/web/site"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
                     </div>
                     <div class="settings">
                         <div class="settings__item">
-                            <a href="/web/company/profile" class="settings__email">
-                                <?php echo Yii::$app->user->identity->email ?>
+                            <a href="/web/seller/profile" class="settings__email">
+                                <?php use app\models\User;
+
+                                echo Yii::$app->user->identity->email ?>
                             </a>
                         </div>
                         <div class="settings__item">
@@ -30,12 +28,12 @@ $this->title = 'About the company';
                             <div class="settings__hidden-menu">
                                 <ul class="settings__list">
                                     <li class="settings__list-item">
-                                        <a href="#" class="settings__link">
+                                        <a href="/web/seller/profile" class="settings__link">
                                             Profile
                                         </a>
                                     </li>
                                     <li class="settings__list-item">
-                                        <a href="/web/company/logout" class="settings__link">
+                                        <a href="/web/seller/logout" class="settings__link">
                                             Sign Out
                                         </a>
                                     </li>
@@ -49,56 +47,33 @@ $this->title = 'About the company';
                         </div>
                         <nav class="adaptive-menu__navigation">
                             <ul class="adaptive-menu__list">
-                                <?php if (!Yii::$app->user->isGuest){  ?>
-                                    <li class="adaptive-menu__item">
-                                        <a class="adaptive-menu__link" href="<?php if (Yii::$app->user->identity->user_status==1) {
-                                            echo '/web/site/profile';
-                                        }
-                                        if (Yii::$app->user->identity->user_status==2) {
-                                            echo '/web/company/profile';
-                                        }
-                                        if (Yii::$app->user->identity->user_status==3) {
-                                            echo '/web/seller/profile';
-                                        } ?>" class="authorization__link authorization__link--white">
-                                            Profile
-                                        </a>
-                                    </li>
-                                    <li class="adaptive-menu__item">
-                                        <a class="adaptive-menu__link" href="/web/user/logout" class="authorization__link authorization__link--white">
-                                            Logout
-                                        </a>
-                                    </li>
-                                <?php } else{ ?>
-
-                                    <li class="adaptive-menu__item">
-                                        <a href="/web/site/login" class="adaptive-menu__link">
-                                            Sign In
-                                        </a>
-                                    </li>
-                                    <li class="adaptive-menu__item">
-                                        <a href="/web/site/signup" class="adaptive-menu__link">
-                                            Sign Up
-                                        </a>
-                                    </li>
-                                <?php } ?>
-
                                 <li class="adaptive-menu__item">
-                                    <a href="/web/find/shipboard-supply" class="adaptive-menu__link">
+                                    <a href="/web/site/login" class="adaptive-menu__link">
+                                        Sign In
+                                    </a>
+                                </li>
+                                <li class="adaptive-menu__item">
+                                    <a href="/web/site/signup" class="adaptive-menu__link">
+                                        Sign Up
+                                    </a>
+                                </li>
+                                <li class="adaptive-menu__item">
+                                    <a href="#" class="adaptive-menu__link">
                                         Find a supplier
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="/web/site/become-supplier" class="adaptive-menu__link">
+                                    <a href="#" class="adaptive-menu__link">
                                         Become a supplier
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="/web/site/crew" class="adaptive-menu__link">
+                                    <a href="/web/find/crew" class="adaptive-menu__link">
                                         Crew
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="/web/find/vessels-sale" class="adaptive-menu__link">
+                                    <a href="#" class="adaptive-menu__link">
                                         Vessels sell/chartering
                                     </a>
                                 </li>
@@ -161,7 +136,7 @@ $this->title = 'About the company';
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="/web/site/faq" class="secondary-navigation__link">
+                                <a href="#" class="secondary-navigation__link">
                                     Faq
                                 </a>
                             </li>
@@ -178,7 +153,7 @@ $this->title = 'About the company';
                     <h1 class="main-headline__title">
                         Profile
                     </h1>
-                    <a href="/web/company/profile" class="settings__email settings__email--head">
+                    <a href="#" class="settings__email settings__email--head">
                         <?php echo Yii::$app->user->identity->email ?>
                     </a>
                 </div>
@@ -187,7 +162,7 @@ $this->title = 'About the company';
         <div class="row">
             <div class="col-lg-12">
                 <div class="primary-menu margin-bottom-medium">
-                    <a href='/web/company/profile' class="primary-menu__item primary-menu__item--active">
+                    <a href='/web/company/profile' class="primary-menu__item ">
                         <i class="icon-town primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             about the company
@@ -217,7 +192,7 @@ $this->title = 'About the company';
                             Place an adverticement
                         </h3>
                     </a>
-                    <a href='/web/company/request' class="primary-menu__item">
+                    <a href='/web/company/incoming-requests' class="primary-menu__item primary-menu__item--active">
                         <i class="icon-message primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             incoming requests
@@ -235,163 +210,158 @@ $this->title = 'About the company';
     </div>
 </header>
 <main>
-    <section class="profile1">
+    <section class="profile6">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="profile">
-                        <?php if (!empty(Yii::$app->user->identity->img)){ ?>
-                            <img src="../../web/public/uploads/<?php echo Yii::$app->user->identity->img ?>" alt="company-logo" class="profile__photo margin-bottom-light">
-                        <?php }else{  ?>
-                        <img src="../../web/public/img/company-logo-big.jpg" alt="company-logo" class="profile__photo margin-bottom-light">
-                        <?php } ?>
-                        <!--                        <button class="profile__upload-photo margin-bottom-medium">-->
-<!--                            select file-->
-<!--                        </button>-->
-                        <button class="profile__upload-photo margin-bottom-medium">
-                            <label class="submit" for="uploadbtn" >select file</label>
-                        </button>
-                        <input style="opacity: 0; " type="file" multiple="multiple" accept=".txt,image/*" name="upload" id="uploadbtn">
+            <div class="row margin-bottom-medium">
+                <div class="col-lg-4 vertical-center">
+                    <div class="sub-title">
+                        <h3 class="sub-title__title">
+                            view request by:
+                        </h3>
                     </div>
                 </div>
-                <div class="col-lg-9">
-                    <div class="row block-underline">
-                        <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" >
-                        <div class="col-lg-6">
-                            <div class="profile__setting">
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-4 vertical-center">
-                                                <span class="profile__details">
-                                                    Company:
-                                                </span>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8 col-8">
-                                        <div class="textinput-container">
-                                            <input type="text" class="textinput-container__input textinput-container__input--change field-to-change field-to-change--unactive" disabled="" placeholder="COMPANY" name="company" value="<?php echo Yii::$app->user->identity->username ?>">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="profile__setting">
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-4 vertical-center">
-                                                <span class="profile__details">
-                                                    Phone:
-                                                </span>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8 col-8">
-                                        <div class="textinput-container">
-                                            <input type="text" class="textinput-container__input textinput-container__input--change field-to-change field-to-change--unactive" disabled="" placeholder="PHONE" name="phone" value="<?php echo Yii::$app->user->identity->phone ?>">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="profile__setting">
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-4 vertical-center">
-                                                <span class="profile__details">
-                                                    Country:
-                                                </span>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8 col-8">
-                                        <div class="textinput-container">
-                                            <input type="text" class="textinput-container__input textinput-container__input--change field-to-change field-to-change--unactive" disabled="" placeholder="COUNTRY" name="country" value="<?php echo Yii::$app->user->identity->country ?>">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="profile__setting">
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-4 vertical-center">
-                                                <span class="profile__details">
-                                                    City:
-                                                </span>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8 col-8">
-                                        <div class="textinput-container">
-                                            <input type="text" class="textinput-container__input textinput-container__input--change field-to-change field-to-change--unactive" disabled="" placeholder="CITY" name="city" value="<?php echo Yii::$app->user->identity->city ?>">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="profile__setting">
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-4 vertical-center">
-                                                <span class="profile__details">
-                                                    Website:
-                                                </span>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8 col-8">
-                                        <div class="textinput-container">
-                                            <input type="text" class="textinput-container__input textinput-container__input--change field-to-change field-to-change--unactive" disabled="" placeholder="WEBSITE" name="website" value="<?php echo Yii::$app->user->identity->website ?>">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="profile__setting">
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-4 vertical-center">
-                                                <span class="profile__details">
-                                                    E-mail:
-                                                </span>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8 col-8">
-                                        <div class="textinput-container">
-                                            <input type="text" class="textinput-container__input textinput-container__input--change field-to-change field-to-change--unactive" disabled="" placeholder="E-MAIL" name="email" value="<?php echo Yii::$app->user->identity->email ?>">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="profile__setting">
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-4 vertical-center">
-                                                <span class="profile__details">
-                                                    Contacts:
-                                                </span>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-8 col-8">
-                                        <div class="textinput-container">
-                                            <input type="text" class="textinput-container__input textinput-container__input--change field-to-change field-to-change--unactive" disabled="" placeholder="CONTACTS" name="contacts" value="<?php echo Yii::$app->user->identity->contacts ; ?>">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="row">
-                                <div class="col-lg-5 offset-lg-6">
-                                    <button id="profile-change" class="button button--profile button--fields-change">
-                                        Edit
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-6 vertical-center">
-                            <div class="profile__setting profile__setting--no-margin">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 vertical-center">
-                                                <span class="profile__details">
-                                                    Password:
-                                                </span>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-6">
-                                        <div class="textinput-container">
-                                            <input  type="password" class="textinput-container__input textinput-container__input--change-pass  textinput-container__input--change-unactive" disabled="" value="7ngdc5cn" disabled="" placeholder="PASSWORD" name="password">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 offset-lg-3 col-md-3 col-sm-3 col-3">
-                            <button id="profile1_change" class="button button--profile button--profile--change-pass">
-                                change
-                            </button>
-                        </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-5 col-6 vertical-center">
+                    <div class="select-style">
+                        <form  action="/web/seller/request" method="post">
+                            <input id="token" type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
+                            <select onchange="if (this.selectedIndex) this.form.submit ()" name="date" id="date" class="select-style__select">
+                                <option class="select-style__placeholder">date</option>
+                                <?php foreach ($date as $day){ ?>
+                                    <?php if(!empty($day['date'])){ ?>
+                                        <option value="<?php echo $day['date'] ?>"><?php echo $day['date'] ?></option>
+                                    <?php } ?>
+                                <?php } ?>
+                            </select>
+                        </form>
+                        <div class="select-style__arrow">&nbsp;</div>
                     </div>
                 </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-5 col-6 vertical-center">
+                    <div class="select-style">
+                        <form  action="/web/seller/request" method="post">
+                            <input id="token" type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
+                            <select onchange="if (this.selectedIndex) this.form.submit ()" name="category" id="category" class="select-style__select">
+                                <option class="select-style__placeholder">category</option>
+                                <?php foreach ($category as $cat){ ?>
+                                    <?php if(!empty($cat['category'])){ ?>
+                                        <option value="<?php echo $cat['category'] ?>"><?php echo $cat['category'] ?></option>
+                                    <?php } ?>
+                                <?php } ?>
+                            </select>
+                        </form>
+                        <div class="select-style__arrow">&nbsp;</div>
+                    </div>
+                </div>
+                <input id="token" type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
             </div>
+            <?php
+            foreach ($requests as $request){
+                $user = User::findOne($request['user_from']);
+                ?>
+
+                <div class="request">
+                    <form action="/web/seller/request" method="post">
+                        <input name="id" type="text" style="display: none" value="<?php echo $user['id'] ?>">
+                        <input name="username" type="text" style="display: none" value="<?php echo $user['username'] ?>">
+                        <input name="company" type="text" style="display: none" value="<?php echo $request['company'] ?>">
+                        <input name="category" type="text" style="display: none" value="<?php echo $request['category'] ?>">
+                        <input name="email" type="text" style="display: none" value="<?php echo $user['email'] ?>">
+                        <input name="phone" type="text" style="display: none" value="<?php echo $user['phone'] ?>">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <h4 class="request__headline">
+                                    <?php echo $request['date'] ?>
+                                </h4>
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                        <h4 class="request__position">
+                                            Name
+                                        </h4>
+                                    </div>
+                                    <input name="user_id" type="text" style="display: none" value="<?php echo $request['user_id'] ?>">
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-8">
+                                        <div class="request__detail">
+                                            <?php echo $request['name'] ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                        <h4 class="request__position">
+                                            E-mail
+                                        </h4>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-8">
+                                        <div class="request__detail">
+                                            <?php echo $request['email'] ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                        <h4 class="request__position">
+                                            Phone
+                                        </h4>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-8">
+                                        <div class="request__detail">
+                                            <?php echo $request['phone'] ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                        <h4 class="request__position">
+                                            Company
+                                        </h4>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-8">
+                                        <div class="request__detail">
+                                            <?php echo $request['company'] ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                        <h4 class="request__position">
+                                            category
+                                        </h4>
+                                    </div>
+                                    <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" >
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-8">
+                                        <div class="request__detail request__detail--last">
+                                            <?php echo $request['category'] ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <h4 class="request__headline">
+                                    Incoming message
+                                </h4>
+                                <div class="textinput-container margin-bottom-light">
+                                    <textarea name="message" class="textinput-container__textarea"><?php echo $request['message'] ?></textarea>
+                                </div>
+                                <div class="row horizontal-between">
+                                    <div class="col-lg-4 col-md-6 col-sm-6 col-6">
+                                        <button class="button button--profile">
+                                            attached files
+                                        </button>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6 col-sm-6 col-6">
+                                        <input type="submit" name="ans" class="button button--profile" value="answer">
+                                        <!--                                <button class="button button--profile">-->
+                                        <!--                                    class="button button--profile"-->
+                                        <!--                                </button>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            <?php } ?>
         </div>
     </section>
 </main>
@@ -508,49 +478,24 @@ $this->title = 'About the company';
 </footer>
 </body>
 <script src="../../web/public/js/common.js"></script>
-<script src="../../web/public/js/info-change.js"></script>
-<script src="../../web/public/js/ajax-forms.js"></script>
+
 <script>
-    var _csrf = $('input[name="_csrf"]').val();
-
-    var files;
-    $('input[type=file]').change(function(){
-        files = this.files;
-        event.stopPropagation(); // Остановка происходящего
-        event.preventDefault();  // Полная остановка происходящего
-        var data = new FormData();
-        $.each( files, function( key, value ){
-            data.append( key, value );
-        });
-        $.ajax({
-            url: '/web/ajax.php?avatar',
-            type: 'POST',
-            data: data,
-            cache: false,
-            dataType: 'json',
-            processData: false, // Не обрабатываем файлы (Don't process the files)
-            contentType: false, // Так jQuery скажет серверу что это строковой запрос
-            success: function( respond, textStatus, jqXHR ){
-                // Если все ОК
-                if( typeof respond.error === 'undefined' ){
-                    // Файлы успешно загружены, делаем что нибудь здесь
-
-                    // выведем пути к загруженным файлам в блок '.ajax-respond'
-
-                    var files_path = respond.files;
-
-                    var html = '';
-                    // $.each( files_path, function( key, val ){ html += val +'<br>'; } );
-                    // $('.ajax-respond').html( html );
-                }
-                else{
-                    console.log('ОШИБКИ ОТВЕТА сервера: ' + respond.error );
-                }
-            },
-            error: function( jqXHR, textStatus, errorThrown ){
-                // alert(respond);
-                console.log('ОШИБКИ AJAX запроса: ' + textStatus );
-            }
+    $( "#category" ).change(function() {
+        //var category = $("#category option:selected").text();
+        $.post("request", {    // Указываем php файл
+            category: $('#category').val(),        // Передаем идентивикатор элемента
+            _csrf: $('#token').val()
+        }, function (category) {
+            alert($('#category').html(category))   // Получаем данные после обработки
         });
     });
+    $( "#date" ).change(function() {
+        $.post("request", {    // Указываем php файл
+            date: $('#date').val(),         // Передаем идентивикатор элемента
+            _csrf: $('#token').val()
+        }, function (date) {
+            $(this).html(date)   // Получаем данные после обработки
+        });
+    });
+
 </script>

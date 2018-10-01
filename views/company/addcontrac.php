@@ -181,37 +181,37 @@
                             about the company
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/company/pricing' class="primary-menu__item">
                         <i class="icon-list7 primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             pricing
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/company/statistics' class="primary-menu__item">
                         <i class="icon-charting primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             statistics
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item primary-menu__item--active">
+                    <a href='/web/company/pricing' class="primary-menu__item primary-menu__item--active">
                         <i class="icon-list6 primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             contracts
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/company/advertisement' class="primary-menu__item">
                         <i class="icon-window primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             Place an adverticement
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/company/request' class="primary-menu__item">
                         <i class="icon-message primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             incoming requests
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/company/terms' class="primary-menu__item">
                         <i class="icon-list3 primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             terms and conditions

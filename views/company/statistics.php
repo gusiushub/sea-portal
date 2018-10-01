@@ -207,13 +207,13 @@
                                     contracts
                                 </h3>
                             </a>
-                            <a href='#' class="primary-menu__item">
+                            <a href='/web/company/advertisement' class="primary-menu__item">
                                 <i class="icon-window primary-menu__icon"></i>
                                 <h3 class="primary-menu__title">
                                     Place an adverticement
                                 </h3>
                             </a>
-                            <a href='#' class="primary-menu__item">
+                            <a href='/web/company/request' class="primary-menu__item">
                                 <i class="icon-message primary-menu__icon"></i>
                                 <h3 class="primary-menu__title">
                                     incoming requests
@@ -407,10 +407,53 @@
                     </div>
                 </div>
             </div>
+            <?php
+            $k=1;
+            $ost = count($statistics);
+
+            foreach($statistics as $value){
+                if (!empty($value['request'])) {
+                    ?>
+                    <input type="hidden" class="hidden" value="<?php echo $value['request'] ?>" id="val<?php echo $k ?>">
+                    <?php
+                }else{
+                    ?>
+                    <input type="hidden" value="<?php echo 0 ?>" id="val<?php echo $k ?>">
+                    <?php
+                }
+                $k++;
+            } ?>
         </footer>
+        <?php
+        $k = 1;
+        foreach($statistics as $value){
+            if (!empty($value['request'])) {
+                ?>
+                <input type="hidden" value="<?php echo $value['request'] ?>" id="val<?php echo $k ?>">
+                <?php
+            }else{
+                ?>
+                <input type="hidden" value="<?php echo 0 ?>" id="val<?php echo $k ?>">
+                <?php
+            }
+            $k++;
+        } ?>
     </body>
     <script src="../../web/public/libs/Chart.min.js"></script>
     <script>
+
+        var count = $('.hidden').length;
+        count = count+1;
+        var input = [];
+        for (var i=1;i<count;i++){
+            input[i] = document.getElementById('val'+i).value;
+        }
+        var ost = 7-count;
+        if (ost!=0){
+            for (var i=count;i<8;i++){
+                input[i] = 0;
+            }
+        }
         var ctx = document.getElementById("chart-statistics").getContext('2d');
         var myBarChart = new Chart(ctx, {
             options: {
@@ -458,9 +501,9 @@
               datasets: [{
                 backgroundColor: "rgb(206, 225, 240)",
                 borderColor: "rgb(72, 137, 191)",
-                data: [0, 25, 50, 150, 70, 250, 230, 400]
+                data: [input[1],input[2], input[3], input[4],input[5], input[6], input[7], 20]
               }]
             }
         });
     </script>
-    <script src="../web/public/js/common.js"></script>
+    <script src="../../web/public/js/common.js"></script>

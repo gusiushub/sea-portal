@@ -184,13 +184,13 @@
                                     contracts
                                 </h3>
                             </a>
-                            <a href='#' class="primary-menu__item">
+                            <a href='/web/company/advertisement' class="primary-menu__item">
                                 <i class="icon-window primary-menu__icon"></i>
                                 <h3 class="primary-menu__title">
                                     Place an adverticement
                                 </h3>
                             </a>
-                            <a href='#' class="primary-menu__item">
+                            <a href='/web/company/request' class="primary-menu__item">
                                 <i class="icon-message primary-menu__icon"></i>
                                 <h3 class="primary-menu__title">
                                     incoming requests
