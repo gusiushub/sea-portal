@@ -230,7 +230,9 @@ use yii\bootstrap\Html;
             </div>
             <div class="col-lg-4 vertical-bottom ">
                 <a href='#' class="advertising advertising--oneitem">
-                    <p class="advertising__content">advertising</p>
+                    <p class="advertising__content">
+                        <img width="398px" height="195px"  src="../../web/public/uploads/<?php echo $place[12]['img']?>" >
+                    </p>
                 </a>
             </div>
         </div>
@@ -370,30 +372,42 @@ use yii\bootstrap\Html;
                 </div>
                 <div class="col-lg-4">
                     <a href='#' class="advertising advertising--find-student">
-                        <p class="advertising__content">advertising</p>
+                        <p class="advertising__content">
+                            <img width="398px" height="195px"  src="../../web/public/uploads/<?php echo $place[13]['img']?>" >
+                        </p>
                     </a>
                     <a href='#' class="advertising advertising--find-student">
-                        <p class="advertising__content">advertising</p>
+                        <p class="advertising__content">
+                            <img width="398px" height="195px"  src="../../web/public/uploads/<?php echo $place[14]['img']?>" >
+                        </p>
                     </a>
                     <a href='#' class="advertising advertising--find-student">
-                        <p class="advertising__content">advertising</p>
+                        <p class="advertising__content">
+                            <img width="398px" height="195px"  src="../../web/public/uploads/<?php echo $place[15]['img']?>" >
+                        </p>
                     </a>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-4">
                     <a href='#' class="advertising advertising--find-student">
-                        <p class="advertising__content">advertising</p>
+                        <p class="advertising__content">
+                            <img width="398px" height="195px"  src="../../web/public/uploads/<?php echo $place[16]['img']?>" >
+                        </p>
                     </a>
                 </div>
                 <div class="col-lg-4">
                     <a href='#' class="advertising advertising--find-student">
-                        <p class="advertising__content">advertising</p>
+                        <p class="advertising__content">
+                            <img width="398px" height="195px"  src="../../web/public/uploads/<?php echo $place[17]['img']?>" >
+                        </p>
                     </a>
                 </div>
                 <div class="col-lg-4">
                     <a href='#' class="advertising advertising--find-student">
-                        <p class="advertising__content">advertising</p>
+                        <p class="advertising__content">
+                            <img width="398px" height="195px"  src="../../web/public/uploads/<?php echo $place[18]['img']?>" >
+                        </p>
                     </a>
                 </div>
             </div>

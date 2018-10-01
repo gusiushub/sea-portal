@@ -221,7 +221,9 @@
             </div>
             <div class="col-lg-4 vertical-bottom ">
                 <a href='#' class="advertising advertising--oneitem">
-                    <p class="advertising__content">advertising</p>
+                    <p class="advertising__content">
+                        <img width="398px" height="195px"  src="../../web/public/uploads/<?php echo $place[19]['img']?>" >
+                    </p>
                 </a>
             </div>
         </div>
@@ -245,6 +247,11 @@
                                 vessel type
                             </h4>
                             <div class="select-style">
+<!--                                <select name="vessel-type" id="" class="select-style__select">-->
+<!--                                    <option class="select-style__placeholder">Dry-cargo ship</option>-->
+<!--                                    <option value="">text</option>-->
+<!--                                    <option value="">text</option>-->
+<!--                                </select>-->
                                 <?php
                                 $offers = \app\models\Vessel::find()->all();
                                 ?>
@@ -262,7 +269,12 @@
                             <h4 class="filter__title">
                                 option for vessel type
                             </h4>
-                            <div class="select-style"
+                            <div class="select-style">
+<!--                                <select name="option" id="" class="select-style__select">-->
+<!--                                    <option class="select-style__placeholder">bulk carriers</option>-->
+<!--                                    <option value="">text</option>-->
+<!--                                    <option value="">text</option>-->
+<!--                                </select>-->
 
                                 <?= $form->field($model, 'vesOption')->dropDownList(array_diff(\yii\helpers\ArrayHelper::map($offers,'vessel_option','vessel_option'),array('')),[
                                     'prompt'=>'bulk carriers',
@@ -330,6 +342,16 @@
                                         Price
                                     </h4>
                                     <div class="filter__input-double-wrapper">
+<!--                                        --><?//= $form->field($model, 'priceFrom')->textInput([
+//                                            //'prompt'=>'Salary',
+//                                            'class' => 'filter__input--double filter__input',
+//                                            'placeholder'=>'FROM',
+//                                        ]) ?>
+<!--                                        --><?//= $form->field($model, 'priceTo')->textInput([
+//                                            //'prompt'=>'Salary',
+//                                            'class' => 'filter__input--double filter__input',
+//                                            'placeholder'=>'TO',
+//                                        ]) ?>
                                         <input type="text" name="priceFrom" placeholder="FROM" class="filter__input--double filter__input">
                                         <input type="text" name="priceTo" placeholder="TO" class="filter__input--double filter__input">
                                     </div>
@@ -358,33 +380,47 @@
                 </div>
                 <div class="col-lg-4">
                     <a href='#' class="advertising advertising--find-vessel">
-                        <p class="advertising__content">advertising</p>
+                        <p class="advertising__content">
+                            <img width="398px" height="195px"  src="../../web/public/uploads/<?php echo $place[20]['img']?>" >
+                        </p>
                     </a>
                     <a href='#' class="advertising advertising--find-vessel">
-                        <p class="advertising__content">advertising</p>
+                        <p class="advertising__content">
+                            <img width="398px" height="195px"  src="../../web/public/uploads/<?php echo $place[21]['img']?>" >
+                        </p>
                     </a>
                     <a href='#' class="advertising advertising--find-vessel">
-                        <p class="advertising__content">advertising</p>
+                        <p class="advertising__content">
+                            <img width="398px" height="195px"  src="../../web/public/uploads/<?php echo $place[22]['img']?>" >
+                        </p>
                     </a>
                     <a href='#' class="advertising advertising--find-vessel">
-                        <p class="advertising__content">advertising</p>
+                        <p class="advertising__content">
+                            <img width="398px" height="195px"  src="../../web/public/uploads/<?php echo $place[23]['img']?>" >
+                        </p>
                     </a>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-4">
                     <a href='#' class="advertising advertising--find-vessel">
-                        <p class="advertising__content">advertising</p>
+                        <p class="advertising__content">
+                            <img width="398px" height="195px"  src="../../web/public/uploads/<?php echo $place[24]['img']?>" >
+                        </p>
                     </a>
                 </div>
                 <div class="col-lg-4">
                     <a href='#' class="advertising advertising--find-vessel">
-                        <p class="advertising__content">advertising</p>
+                        <p class="advertising__content">
+                            <img width="398px" height="195px"  src="../../web/public/uploads/<?php echo $place[25]['img']?>" >
+                        </p>
                     </a>
                 </div>
                 <div class="col-lg-4">
                     <a href='#' class="advertising">
-                        <p class="advertising__content">advertising</p>
+                        <p class="advertising__content">
+                            <img width="398px" height="195px"  src="../../web/public/uploads/<?php echo $place[26]['img']?>" >
+                        </p>
                     </a>
                 </div>
             </div>
