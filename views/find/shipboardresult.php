@@ -310,7 +310,7 @@ $this->title = 'Shipboard supply';
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div id="business" class="row">
                             <?php
                             foreach($business as $user){  //var_dump($e['user_id']);
                             $prof = User::findOne($user['user_id']);
@@ -329,7 +329,7 @@ $this->title = 'Shipboard supply';
                                         </a>
                                         <input id="<?php echo $prof['id'] ?>" name="username" class="inputid"  type="hidden" value="<?php echo $prof['id'] ?>">
                                     </div>
-                                    <div class="add-plus add-plus--company-box recommend">
+                                    <div data-user="<?php echo $prof['id'] ?>" class="add-plus add-plus--company-box recommend">
                                         <p class="add-plus__symbol">
                                             +
                                         </p>
@@ -428,6 +428,7 @@ $this->title = 'Shipboard supply';
                         <div class="textinput-container">
                             <input type="text" class="textinput-container__input" placeholder="PHONE" name="phone">
                         </div>
+                        <input id="inputt" value="" type="hidden">
                         <div class="textinput-container">
                             <input type="text" class="textinput-container__input" placeholder="COMPANY" name="company">
                         </div>
@@ -571,19 +572,32 @@ $this->title = 'Shipboard supply';
         </div>
     </div>
 </footer>
+
 </body>
 <script src="../../web/public/js/common.js"></script>
 <script>
-    $('.recommend').click(function () {
-        function makeCounter() {
-            var currentCount = 1;
-            return function() {
-                return currentCount++;
-            };
-        }
-        var counter = makeCounter();
-
-       var id = $('#id').val();
-       console.log(id);
+    // $('.recommend').click(function () {
+    //     function makeCounter() {
+    //         var currentCount = 1;
+    //         return function() {
+    //             return currentCount++;
+    //         };
+    //     }
+    //     var counter = makeCounter();
+    //
+    //    var id = $('#id').val();
+    //    console.log(id);
+    // });
+</script>
+<script>
+    $('.recommend').click (function() {
+        var val = $('#inputt').val();
+        var num = $(this).data('user');
+        $('#inputt').val(val+';'+num);
+        console.log(val);
+        console.log(num);
+        //console.log($('#inputt').val(val + num));
     });
+
+
 </script>

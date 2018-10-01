@@ -717,36 +717,36 @@ use yii\bootstrap\ActiveForm;
                                             <img src="../../web/public/img/modal/modal_find_a_student_500x435.jpg" alt="screen-page" class="slider-advertising__page-screen" >
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                            <div data-num="6" onclick="select14()" class="slider-advertising__available">
+                                            <div data-num="6"  class="slider-advertising__available">
                                                 select
                                             </div>
-                                            <div data-num="6" onclick="select15()" class="slider-advertising__available">
+                                            <div data-num="6"  class="slider-advertising__available">
                                                 available
                                             </div>
-                                            <div data-num="6" onclick="select16()" class="slider-advertising__available">
+                                            <div data-num="6"  class="slider-advertising__available">
                                                 available
                                             </div>
-                                            <div data-num="6" onclick="select17()" class="slider-advertising__available">
+                                            <div data-num="6"  class="slider-advertising__available">
                                                 available
                                             </div>
-                                            <div data-num="6" onclick="select20()" class="slider-advertising__available">
+                                            <div data-num="6"  class="slider-advertising__available">
                                                 available
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                            <div data-num="6" onclick="select21()" class="slider-advertising__available slider-advertising__available--no-margin">
+                                            <div data-num="6"  class="slider-advertising__available slider-advertising__available--no-margin">
                                                 available
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                            <div data-num="6" onclick="select22()" class="slider-advertising__available slider-advertising__available--no-margin">
+                                            <div data-num="6"  class="slider-advertising__available slider-advertising__available--no-margin">
                                                 available
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                            <div data-num="6" onclick="select23()" class="slider-advertising__available slider-advertising__available--no-margin">
+                                            <div data-num="6"  class="slider-advertising__available slider-advertising__available--no-margin">
                                                 available
                                             </div>
                                         </div>
@@ -801,19 +801,19 @@ use yii\bootstrap\ActiveForm;
                                             <img src="../../web/public/img/modal/modal_find_vessels_500x480.jpg" alt="screen-page" class="slider-advertising__page-screen" >
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                            <div data-num="6" onclick="select24()" class="slider-advertising__available">
+                                            <div data-num="6"  class="slider-advertising__available">
                                                 available
                                             </div>
-                                            <div data-num="6" onclick="select25()" class="slider-advertising__available">
+                                            <div data-num="6"  class="slider-advertising__available">
                                                 available
                                             </div>
-                                            <div data-num="6" onclick="select26()" class="slider-advertising__available">
+                                            <div data-num="6"  class="slider-advertising__available">
                                                 available
                                             </div>
-                                            <div data-num="6" onclick="select27()" class="slider-advertising__available">
+                                            <div data-num="6"  class="slider-advertising__available">
                                                 available
                                             </div>
-                                            <div data-num="6" onclick="select28()" class="slider-advertising__available">
+                                            <div data-num="6"  class="slider-advertising__available">
                                                 available
                                             </div>
                                         </div>
@@ -1210,348 +1210,348 @@ use yii\bootstrap\ActiveForm;
         //     console.log("error");
         // });
 
-    function select2(i=1)
-    {
-        $.post('/web/site/ajax-adv', { field1: 1, field2 : 2,_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select3()
-    {
-        $.post('/web/site/ajax-adv', { field1: "1", field2 : "3",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select4()
-    {
-        $.post('/web/site/ajax-adv', { field1: "1", field2 : "4",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select5()
-    {
-        $.post('/web/site/ajax-adv', { field1: "1", field2 : "5",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select6()
-    {
-        $.post('/web/site/ajax-adv', { field1: "1", field2 : "6",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select7()
-    {
-        $.post('/web/site/ajax-adv', { field1: "2", field2 : "1",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select8()
-    {
-        $.post('/web/site/ajax-adv', { field1: "2", field2 : "2",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select9()
-    {
-        $.post('/web/site/ajax-adv', { field1: "2", field2 : "3",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select10()
-    {
-        $.post('/web/site/ajax-adv', { field1: "2", field2 : "4",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select11()
-    {
-        $.post('/web/site/ajax-adv', { field1: "2", field2 : "5",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select12()
-    {
-        $.post('/web/site/ajax-adv', { field1: "2", field2 : "6",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select13()
-    {
-        $.post('/web/site/ajax-adv', { field1: "2", field2 : "7",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select14()
-    {
-        $.post('/web/site/ajax-adv', { field1: "3", field2 : "1",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select15()
-    {
-        $.post('/web/site/ajax-adv', { field1: "3", field2 : "2",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select16()
-    {
-        $.post('/web/site/ajax-adv', { field1: "3", field2 : "3",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select17()
-    {
-        $.post('/web/site/ajax-adv', { field1: "3", field2 : "4",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select18()
-    {
-        $.post('/web/site/ajax-adv', { field1: "3", field2 : "5",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select19()
-    {
-        $.post('/web/site/ajax-adv', { field1: "3", field2 : "6",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select20()
-    {
-        $.post('/web/site/ajax-adv', { field1: "3", field2 : "7",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select21()
-    {
-        $.post('/web/site/ajax-adv', { field1: "3", field2 : "8",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select22()
-    {
-        $.post('/web/site/ajax-adv', { field1: "4", field2 : "1",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select23()
-    {
-        $.post('/web/site/ajax-adv', { field1: "4", field2 : "2",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select24()
-    {
-        $.post('/web/site/ajax-adv', { field1: "4", field2 : "3",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select25()
-    {
-        $.post('/web/site/ajax-adv', { field1: "4", field2 : "4",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select26()
-    {
-        $.post('/web/site/ajax-adv', { field1: "4", field2 : "5",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select27()
-    {
-        $.post('/web/site/ajax-adv', { field1: "4", field2 : "6",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select28()
-    {
-        $.post('/web/site/ajax-adv', { field1: "4", field2 : "7",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select29()
-    {
-        $.post('/web/site/ajax-adv', { field1: "4", field2 : "8",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select30()
-    {
-        $.post('/web/site/ajax-adv', { field1: "5", field2 : "1",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select31()
-    {
-        $.post('/web/site/ajax-adv', { field1: "5", field2 : "2",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select32()
-    {
-        $.post('/web/site/ajax-adv', { field1: "5", field2 : "3",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select33()
-    {
-        $.post('/web/site/ajax-adv', { field1: "5", field2 : "4",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select34()
-    {
-        $.post('/web/site/ajax-adv', { field1: "5", field2 : "5",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select35()
-    {
-        $.post('/web/site/ajax-adv', { field1: "5", field2 : "6",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select36()
-    {
-        $.post('/web/site/ajax-adv', { field1: "5", field2 : "7",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select37()
-    {
-        $.post('/web/site/ajax-adv', { field1: "5", field2 : "8",_csrf:_csrf},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            alert('adasdasd');
-        });
-    }
-    function select38()
-    {
-        $.post('/web/site/ajax-adv', { field1: "hello", field2 : "hello2"},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
-    function select39()
-    {
-        $.post('/web/site/ajax-adv', { field1: "hello", field2 : "hello2"},
-            function(returnedData){
-                console.log(returnedData);
-            }).fail(function(){
-            console.log("error");
-        });
-    }
+    // function select2(i=1)
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: 1, field2 : 2,_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select3()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "1", field2 : "3",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select4()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "1", field2 : "4",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select5()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "1", field2 : "5",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select6()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "1", field2 : "6",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select7()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "2", field2 : "1",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select8()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "2", field2 : "2",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select9()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "2", field2 : "3",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select10()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "2", field2 : "4",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select11()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "2", field2 : "5",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select12()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "2", field2 : "6",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select13()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "2", field2 : "7",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select14()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "3", field2 : "1",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select15()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "3", field2 : "2",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select16()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "3", field2 : "3",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select17()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "3", field2 : "4",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select18()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "3", field2 : "5",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select19()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "3", field2 : "6",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select20()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "3", field2 : "7",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select21()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "3", field2 : "8",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select22()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "4", field2 : "1",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select23()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "4", field2 : "2",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select24()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "4", field2 : "3",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select25()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "4", field2 : "4",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select26()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "4", field2 : "5",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select27()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "4", field2 : "6",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select28()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "4", field2 : "7",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select29()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "4", field2 : "8",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select30()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "5", field2 : "1",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select31()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "5", field2 : "2",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select32()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "5", field2 : "3",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select33()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "5", field2 : "4",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select34()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "5", field2 : "5",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select35()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "5", field2 : "6",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select36()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "5", field2 : "7",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select37()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "5", field2 : "8",_csrf:_csrf},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         alert('adasdasd');
+    //     });
+    // }
+    // function select38()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "hello", field2 : "hello2"},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
+    // function select39()
+    // {
+    //     $.post('/web/site/ajax-adv', { field1: "hello", field2 : "hello2"},
+    //         function(returnedData){
+    //             console.log(returnedData);
+    //         }).fail(function(){
+    //         console.log("error");
+    //     });
+    // }
 
 
     // Вешаем функцию ан событие click и отправляем AJAX запрос с данными файлов

@@ -46,7 +46,7 @@ $this->title = 'Crew';
                                 <div class="settings__hidden-menu">
                                     <ul class="settings__list">
                                         <li class="settings__list-item">
-                                            <a href="#" class="settings__link">
+                                            <a href="/web/user" class="settings__link">
                                                 Profile
                                             </a>
                                         </li>
@@ -482,7 +482,7 @@ $this->title = 'Crew';
     </div>
 </footer>
 </body>
-<!--<script src="../../web/public/js/common.js"></script>-->
+<script src="../../web/public/js/common.js"></script>
 <script>
 
     $(function(){

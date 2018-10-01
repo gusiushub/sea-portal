@@ -18,9 +18,9 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?= Html::csrfMetaTags() ?>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<!--    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>-->
     <link rel="shortcut icon" type="image/png" href="../../web/public/img/favicon.png">
-    <?php if ($_SERVER['REQUEST_URI']=='/web/seller/advertisement' or $_SERVER['REQUEST_URI']=='/web/seller/advertisement/' ){ ?>
+    <?php if ($_SERVER['REQUEST_URI']=='/web/seller/advertisement/' or $_SERVER['REQUEST_URI']=='/web/seller/advertisement' or $_SERVER['REQUEST_URI']=='/web/company/advertisement' or $_SERVER['REQUEST_URI']=='/web/company/advertisement/' ){ ?>
     <link rel="stylesheet" type="text/css" href="../../web/public/libs/slick/slick.css">
     <link rel="stylesheet" type="text/css" href="../../web/public/libs/slick/slick-theme.css">
     <?php } ?>

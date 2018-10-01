@@ -29,7 +29,6 @@ class SellerController extends Controller
             $status = Yii::$app->user->identity->user_status;
             if ( $status == 3) {
                 if(Yii::$app->request->isPost){
-                    //var_dump('asdasd');exit;
                     $file = UploadedFile::getInstance($upload, 'image');
                     if ($upload->uploadFile($file, Yii::$app->user->identity->img) ){
 
@@ -141,12 +140,10 @@ class SellerController extends Controller
                 }
 
                 if (isset($_POST['date'])) {
-                    //var_dump('sdsdfsd');exit;
                     $requests = Request::find()
                         ->where('date = :date', [':date' => $_POST['date']])
                         ->andWhere('user_id = :user_id', [':user_id' => Yii::$app->user->id])
                         ->all();
-                    //var_dump($requests);
                     return $this->render('request', ['requests' => $requests, 'date' => $select_date, 'category' => $select_category]);
                 }
                 if (isset($_POST['category'])) {
