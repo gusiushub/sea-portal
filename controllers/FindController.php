@@ -87,7 +87,7 @@ class FindController extends Controller
 
             return $this->render('portservices',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
         }
-        return $this->render('portservices',['model'=>$model]);
+        return $this->render('portservices',['place'=>$place,'model'=>$model]);
     }
 
     public function actionInspectionEquipment()
@@ -120,7 +120,7 @@ class FindController extends Controller
 
             return $this->render('inspection',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
         }
-        return $this->render('inspection',['model'=>$model]);
+        return $this->render('inspection',['place'=>$place,'model'=>$model]);
     }
 
     public function actionCourses()
@@ -153,7 +153,7 @@ class FindController extends Controller
 
             return $this->render('courses',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
         }
-        return $this->render('courses',['model'=>$model]);
+        return $this->render('courses',['place'=>$place,'model'=>$model]);
     }
 
     public function actionLegalServices()
@@ -186,7 +186,7 @@ class FindController extends Controller
 
             return $this->render('legal',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
         }
-        return $this->render('legal',['model'=>$model]);
+        return $this->render('legal',['place'=>$place,'model'=>$model]);
     }
 
     public function actionFisherySector()
@@ -219,7 +219,7 @@ class FindController extends Controller
 
             return $this->render('fishery',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
         }
-        return $this->render('fishery',['model'=>$model]);
+        return $this->render('fishery',['place'=>$place,'model'=>$model]);
     }
 
     public function actionRepairs()
@@ -252,7 +252,7 @@ class FindController extends Controller
 
             return $this->render('repairs',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
         }
-        return $this->render('repairs',['model'=>$model]);
+        return $this->render('repairs',['place'=>$place,'model'=>$model]);
     }
 
 

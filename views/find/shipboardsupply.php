@@ -78,7 +78,7 @@ $this->title = 'Find a supplier';
                                             </a>
                                         </li>
                                         <li class="settings__list-item">
-                                            <a href="/web/company/logout" class="settings__link">
+                                            <a href="/web/user/logout" class="settings__link">
                                                 Sign Out
                                             </a>
                                         </li>
@@ -383,7 +383,7 @@ $this->title = 'Find a supplier';
                 <div class="col-lg-4">
                     <div class="advertising-wrapper">
                         <a href='#' class="advertising">
-                            <p class="advertising__content"><img width="395px" height="195px"  src="../../web/public/uploads/<?php echo $place[0]['img']?>" ></p>
+                            <p class="advertising__content"><img width="395px" height="195px"  src="../../web/public/uploads/<?php echo $place[1]['img']?>" ></p>
                         </a>
                         <a href='#' class="advertising">
                             <p class="advertising__content"><img width="395px" height="195px"  src="../../web/public/uploads/<?php echo $place[1]['img']?>" ></p>
