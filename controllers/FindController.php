@@ -366,7 +366,8 @@ class FindController extends Controller
 
     public function actionChartering()
     {
-        return $this->render('chartering');
+        $place = Advertisement::find()->all();
+        return $this->render('chartering',['place'=>$place]);
     }
 
     public function actionAjaxCrew()
@@ -483,6 +484,7 @@ class FindController extends Controller
 
     public function actionStudent()
     {
+        $place = Advertisement::find()->all();
         $model = new FindStudent();
         if (isset($_GET['agree'])){
             if ($_GET['agree']=='yes'){
@@ -526,11 +528,11 @@ class FindController extends Controller
             }
         }
         if ($model->load(Yii::$app->request->post())){
-                return $this->render('studentresult', ['model'=>$model]);
+                return $this->render('studentresult', ['place'=>$place,'model'=>$model]);
 
         }
 
-        return $this->render('student',['model'=>$model]);
+        return $this->render('student',['place'=>$place,'model'=>$model]);
     }
 
 }
