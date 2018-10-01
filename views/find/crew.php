@@ -228,7 +228,9 @@ $this->title = 'Crew';
             </div>
             <div class="col-lg-4 vertical-bottom ">
                 <a href='#' class="advertising advertising--oneitem">
-                    <p class="advertising__content">advertising</p>
+                    <p class="advertising__content">
+                        <img width="398px" height="190px"  src="../../web/public/uploads/<?php echo $place[6]['img']?>" >
+                    </p>
                 </a>
             </div>
         </div>
@@ -325,13 +327,19 @@ $this->title = 'Crew';
                 <div class="col-lg-4">
                     <div class="advertising-wrapper">
                         <a href='#' class="advertising">
-                            <p class="advertising__content">advertising</p>
+                            <p class="advertising__content">
+                                <img width="398px" height="195px"  src="../../web/public/uploads/<?php echo $place[7]['img']?>" >
+                            </p>
                         </a>
                         <a href='#' class="advertising">
-                            <p class="advertising__content">advertising</p>
+                            <p class="advertising__content">
+                                <img width="398px" height="195px"  src="../../web/public/uploads/<?php echo $place[8]['img']?>" >
+                            </p>
                         </a>
                         <a href='#' class="advertising">
-                            <p class="advertising__content">advertising</p>
+                            <p class="advertising__content">
+                                <img width="398px" height="190px"  src="../../web/public/uploads/<?php echo $place[9]['img']?>" >
+                            </p>
                         </a>
                     </div>
                 </div>
@@ -339,17 +347,23 @@ $this->title = 'Crew';
             <div class="row">
                 <div class="col-lg-4">
                     <a href='#' class="advertising">
-                        <p class="advertising__content">advertising</p>
+                        <p class="advertising__content">
+                            <img width="398px" height="190px"  src="../../web/public/uploads/<?php echo $place[10]['img']?>" >
+                        </p>
                     </a>
                 </div>
                 <div class="col-lg-4">
                     <a href='#' class="advertising">
-                        <p class="advertising__content">advertising</p>
+                        <p class="advertising__content">
+                            <img width="398px" height="190px"  src="../../web/public/uploads/<?php echo $place[11]['img']?>" >
+                        </p>
                     </a>
                 </div>
                 <div class="col-lg-4">
                     <a href='#' class="advertising">
-                        <p class="advertising__content">advertising</p>
+                        <p class="advertising__content">
+                            <img width="398px" height="190px"  src="../../web/public/uploads/<?php echo $place[12]['img']?>" >
+                        </p>
                     </a>
                 </div>
             </div>

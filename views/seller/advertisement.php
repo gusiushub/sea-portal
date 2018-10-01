@@ -1,8 +1,8 @@
 <?php
-
+use yii\bootstrap\ActiveForm;
 ?>
 
-<body>
+<body xmlns="http://www.w3.org/1999/html">
 <header class="header">
     <div class="container">
         <div class="top-navbar top-navbar--no-buttons">
@@ -14,7 +14,7 @@
                     <div class="settings">
                         <div class="settings__item">
                             <a href="#" class="settings__email">
-                                wilkinson@gmail.com
+                                <?php  echo Yii::$app->user->identity->email ?>
                             </a>
                         </div>
                         <div class="settings__item">
@@ -30,12 +30,12 @@
                             <div class="settings__hidden-menu">
                                 <ul class="settings__list">
                                     <li class="settings__list-item">
-                                        <a href="#" class="settings__link">
+                                        <a href="/web/seller/profile" class="settings__link">
                                             Profile
                                         </a>
                                     </li>
                                     <li class="settings__list-item">
-                                        <a href="#" class="settings__link">
+                                        <a href="/web/seller/logout" class="settings__link">
                                             Sign Out
                                         </a>
                                     </li>
@@ -49,33 +49,56 @@
                         </div>
                         <nav class="adaptive-menu__navigation">
                             <ul class="adaptive-menu__list">
+                                <?php if (!Yii::$app->user->isGuest){  ?>
+                                    <li class="adaptive-menu__item">
+                                        <a class="adaptive-menu__link" href="<?php if (Yii::$app->user->identity->user_status==1) {
+                                            echo '/web/site/profile';
+                                        }
+                                        if (Yii::$app->user->identity->user_status==2) {
+                                            echo '/web/company/profile';
+                                        }
+                                        if (Yii::$app->user->identity->user_status==3) {
+                                            echo '/web/seller/profile';
+                                        } ?>" class="authorization__link authorization__link--white">
+                                            Profile
+                                        </a>
+                                    </li>
+                                    <li class="adaptive-menu__item">
+                                        <a class="adaptive-menu__link" href="/web/user/logout" class="authorization__link authorization__link--white">
+                                            Logout
+                                        </a>
+                                    </li>
+                                <?php } else{ ?>
+
+                                    <li class="adaptive-menu__item">
+                                        <a href="/web/site/login" class="adaptive-menu__link">
+                                            Sign In
+                                        </a>
+                                    </li>
+                                    <li class="adaptive-menu__item">
+                                        <a href="/web/site/signup" class="adaptive-menu__link">
+                                            Sign Up
+                                        </a>
+                                    </li>
+                                <?php } ?>
+
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
-                                        Sign In
-                                    </a>
-                                </li>
-                                <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
-                                        Sign Up
-                                    </a>
-                                </li>
-                                <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/shipboard-supply" class="adaptive-menu__link">
                                         Find a supplier
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/become-supplier" class="adaptive-menu__link">
                                         Become a supplier
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/site/crew" class="adaptive-menu__link">
                                         Crew
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/vessels-sale" class="adaptive-menu__link">
                                         Vessels sell/chartering
                                     </a>
                                 </li>
@@ -108,22 +131,22 @@
                     <nav class="secondary-navigation">
                         <ul class="secondary-navigation__list">
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/shipboard-supply" class="secondary-navigation__link">
                                     Find a supplier
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/site/become-supplier" class="secondary-navigation__link">
                                     Become a supplier
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/crew" class="secondary-navigation__link">
                                     Crew
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/vessels-sale" class="secondary-navigation__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
@@ -156,7 +179,7 @@
                         Profile
                     </h1>
                     <a href="#" class="settings__email settings__email--head">
-                        wilkinson@gmail.com
+                        <?php  echo Yii::$app->user->identity->email ?>
                     </a>
                 </div>
             </div>
@@ -164,43 +187,43 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="primary-menu margin-bottom-medium">
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/seller/profile' class="primary-menu__item">
                         <i class="icon-sheap primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             seller information
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/seller/pricing' class="primary-menu__item">
                         <i class="icon-list7 primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             pricing
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/seller/request' class="primary-menu__item">
                         <i class="icon-message primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             incoming requests
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/seller/statistics' class="primary-menu__item">
                         <i class="icon-charting primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             statistics
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/seller/offers' class="primary-menu__item">
                         <i class="icon-list6 primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             my offers
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item  primary-menu__item--active">
+                    <a href='/web/seller/advertisement' class="primary-menu__item  primary-menu__item--active">
                         <i class="icon-window primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             place an adverticement
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/seller/term' class="primary-menu__item">
                         <i class="icon-list5 primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             term and conditions
@@ -484,9 +507,10 @@
 </footer>
 <div class="slider-advertising__modal vertical-center" data-number='1'>
     <div class="slider-advertising__wrapper">
-        <div class="container">
+        <f class="container">
             <div class="row horizontal-center">
                 <div class="col-lg-8 col-md-10 col-sm-12 col-12">
+                    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
                     <div class="slider-advertising__modal-body">
                         <div class="row">
                             <div class="col-lg-12">
@@ -498,6 +522,7 @@
                             </div>
                         </div>
                         <div class="row margin-bottom-medium">
+
                             <div class="col-lg-12">
                                 <div class="slider-advertising__adv-place">
                                     <div class="main-headline main-headline--modal">
@@ -510,36 +535,37 @@
                                             <img src="../../web/public/img/modal/modal_find_a_supplier_500x289.jpg" alt="screen-page" class="slider-advertising__page-screen" >
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                            <div id="div" name="text" disabled="false" data-id="1" class="slider-advertising__available">
-                                                <span>available</span>
-                                            </div>
-                                            <div onclick="select2()" class="slider-advertising__available">
+                                            <div name="text" disabled="false" data-num="1"  class="slider-advertising__available available">
                                                 available
                                             </div>
-                                            <div onclick="select3()" class="slider-advertising__available">
+                                            <div onclick="select2()" data-num="2" class="slider-advertising__available available">
+                                                available
+                                            </div>
+                                            <div onclick="select3()" data-num="3" class="slider-advertising__available available">
                                                 available
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                            <div onclick="select6()" class="slider-advertising__available slider-advertising__available--no-margin">
+                                            <div onclick="select6()" data-num="4" class="slider-advertising__available slider-advertising__available--no-margin available">
                                                 available
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                            <div onclick="select5()" class="slider-advertising__available slider-advertising__available--no-margin">
+                                            <div onclick="select5()" data-num="5" class="slider-advertising__available slider-advertising__available--no-margin available">
                                                 available
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                            <div onclick="select4()" class="slider-advertising__available slider-advertising__available--no-margin">
+                                            <div onclick="select4()" data-num="6" class="slider-advertising__available slider-advertising__available--no-margin available">
                                                 available
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                         <div class="row horizontal-between">
                             <div  class="col-lg-4 col-md-4 col-sm-4 col-4">
@@ -550,19 +576,21 @@
                             <div class="col-lg-4 col-md-4 col-sm-4 col-4">
 
 <!--                                скрытие type=file-->
-                                <button class="button button--profile">
+                                <button type="button" class="button button--profile">
                                     <label class="submit" for="uploadbtn" >upload</label>
                                 </button>
-                                    <input style="opacity: 0; " type="file" multiple="multiple" accept=".txt,image/*" name="upload" id="uploadbtn">
-
+                                <?= $form->field($upload, 'image')->fileInput( ['id' => 'uploadbtn','style'=>"opacity: 0"]) ?>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                <button class="button button--profile slider-advertising__back" data-number='1'>
+                                <button type="button" class="button button--profile slider-advertising__back" data-number='1'>
                                     back
                                 </button>
                             </div>
                         </div>
                     </div>
+                        <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" >
+                        <input type="hidden" name="inp"  value="asd">
+                    <?php ActiveForm::end() ?>
                 </div>
             </div>
         </div>
@@ -574,6 +602,7 @@
         <div class="container">
             <div class="row horizontal-center">
                 <div class="col-lg-8 col-md-10 col-sm-12 col-12">
+                    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
                     <div class="slider-advertising__modal-body">
                         <div class="row">
                             <div class="col-lg-12">
@@ -597,33 +626,33 @@
                                             <img src="../../web/public/img/modal/modal_find_a_crew_500x400.jpg" alt="screen-page" class="slider-advertising__page-screen" >
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                            <div onclick="select7()" class="slider-advertising__available">
+                                            <div data-num="7" onclick="select7()" class="slider-advertising__available available">
                                                 available
                                             </div>
-                                            <div onclick="select8()" class="slider-advertising__available">
+                                            <div data-num="8" onclick="select8()" class="slider-advertising__available available">
                                                 available
                                             </div>
-                                            <div onclick="select9()" class="slider-advertising__available">
+                                            <div data-num="9" onclick="select9()" class="slider-advertising__available available">
                                                 available
                                             </div>
-                                            <div onclick="select10()" class="slider-advertising__available">
+                                            <div data-num="10" onclick="select10()" class="slider-advertising__available available">
                                                 available
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                            <div onclick="select11()" class="slider-advertising__available slider-advertising__available--no-margin">
+                                            <div data-num="11" onclick="select11()" class="slider-advertising__available slider-advertising__available--no-margin available">
                                                 available
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                            <div onclick="select12()" class="slider-advertising__available slider-advertising__available--no-margin">
+                                            <div data-num="12" onclick="select12()" class="slider-advertising__available slider-advertising__available--no-margin available">
                                                 available
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                            <div onclick="select13()" class="slider-advertising__available slider-advertising__available--no-margin">
+                                            <div data-num="13" onclick="select13()" class="slider-advertising__available slider-advertising__available--no-margin available">
                                                 available
                                             </div>
                                         </div>
@@ -638,17 +667,21 @@
                                 </button>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                <button class="button button--profile">
-                                    upload
+                                <button type="button" class="button button--profile">
+                                    <label class="submit" for="uploadbtn2" >upload</label>
                                 </button>
+                                <?= $form->field($upload, 'image')->fileInput( ['id' => 'uploadbtn2','style'=>"opacity: 0"]) ?>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                <button class="button button--profile slider-advertising__back" data-number='2'>
+                                <button type="button" class="button button--profile slider-advertising__back" data-number='2'>
                                     back
                                 </button>
                             </div>
                         </div>
                     </div>
+                    <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" >
+                    <input type="hidden" name="inp"  value="asd">
+                    <?php ActiveForm::end() ?>
                 </div>
             </div>
         </div>
@@ -684,36 +717,36 @@
                                             <img src="../../web/public/img/modal/modal_find_a_student_500x435.jpg" alt="screen-page" class="slider-advertising__page-screen" >
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                            <div onclick="select14()" class="slider-advertising__available">
+                                            <div data-num="6" onclick="select14()" class="slider-advertising__available">
                                                 select
                                             </div>
-                                            <div onclick="select15()" class="slider-advertising__available">
+                                            <div data-num="6" onclick="select15()" class="slider-advertising__available">
                                                 available
                                             </div>
-                                            <div onclick="select16()" class="slider-advertising__available">
+                                            <div data-num="6" onclick="select16()" class="slider-advertising__available">
                                                 available
                                             </div>
-                                            <div onclick="select17()" class="slider-advertising__available">
+                                            <div data-num="6" onclick="select17()" class="slider-advertising__available">
                                                 available
                                             </div>
-                                            <div onclick="select20()" class="slider-advertising__available">
+                                            <div data-num="6" onclick="select20()" class="slider-advertising__available">
                                                 available
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                            <div onclick="select21()" class="slider-advertising__available slider-advertising__available--no-margin">
+                                            <div data-num="6" onclick="select21()" class="slider-advertising__available slider-advertising__available--no-margin">
                                                 available
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                            <div onclick="select22()" class="slider-advertising__available slider-advertising__available--no-margin">
+                                            <div data-num="6" onclick="select22()" class="slider-advertising__available slider-advertising__available--no-margin">
                                                 available
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                            <div onclick="select23()" class="slider-advertising__available slider-advertising__available--no-margin">
+                                            <div data-num="6" onclick="select23()" class="slider-advertising__available slider-advertising__available--no-margin">
                                                 available
                                             </div>
                                         </div>
@@ -768,36 +801,36 @@
                                             <img src="../../web/public/img/modal/modal_find_vessels_500x480.jpg" alt="screen-page" class="slider-advertising__page-screen" >
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                            <div onclick="select24()" class="slider-advertising__available">
+                                            <div data-num="6" onclick="select24()" class="slider-advertising__available">
                                                 available
                                             </div>
-                                            <div onclick="select25()" class="slider-advertising__available">
+                                            <div data-num="6" onclick="select25()" class="slider-advertising__available">
                                                 available
                                             </div>
-                                            <div onclick="select26()" class="slider-advertising__available">
+                                            <div data-num="6" onclick="select26()" class="slider-advertising__available">
                                                 available
                                             </div>
-                                            <div onclick="select27()" class="slider-advertising__available">
+                                            <div data-num="6" onclick="select27()" class="slider-advertising__available">
                                                 available
                                             </div>
-                                            <div onclick="select28()" class="slider-advertising__available">
+                                            <div data-num="6" onclick="select28()" class="slider-advertising__available">
                                                 available
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                            <div onclick="select29()" class="slider-advertising__available slider-advertising__available--no-margin">
+                                            <div data-num="6" onclick="select29()" class="slider-advertising__available slider-advertising__available--no-margin">
                                                 available
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                            <div onclick="select30()" class="slider-advertising__available slider-advertising__available--no-margin">
+                                            <div data-num="6" onclick="select30()" class="slider-advertising__available slider-advertising__available--no-margin">
                                                 available
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                            <div onclick="select31()" class="slider-advertising__available slider-advertising__available--no-margin">
+                                            <div data-num="6" onclick="select31()" class="slider-advertising__available slider-advertising__available--no-margin">
                                                 available
                                             </div>
                                         </div>
@@ -852,36 +885,36 @@
                                             <img src="../../web/public/img/modal/modal_find_chartering_500x480.jpg" alt="screen-page" class="slider-advertising__page-screen" >
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                            <div onclick="select32()" class="slider-advertising__available">
+                                            <div data-num="6" class="slider-advertising__available">
                                                 available
                                             </div>
-                                            <div onclick="select33()" class="slider-advertising__available">
+                                            <div data-num="6" class="slider-advertising__available">
                                                 available
                                             </div>
-                                            <div onclick="select34()" class="slider-advertising__available">
+                                            <div data-num="6" class="slider-advertising__available">
                                                 available
                                             </div>
-                                            <div onclick="select35()" class="slider-advertising__available">
+                                            <div data-num="6" class="slider-advertising__available">
                                                 available
                                             </div>
-                                            <div onclick="select36()" class="slider-advertising__available">
+                                            <div data-num="6" class="slider-advertising__available">
                                                 available
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                            <div onclick="select37()" class="slider-advertising__available slider-advertising__available--no-margin">
+                                            <div data-num="6" class="slider-advertising__available slider-advertising__available--no-margin">
                                                 available
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                            <div onclick="select38()" class="slider-advertising__available slider-advertising__available--no-margin">
+                                            <div data-num="6" class="slider-advertising__available slider-advertising__available--no-margin">
                                                 available
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                            <div onclick="select39()" class="slider-advertising__available slider-advertising__available--no-margin">
+                                            <div data-num="6" class="slider-advertising__available slider-advertising__available--no-margin">
                                                 available
                                             </div>
                                         </div>
@@ -907,6 +940,8 @@
         </div>
     </div>
 </div>
+
+
 <!--<script>-->
 <!--    // Описываем общие установки для всех ajax-запросов-->
 <!--    $.ajaxSetup({-->
@@ -955,7 +990,7 @@
 <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" >
 <!--motd-end-->
 </body>
-<script src="../../web/public/libs/jQuery/jquery-3.3.1.min.js"></script>
+<!--<script src="../../web/public/libs/jQuery/jquery-3.3.1.min.js"></script>-->
 <script src="../../web/public/js/common.js"></script>
 <script src="../../web/public/libs/slick/slick.min.js"></script>
 <script>
@@ -1026,6 +1061,23 @@
 </style>
 
 <script>
+
+
+    $(document).ready(function(){
+        $('.available').click(function(){
+            var text = $('input[name="inp"]').text();
+            var qwe = $(this).data('num');
+            console.log($('input[name="inp"]').val(text + qwe));
+        });
+    });
+
+
+
+
+
+
+
+
     var _csrf = $('input[name="_csrf"]').val();
 
 
@@ -1038,58 +1090,65 @@
     // Вешаем функцию на событие
     // Получим данные файлов и добавим их в переменную
 
-    $('input[type=file]').change(function(){
-        files = this.files;
-        //$('.submit').click(function( event ){
-            event.stopPropagation(); // Остановка происходящего
-            event.preventDefault();  // Полная остановка происходящего
-
-            // Создадим данные формы и добавим в них данные файлов из files
-
-            var data = new FormData();
-            $.each( files, function( key, value ){
-                data.append( key, value );
-
-            });
-       // alert(data[3]);
-            // Отправляем запрос
-
-            $.ajax({
-                url: '/web/ajax.php?uploadfiles',
-                type: 'POST',
-                data: data,
-                cache: false,
-                dataType: 'json',
-                processData: false, // Не обрабатываем файлы (Don't process the files)
-                contentType: false, // Так jQuery скажет серверу что это строковой запрос
-                success: function( respond, textStatus, jqXHR ){
-
-                    // Если все ОК
-                   //
-                    if( typeof respond.error === 'undefined' ){
-                        // Файлы успешно загружены, делаем что нибудь здесь
-
-                        // выведем пути к загруженным файлам в блок '.ajax-respond'
-
-                        var files_path = respond.files;
-
-                        var html = '';
-                        $.each( files_path, function( key, val ){ html += val +'<br>'; } );
-                        // $('.ajax-respond').html( html );
-                    }
-                    else{
-                        console.log('ОШИБКИ ОТВЕТА сервера: ' + respond.error );
-                    }
-                },
-                error: function( jqXHR, textStatus, errorThrown ){
-                   // alert(respond);
-                    console.log('ОШИБКИ AJAX запроса: ' + textStatus );
-                }
-            });
-            alert(data)
-
-        });
-
+    // $('input[type=file]').change(function(){
+    //     files = this.files;
+    //     //$('.submit').click(function( event ){
+    //         event.stopPropagation(); // Остановка происходящего
+    //         event.preventDefault();  // Полная остановка происходящего
+    //
+    //         // Создадим данные формы и добавим в них данные файлов из files
+    //
+    //         var data = new FormData();
+    //         $.each( files, function( key, value ){
+    //             data.append( key, value );
+    //
+    //         });
+    //    // alert(data[3]);
+    //         // Отправляем запрос
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //         $.ajax({
+    //             url: '/web/ajax.php?uploadfiles',
+    //             type: 'POST',
+    //             data: data,
+    //             cache: false,
+    //             dataType: 'json',
+    //             processData: false, // Не обрабатываем файлы (Don't process the files)
+    //             contentType: false, // Так jQuery скажет серверу что это строковой запрос
+    //             success: function( respond, textStatus, jqXHR ){
+    //
+    //                 // Если все ОК
+    //                //
+    //                 if( typeof respond.error === 'undefined' ){
+    //                     // Файлы успешно загружены, делаем что нибудь здесь
+    //
+    //                     // выведем пути к загруженным файлам в блок '.ajax-respond'
+    //
+    //                     var files_path = respond.files;
+    //
+    //                     var html = '';
+    //                     $.each( files_path, function( key, val ){ html += val +'<br>'; } );
+    //                     // $('.ajax-respond').html( html );
+    //                 }
+    //                 else{
+    //                     console.log('ОШИБКИ ОТВЕТА сервера: ' + respond.error );
+    //                 }
+    //             },
+    //             error: function( jqXHR, textStatus, errorThrown ){
+    //                // alert(respond);
+    //                 console.log('ОШИБКИ AJAX запроса: ' + textStatus );
+    //             }
+    //         });
+    //         alert(data)
+    //
+    //     });
+    //
 
 
     // document.getElementById('div').onclick = function(e){

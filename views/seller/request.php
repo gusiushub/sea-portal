@@ -192,7 +192,7 @@
                             my offers
                         </h3>
                     </a>
-                    <a href='#' class="primary-menu__item">
+                    <a href='/web/seller/advertisement' class="primary-menu__item">
                         <i class="icon-window primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             place an adverticement

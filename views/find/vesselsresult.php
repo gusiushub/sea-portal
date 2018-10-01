@@ -265,8 +265,9 @@
                         <?php
                     }
                 }
+                var_dump($findVessels);
                 foreach ($findVessels as $findVessel) {
-                    $user = User::findIdentity($findVessel['user_id']);
+                    $user = User::findOne($findVessel['user_id']);
                 if (!empty($findVessel)){
                     ?>
                 <div class="col-lg-3">

@@ -8,6 +8,10 @@
                         <a href="/web/site"><img src="../../web/public/img/logotype.png" alt="logotype" class="logotype-box__logo"></a>
                     </div>
                     <?php
+
+                    use yii\bootstrap\ActiveForm;
+                    use yii\bootstrap\Html;
+
                     if (Yii::$app->user->isGuest){ ?>
                         <div class="authorization">
                             <a href="/web/site/login" class="authorization__link">
@@ -229,6 +233,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="filter margin-bottom-light">
+                        <?php $form = ActiveForm::begin(); ?>
                         <div class="secondary-headline margin-bottom-light">
                             <h2 class="secondary-headline__title">
                                 Find a vessel
@@ -239,11 +244,22 @@
                                 vessel type
                             </h4>
                             <div class="select-style">
-                                <select name="vessel-type" id="" class="select-style__select">
-                                    <option class="select-style__placeholder">Dry-cargo ship</option>
-                                    <option value="">text</option>
-                                    <option value="">text</option>
-                                </select>
+<!--                                <select name="vessel-type" id="" class="select-style__select">-->
+<!--                                    <option class="select-style__placeholder">Dry-cargo ship</option>-->
+<!--                                    <option value="">text</option>-->
+<!--                                    <option value="">text</option>-->
+<!--                                </select>-->
+
+                                <?php
+                                $offers = \app\models\Vessel::find()->all();
+                                ?>
+                                <?= $form->field($model, 'type')->dropDownList(array_diff(\yii\helpers\ArrayHelper::map($offers,'type','type'),array('')),[
+                                    'prompt'=>'Level of English',
+                                    'class'=>'select-style__select',
+                                    //'placeholder'=>'COUNTRY',
+                                    'id'=>'type'
+                                ]) ?>
+
                                 <div class="select-style__arrow">&nbsp;</div>
                             </div>
                         </div>
@@ -252,11 +268,17 @@
                                 option for vessel type
                             </h4>
                             <div class="select-style">
-                                <select name="option" id="" class="select-style__select">
-                                    <option class="select-style__placeholder">bulk carriers</option>
-                                    <option value="">text</option>
-                                    <option value="">text</option>
-                                </select>
+<!--                                <select name="option" id="" class="select-style__select">-->
+<!--                                    <option class="select-style__placeholder">bulk carriers</option>-->
+<!--                                    <option value="">text</option>-->
+<!--                                    <option value="">text</option>-->
+<!--                                </select>-->
+                                <?= $form->field($model, 'vesOption')->dropDownList(array_diff(\yii\helpers\ArrayHelper::map($offers,'vessel_option','vessel_option'),array('')),[
+                                    'prompt'=>'bulk carriers',
+                                    'class'=>'select-style__select',
+                                    'placeholder'=>'bulk carriers',
+                                    'id'=>'lvleng'
+                                ]) ?>
                                 <div class="select-style__arrow">&nbsp;</div>
                             </div>
                         </div>
@@ -267,8 +289,8 @@
                                         Length, м
                                     </h4>
                                     <div class="filter__input-double-wrapper">
-                                        <input type="text" placeholder="FROM" class="filter__input--double filter__input">
-                                        <input type="text" placeholder="TO" class="filter__input--double filter__input">
+                                        <input type="text" name="leigthFrom" placeholder="FROM" class="filter__input--double filter__input">
+                                        <input type="text" name="leigthTo" placeholder="TO" class="filter__input--double filter__input">
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -285,8 +307,8 @@
                                         Deadweight, т
                                     </h4>
                                     <div class="filter__input-double-wrapper">
-                                        <input type="text" placeholder="FROM" class="filter__input--double filter__input">
-                                        <input type="text" placeholder="TO" class="filter__input--double filter__input">
+                                        <input type="text" name="deadweightFrom" placeholder="FROM" class="filter__input--double filter__input">
+                                        <input type="text" name="draftTo" placeholder="TO" class="filter__input--double filter__input">
                                     </div>
                                 </div>
                             </div>
@@ -297,7 +319,7 @@
                                     <h4 class="filter__title">
                                         Flag
                                     </h4>
-                                    <input type="text" placeholder="??????" class="filter__input filter__input--one">
+                                    <input type="text" name="flag" placeholder="??????" class="filter__input filter__input--one">
                                 </div>
                                 <div class="col-lg-4">
                                     <h4 class="filter__title">
@@ -320,8 +342,8 @@
                                         Year
                                     </h4>
                                     <div class="filter__input-double-wrapper">
-                                        <input type="text" placeholder="FROM" class="filter__input--double filter__input">
-                                        <input type="text" placeholder="TO" class="filter__input--double filter__input">
+                                        <input type="text" name="yearFrom" placeholder="FROM" class="filter__input--double filter__input">
+                                        <input type="text" name="yearTo" placeholder="TO" class="filter__input--double filter__input">
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -329,8 +351,8 @@
                                         Price
                                     </h4>
                                     <div class="filter__input-double-wrapper">
-                                        <input type="text" placeholder="FROM" class="filter__input--double filter__input">
-                                        <input type="text" placeholder="TO" class="filter__input--double filter__input">
+                                        <input type="text" name="priceFrom" placeholder="FROM" class="filter__input--double filter__input">
+                                        <input type="text" name="priceTo" placeholder="TO" class="filter__input--double filter__input">
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -339,9 +361,9 @@
                                     </h4>
                                     <div class="select-style">
                                         <select name="option" id="" class="select-style__select">
-                                            <option class="select-style__placeholder">EUR</option>
-                                            <option value="">text</option>
-                                            <option value="">text</option>
+                                            <option value="EUR" class="select-style__placeholder">EUR</option>
+                                            <option value="EUR">EUR</option>
+                                            <option value="USD">USD</option>
                                         </select>
                                         <div class="select-style__arrow">&nbsp;</div>
                                     </div>
@@ -349,10 +371,13 @@
                             </div>
                         </div>
                         <div class="filter__item">
-                            <button class="button button--show-results">
-                                Show results
-                            </button>
+<!--                            <button class="button button--show-results">-->
+<!--                                Show results-->
+<!--                            </button>-->
+
+                            <?= Html::submitButton('Show results', ['class' => 'button button--show-results', 'name' => 'search']) ?>
                         </div>
+                        <?php ActiveForm::end(); ?>
                     </div>
                 </div>
                 <div class="col-lg-4">

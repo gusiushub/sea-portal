@@ -233,22 +233,21 @@ $user = $model->attributes;
                 <div class="col-lg-3">
                     <div class="profile">
                         <?php if (!empty(Yii::$app->user->identity->img)){ ?>
-                        <img src="../../web/public/uploads/<?php echo Yii::$app->user->identity->img ?>" alt="company-logo" class="profile__photo margin-bottom-light">
-                       <?php }else{  ?>
-                        <img src="../../web/public/img/company-logo-big.jpg" alt="company-logo" class="profile__photo margin-bottom-light">
+                            <img src="../../web/public/uploads/<?php echo Yii::$app->user->identity->img ?>" alt="company-logo" class="profile__photo margin-bottom-light">
+                        <?php }else{  ?>
+                            <img src="../../web/public/img/company-logo-big.jpg" alt="company-logo" class="profile__photo margin-bottom-light">
                         <?php } ?>
-<!--                        --><?php //$form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
-<!--                        --><?//= $form->field($upload, 'image')->fileInput(['options' => ['id' => 'image']]) ?>
-<!--                        <button class="profile__upload-photo margin-bottom-medium">-->
-<!--                            select file-->
-<!--                        </button>-->
-<!--                        --><?php //ActiveForm::end() ?>
-<!--                        <input type="file" style='display:none' class="profile__upload-photo margin-bottom-medium" name="file" value="select file">-->
-
+                        <?php $form = ActiveForm::begin(['options' => ['id'=>'myform','enctype' => 'multipart/form-data']]) ?>
+                        <?= $form->field($upload, 'image')->fileInput( ['id' => 'uploadbtn','style'=>"opacity: 0","onchange"=>"if (this.selectedIndex) this.form.submit ()"]) ?>
                         <button class="profile__upload-photo margin-bottom-medium">
                             <label class="submit" for="uploadbtn" >select file</label>
                         </button>
-                        <input style="opacity: 0; " type="file" multiple="multiple" accept=".txt,image/*" name="upload" id="uploadbtn">
+                        <?php ActiveForm::end() ?>
+
+<!--                        <button class="profile__upload-photo margin-bottom-medium">-->
+<!--                            <label class="submit" for="uploadbtn" >select file</label>-->
+<!--                        </button>-->
+<!--                        <input style="opacity: 0; " type="file" multiple="multiple" accept=".txt,image/*" name="upload" id="uploadbtn">-->
 
                         <?php
 
@@ -566,6 +565,13 @@ $user = $model->attributes;
 <script src="../../web/public/js/info-change.js"></script>
 <script src="../../web/public/js/from-to.js"></script>
 <script src="../../web/public/js/ajax-forms.js"></script>
+<script type="text/javascript">
+    jQuery(function(){
+        $("#uploadbtn").change(function(){ // событие выбора файла
+            $("#myform").submit(); // отправка формы
+        });
+    });
+</script>
 <script>
     // $(function() {
     //     $("#file").click(function(){

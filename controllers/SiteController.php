@@ -371,35 +371,22 @@ class SiteController extends Controller
         if (!Yii::$app->user->isGuest){
             $status = Yii::$app->user->identity->user_status;
             if ( $status == 1) {
-//                $upload = new UploadImage();
-//                $model = new User();
                 $upload = new UploadImage();
                 $model = new User();
                 if(Yii::$app->request->isPost){
                     $file = UploadedFile::getInstance($upload, 'image');
-                    if ($upload->uploadFile($file, Yii::$app->user->identity->img)){
+                    if ($upload->uploadFile($file, Yii::$app->user->identity->img) ){
+
                         return $this->redirect('/web/site/profile');
                     }
-//                        if(isset($_SESSION)){
-//
-//                            $user = User::find()->where('id=:id',[':id'=>Yii::$app->user->id])->one();
-//                            $user->img = $_SESSION['file_name'];
-//                            $user->save();
-//                            $session = Yii::$app->session;
-//                            if ($session->isActive) {
-//                                $session->destroy();
-//                                $session->close();
-//                            }
-                          //  return $this->render('prof', ['upload'=>$upload]);
-                    //}
                 return $this->render('profile', ['model' => $model,'upload'=>$upload]);
-            }else{
-                $this->redirect(['index']);
             }
-//        }else {
-//            $this->redirect(['index']);
+                return $this->render('profile', ['model' => $model,'upload'=>$upload]);
         }
+        }else {
+            $this->redirect(['index']);
         }
+
     }
 
 
@@ -465,46 +452,12 @@ class SiteController extends Controller
 
     public function actionStatistics()
     {
-        if (!Yii::$app->user->isGuest){
-            $statistics = Statistics::find()
-                ->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])
-                ->andWhere('date = :date',[':date'=>date('Y.m.d')])
-                ->all();
-            //var_dump($statistics);
-            if (!empty($statistics)) {
-                $statistics = Statistics::find()
-                    ->orderBy('id DESC')
-                    ->limit(7)
-                    ->where('user_id = :user_id',[':user_id'=>Yii::$app->user->id])
-                    ->andWhere('date = :date',[':date'=>date('Y.m.d')])
-                    ->all();
-                //var_dump($statistics[0]['date']);
-                for ($i=0;$i<7;$i++){
-                    if (isset($statistics[$i]['date'])){
-                        $get[$i]=$statistics[$i]['date'];
-                    }else{
-                        $get[$i]='';
-                    }
-                }
-
-                //var_dump($statistics);
-                if (empty($statistics)){
-
-                    $statistica = new Statistics();
-                    $statistica->user_id = Yii::$app->user->id;
-                    $statistica->request = 0;
-                    $statistica->visit = 0;
-                    $statistica->date = date('Y.m.d');
-                    $statistica->save();
-                }
-                //var_dump('asdasdasd');exit;
-                return $this->render('statistics',['statistics'=>$statistics]);
-            }else{
-                    return $this->redirect(['profile']);
-            }
-        }else {
-            $this->redirect(['index']);
-        }
+        $statistics = Statistics::find()
+            ->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])
+            //->orderby(['id'=>SORT_DESC])
+            ->limit(7)
+            ->all();
+        return $this->render('statistics',['statistics'=>$statistics]);
     }
 
     public function actionAjaxAdv()

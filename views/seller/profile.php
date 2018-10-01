@@ -1,3 +1,7 @@
+<?php
+use yii\bootstrap\ActiveForm;
+?>
+
 <body>
 <header class="header">
     <div class="container">
@@ -10,9 +14,7 @@
                     <div class="settings">
                         <div class="settings__item">
                             <a href="/web/seller/profile" class="settings__email">
-                                <?php use yii\bootstrap\ActiveForm;
-
-                                echo Yii::$app->user->identity->email ?>
+                                <?php  echo Yii::$app->user->identity->email ?>
                             </a>
                         </div>
                         <div class="settings__item">
@@ -144,7 +146,7 @@
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/vessels-sale" class="secondary-navigation__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
@@ -215,7 +217,7 @@
                             my offers
                         </h3>
                     </a>
-                    <a href='/web/seller/profile' class="primary-menu__item">
+                    <a href='/web/seller/advertisement' class="primary-menu__item">
                         <i class="icon-window primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             place an adverticement
@@ -249,17 +251,6 @@
                             <label class="submit" for="uploadbtn" >select file</label>
                         </button>
                         <?php ActiveForm::end() ?>
-<!--                        <form method="get" action="">-->
-<!--                        <button class="profile__upload-photo margin-bottom-medium">-->
-<!--                            <label class="submit" for="uploadbtn" >select file</label>-->
-<!--                        </button>-->
-<!--                        <input style="opacity: 0; " type="file" multiple="multiple" accept=".txt,image/*" name="upload" id="uploadbtn">-->
-<!--                        </form>-->
-
-                            <!--                        <img src="../../web/public/img/company-logo-big.jpg" alt="company-logo" class="profile__photo margin-bottom-light">-->
-<!--                        <button class="profile__upload-photo margin-bottom-medium">-->
-<!--                            select file-->
-<!--                        </button>-->
                     </div>
                 </div>
                 <div class="col-lg-9">

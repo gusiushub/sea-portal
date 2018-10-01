@@ -26,12 +26,12 @@
                             <div class="settings__hidden-menu">
                                 <ul class="settings__list">
                                     <li class="settings__list-item">
-                                        <a href="#" class="settings__link">
+                                        <a href="/web/site/profile" class="settings__link">
                                             Profile
                                         </a>
                                     </li>
                                     <li class="settings__list-item">
-                                        <a href="#" class="settings__link">
+                                        <a href="/web/site/logout" class="settings__link">
                                             Sign Out
                                         </a>
                                     </li>
@@ -127,22 +127,22 @@
                     <nav class="secondary-navigation">
                         <ul class="secondary-navigation__list">
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/shipboard-supply" class="secondary-navigation__link">
                                     Find a supplier
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/site/become-supplier" class="secondary-navigation__link">
                                     Become a supplier
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/crew" class="secondary-navigation__link">
                                     Crew
                                 </a>
                             </li>
                             <li class="secondary-navigation__item">
-                                <a href="#" class="secondary-navigation__link">
+                                <a href="/web/find/vessels-sale" class="secondary-navigation__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
@@ -396,60 +396,55 @@
             </div>
         </div>
     </div>
+
+
     <?php
     $k=1;
     $ost = count($statistics);
 
     foreach($statistics as $value){
-
-        //print_r($value);
-    if (isset($value['request'])) {
-    ?>
+        if (!empty($value['request'])) {
+            ?>
+            <input type="hidden" class="hidden" value="<?php echo $value['request'] ?>" id="val<?php echo $k ?>">
+            <?php
+        }else{
+            ?>
+            <input type="hidden" value="<?php echo 0 ?>" id="val<?php echo $k ?>">
+            <?php
+        }
+        $k++;
+    } ?>
+</footer>
+<?php
+$k = 1;
+foreach($statistics as $value){
+    if (!empty($value['request'])) {
+        ?>
         <input type="hidden" value="<?php echo $value['request'] ?>" id="val<?php echo $k ?>">
         <?php
     }else{
         ?>
         <input type="hidden" value="<?php echo 0 ?>" id="val<?php echo $k ?>">
-    <?php
+        <?php
     }
     $k++;
-    } ?>
-
-    <?php
-    $k=1;
-    //var_dump($statistics[3]);exit;
-    for($j=1;$ost<7;$j++){
-        //var_dump($ost+$j);exit;
-        ?>
-        <input type="hidden" value="<?php echo 0 ?>" id="val<?php echo $ost+$j ?>">
-        <?php
-        $ost++;
-    }
-
-    $date = app\models\Statistics::find()->where(['user_id'=>Yii::$app->user->id])->limit(7)->orderby(['id'=>SORT_DESC])->all();
-//    $n = count($date);
-//    for($i=0;$i<8;$i++){
-//        if (isset($date[$i]['date'])){
-//        ?>
-<!--        <input type="hidden" value="--><?php //echo $date[$i]['date'] ?><!--" id="date--><?php //echo $i ?><!--">-->
-<!--        --><?php
-//    }else{
-//            $date = date("M-d-Y", mktime(0, 0, 0, date('m'), date('d') - $i, date('Y')));
-//            //var_dump($date);exit;
-//            ?>
-<!--            <input type="hidden" value="--><?php //echo $date ?><!--" id="date--><?php //echo $i ?><!--">-->
-<!--    --><?php
-//        }
-//    }
-//    ?>
-
-
-</footer>
+} ?>
 </body>
 <script src="../../web/public/js/common.js"></script>
 <script src="../../web/public/libs/Chart.min.js"></script>
 <script>
-
+    var count = $('.hidden').length;
+    count = count+1;
+    var input = [];
+    for (var i=1;i<count;i++){
+        input[i] = document.getElementById('val'+i).value;
+    }
+    var ost = 7-count;
+    if (ost!=0){
+        for (var i=count;i<8;i++){
+            input[i] = 0;
+        }
+    }
     // function $_GET(key) {
     //     var p = window.location.search;
     //     p = p.match(new RegExp(key + '=([^&=]+)'));
@@ -462,9 +457,9 @@
             name = document.getElementById('val' + i).value;
         }
     }
-    var input1 = document.getElementById('val1').value;
-    var input2 = document.getElementById('val2').value;
-    var input3 = document.getElementById('val3').value;
+   //  var input1 = document.getElementById('val1').value;
+   //  var input2 = document.getElementById('val2').value;
+   //  var input3 = document.getElementById('val3').value;
    //  var input4 = document.getElementById('val4').value;
    //  var input5 = document.getElementById('val5').value;
    //  var input6 = document.getElementById('val6').value;
@@ -488,29 +483,29 @@
     //         (dd>9 ? '' : '0') + dd
     //     ].join('');
     // };
-
-    var today = new Date(),
-        seven = new Date(), e = String(seven).split(' ');
-    var month =1+seven.getMonth();
-    var  date7 = e[2]-6+'/'+month+'/'+e[3];
-        six = new Date(), e = String(six).split(' ');
-    var month =1+six.getMonth();
-    var  date6 = e[2]-5+'/'+month+'/'+e[3];
-        five = new Date(), e = String(five).split(' ');
-    var month =1+five.getMonth();
-    var  date5 = e[2]-4+'/'+month+'/'+e[3];
-        four = new Date(), e = String(four).split(' ');
-    var month =1+four.getMonth();
-    var  date4 = e[2]-3+'/'+month+'/'+e[3];
-        three = new Date(), e = String(three).split(' ');
-    var month =1+three.getMonth();
-    var  date3 = e[2]-2+'/'+month+'/'+e[3];
-        two = new Date(), e = String(two).split(' ');
-    var month =1+two.getMonth();
-    var  date2 = e[2]-1+'/'+month+'/'+e[3];
-        one = new Date(), e = String(one).split(' ');
-        var month =1+one.getMonth();
-        var  date1 = e[2]+'/'+month+'/'+e[3];
+    //
+    // var today = new Date(),
+    //     seven = new Date(), e = String(seven).split(' ');
+    // var month =1+seven.getMonth();
+    // var  date7 = e[2]-6+'/'+month+'/'+e[3];
+    //     six = new Date(), e = String(six).split(' ');
+    // var month =1+six.getMonth();
+    // var  date6 = e[2]-5+'/'+month+'/'+e[3];
+    //     five = new Date(), e = String(five).split(' ');
+    // var month =1+five.getMonth();
+    // var  date5 = e[2]-4+'/'+month+'/'+e[3];
+    //     four = new Date(), e = String(four).split(' ');
+    // var month =1+four.getMonth();
+    // var  date4 = e[2]-3+'/'+month+'/'+e[3];
+    //     three = new Date(), e = String(three).split(' ');
+    // var month =1+three.getMonth();
+    // var  date3 = e[2]-2+'/'+month+'/'+e[3];
+    //     two = new Date(), e = String(two).split(' ');
+    // var month =1+two.getMonth();
+    // var  date2 = e[2]-1+'/'+month+'/'+e[3];
+    //     one = new Date(), e = String(one).split(' ');
+    //     var month =1+one.getMonth();
+    //     var  date1 = e[2]+'/'+month+'/'+e[3];
     // seven.setDate(today.getDate()-6);
     //     six.setDate(today.getDate()-5);
     //     five.setDate(today.getDate()-4);
@@ -554,18 +549,18 @@
         // The data for our dataset
         data: {
             labels: [
-                date7,
-                date6,
-                date5,
-                date4,
-                date3,
-                date2,
-                date1
+                "2015-10-01",
+                "2015-10-01",
+                "2015-10-01",
+                "2015-10-01",
+                "2015-10-01",
+                "2015-10-01",
+                "2015-10-01"
             ],
             datasets: [{
                 backgroundColor: "rgb(206, 225, 240)",
                 borderColor: "rgb(72, 137, 191)",
-                data: [0, 0,0, 0, input3, input2, input1, 20]
+                data: [input[1],input[2], input[3], input[4],input[5], input[6], input[7], 20]
             }]
         }
     });

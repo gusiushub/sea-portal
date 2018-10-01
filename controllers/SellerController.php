@@ -2,8 +2,10 @@
 
 namespace app\controllers;
 
+use app\models\Advertisement;
 use app\models\Request;
 use app\models\Statistics;
+use app\models\Uploaded;
 use app\models\User;
 use app\models\Vessel;
 use app\models\UploadImage;
@@ -145,7 +147,19 @@ $user = new User();
 
     public function actionAdvertisement()
     {
-        return $this->render('advertisement');
+        $upload = new Uploaded();
+            if (Yii::$app->request->isPost) {
+                $file = UploadedFile::getInstance($upload, 'image');
+                $table = Advertisement::find()->where(['id' => $_POST['inp']])->one();
+                if ($upload->uploadFile($file, $table['img'],$table)) {
+                    $post = Advertisement::find()->where('id=:id',[':id'=>$_POST['inp']])->one();
+                    $post->user_id = Yii::$app->user->id;
+                    $post->save();
+                    return $this->redirect('/web/seller/advertisement');
+                    //return $this->render('advertisement');
+                }
+                //return $this->render('advertisement',['upload'=>$upload]);
+            }
+        return $this->render('advertisement',['upload'=>$upload]);
     }
-
 }
