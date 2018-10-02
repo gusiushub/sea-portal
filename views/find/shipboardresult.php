@@ -1,6 +1,8 @@
 <?php
 
 use app\models\User;
+use yii\bootstrap\ActiveForm;
+
 $this->title = 'Shipboard supply';
 
 ?>
@@ -230,7 +232,9 @@ $this->title = 'Shipboard supply';
 </header>
 <main>
     <section class="results-for-shipboard">
+
         <div class="container">
+
             <div class="row">
                 <div class="col-lg-9">
                     <div class="secondary-headline margin-bottom-light text-left">
@@ -238,6 +242,11 @@ $this->title = 'Shipboard supply';
                             search results for shipboard supply & transportation
                         </h2>
                     </div>
+                    <?php
+                    if(empty($free)){
+                        echo '<p>Ничего не найдено!</p>';
+                    }
+                    ?>
                     <?php if(!empty($businessAdvanced)){ ?>
                     <div class="companies-wrapper margin-bottom-medium">
                         <div class="row">
@@ -364,7 +373,7 @@ $this->title = 'Shipboard supply';
                         </div>
                         <div class="row">
                             <?php
-                            foreach($free as $user){  //var_dump($e['user_id']);
+                            foreach($free as $user){
                             $prof = User::findOne($user['user_id']);
                             ?>
                             <div class="col-lg-4">
@@ -390,6 +399,7 @@ $this->title = 'Shipboard supply';
                     </div>
                     <?php } ?>
                 </div>
+
                 <!--Block wrapper-->
                 <div class="col-lg-3">
                     <aside class="right-send">
@@ -415,7 +425,9 @@ $this->title = 'Shipboard supply';
                             </div>
                         </div>
                     </aside>
-                    <form class="right-send">
+<!--                    <form method="post" class="right-send">-->
+                    <?php $form = ActiveForm::begin(); ?>
+                    <div class='right-send'>
                         <h3 class="right-send__title">
                             Send an application
                         </h3>
@@ -428,7 +440,7 @@ $this->title = 'Shipboard supply';
                         <div class="textinput-container">
                             <input type="text" class="textinput-container__input" placeholder="PHONE" name="phone">
                         </div>
-                        <input id="inputt" value="" type="hidden">
+                        <input name="users" id="inputt" value="" type="hidden">
                         <div class="textinput-container">
                             <input type="text" class="textinput-container__input" placeholder="COMPANY" name="company">
                         </div>
@@ -445,7 +457,7 @@ $this->title = 'Shipboard supply';
                         </div>
                         <div class="accepting">
                             <div class="checkbox-style">
-                                <input type="checkbox" id='accepting' class="checkbox-style__input">
+                                <input name="agree" value="yes" type="checkbox" id='accepting' class="checkbox-style__input">
                                 <label for="accepting" class="checkbox-style__label">
                                     <span class="checkbox-style__check checkbox-style__check--accepting"></span>
                                     <p class="checkbox-style__text">I have read and agree to the <a href="#" class="checkbox-style__link">Terms and Conditions</a></p>
@@ -455,10 +467,14 @@ $this->title = 'Shipboard supply';
                         <button class="button">
                             send
                         </button>
-                    </form>
+                    </div>
+                    <?php ActiveForm::end(); ?>
+<!--                    </form>-->
                 </div>
             </div>
+
         </div>
+
     </section>
 </main>
 <footer class="footer">
@@ -565,7 +581,7 @@ $this->title = 'Shipboard supply';
                 </div>
                 <div class="copyright">
                     <p class="copyright__design-by">
-                        Design by HoteyCompany
+
                     </p>
                 </div>
             </div>
@@ -593,7 +609,7 @@ $this->title = 'Shipboard supply';
     $('.recommend').click (function() {
         var val = $('#inputt').val();
         var num = $(this).data('user');
-        $('#inputt').val(val+';'+num);
+        $('#inputt').val(val+' '+num);
         console.log(val);
         console.log(num);
         //console.log($('#inputt').val(val + num));

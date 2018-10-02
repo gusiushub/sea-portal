@@ -1,3 +1,12 @@
+<?php
+
+use app\models\User;
+use yii\bootstrap\ActiveForm;
+
+$this->title = 'Shipboard supply';
+
+?>
+
 <body>
 <header class="header">
     <div class="container">
@@ -9,11 +18,8 @@
                     </div>
                     <?php
 
-                    use yii\bootstrap\ActiveForm;
-                    use yii\bootstrap\Html;
-                    if(empty($free)){
-                        echo 'Ничего не найдено!';
-                    }
+
+
                     if (Yii::$app->user->isGuest){ ?>
                         <div class="authorization">
                             <a href="/web/site/login" class="authorization__link">
@@ -27,7 +33,7 @@
 
                         <div class="settings">
                             <div class="settings__item">
-                                <a href="/web/company/profile" class="settings__email">
+                                <a href="/web/user/profile" class="settings__email">
                                     <?php echo Yii::$app->user->identity->email ?>
                                 </a>
                             </div>
@@ -44,7 +50,7 @@
                                 <div class="settings__hidden-menu">
                                     <ul class="settings__list">
                                         <li class="settings__list-item">
-                                            <a href="#" class="settings__link">
+                                            <a href="/web/user/profile" class="settings__link">
                                                 Profile
                                             </a>
                                         </li>
@@ -59,7 +65,6 @@
                         </div>
 
                     <?php } ?>
-
                     <div class="adaptive-menu">
                         <div class="adaptive-menu__button">
                             <img src="../../web/public/img/icons/burger.png" alt="burger">
@@ -77,7 +82,7 @@
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="/web/find/shipboard-supply" class="adaptive-menu__link adaptive-menu__link--active">
+                                    <a href="/web/find/shipboard-supply" class="adaptive-menu__link">
                                         Find a supplier
                                     </a>
                                 </li>
@@ -87,12 +92,12 @@
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/crew" class="adaptive-menu__link adaptive-menu__link--active">
                                         Crew
                                     </a>
                                 </li>
                                 <li class="adaptive-menu__item">
-                                    <a href="#" class="adaptive-menu__link">
+                                    <a href="/web/find/chartering" class="adaptive-menu__link">
                                         Vessels sell/chartering
                                     </a>
                                 </li>
@@ -184,13 +189,13 @@
                             Shipboard supply
                         </h3>
                     </a>
-                    <a href='/web/find/port-services' class="primary-menu__item ">
+                    <a href='/web/find/port-services' class="primary-menu__item primary-menu__item--active">
                         <i class="icon-tap primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             Port services
                         </h3>
                     </a>
-                    <a href='/web/find/inspection-equipment' class="primary-menu__item primary-menu__item--active">
+                    <a href='/web/find/inspection-equipment' class="primary-menu__item">
                         <i class="icon-list2 primary-menu__icon"></i>
                         <h3 class="primary-menu__title">
                             Inspection of equipment
@@ -226,140 +231,250 @@
     </div>
 </header>
 <main>
-    <section class="info-section">
+    <section class="results-for-shipboard">
+
         <div class="container">
+
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="secondary-headline margin-bottom-light">
+                <div class="col-lg-9">
+                    <div class="secondary-headline margin-bottom-light text-left">
                         <h2 class="secondary-headline__title">
-                            Find necessary goods, spare parts, equipment and organise delivery on board
+                            search results for shipboard supply & transportation
                         </h2>
                     </div>
-                    <div class="sub-title margin-bottom-medium">
-                        <p class="sub-title__paragraph">Spare parts and equipment, Transport and Logistics, Provision & Bonded Store, General Ship</p>
-                        <p class="sub-title__paragraph">Supply, Marine chemicals, Marine paint, Nautical charts, Ship ropes, chains and etc.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-8">
-                    <?php $form = ActiveForm::begin(); ?>
                     <?php
-                    //                        $items = [
-                    //                            '0' => 'Активный',
-                    //                            'MARINE PAINTS' => 'MARINE PAINTS',
-                    //                            'spare parts and equipment'=>'spare parts and equipment'
-                    //                        ];
-
-                    $dataPost= [
-                        '0' => '2ццц',
-                    ];
+                    if(empty($free)){
+                        echo '<p>Ничего не найдено!</p>';
+                    }
                     ?>
-
-                    <div class="filter">
-                        <div class="secondary-headline margin-bottom-light">
-                            <h2 class="secondary-headline__title">
-                                shipboard supply, transport and logistics
-                            </h2>
-                        </div>
-                        <div class="filter__item margin-bottom-light">
-                            <h4 class="filter__title">
-                                Refine your search
-                            </h4>
-                            <div class="select-style">
-                                <?php $contracts = \app\models\Contracts::find()->all(); ?>
-                                <?= $form->field($model, 'search')->dropDownList(\yii\helpers\ArrayHelper::map($contracts,'search','search'),
-                                    ['id'=>'search',
-                                        'prompt'=>'Refine your search',
-                                        'class'=>'select-style__select'
-                                    ]); ?>
-
-                                <div class="select-style__arrow">&nbsp;</div>
-                            </div>
-                        </div>
-                        <div class="filter__item margin-bottom-light">
-                            <div style="display: none" class="form-group city-select">
-                                <h4 class="filter__title">
-                                    Spare parts and equipment
-                                </h4>
-                                <div class="select-style">
-                                    <?= $form
-                                        ->field($model, 'equipment')
-                                        ->dropDownList(
-                                            $dataPost,
-                                            ['id'=>'equipment',
-                                                'class'=>'select-style__select',
-                                            ]); ?>
-
-                                    <div class="select-style__arrow">&nbsp;</div>
+                    <?php if(!empty($businessAdvanced)){ ?>
+                        <div class="companies-wrapper margin-bottom-medium">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="companies-headline">
+                                        <p class="companies-headline__prime">
+                                            prime
+                                        </p>
+                                        <p class="companies-headline__found">
+                                            Found: <span class="companies-headline__found-num"><?php echo count($businessAdvanced)?></span> companies
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="filter__item margin-bottom-medium">
-                            <div style="display: none" class="form-group city-select2">
-                                <h4 class="filter__title">
-                                    maker
-                                </h4>
+
+
+                            <div class="row">
                                 <?php
-                                $da =  [
-                                    '0' => '2цssssцц',
-                                ];
-                                $maker = \app\models\Contracts::find()->select('maker')->distinct()->all();
-                                ?>
-                                <div class="select-style">
-                                    <?= $form->field($model, 'maker')
-                                        ->dropDownList(
-                                            \yii\helpers\ArrayHelper::map($contracts,'maker','maker'),
-                                            ['id'=>'maker',
-                                                'class'=>'select-style__select'
-                                            ]
-                                        ); ?>
+                                foreach($businessAdvanced as $user){  //var_dump($e['user_id']);
+                                    $prof = User::findOne($user['user_id']);
+                                    ?>
+                                    <div class="col-lg-4">
+                                        <div class="company-box">
+                                            <div class="company-box__logo">
+                                                <?php if (!empty($prof['img'])){ ?>
+                                                    <img src="../../web/public/uploads/<?php echo $prof['img'] ?>" alt="company logo" class="company-box__image">
+                                                <?php }else{?>
+                                                    <img src="../../web/public/img/company-logo.png" alt="company logo" class="company-box__image">
+                                                <?php } ?>
+                                            </div>
+                                            <div class="company-box__description">
+                                                <h5 class="company-box__company-name">
+                                                    <?php echo $prof['username']?>
+                                                </h5>
+                                                <a href="#" class="company-box__site-link">
+                                                    <?php echo $prof['website']?>
+                                                </a>
+                                            </div>
+                                            <div class="add-plus add-plus--company-box">
+                                                <p class="add-plus__symbol">
+                                                    +
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+                            </div>
 
-                                    <div class="select-style__arrow">&nbsp;</div>
+                            <div class="row">
+                                <div class="col-lg-12 text-right">
+                                    <a href="#" class="show-all">Show all</a>
                                 </div>
-
                             </div>
                         </div>
-                        <!--                        <input type="hidden" name="_csrf" value="--><?//=Yii::$app->request->getCsrfToken()?><!--" />-->
-                        <div class="filter__item">
-                            <?= Html::submitButton('Sing in', ['class' => 'button button--show-results', 'name' => 'submit','value'=>'ok']) ?>
-                        </div>
-                    </div>
+                        <?php
+                    }
+                    if (!empty($business)){
+                        ?>
+                        <!--Block wrapper-->
+                        <div class="companies-wrapper margin-bottom-medium">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="companies-headline">
+                                        <p class="companies-headline__prime">
+                                            recommend
+                                        </p>
+                                        <p class="companies-headline__found">
+                                            Found: <span class="companies-headline__found-num"><?php echo count($business)?></span> companies
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="business" class="row">
+                                <?php
+                                foreach($business as $user){  //var_dump($e['user_id']);
+                                    $prof = User::findOne($user['user_id']);
+                                    ?>
+                                    <div class="col-lg-4">
+                                        <div class="company-box">
+                                            <div class="company-box__logo">
+                                                <img src="../../web/public/img/company-logo.png" alt="company logo" class="company-box__image">
+                                            </div>
+                                            <div class="company-box__description">
+                                                <h5  class="company-box__company-name">
+                                                    <?php echo $prof['username']?>
+                                                </h5>
+                                                <a  href="#" class="company-box__site-link">
+                                                    <?php echo $prof['website']?>
+                                                </a>
+                                                <input id="<?php echo $prof['id'] ?>" name="username" class="inputid"  type="hidden" value="<?php echo $prof['id'] ?>">
+                                            </div>
+                                            <div data-user="<?php echo $prof['id'] ?>" class="add-plus add-plus--company-box recommend">
+                                                <p class="add-plus__symbol">
+                                                    +
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php } ?>
 
-                    <?php ActiveForm::end(); ?>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 text-right">
+                                    <a href="#" class="show-all">Show all</a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
+
+                    <?php if(!empty($free)){ ?>
+                        <!--Block wrapper-->
+                        <div class="companies-wrapper">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="companies-headline">
+                                        <p class="companies-headline__prime">
+                                            general
+                                        </p>
+                                        <p class="companies-headline__found">
+                                            Found: <span class="companies-headline__found-num"><?php echo count($free) ?></span> companies
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <?php
+                                foreach($free as $user){
+                                    $prof = User::findOne($user['user_id']);
+                                    ?>
+                                    <div class="col-lg-4">
+                                        <div class="company-box company-box--empty">
+                                            <div class="company-box__description">
+                                                <h5 id="free-username" class="company-box__company-name">
+                                                    <?php echo $prof['username']?>
+                                                </h5>
+                                                <a href="#" class="company-box__site-link">
+                                                    <?php echo $prof['website']?>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 text-right">
+                                    <a href="#" class="show-all">Show all</a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
                 </div>
-                <div class="col-lg-4">
-                    <div class="advertising-wrapper">
-                        <a href='#' class="advertising">
-                            <p class="advertising__content"><img width="395px" height="195px"  src="../../web/public/uploads/<?php echo $place[0]['img']?>" ></p>
-                        </a>
-                        <a href='#' class="advertising">
-                            <p class="advertising__content"><img width="395px" height="195px"  src="../../web/public/uploads/<?php echo $place[1]['img']?>" ></p>
-                        </a>
-                        <a href='#' class="advertising">
-                            <p class="advertising__content"><img width="395px" height="195px"  src="../../web/public/uploads/<?php echo $place[2]['img']?>" ></p>
-                        </a>
+
+                <!--Block wrapper-->
+                <div class="col-lg-3">
+                    <aside class="right-send">
+                        <h3 class="right-send__title">
+                            Chosen company
+                        </h3>
+                        <div class="criteria">
+                            <p class="criteria__text">Prime <span class="criteria__company-num">(<?php echo count($businessAdvanced) ?> companies)</span></p>
+                            <div class="checkbox-style">
+                                <input type="checkbox" id='prime' class="checkbox-style__input">
+                                <label for="prime" class="checkbox-style__label">
+                                    <span class="checkbox-style__check"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="criteria">
+                            <p class="criteria__text">Recommend <span class="criteria__company-num">(<?php echo count($business) ?> companies)</span></p>
+                            <div class="checkbox-style">
+                                <input type="checkbox" id='recommend' class="checkbox-style__input">
+                                <label for="recommend" class="checkbox-style__label">
+                                    <span class="checkbox-style__check"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </aside>
+                    <!--                    <form method="post" class="right-send">-->
+                    <?php $form = ActiveForm::begin(); ?>
+                    <div class='right-send'>
+                        <h3 class="right-send__title">
+                            Send an application
+                        </h3>
+                        <div class="textinput-container">
+                            <input type="text" class="textinput-container__input" placeholder="NAME" name="name">
+                        </div>
+                        <div class="textinput-container">
+                            <input type="text" class="textinput-container__input" placeholder="E-MAIL" name="email">
+                        </div>
+                        <div class="textinput-container">
+                            <input type="text" class="textinput-container__input" placeholder="PHONE" name="phone">
+                        </div>
+                        <input name="users" id="inputt" value="" type="hidden">
+                        <div class="textinput-container">
+                            <input type="text" class="textinput-container__input" placeholder="COMPANY" name="company">
+                        </div>
+                        <div class="textinput-container">
+                            <input type="text" class="textinput-container__input textinput-container__input--plus" placeholder="ATTACH FILE" name="attach file">
+                            <div class="add-plus add-plus--attach-file">
+                                <p class="add-plus__symbol">
+                                    +
+                                </p>
+                            </div>
+                        </div>
+                        <div class="textinput-container margin-bottom-medium">
+                            <textarea name="message" class="textinput-container__textarea" placeholder="COMMENTS"></textarea>
+                        </div>
+                        <div class="accepting">
+                            <div class="checkbox-style">
+                                <input name="agree" value="yes" type="checkbox" id='accepting' class="checkbox-style__input">
+                                <label for="accepting" class="checkbox-style__label">
+                                    <span class="checkbox-style__check checkbox-style__check--accepting"></span>
+                                    <p class="checkbox-style__text">I have read and agree to the <a href="#" class="checkbox-style__link">Terms and Conditions</a></p>
+                                </label>
+                            </div>
+                        </div>
+                        <button class="button">
+                            send
+                        </button>
                     </div>
+                    <?php ActiveForm::end(); ?>
+                    <!--                    </form>-->
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    <a href='#' class="advertising">
-                        <p class="advertising__content"><img width="395px" height="195px"  src="../../web/public/uploads/<?php echo $place[3]['img']?>" ></p>
-                    </a>
-                </div>
-                <div class="col-lg-4">
-                    <a href='#' class="advertising">
-                        <p class="advertising__content"><img width="395px" height="195px"  src="../../web/public/uploads/<?php echo $place[4]['img']?>" ></p>
-                    </a>
-                </div>
-                <div class="col-lg-4">
-                    <a href='#' class="advertising">
-                        <p class="advertising__content"><img width="395px" height="195px"  src="../../web/public/uploads/<?php echo $place[5]['img']?>" ></p>
-                    </a>
-                </div>
-            </div>
+
         </div>
+
     </section>
 </main>
 <footer class="footer">
@@ -378,22 +493,22 @@
                         </h4>
                         <ul class="footer-nav__list">
                             <li class="footer-nav__item">
-                                <a href="/web/find/shipboard-supply" class="footer-nav__link">
+                                <a href="#" class="footer-nav__link">
                                     Find a supplier
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="/web/site/become-supplier" class="footer-nav__link">
+                                <a href="#" class="footer-nav__link">
                                     Become a supplier
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="/web/find/crew" class="footer-nav__link">
+                                <a href="#" class="footer-nav__link">
                                     Crew
                                 </a>
                             </li>
                             <li class="footer-nav__item">
-                                <a href="/web/find/vessels-sale" class="footer-nav__link">
+                                <a href="#" class="footer-nav__link">
                                     Vessels sell/chartering
                                 </a>
                             </li>
@@ -466,39 +581,39 @@
                 </div>
                 <div class="copyright">
                     <p class="copyright__design-by">
-                        Design by HoteyCompany
+
                     </p>
                 </div>
             </div>
         </div>
     </div>
 </footer>
+
 </body>
 <script src="../../web/public/js/common.js"></script>
-
 <script>
-
-    $(function(){
-
-        $('#search').change(function(){
-            var search = $(this).val();
-            $('#equipment').load('ajax-shipboarb', {search: search}, function(){
-                $('.city-select').fadeIn('fast');
-            });
-
-        });
-
+    // $('.recommend').click(function () {
+    //     function makeCounter() {
+    //         var currentCount = 1;
+    //         return function() {
+    //             return currentCount++;
+    //         };
+    //     }
+    //     var counter = makeCounter();
+    //
+    //    var id = $('#id').val();
+    //    console.log(id);
+    // });
+</script>
+<script>
+    $('.recommend').click (function() {
+        var val = $('#inputt').val();
+        var num = $(this).data('user');
+        $('#inputt').val(val+' '+num);
+        console.log(val);
+        console.log(num);
+        //console.log($('#inputt').val(val + num));
     });
 
-    $(function(){
 
-        $('#equipment').change(function(){
-            var equipment = $(this).val();
-            $('#maker').load('ajax-shipboarb', {equipment: equipment}, function(){
-                $('.city-select2').fadeIn('fast');
-            });
-
-        });
-
-    });
 </script>

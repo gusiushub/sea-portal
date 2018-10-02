@@ -43,7 +43,7 @@ class CompanyController extends Controller
         if(isset($_POST['ans'])){
             //$requests = Request::find()->where('user_id = :user_id',[':user_id'=>$_POST['user_id']])->one();
             $request = new Request();
-            $user = User::findOne($_POST['id']);
+            //$user = User::findOne($_POST['id']);
             $request->user_id = $_POST['id'];
             $request->user_from = Yii::$app->user->id;
             //'_csrf'= $_POST['_csrf'];
@@ -65,8 +65,7 @@ class CompanyController extends Controller
                 ->where('date = :date',[':date'=>$_POST['date']])
                 ->andWhere('user_id = :user_id',[':user_id'=>Yii::$app->user->id])
                 ->all();
-            //var_dump($requests);
-            return $this->render('request',['requests'=>$requests,'date'=>$select_date,'category'=>$select_category]);
+                 return $this->render('request',['requests'=>$requests,'date'=>$select_date,'category'=>$select_category]);
         }
         if (isset($_POST['category'])){
             $requests = Request::find()
@@ -110,7 +109,6 @@ class CompanyController extends Controller
         $date = date('Y/m/d',strtotime(date('Y-m-d').' +1 month'));
         if (isset($_POST['check'])){
             $ajax = json_decode($_POST['check'], true);
-            //var_dump($ajax);
 
             $id = Yii::$app->user->identity->id;
             $num = Contracts::find()->where(['user_id'=>$id])->all();
@@ -137,12 +135,11 @@ class CompanyController extends Controller
                 $user = new User();
 
                     return $this->render('prof', ['user' => $user]);
-//                }
             }else{
-                $this->redirect(['index']);
+                return $this->redirect(['/site']);
             }
         }else {
-            $this->redirect(['index']);
+            return $this->redirect(['/site']);
         }
     }
 
@@ -153,10 +150,10 @@ class CompanyController extends Controller
             if ( $status == 2) {
             return $this->render('pricing');
             }else{
-                $this->redirect(['index']);
+                return $this->redirect(['/site']);
             }
         }else {
-            $this->redirect(['index']);
+            return $this->redirect(['/site']);
         }
     }
 
@@ -172,10 +169,10 @@ class CompanyController extends Controller
                     ->all();
                 return $this->render('statistics',['statistics'=>$statistics]);
             }else{
-                $this->redirect(['index']);
+                return $this->redirect(['/site']);
             }
         }else {
-            $this->redirect(['index']);
+            return $this->redirect(['/site']);
         }
     }
 
@@ -187,10 +184,10 @@ class CompanyController extends Controller
                 $model = Contracts::find()->select('*')->where('user_id = :user_id', [':user_id' => Yii::$app->user->id])->all();
                 return $this->render('contracts',['model'=>$model]);
             }else{
-                $this->redirect(['index']);
+                return $this->redirect(['/site']);
             }
         }else {
-            $this->redirect(['index']);
+            return $this->redirect(['/site']);
         }
     }
 
@@ -202,10 +199,10 @@ class CompanyController extends Controller
                 //$model = new DataSelection();
                 return $this->render('addcontracts');//,['model' => $model]);
             }else{
-                $this->redirect(['index']);
+                return $this->redirect(['/site']);
             }
         }else {
-            $this->redirect(['index']);
+            return $this->redirect(['/site']);
         }
     }
 
@@ -216,10 +213,10 @@ class CompanyController extends Controller
             if ( $status == 2) {
         return $this->render('chooseplan');
             }else{
-                $this->redirect(['index']);
+                return $this->redirect(['/site']);
             }
         }else {
-            $this->redirect(['index']);
+            return $this->redirect(['/site']);
         }
     }
 
@@ -228,12 +225,12 @@ class CompanyController extends Controller
         if (!Yii::$app->user->isGuest){
             $status = Yii::$app->user->identity->user_status;
             if ( $status == 2) {
-        return $this->render('pay');
+                return $this->render('pay');
             }else{
-                $this->redirect(['index']);
+                return $this->redirect(['/site']);
             }
         }else {
-            $this->redirect(['index']);
+            return $this->redirect(['/site']);
         }
     }
 
@@ -242,14 +239,12 @@ class CompanyController extends Controller
         if (!Yii::$app->user->isGuest){
             $status = Yii::$app->user->identity->user_status;
             if ( $status == 2) {
-        return $this->render('terms');
+            return $this->render('terms');
             }else{
-                $this->redirect(['index']);
+                return $this->redirect(['/site']);
             }
-        }else {
-            $this->redirect(['index']);
         }
-
+        return $this->redirect(['/site']);
     }
 
     public function actionIncomingRequests()
@@ -259,12 +254,10 @@ class CompanyController extends Controller
             if ( $status == 2) {
         return $this->render('terms');
             }else{
-                $this->redirect(['index']);
+                return $this->redirect(['/site']);
             }
-        }else {
-            $this->redirect(['index']);
         }
-
+            return $this->redirect(['/site']);
     }
 
     public function actionTermsConditions()
@@ -274,10 +267,10 @@ class CompanyController extends Controller
             if ( $status == 2) {
                 return $this->render('terms');
             }else{
-                $this->redirect(['index']);
+                return $this->redirect(['/site']);
             }
-        }else {
-            $this->redirect(['index']);
         }
-            }
+        return $this->redirect(['/site']);
+
     }
+}

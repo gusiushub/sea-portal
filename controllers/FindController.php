@@ -26,7 +26,6 @@ class FindController extends Controller
         $place = Advertisement::find()->all();
         $model = new FindModel();
         if (isset($_POST['submit'])){
-
             $freePlan = Contracts::find()
                 ->where( 'search=:search',[':search'=> $_POST['FindModel']['search']])
                 ->andWhere('mechanism=:mechanism',[':mechanism'=>$_POST['FindModel']['equipment']])
@@ -50,6 +49,56 @@ class FindController extends Controller
                 ->all();
 
             return $this->render('shipboardresult',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
+        }
+
+        if (isset($_POST['agree'])){
+            if ($_POST['agree']=='yes'){
+                 // = "piece1 piece2 piece3 piece4 piece5 piece6";
+                $arr = explode(" ", $_POST['users']);
+
+                foreach ($arr as $users) {
+                    if (!empty($users)) {
+
+                        $user = User::findOne($users);
+                        //var_dump($user['email']);
+                        Yii::$app->mailer->compose()
+                            ->setFrom(Yii::$app->user->identity->email)
+                            ->setTo($user['email'])
+                            ->setSubject($_POST['company'])
+                            ->setTextBody($_POST['message'])
+                            ->send();
+                        $request = new Request();
+                        $request->user_id = $user['id'];
+                        if (!Yii::$app->user->isGuest) {
+                            $request->user_from = Yii::$app->user->id;
+                        }
+                        $request->name = $_POST['name'];
+                        $request->date = date('Y/m/d');
+                        $request->email = $_POST['email'];
+                        $request->phone = $_POST['phone'];
+                        $request->company = $_POST['company'];
+                        $request->category = 'find a practice';
+                        $request->message = $_POST['message'];
+                        $request->save();
+
+                        $statistics = Statistics::find()->where(['user_id'=>$user['id']])
+                            ->andWhere(['date'=>date('Y.m.d')])->one();
+                        if ($statistics['date']==date('Y.m.d')) {
+                            $statistics->request = $statistics['request'] + 1;
+                            $statistics->user_id = $user['id'];
+                            $statistics->date = date('Y.m.d');
+                            $statistics->save() ? $statistics : null;
+                        }else{
+                            $statisticsNew = new Statistics();
+                            $statisticsNew->request = $statistics['request'] + 1;
+                            $statisticsNew->user_id = $user['id'];
+                            $statisticsNew->date = date('Y.m.d');
+                            $statisticsNew->save() ? $statisticsNew : null;
+                        }
+                    }
+                }
+                return $this->redirect('/web/find/shipboard-supply');
+            }
         }
         return $this->render('shipboardsupply',['place'=>$place,'model'=>$model]);
     }
@@ -84,7 +133,57 @@ class FindController extends Controller
                 ->andWhere('category = :category',[':category'=>'port services'])
                 ->all();
 
-            return $this->render('portservices',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
+            return $this->render('portservicesresult',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
+        }
+
+        if (isset($_POST['agree'])){
+            if ($_POST['agree']=='yes'){
+                // = "piece1 piece2 piece3 piece4 piece5 piece6";
+                $arr = explode(" ", $_POST['users']);
+
+                foreach ($arr as $users) {
+                    if (!empty($users)) {
+
+                        $user = User::findOne($users);
+                        //var_dump($user['email']);
+                        Yii::$app->mailer->compose()
+                            ->setFrom(Yii::$app->user->identity->email)
+                            ->setTo($user['email'])
+                            ->setSubject($_POST['company'])
+                            ->setTextBody($_POST['message'])
+                            ->send();
+                        $request = new Request();
+                        $request->user_id = $user['id'];
+                        if (!Yii::$app->user->isGuest) {
+                            $request->user_from = Yii::$app->user->id;
+                        }
+                        $request->name = $_POST['name'];
+                        $request->date = date('Y/m/d');
+                        $request->email = $_POST['email'];
+                        $request->phone = $_POST['phone'];
+                        $request->company = $_POST['company'];
+                        $request->category = 'find a practice';
+                        $request->message = $_POST['message'];
+                        $request->save();
+
+                        $statistics = Statistics::find()->where(['user_id'=>$user['id']])
+                            ->andWhere(['date'=>date('Y.m.d')])->one();
+                        if ($statistics['date']==date('Y.m.d')) {
+                            $statistics->request = $statistics['request'] + 1;
+                            $statistics->user_id = $user['id'];
+                            $statistics->date = date('Y.m.d');
+                            $statistics->save() ? $statistics : null;
+                        }else{
+                            $statisticsNew = new Statistics();
+                            $statisticsNew->request = $statistics['request'] + 1;
+                            $statisticsNew->user_id = $user['id'];
+                            $statisticsNew->date = date('Y.m.d');
+                            $statisticsNew->save() ? $statisticsNew : null;
+                        }
+                    }
+                }
+                return $this->redirect('/web/find/shipboard-supply');
+            }
         }
         return $this->render('portservices',['place'=>$place,'model'=>$model]);
     }
@@ -117,7 +216,58 @@ class FindController extends Controller
                 ->andWhere('category = :category',[':category'=>'inspection of equipment'])
                 ->all();
 
-            return $this->render('inspection',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
+
+            return $this->render('inspectionresult',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
+        }
+
+        if (isset($_POST['agree'])){
+            if ($_POST['agree']=='yes'){
+                // = "piece1 piece2 piece3 piece4 piece5 piece6";
+                $arr = explode(" ", $_POST['users']);
+
+                foreach ($arr as $users) {
+                    if (!empty($users)) {
+
+                        $user = User::findOne($users);
+                        //var_dump($user['email']);
+                        Yii::$app->mailer->compose()
+                            ->setFrom(Yii::$app->user->identity->email)
+                            ->setTo($user['email'])
+                            ->setSubject($_POST['company'])
+                            ->setTextBody($_POST['message'])
+                            ->send();
+                        $request = new Request();
+                        $request->user_id = $user['id'];
+                        if (!Yii::$app->user->isGuest) {
+                            $request->user_from = Yii::$app->user->id;
+                        }
+                        $request->name = $_POST['name'];
+                        $request->date = date('Y/m/d');
+                        $request->email = $_POST['email'];
+                        $request->phone = $_POST['phone'];
+                        $request->company = $_POST['company'];
+                        $request->category = 'find a practice';
+                        $request->message = $_POST['message'];
+                        $request->save();
+
+                        $statistics = Statistics::find()->where(['user_id'=>$user['id']])
+                            ->andWhere(['date'=>date('Y.m.d')])->one();
+                        if ($statistics['date']==date('Y.m.d')) {
+                            $statistics->request = $statistics['request'] + 1;
+                            $statistics->user_id = $user['id'];
+                            $statistics->date = date('Y.m.d');
+                            $statistics->save() ? $statistics : null;
+                        }else{
+                            $statisticsNew = new Statistics();
+                            $statisticsNew->request = $statistics['request'] + 1;
+                            $statisticsNew->user_id = $user['id'];
+                            $statisticsNew->date = date('Y.m.d');
+                            $statisticsNew->save() ? $statisticsNew : null;
+                        }
+                    }
+                }
+                return $this->redirect('/web/find/shipboard-supply');
+            }
         }
         return $this->render('inspection',['place'=>$place,'model'=>$model]);
     }
@@ -150,7 +300,57 @@ class FindController extends Controller
                 ->andWhere('category = :category',[':category'=>'courses'])
                 ->all();
 
-            return $this->render('courses',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
+            return $this->render('coursesresult',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
+        }
+
+        if (isset($_POST['agree'])){
+            if ($_POST['agree']=='yes'){
+                // = "piece1 piece2 piece3 piece4 piece5 piece6";
+                $arr = explode(" ", $_POST['users']);
+
+                foreach ($arr as $users) {
+                    if (!empty($users)) {
+
+                        $user = User::findOne($users);
+                        //var_dump($user['email']);
+                        Yii::$app->mailer->compose()
+                            ->setFrom(Yii::$app->user->identity->email)
+                            ->setTo($user['email'])
+                            ->setSubject($_POST['company'])
+                            ->setTextBody($_POST['message'])
+                            ->send();
+                        $request = new Request();
+                        $request->user_id = $user['id'];
+                        if (!Yii::$app->user->isGuest) {
+                            $request->user_from = Yii::$app->user->id;
+                        }
+                        $request->name = $_POST['name'];
+                        $request->date = date('Y/m/d');
+                        $request->email = $_POST['email'];
+                        $request->phone = $_POST['phone'];
+                        $request->company = $_POST['company'];
+                        $request->category = 'find a practice';
+                        $request->message = $_POST['message'];
+                        $request->save();
+
+                        $statistics = Statistics::find()->where(['user_id'=>$user['id']])
+                            ->andWhere(['date'=>date('Y.m.d')])->one();
+                        if ($statistics['date']==date('Y.m.d')) {
+                            $statistics->request = $statistics['request'] + 1;
+                            $statistics->user_id = $user['id'];
+                            $statistics->date = date('Y.m.d');
+                            $statistics->save() ? $statistics : null;
+                        }else{
+                            $statisticsNew = new Statistics();
+                            $statisticsNew->request = $statistics['request'] + 1;
+                            $statisticsNew->user_id = $user['id'];
+                            $statisticsNew->date = date('Y.m.d');
+                            $statisticsNew->save() ? $statisticsNew : null;
+                        }
+                    }
+                }
+                return $this->redirect('/web/find/shipboard-supply');
+            }
         }
         return $this->render('courses',['place'=>$place,'model'=>$model]);
     }
@@ -183,7 +383,57 @@ class FindController extends Controller
                 ->andWhere('category = :category',[':category'=>'legal services'])
                 ->all();
 
-            return $this->render('legal',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
+            return $this->render('legalresult',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
+        }
+
+        if (isset($_POST['agree'])){
+            if ($_POST['agree']=='yes'){
+                // = "piece1 piece2 piece3 piece4 piece5 piece6";
+                $arr = explode(" ", $_POST['users']);
+
+                foreach ($arr as $users) {
+                    if (!empty($users)) {
+
+                        $user = User::findOne($users);
+                        //var_dump($user['email']);
+                        Yii::$app->mailer->compose()
+                            ->setFrom(Yii::$app->user->identity->email)
+                            ->setTo($user['email'])
+                            ->setSubject($_POST['company'])
+                            ->setTextBody($_POST['message'])
+                            ->send();
+                        $request = new Request();
+                        $request->user_id = $user['id'];
+                        if (!Yii::$app->user->isGuest) {
+                            $request->user_from = Yii::$app->user->id;
+                        }
+                        $request->name = $_POST['name'];
+                        $request->date = date('Y/m/d');
+                        $request->email = $_POST['email'];
+                        $request->phone = $_POST['phone'];
+                        $request->company = $_POST['company'];
+                        $request->category = 'find a practice';
+                        $request->message = $_POST['message'];
+                        $request->save();
+
+                        $statistics = Statistics::find()->where(['user_id'=>$user['id']])
+                            ->andWhere(['date'=>date('Y.m.d')])->one();
+                        if ($statistics['date']==date('Y.m.d')) {
+                            $statistics->request = $statistics['request'] + 1;
+                            $statistics->user_id = $user['id'];
+                            $statistics->date = date('Y.m.d');
+                            $statistics->save() ? $statistics : null;
+                        }else{
+                            $statisticsNew = new Statistics();
+                            $statisticsNew->request = $statistics['request'] + 1;
+                            $statisticsNew->user_id = $user['id'];
+                            $statisticsNew->date = date('Y.m.d');
+                            $statisticsNew->save() ? $statisticsNew : null;
+                        }
+                    }
+                }
+                return $this->redirect('/web/find/shipboard-supply');
+            }
         }
         return $this->render('legal',['place'=>$place,'model'=>$model]);
     }
@@ -216,7 +466,7 @@ class FindController extends Controller
                 ->andWhere('category = :category',[':category'=>'fishery'])
                 ->all();
 
-            return $this->render('fishery',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
+            return $this->render('fisheryresult',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
         }
         return $this->render('fishery',['place'=>$place,'model'=>$model]);
     }
@@ -249,7 +499,7 @@ class FindController extends Controller
                 ->andWhere('category = :category',[':category'=>'repairs'])
                 ->all();
 
-            return $this->render('repairs',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
+            return $this->render('repairsresult',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
         }
         return $this->render('repairs',['place'=>$place,'model'=>$model]);
     }

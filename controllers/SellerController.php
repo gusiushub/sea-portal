@@ -40,7 +40,7 @@ class SellerController extends Controller
                 return $this->render('profile', ['user' => $user,'upload'=>$upload]);
                 }
             }else{
-                $this->redirect(['index']);
+                return $this->redirect(['/site']);
             }
     }
 
@@ -55,6 +55,7 @@ class SellerController extends Controller
                 return $this->render('vessel', ['vessel' => $vessel]);
             }
         }
+        return $this->redirect(['/site']);
     }
 
     public function actionOffers()
@@ -68,6 +69,7 @@ class SellerController extends Controller
                 return $this->render('offers', ['userOffers' => $userOffers]);
             }
         }
+        return $this->redirect(['/site']);
     }
 
     public function actionPricing()
@@ -78,6 +80,7 @@ class SellerController extends Controller
                 return $this->render('pricing');
             }
         }
+        return $this->redirect(['/site']);
     }
 
     public function actionStatistics()
@@ -93,6 +96,7 @@ class SellerController extends Controller
                 return $this->render('statistics', ['statistics' => $statistics]);
             }
         }
+        return $this->redirect(['/site']);
     }
     public function actionTerm()
     {
@@ -102,6 +106,7 @@ class SellerController extends Controller
                 return $this->render('term');
             }
         }
+        return $this->redirect(['/site']);
     }
 
     public function actionRequest()
@@ -161,6 +166,7 @@ class SellerController extends Controller
 
             }
         }
+        return $this->redirect(['/site']);
     }
 
     public function actionAdvertisement()
@@ -182,5 +188,6 @@ class SellerController extends Controller
                 return $this->render('advertisement', ['upload' => $upload]);
             }
         }
+        return $this->redirect(['/site']);
     }
 }
