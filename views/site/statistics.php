@@ -400,6 +400,7 @@
 
     <?php
     $k=1;
+    $l=11;
     $ost = count($statistics);
 
     foreach($statistics as $value){
@@ -413,10 +414,21 @@
             <?php
         }
         $k++;
+        if (isset($value['date'])) {
+            ?>
+            <input type="hidden" class="hidden" value="<?php echo $value['date'] ?>" id="val<?php echo $l ?>">
+            <?php
+        }else{
+            ?>
+            <input type="hidden" value="<?php echo 0 ?>" id="val<?php echo $l ?>">
+            <?php
+        }
+        $l++;
     } ?>
 </footer>
 <?php
 $k = 1;
+$l = 11;
 foreach($statistics as $value){
     if (!empty($value['request'])) {
         ?>
@@ -427,15 +439,27 @@ foreach($statistics as $value){
         <input type="hidden" value="<?php echo 0 ?>" id="val<?php echo $k ?>">
         <?php
     }
+
     $k++;
+    if (isset($value['date'])) {
+        ?>
+        <input type="hidden"  value="<?php echo $value['date'] ?>" id="val<?php echo $l ?>">
+        <?php
+    }else{
+        ?>
+        <input type="hidden" value="<?php echo 0 ?>" id="val<?php echo $l ?>">
+        <?php
+    }
+    $l++;
 } ?>
 </body>
 <script src="../../web/public/js/common.js"></script>
 <script src="../../web/public/libs/Chart.min.js"></script>
 <script>
     var count = $('.hidden').length;
-    count = count+1;
+    count = count/2+1;
     var input = [];
+    var date = [];
     for (var i=1;i<count;i++){
         input[i] = document.getElementById('val'+i).value;
     }
@@ -445,33 +469,29 @@ foreach($statistics as $value){
             input[i] = 0;
         }
     }
+
+    var dateCount = count +10;
+    for (var i=11;i<dateCount;i++){
+        date[i] = document.getElementById('val'+i).value;
+    }
+    var ost = 17-dateCount;
+    if (ost!=0){
+        for (var i=dateCount;i<8;i++){
+            date[i] = 0;
+        }
+    }
     // function $_GET(key) {
     //     var p = window.location.search;
     //     p = p.match(new RegExp(key + '=([^&=]+)'));
     //     return p ? p[1] : false;
     // }
 
-    for (i=0;i<7;i++) {
-        if (document.getElementById('val'+i)!=null) {
-            var name = 'input'+ i;
-            name = document.getElementById('val' + i).value;
-        }
-    }
-   //  var input1 = document.getElementById('val1').value;
-   //  var input2 = document.getElementById('val2').value;
-   //  var input3 = document.getElementById('val3').value;
-   //  var input4 = document.getElementById('val4').value;
-   //  var input5 = document.getElementById('val5').value;
-   //  var input6 = document.getElementById('val6').value;
-   //  var input7 = document.getElementById('val7').value;
-    // var input8 = document.getElementById('date1').value;
-    // var input9 = document.getElementById('date2').value;
-    // var input10 = document.getElementById('date3').value;
-    // var input11 = document.getElementById('date4').value;
-    // var input12 = document.getElementById('date5').value;
-    // var input13 = document.getElementById('date6').value;
-    // var input14 = document.getElementById('date7').value;
-    //alert(document.getElementById('val2').value);
+    // for (i=0;i<7;i++) {
+    //     if (document.getElementById('val'+i)!=null) {
+    //         var name = 'input'+ i;
+    //         name = document.getElementById('val' + i).value;
+    //     }
+    // }
 
     var ctx = document.getElementById("chart-statistics").getContext('2d');
     // Date.prototype.yyyymmdd = function() {
@@ -549,13 +569,13 @@ foreach($statistics as $value){
         // The data for our dataset
         data: {
             labels: [
-                "2015-10-01",
-                "2015-10-01",
-                "2015-10-01",
-                "2015-10-01",
-                "2015-10-01",
-                "2015-10-01",
-                "2015-10-01"
+                date[11],
+                date[12],
+                date[13],
+                date[14],
+                date[15],
+                date[16],
+                date[17]
             ],
             datasets: [{
                 backgroundColor: "rgb(206, 225, 240)",

@@ -77,7 +77,7 @@ class FindController extends Controller
                         $request->email = $_POST['email'];
                         $request->phone = $_POST['phone'];
                         $request->company = $_POST['company'];
-                        $request->category = 'find a practice';
+                        $request->category = 'shipboard supply';
                         $request->message = $_POST['message'];
                         $request->save();
 
@@ -115,7 +115,7 @@ class FindController extends Controller
                 ->andWhere('mechanism=:mechanism',[':mechanism'=>$_POST['FindModel']['equipment']])
 //                ->andWhere(['like', 'maker', $_POST['FindModel']['maker']])
                 ->andWhere('plan = :plan',[':plan'=>'free'])
-                ->andWhere('category = :category',[':category'=>'port services'])
+                ->andWhere('category = :category',[':category'=>'port service'])
                 ->all();
             //var_dump($freePlan);
             $businessPlan = Contracts::find()
@@ -123,14 +123,14 @@ class FindController extends Controller
                 ->andWhere('mechanism=:mechanism',[':mechanism'=>$_POST['FindModel']['equipment']])
                 ->andWhere( 'maker=:maker', [':maker'=>$_POST['FindModel']['maker']])
                 ->andWhere('plan = :plan',[':plan'=>'buiznes'])
-                ->andWhere('category = :category',[':category'=>'port services'])
+                ->andWhere('category = :category',[':category'=>'port service'])
                 ->all();
             $businessAdvancedPlan = Contracts::find()
                 ->where(['like', 'search', $_POST['FindModel']['search']])
                 ->andWhere(['like', 'mechanism',$_POST['FindModel']['equipment']])
                 ->andWhere(['like', 'maker', $_POST['FindModel']['maker']])
                 ->andWhere('plan = :plan',[':plan'=>'buiznesadvanced'])
-                ->andWhere('category = :category',[':category'=>'port services'])
+                ->andWhere('category = :category',[':category'=>'port service'])
                 ->all();
 
             return $this->render('portservicesresult',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
@@ -162,7 +162,7 @@ class FindController extends Controller
                         $request->email = $_POST['email'];
                         $request->phone = $_POST['phone'];
                         $request->company = $_POST['company'];
-                        $request->category = 'find a practice';
+                        $request->category = 'port service';
                         $request->message = $_POST['message'];
                         $request->save();
 
@@ -246,7 +246,7 @@ class FindController extends Controller
                         $request->email = $_POST['email'];
                         $request->phone = $_POST['phone'];
                         $request->company = $_POST['company'];
-                        $request->category = 'find a practice';
+                        $request->category = 'inspection of equipment';
                         $request->message = $_POST['message'];
                         $request->save();
 
@@ -329,7 +329,7 @@ class FindController extends Controller
                         $request->email = $_POST['email'];
                         $request->phone = $_POST['phone'];
                         $request->company = $_POST['company'];
-                        $request->category = 'find a practice';
+                        $request->category = 'courses';
                         $request->message = $_POST['message'];
                         $request->save();
 
@@ -380,7 +380,7 @@ class FindController extends Controller
                 ->andWhere(['like', 'mechanism',$_POST['FindModel']['equipment']])
                 ->andWhere(['like', 'maker', $_POST['FindModel']['maker']])
                 ->andWhere('plan = :plan',[':plan'=>'buiznesadvanced'])
-                ->andWhere('category = :category',[':category'=>'legal services'])
+                ->andWhere('category = :category',[':category'=>'legal and other services'])
                 ->all();
 
             return $this->render('legalresult',['place'=>$place,'free'=>$freePlan, 'business'=>$businessPlan,'businessAdvanced'=>$businessAdvancedPlan]);
@@ -412,7 +412,7 @@ class FindController extends Controller
                         $request->email = $_POST['email'];
                         $request->phone = $_POST['phone'];
                         $request->company = $_POST['company'];
-                        $request->category = 'find a practice';
+                        $request->category = 'legal and other services';
                         $request->message = $_POST['message'];
                         $request->save();
 

@@ -295,12 +295,12 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-6 col-sm-6 col-6">
                                 <h4 class="contract-line__headline">
-                                    <?php echo $m->category  ?>
+                                    Category
                                 </h4>
                             </div>
                             <div class="col-lg-12 col-md-6 col-sm-6 col-6">
                                         <span class="contract-line__info contract-line__info--uppercase">
-                                            courses/AIR TICKETS for crew
+                                            <?php echo $m->category  ?>
                                         </span>
                             </div>
                         </div>
@@ -314,7 +314,7 @@
                             </div>
                             <div class="col-lg-12 col-md-6 col-sm-6 col-6">
                                         <span class="contract-line__info contract-line__info--uppercase">
-                                            business
+                                            <?php echo $m->plan  ?>
                                         </span>
                             </div>
                         </div>
@@ -328,7 +328,7 @@
                             </div>
                             <div class="col-lg-12 col-md-6 col-sm-6 col-6">
                                         <span class="contract-line__info contract-line__info--uppercase">
-                                            paid
+                                            <?php echo $m->status  ?>
                                         </span>
                             </div>
                         </div>

@@ -175,7 +175,7 @@
                                 Profile
                             </h1>
                             <a href="#" class="settings__email settings__email--head">
-                                wilkinson@gmail.com
+                                <?php echo Yii::$app->user->identity->email ; ?>
                             </a>
                         </div>
                     </div>
@@ -409,6 +409,7 @@
             </div>
             <?php
             $k=1;
+            $l = 11;
             $ost = count($statistics);
 
             foreach($statistics as $value){
@@ -421,13 +422,24 @@
                     <input type="hidden" value="<?php echo 0 ?>" id="val<?php echo $k ?>">
                     <?php
                 }
+                if (isset($value['date'])) {
+                    ?>
+                    <input type="hidden" class="hidden" value="<?php echo $value['date'] ?>" id="val<?php echo $l ?>">
+                    <?php
+                }else{
+                    ?>
+                    <input type="hidden" value="<?php echo 0 ?>" id="val<?php echo $l ?>">
+                    <?php
+                }
+                $l++;
                 $k++;
             } ?>
         </footer>
         <?php
         $k = 1;
+        $l = 11;
         foreach($statistics as $value){
-            if (!empty($value['request'])) {
+            if (isset($value['request'])) {
                 ?>
                 <input type="hidden" value="<?php echo $value['request'] ?>" id="val<?php echo $k ?>">
                 <?php
@@ -437,14 +449,26 @@
                 <?php
             }
             $k++;
+
+            if (isset($value['date'])) {
+                ?>
+                <input type="hidden"  value="<?php echo $value['date'] ?>" id="val<?php echo $l ?>">
+                <?php
+            }else{
+                ?>
+                <input type="hidden" value="<?php echo 0 ?>" id="val<?php echo $l ?>">
+                <?php
+            }
+            $l++;
         } ?>
     </body>
     <script src="../../web/public/libs/Chart.min.js"></script>
     <script>
 
         var count = $('.hidden').length;
-        count = count+1;
+        count = count/2+1;
         var input = [];
+        var date = [];
         for (var i=1;i<count;i++){
             input[i] = document.getElementById('val'+i).value;
         }
@@ -454,6 +478,18 @@
                 input[i] = 0;
             }
         }
+        var dateCount = count +10;
+        for (var i=11;i<dateCount;i++){
+            date[i] = document.getElementById('val'+i).value;
+        }
+        var ost = 17-dateCount;
+        if (ost!=0){
+            for (var i=dateCount;i<8;i++){
+                date[i] = 0;
+            }
+        }
+        console.log(date);
+
         var ctx = document.getElementById("chart-statistics").getContext('2d');
         var myBarChart = new Chart(ctx, {
             options: {
@@ -490,13 +526,14 @@
             // The data for our dataset
             data: {
               labels: [
-                "2015-10-01",
-                "2015-10-01",
-                "2015-10-01",
-                "2015-10-01",
-                "2015-10-01",
-                "2015-10-01",
-                "2015-10-01"
+                  date[11],
+                  date[12],
+                  date[13],
+                  date[14],
+                  date[15],
+                  date[16],
+                  date[17]
+
               ],
               datasets: [{
                 backgroundColor: "rgb(206, 225, 240)",
