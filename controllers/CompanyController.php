@@ -6,6 +6,7 @@ use app\models\Advertisement;
 use app\models\Request;
 use app\models\Statistics;
 use app\models\Uploaded;
+use app\models\UploadImage;
 use Yii;
 use yii\web\Controller;
 use app\models\User;
@@ -133,8 +134,17 @@ class CompanyController extends Controller
             $status = Yii::$app->user->identity->user_status;
             if ( $status == 2) {
                 $user = new User();
+                $upload = new UploadImage();
+                if(Yii::$app->request->isPost){
+                    $file = UploadedFile::getInstance($upload, 'image');
+                    if ($upload->uploadFile($file, Yii::$app->user->identity->img) ){
 
-                    return $this->render('prof', ['user' => $user]);
+                        return $this->redirect('/web/company/profile');
+                    }
+                    return $this->render('prof', ['user' => $user,'upload'=>$upload]);
+                }
+                //$user = new User();
+                    return $this->render('prof', ['user' => $user,'upload'=>$upload]);
             }else{
                 return $this->redirect(['/site']);
             }

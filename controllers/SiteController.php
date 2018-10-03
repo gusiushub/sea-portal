@@ -150,6 +150,9 @@ class SiteController extends Controller
 
         public function actionSellerajaxform()
         {
+            if ($_POST['json_arr']){
+                var_dump('asdasdasd');exit;
+            }
             $date = date('Y/m/d',strtotime(date('Y-m-d').' +1 year'));
             if (isset($_POST['profile_seller7'])){
                 $ajax = json_decode($_POST['profile_seller7'], true);

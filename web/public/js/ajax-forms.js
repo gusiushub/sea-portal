@@ -88,8 +88,35 @@ $('#profile-seller1-2-change').click(function(){
     }
 });
 
+
+var files;
+$('input[type=file]').change(function(){
+    files = this.files;
+
+});
+
+$('imput#files').change(function(){
+    var files = this.files; //это массив файлов
+    var form = new FormData();
+    for(var i=0;i<files.length;i++){
+        form.append("file_"+i,files[i]);
+        console.log(form);
+    }
+})
+var data = new FormData();
+$.each( files, function( key, value ){
+    data.append( key, value );
+    console.log(data.append( key, value ));
+});
+console.log(data);
+//console.log(files);
 $('#profile-seller7-change').click(function(){
     if($(this).text() === 'Edit') {
+        // var files;
+        // $('input[type=file]').change(function(){
+        //     files = this.files;
+        //
+        // });
         var category = $('select[name="category"]').find('option:checked').text(),
             vtype = $('select[name="vtype"]').find('option:checked').text(),
             option = $('select[name="option"]').find('option:checked').text(),
@@ -103,6 +130,8 @@ $('#profile-seller7-change').click(function(){
             price = $('input[name="price"]').val(),
             currency = $('input[name="currency"]').val(),
             _csrf = $('input[name="_csrf"]').val(),
+           // files =  $('input[type="file"]').val(),
+
             profile_seller7 = {
                 category,
                 vtype,
@@ -116,21 +145,86 @@ $('#profile-seller7-change').click(function(){
                 port,
                 price,
                 currency
+
             };
         var jsdata = JSON.stringify(profile_seller7);
+
+            // var json_arr = JSON.stringify(arr);
         $.ajax({
             type: "POST",
-            url: "/web/site/sellerajaxform",
+            url: "/web/seller/offers",
+            // contentType: false,
             data: {
                 profile_seller7: jsdata,
                 _csrf: _csrf
+            },
+            dataType: 'json',
+        });
+
+        // var attachments = $('.files').;
+        //     var data= new FormData();
+        //     var arr;
+        // console.log(attachments.files.length);
+        // for (var i=0; i< attachments.files.length; i++) {
+        //      data.append('img', attachments.files[i]);
+        //      data.append('_csrf', _csrf);
+        //     console.log(attachments.files[i]);
+        //
+        //     // data.append('headline', headline);
+        //     // data.append('article', article);
+        //     // data.append('arr', arr);
+        //     // data.append('tag', tag);
+        // }
+
+
+        $.ajax({
+            url: '/web/seller/offers',
+            type: 'POST',
+            cache: false,
+            dataType: 'json',
+            processData: false, // Не обрабатываем файлы (Don't process the files)
+            contentType: false, // Так jQuery скажет серверу что это строковой запрос
+            data: data,
+
+            success: function( respond, textStatus, jqXHR ){
+
+                // Если все ОК
+
+                if( typeof respond.error === 'undefined' ){
+                    // Файлы успешно загружены, делаем что нибудь здесь
+
+                    // выведем пути к загруженным файлам в блок '.ajax-respond'
+
+                    var files_path = respond.files;
+                    var html = '';
+                    $.each( files_path, function( key, val ){ html += val +'<br>'; } )
+                    $('.ajax-respond').html( html );
+                }
+                else{
+                    console.log('ОШИБКИ ОТВЕТА сервера: ' + respond.error );
+                }
+            },
+            error: function( jqXHR, textStatus, errorThrown ){
+                console.log('ОШИБКИ AJAX запроса: ' + textStatus );
             }
         });
+
     }
 });
 
 $('#profile_personal1').click(function(){
     if($(this).text().trim() === 'edit') {
+        // event.stopPropagation(); // Остановка происходящего
+        // event.preventDefault();  // Полная остановка происходящего
+
+        // Создадим данные формы и добавим в них данные файлов из files
+
+        var data = new FormData();
+        $.each( files, function( key, value ){
+            data.append( key, value );
+        });
+
+
         var fname = $('input[name="fname"]').val(),
             sname = $('input[name="sname"]').val(),
             dbirth = $('input[name="dbirth"]').val(),
@@ -156,8 +250,10 @@ $('#profile_personal1').click(function(){
             url: "/web/site/ajax",
             data: {
                 profile_personal1: jsdata,
-                _csrf: _csrf
-            }
+                _csrf: _csrf,
+                data: data,
+            },
+
         });
     }
 });

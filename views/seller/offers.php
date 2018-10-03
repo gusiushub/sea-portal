@@ -10,7 +10,9 @@
                     <div class="settings">
                         <div class="settings__item">
                             <a href="/web/seller/profile" class="settings__email">
-                                <?php echo Yii::$app->user->identity->email ?>
+                                <?php use yii\bootstrap\ActiveForm;
+
+                                echo Yii::$app->user->identity->email ?>
                             </a>
                         </div>
                         <div class="settings__item">
@@ -311,6 +313,11 @@
                 </div>
             </div>
             <?php } ?>
+
+
+
+
+<!--            --><?php //$form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
             <div class="contract-description block-underline block-underline-top">
                 <div class="row">
                     <div class="col-lg-8">
@@ -526,48 +533,87 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row margin-bottom-medium">
                     <div class="col-lg-12 horizontal-between flex-wrap">
+<!--                        --><?php //for ($i=0;$i<10;$i++){ ?>
+
                         <div class="change-image">
                             <img src="../../web/public/img/заглушка.png" alt="" class="change-image__image">
-                            <h2 class="change-image__appeared-text">Change picture</h2>
+                            <h2 class="change-image__appeared-text"><label for="files5" >Change picture</label></h2>
+                            <input  name="img" style="opacity: 0" type="file" id="files5">
+
+                        </div>
+
+                        <div class="change-image">
+                            <img src="../../web/public/img/заглушка.png" alt="" class="change-image__image">
+                            <h2 class="change-image__appeared-text"><label for="files" >Change picture</label></h2>
+                            <input  name="img" style="opacity: 0" type="file" id="files1">
+
+                        </div>
+                        <div id="wallpapers" class="changes">
+                            <p>Images</p>
+                            <label class="fileImg">
+                                <input type="file" accept="image/jpeg,image/png" multiple>
+                            </label>
                         </div>
                         <div class="change-image">
-                            <img src="../../web/public/img/заглушка.png" alt="">
-                            <h2 class="change-image__appeared-text">Change picture</h2>
+                            <img src="../../web/public/img/заглушка.png" alt="" class="change-image__image">
+                            <h2 class="change-image__appeared-text"><label for="files" >Change picture</label></h2>
+<!--                            <input type="file" accept="image/jpeg,image/png" multiple>-->
+                            <input multiple="multiple" accept=".txt,image/*"  name="files" style="opacity: 0" type="file" class="files" id="files1">
+
                         </div>
                         <div class="change-image">
-                            <img src="../../web/public/img/заглушка.png" alt="">
-                            <h2 class="change-image__appeared-text">Change picture</h2>
+                            <img src="../../web/public/img/заглушка.png" alt="" class="change-image__image">
+                            <h2 class="change-image__appeared-text"><label for="files" >Change picture</label></h2>
+                            <input multiple="multiple" accept=".txt,image/*"  name="files" style="opacity: 0" type="file" class="files" id="files2">
+
                         </div>
                         <div class="change-image">
-                            <img src="../../web/public/img/заглушка.png" alt="">
-                            <h2 class="change-image__appeared-text">Change picture</h2>
+                            <img src="../../web/public/img/заглушка.png" alt=""  class="change-image__image">
+                            <h2 class="change-image__appeared-text"><label for="files" >Change picture</label></h2>
+                            <input multiple="multiple" accept=".txt,image/*"  name="files" style="opacity: 0" type="file" class="files" id="files3">
+
                         </div>
-                        <div class="change-image">
-                            <img src="../../web/public/img/заглушка.png" alt="">
-                            <h2 class="change-image__appeared-text">Change picture</h2>
-                        </div>
-                        <div class="change-image">
-                            <img src="../../web/public/img/заглушка.png" alt="">
-                            <h2 class="change-image__appeared-text">Change picture</h2>
-                        </div>
-                        <div class="change-image">
-                            <img src="../../web/public/img/заглушка.png" alt="">
-                            <h2 class="change-image__appeared-text">Change picture</h2>
-                        </div>
-                        <div class="change-image">
-                            <img src="../../web/public/img/заглушка.png" alt="">
-                            <h2 class="change-image__appeared-text">Change picture</h2>
-                        </div>
-                        <div class="change-image">
-                            <img src="../../web/public/img/заглушка.png" alt="">
-                            <h2 class="change-image__appeared-text">Change picture</h2>
-                        </div>
-                        <div class="change-image">
-                            <img src="../../web/public/img/заглушка.png" alt="">
-                            <h2 class="change-image__appeared-text">Change picture</h2>
-                        </div>
+<!--                        --><?php //} ?>
+
+<!--                        <div class="change-image">-->
+<!--                            <img src="../../web/public/img/заглушка.png" alt="">-->
+<!--                            <h2 class="change-image__appeared-text">Change picture</h2>-->
+<!--                        </div>-->
+<!--                        <div class="change-image">-->
+<!--                            <img src="../../web/public/img/заглушка.png" alt="">-->
+<!--                            <h2 class="change-image__appeared-text">Change picture</h2>-->
+<!--                        </div>-->
+<!--                        <div class="change-image">-->
+<!--                            <img src="../../web/public/img/заглушка.png" alt="">-->
+<!--                            <h2 class="change-image__appeared-text">Change picture</h2>-->
+<!--                        </div>-->
+<!--                        <div class="change-image">-->
+<!--                            <img src="../../web/public/img/заглушка.png" alt="">-->
+<!--                            <h2 class="change-image__appeared-text">Change picture</h2>-->
+<!--                        </div>-->
+<!--                        <div class="change-image">-->
+<!--                            <img src="../../web/public/img/заглушка.png" alt="">-->
+<!--                            <h2 class="change-image__appeared-text">Change picture</h2>-->
+<!--                        </div>-->
+<!--                        <div class="change-image">-->
+<!--                            <img src="../../web/public/img/заглушка.png" alt="">-->
+<!--                            <h2 class="change-image__appeared-text">Change picture</h2>-->
+<!--                        </div>-->
+<!--                        <div class="change-image">-->
+<!--                            <img src="../../web/public/img/заглушка.png" alt="">-->
+<!--                            <h2 class="change-image__appeared-text">Change picture</h2>-->
+<!--                        </div>-->
+<!--                        <div class="change-image">-->
+<!--                            <img src="../../web/public/img/заглушка.png" alt="">-->
+<!--                            <h2 class="change-image__appeared-text">Change picture</h2>-->
+<!--                        </div>-->
+<!--                        <div class="change-image">-->
+<!--                            <img src="../../web/public/img/заглушка.png" alt="">-->
+<!--                            <h2 class="change-image__appeared-text">Change picture</h2>-->
+<!--                        </div>-->
                     </div>
                 </div>
                 <div class="row horizontal-between">
@@ -578,11 +624,15 @@
                         <button class="button button--appeared">deactivate</button>
                     </div>
                     <div class="col-lg-2">
-                        <button id="profile-seller7-change" class="button button--fields-change">Edit</button>
+                        <button id="profile-seller7-change" class="button button--fields-change but">Edit</button>
                     </div>
 
                 </div>
             </div>
+<!--            --><?php //ActiveForm::end() ?>
+            <script>
+                //console.log($('.but').attr(type,submit));
+            </script>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="secondary-headline text-left margin-bottom-light">
@@ -608,6 +658,19 @@
             </div>
         </div>
     </section>
+<!--    --><?php //$form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
+<!--    <form name="asdasd" action="asdasd" method="post">-->
+    <?php for ($i=0;$i<10;$i++){ ?>
+        <input  name="img" style="opacity: 0" type="file" id="uploadbtn<?php echo $i ?>">
+<!--        --><?php //$form = ActiveForm::begin(['options' => ['class'=>'myform','enctype' => 'multipart/form-data']]) ?>
+<!--        --><?//= $form->field($upload, 'image')->fileInput( ['class'=>'file','id' => 'uploadbtn'.$i.'','style'=>"opacity: 0","onchange"=>"if (this.selectedIndex) this.form.submit ()"]) ?>
+<!--        <button class="profile__upload-photo margin-bottom-medium">-->
+<!--            <label class="submit" for="uploadbtn" >select file</label>-->
+<!--        </button>-->
+
+    <?php } ?>
+
+<!--    </form>-->
 </main>
 <footer class="footer">
     <div class="container">
@@ -720,7 +783,252 @@
         </div>
     </div>
 </footer>
+
 </body>
+
 <script src="../../web/public/js/common.js"></script>
 <script src="../../web/public/js/info-change.js"></script>
 <script src="../../web/public/js/ajax-forms.js"></script>
+<script type="text/javascript">
+    // jQuery(function(){
+    //     $(".file").change(function(){ // событие выбора файла
+    //         $(".myform").submit(); // отправка формы
+    //     });
+    // });
+
+    //for (var i=0;i<10;) {
+    //     $('#profile-seller7-change').on('click', function () {
+    //         var file_data = $('#uploadbtn1').prop('files')[0];
+    //         var form_data = new FormData();
+    //         var csrf = $('input[name="_csrf"]').val();
+    //         form_data.append('file', file_data);
+    //         form_data.append('_csrf', csrf);
+    //         form_data.append('num', 1);
+    //         //alert(form_data);
+    //         console.log(csrf);
+    //         $.ajax({
+    //             url: '/web/seller/ajax?id=1',
+    //             dataType: 'text',
+    //             cache: false,
+    //             contentType: false,
+    //             processData: false,
+    //             data: form_data,
+    //             type: 'post',
+    //             success: function (php_script_response) {
+    //                 //alert(php_script_response);
+    //             }
+    //         });
+    //     });
+    // //}
+    //
+    // $('#profile-seller7-change').on('click', function () {
+    //     var file_data = $('#uploadbtn2').prop('files')[0];
+    //     var form_data = new FormData();
+    //     var csrf = $('input[name="_csrf"]').val();
+    //     form_data.append('file', file_data);
+    //     form_data.append('_csrf', csrf);
+    //     //alert(form_data);
+    //     console.log(csrf);
+    //     $.ajax({
+    //         url: '/web/seller/ajax?id=2',
+    //         dataType: 'text',
+    //         cache: false,
+    //         contentType: false,
+    //         processData: false,
+    //         data: form_data,
+    //         type: 'post',
+    //         success: function (php_script_response) {
+    //             //alert(php_script_response);
+    //         }
+    //     });
+    // });
+    // $('#profile-seller7-change').on('click', function () {
+    //     var file_data = $('#uploadbtn3').prop('files')[0];
+    //     var form_data = new FormData();
+    //     var csrf = $('input[name="_csrf"]').val();
+    //     form_data.append('file', file_data);
+    //     form_data.append('_csrf', csrf);
+    //     //alert(form_data);
+    //     console.log(csrf);
+    //     $.ajax({
+    //         url: '/web/seller/ajax?id=3',
+    //         dataType: 'text',
+    //         cache: false,
+    //         contentType: false,
+    //         processData: false,
+    //         data: form_data,
+    //         type: 'post',
+    //         success: function (php_script_response) {
+    //             //alert(php_script_response);
+    //         }
+    //     });
+    // });
+    // $('#profile-seller7-change').on('click', function () {
+    //     var file_data = $('#uploadbtn4').prop('files')[0];
+    //     var form_data = new FormData();
+    //     var csrf = $('input[name="_csrf"]').val();
+    //     form_data.append('file', file_data);
+    //     form_data.append('_csrf', csrf);
+    //     //alert(form_data);
+    //     console.log(csrf);
+    //     $.ajax({
+    //         url: '/web/seller/ajax?id=4',
+    //         dataType: 'text',
+    //         cache: false,
+    //         contentType: false,
+    //         processData: false,
+    //         data: form_data,
+    //         type: 'post',
+    //         success: function (php_script_response) {
+    //             //alert(php_script_response);
+    //         }
+    //     });
+    // });
+    // $('#profile-seller7-change').on('click', function () {
+    //     var file_data = $('#uploadbtn5').prop('files')[0];
+    //     var form_data = new FormData();
+    //     var csrf = $('input[name="_csrf"]').val();
+    //     form_data.append('file', file_data);
+    //     form_data.append('_csrf', csrf);
+    //     //alert(form_data);
+    //     console.log(csrf);
+    //     $.ajax({
+    //         url: '/web/seller/ajax?id=1',
+    //         dataType: 'text',
+    //         cache: false,
+    //         contentType: false,
+    //         processData: false,
+    //         data: form_data,
+    //         type: 'post',
+    //         success: function (php_script_response) {
+    //             //alert(php_script_response);
+    //         }
+    //     });
+    // });
+    // $('#profile-seller7-change').on('click', function () {
+    //     var file_data = $('#uploadbtn6').prop('files')[0];
+    //     var form_data = new FormData();
+    //     var csrf = $('input[name="_csrf"]').val();
+    //     form_data.append('file', file_data);
+    //     form_data.append('_csrf', csrf);
+    //     //alert(form_data);
+    //     console.log(csrf);
+    //     $.ajax({
+    //         url: '/web/seller/ajax',
+    //         dataType: 'text',
+    //         cache: false,
+    //         contentType: false,
+    //         processData: false,
+    //         data: form_data,
+    //         type: 'post',
+    //         success: function (php_script_response) {
+    //             //alert(php_script_response);
+    //         }
+    //     });
+    // });
+    // $('#profile-seller7-change').on('click', function () {
+    //     var file_data = $('#uploadbtn7').prop('files')[0];
+    //     var form_data = new FormData();
+    //     var csrf = $('input[name="_csrf"]').val();
+    //     form_data.append('file', file_data);
+    //     form_data.append('_csrf', csrf);
+    //     //alert(form_data);
+    //     console.log(csrf);
+    //     $.ajax({
+    //         url: '/web/seller/ajax',
+    //         dataType: 'text',
+    //         cache: false,
+    //         contentType: false,
+    //         processData: false,
+    //         data: form_data,
+    //         type: 'post',
+    //         success: function (php_script_response) {
+    //             //alert(php_script_response);
+    //         }
+    //     });
+    // });
+    // $('#profile-seller7-change').on('click', function () {
+    //     var file_data = $('#uploadbtn8').prop('files')[0];
+    //     var form_data = new FormData();
+    //     var csrf = $('input[name="_csrf"]').val();
+    //     form_data.append('file', file_data);
+    //     form_data.append('_csrf', csrf);
+    //     //alert(form_data);
+    //     console.log(csrf);
+    //     $.ajax({
+    //         url: '/web/seller/ajax',
+    //         dataType: 'text',
+    //         cache: false,
+    //         contentType: false,
+    //         processData: false,
+    //         data: form_data,
+    //         type: 'post',
+    //         success: function (php_script_response) {
+    //             //alert(php_script_response);
+    //         }
+    //     });
+    // });
+    // $('#profile-seller7-change').on('click', function () {
+    //     var file_data = $('#uploadbtn9').prop('files')[0];
+    //     var form_data = new FormData();
+    //     var csrf = $('input[name="_csrf"]').val();
+    //     form_data.append('file', file_data);
+    //     form_data.append('_csrf', csrf);
+    //     //alert(form_data);
+    //     console.log(csrf);
+    //     $.ajax({
+    //         url: '/web/seller/ajax',
+    //         dataType: 'text',
+    //         cache: false,
+    //         contentType: false,
+    //         processData: false,
+    //         data: form_data,
+    //         type: 'post',
+    //         success: function (php_script_response) {
+    //             //alert(php_script_response);
+    //         }
+    //     });
+    // });
+    // $('#profile-seller7-change').on('click', function () {
+    //     var file_data = $('#uploadbtn10').prop('files')[0];
+    //     var form_data = new FormData();
+    //     var csrf = $('input[name="_csrf"]').val();
+    //     form_data.append('file', file_data);
+    //     form_data.append('_csrf', csrf);
+    //     //alert(form_data);
+    //     console.log(csrf);
+    //     $.ajax({
+    //         url: '/web/seller/ajax',
+    //         dataType: 'text',
+    //         cache: false,
+    //         contentType: false,
+    //         processData: false,
+    //         data: form_data,
+    //         type: 'post',
+    //         success: function (php_script_response) {
+    //             //alert(php_script_response);
+    //         }
+    //     });
+    // });
+    // $('#profile-seller7-change').on('click', function () {
+    //     var file_data = $('#uploadbtn0').prop('files')[0];
+    //     var form_data = new FormData();
+    //     var csrf = $('input[name="_csrf"]').val();
+    //     form_data.append('file', file_data);
+    //     form_data.append('_csrf', csrf);
+    //     //alert(form_data);
+    //     console.log(csrf);
+    //     $.ajax({
+    //         url: '/web/seller/ajax',
+    //         dataType: 'text',
+    //         cache: false,
+    //         contentType: false,
+    //         processData: false,
+    //         data: form_data,
+    //         type: 'post',
+    //         success: function (php_script_response) {
+    //             //alert(php_script_response);
+    //         }
+    //     });
+    // });
+</script>

@@ -374,7 +374,7 @@ $this->title = 'Find a supplier';
                         </div>
 <!--                        <input type="hidden" name="_csrf" value="--><?//=Yii::$app->request->getCsrfToken()?><!--" />-->
                         <div class="filter__item">
-                            <?= Html::submitButton('Sing in', ['class' => 'button button--show-results', 'name' => 'submit','value'=>'ok']) ?>
+                            <?= Html::submitButton('Show results', ['class' => 'button button--show-results', 'name' => 'submit','value'=>'ok']) ?>
                         </div>
                     </div>
 

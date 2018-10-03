@@ -208,6 +208,11 @@
                                 search results for vessels for sale
                             </h2>
                         </div>
+                        <?php
+                        if(empty($free)){
+                            echo '<p>Ничего не найдено!</p>';
+                        }
+                        ?>
                         <p class="companies-headline__found">
 
                             Found: <span class="companies-headline__found-num"><?php echo count($findVesselsPlus)+count($findVessels) ?></span> vessels

@@ -513,7 +513,33 @@ class FindController extends Controller
 
         if (isset($_GET['agree'])){
             if ($_GET['agree']=='yes'){
+if (isset($_GET['FindCrew']['file'])){
+    if (!empty($_GET['FindCrew']['file'])){
+        if (0 < $_FILES['file']['error']) {
+            echo 'Error: ' . $_FILES['file']['error'] . '<br>';
+        } else {
 
+            move_uploaded_file($_FILES['file']['tmp_name'], './public/uploads/' . md5($_FILES['file']['name']) . $_FILES['file']['name']);
+            if (isset($_FILES['file']['name'])) {
+
+                $request = new Request();
+               // $request->user_id = $_GET['id'];
+               // $request->user_from = Yii::$app->user->id;
+               // $request->user_from = Yii::$app->user->id;
+                $request->name = $_GET['FindCrew']['name'];
+                $request->date = date('Y/m/d');
+                $request->email = $_GET['FindCrew']['email'];
+                $request->phone = $_GET['FindCrew']['phone'];
+                $request->company = $_GET['FindCrew']['company'];
+                $request->category = 'find a crew';
+                $request->message = $_GET['FindCrew']['body'];
+               // $request->file = md5($_GET['FindCrew']['file']);
+                $request->save();
+
+            }
+        }
+    }
+}
                 $messages = [];
 
                 $i=0;
@@ -546,6 +572,19 @@ class FindController extends Controller
                             $statisticsNew->date = date('Y.m.d');
                             $statisticsNew->save() ? $statisticsNew : null;
                         }
+                        $request = new Request();
+                        //$request->user_id = $_GET['id'];
+                        $request->user_from = Yii::$app->user->id;
+                        $request->name = $_GET['FindCrew']['name'];
+                        $request->date = date('Y/m/d');
+                        $request->email = $_GET['FindCrew']['email'];
+                        $request->phone = $_GET['FindCrew']['phone'];
+                        $request->company = $_GET['FindCrew']['company'];
+                        $request->category = 'find a crew';
+                        $request->message = $_GET['FindCrew']['body'];
+                        $request->save();
+//                        $this->redirect('/web/find/about-ship?id='.$_GET['id']);
+
                     }
                     $k++;
                 }
@@ -762,7 +801,7 @@ class FindController extends Controller
 
         if (isset($_POST['lvleng'])){
             $cvs = Cv::find()->select(['country'])
-                ->distinct()->where('lvleng = :lvleng', ['lvleng' => $_POST['lvleng']])->all();
+                ->distinct()->where('lvleng = :lvleng', [':lvleng' => $_POST['lvleng']])->all();
             foreach($cvs as $cv){
                 if (!empty($cv['country'])) {
                     echo "<option value='" . $cv['country'] . "'>" . $cv['country'] . "</option>";
@@ -771,7 +810,7 @@ class FindController extends Controller
         }
 
         if (isset($_POST['country'])){
-            $cvs = Cv::find()->where('country = :country', ['country' => $_POST['country']])->all();
+            $cvs = Cv::find()->where('country = :country', [':country' => $_POST['country']])->all();
             foreach($cvs as $cv){
                 echo "<option value='".$cv['port']."'>".$cv['port']."</option>";
             }
@@ -788,9 +827,7 @@ class FindController extends Controller
         $model = new FindStudent();
         if (isset($_GET['agree'])){
             if ($_GET['agree']=='yes'){
-
                 $messages = [];
-
                 $i=0;
                 $cv=array();
                 foreach ($_GET as $email) {
@@ -803,8 +840,8 @@ class FindController extends Controller
                     if ($type=='string' && $k<$count) {
                         $messages[] = Yii::$app->mailer->compose()
                             ->setTo($mail)
-                            ->setSubject($_GET['FindStudent']['company'])
-                            ->setTextBody($_GET['FindStudent']['body']);
+                            ->setSubject($_GET['FindCrew']['company'])
+                            ->setTextBody($_GET['FindCrew']['body']);
                         Yii::$app->mailer->sendMultiple($messages);
                         $user = User::find()->select('id')->where(['email' => $mail])->one();
                         $statistics = Statistics::find()->where(['user_id'=>$user['id']])
@@ -813,20 +850,74 @@ class FindController extends Controller
                             $statistics->request = $statistics['request'] + 1;
                             $statistics->user_id = $user['id'];
                             $statistics->date = date('Y.m.d');
-                            $statistics->save() ? $statistics : null;
+                            $statistics->save();// ? $statistics : null;
                         }else{
                             $statisticsNew = new Statistics();
                             $statisticsNew->request = $statistics['request'] + 1;
                             $statisticsNew->user_id = $user['id'];
                             $statisticsNew->date = date('Y.m.d');
-                            $statisticsNew->save() ? $statisticsNew : null;
+                            $statisticsNew->save();// ? $statisticsNew : null;
                         }
+                        $request = new Request();
+                        //$request->user_id = $_GET['id'];
+                        $request->user_from = Yii::$app->user->id;
+                        $request->name = $_GET['FindCrew']['name'];
+                        $request->date = date('Y/m/d');
+                        $request->email = $_GET['FindCrew']['email'];
+                        $request->phone = $_GET['FindCrew']['phone'];
+                        $request->company = $_GET['FindCrew']['company'];
+                        $request->category = 'find a practice';
+                        $request->message = $_GET['FindCrew']['body'];
+                        $request->save();
+//                        $this->redirect('/web/find/about-ship?id='.$_GET['id']);
+
                     }
                     $k++;
                 }
                 $this->redirect('/web/find/student');
             }
-        }
+
+
+
+
+//                $messages = [];
+//
+//                $i=0;
+//                $cv=array();
+//                foreach ($_GET as $email) {
+//                    $cv[$i]=$_GET;
+//                }
+//                $count = count($_GET)-3;
+//                $k=0;
+//                foreach ($_GET as $mail){
+//                    $type = gettype($mail);
+//                    if ($type=='string' && $k<$count) {
+//                        $messages[] = Yii::$app->mailer->compose()
+//                            ->setTo($mail)
+//                            ->setSubject($_GET['FindStudent']['company'])
+//                            ->setTextBody($_GET['FindStudent']['body']);
+//                        Yii::$app->mailer->sendMultiple($messages);
+//                        $user = User::find()->select('id')->where(['email' => $mail])->one();
+//                        $statistics = Statistics::find()->where(['user_id'=>$user['id']])
+//                            ->andWhere(['date'=>date('Y.m.d')])->one();
+//                        if ($statistics['date']==date('Y.m.d')) {
+//                            $statistics->request = $statistics['request'] + 1;
+//                            $statistics->user_id = $user['id'];
+//                            $statistics->date = date('Y.m.d');
+//                            $statistics->save() ? $statistics : null;
+//                        }else{
+//                            $statisticsNew = new Statistics();
+//                            $statisticsNew->request = $statistics['request'] + 1;
+//                            $statisticsNew->user_id = $user['id'];
+//                            $statisticsNew->date = date('Y.m.d');
+//                            $statisticsNew->save() ? $statisticsNew : null;
+//                        }
+//                    }
+//                    $k++;
+//                }
+//                $this->redirect('/web/find/student');
+            }
+
         if ($model->load(Yii::$app->request->post())){
                 return $this->render('studentresult', ['place'=>$place,'model'=>$model]);
 

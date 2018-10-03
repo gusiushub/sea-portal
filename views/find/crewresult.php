@@ -209,6 +209,11 @@ $this->title = 'Crew';
                         search results for master
                     </h2>
                 </div>
+                <?php
+                if(empty($free)){
+                    echo '<p>Ничего не найдено!</p>';
+                }
+                ?>
                 <div class="companies-wrapper companies-wrapper--crew">
                     <div class="row">
                         <div class="col-lg-12">
@@ -415,13 +420,14 @@ $this->title = 'Crew';
                             ]) ?>
                         </div>
                         <div class="textinput-container">
+
                             <?= $form->field($model, 'file')->textInput([
                                 'placeholder' => "ATTACH FILE",
                                 'class'=>'textinput-container__input'
                             ]) ?>
                             <div class="add-plus add-plus--attach-file">
                                 <p class="add-plus__symbol">
-                                    +
+                                    <label class="submit" for="uploadbtn" >+</label>
                                 </p>
                             </div>
                         </div>
@@ -431,7 +437,14 @@ $this->title = 'Crew';
                                 'class'=>'textinput-container__textarea'
                             ]) ?>
                         </div>
+                        <?= $form->field($model, 'file')->fileInput([
+                            'id'=>'uploadbtn',
+                            'style'=>'opacity: 0',
+                            'placeholder' => "ATTACH FILE",
+                            'class'=>'textinput-container__input'
+                        ]) ?>
                         <div class="accepting">
+
                             <div class="checkbox-style">
                                 <input name="agree" value="yes" type="checkbox" id='accepting' class="checkbox-style__input">
                                 <label for="accepting" class="checkbox-style__label">
