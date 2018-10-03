@@ -260,8 +260,8 @@
                                         Draft, м
                                     </h4>
                                     <div class="filter__input-double-wrapper">
-                                        <input type="text" placeholder="FROM" class="filter__input--double filter__input">
-                                        <input type="text" placeholder="TO" class="filter__input--double filter__input">
+                                        <input name="draftFrom" type="text" placeholder="FROM" class="filter__input--double filter__input">
+                                        <input name="draftTo" type="text" placeholder="TO" class="filter__input--double filter__input">
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -270,7 +270,7 @@
                                     </h4>
                                     <div class="filter__input-double-wrapper">
                                         <input type="text" name="deadweightFrom" placeholder="FROM" class="filter__input--double filter__input">
-                                        <input type="text" name="draftTo" placeholder="TO" class="filter__input--double filter__input">
+                                        <input type="text" name="deadweightTo" placeholder="TO" class="filter__input--double filter__input">
                                     </div>
                                 </div>
                             </div>
@@ -287,13 +287,13 @@
                                     <h4 class="filter__title">
                                         Country
                                     </h4>
-                                    <input type="text" placeholder="??????" class="filter__input filter__input--one">
+                                    <input name="country" type="text" placeholder="??????" class="filter__input filter__input--one">
                                 </div>
                                 <div class="col-lg-4">
                                     <h4 class="filter__title">
                                         Port
                                     </h4>
-                                    <input type="text" placeholder="??????" class="filter__input filter__input--one">
+                                    <input name="port" type="text" placeholder="??????" class="filter__input filter__input--one">
                                 </div>
                             </div>
                         </div>

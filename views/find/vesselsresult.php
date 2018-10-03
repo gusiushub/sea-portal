@@ -254,7 +254,7 @@
                                     </div>
                                 </div>
                                 <div class="result-box__bottom">
-                                    <a href="/web/find/about-ship?id=<?php echo $user['id'] ?>">
+                                    <a href="/web/find/about-ship?id=<?php echo $user['id'].'&vessel='.$findVesselPlus['id'] ?>">
                                         <button class="button button--result-box">
                                             full info
                                         </button>
@@ -302,7 +302,7 @@
                             </div>
                         </div>
                         <div class="result-box__bottom">
-                            <a href="/web/find/about-ship?id=<?php echo $user['id'] ?>">
+                            <a href="/web/find/about-ship?id=<?php echo $user['id'].'&vessel='.$findVesselPlus['id'] ?>">
                                 <button class="button button--result-box">
                                     full info
                                 </button>

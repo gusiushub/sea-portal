@@ -567,19 +567,18 @@ class FindController extends Controller
     {
         $place = Advertisement::find()->all();
         if (Yii::$app->request->isPost){
-
             $findVesselsPlus = Vessel::find()
                 //->where(['between','price',$_POST['VesselSale']['priceFrom'],$_POST['VesselSale']['priceto']])
-                ->where(['>', 'price', $_POST['priceFrom']])
-                ->andWhere(['<','price' ,$_POST['priceTo'] ])
-                ->where(['>', 'draft', $_POST['draftFrom']])
-                ->andWhere(['<','draft' ,$_POST['draftTo'] ])
-                ->where(['>', 'deadweight', $_POST['deadweightFrom']])
-                ->andWhere(['<','deadweight' ,$_POST['deadweightTo'] ])
-                ->where(['>', 'year', $_POST['yearFrom']])
-                ->andWhere(['<','year' ,$_POST['yearTo'] ])
-                ->where(['>', 'length', $_POST['leigthFrom']])
-                ->andWhere(['<','length' ,$_POST['leigthTo'] ])
+                ->where(['>', 'price', (int)$_POST['priceFrom']])
+                ->andWhere(['<','price' ,(int)$_POST['priceTo'] ])
+                ->andWhere(['>', 'draft', (int)$_POST['draftFrom']])
+                ->andWhere(['<','draft' ,(int)$_POST['draftTo'] ])
+                ->andWhere(['>', 'deadweight', (int)$_POST['deadweightFrom']])
+                ->andWhere(['<','deadweight' ,(int)$_POST['deadweightTo'] ])
+                ->andWhere(['>', 'year', (int)$_POST['yearFrom']])
+                ->andWhere(['<','year' ,(int)$_POST['yearTo'] ])
+                ->andWhere(['>', 'length', (int)$_POST['leigthFrom']])
+                ->andWhere(['<','length' ,(int)$_POST['leigthTo'] ])
                 //->where('price between '.$_POST['VesselSale']['priceFrom'].' and '.$_POST['VesselSale']['priceto'])
                 ->andWhere('type=:type',[':type' => $_POST['VesselSale']['type']])
                 ->andWhere('vessel_option=:vessel_option',[':vessel_option' => $_POST['VesselSale']['vesOption']])
@@ -589,16 +588,16 @@ class FindController extends Controller
                 ->all();
 
             $findVessels = Vessel::find()
-            ->where(['>', 'price', $_POST['priceFrom']])
-                ->andWhere(['<','price' ,$_POST['priceTo'] ])
-                ->where(['>', 'draft', $_POST['draftFrom']])
-                ->andWhere(['<','draft' ,$_POST['draftTo'] ])
-                ->where(['>', 'deadweight', $_POST['deadweightFrom']])
+            ->where(['>', 'price', (int)$_POST['priceFrom']])
+                ->andWhere(['<','price' ,(int)$_POST['priceTo'] ])
+                ->andWhere(['>', 'draft', (int)$_POST['draftFrom']])
+                ->andWhere(['<','draft' ,(int)$_POST['draftTo'] ])
+                ->andWhere(['>', 'deadweight', (int)$_POST['deadweightFrom']])
                 ->andWhere(['<','deadweight' ,$_POST['deadweightTo'] ])
-                ->where(['>', 'year', $_POST['yearFrom']])
-                ->andWhere(['<','year' ,$_POST['yearTo'] ])
-                ->where(['>', 'length', $_POST['leigthFrom']])
-                ->andWhere(['<','length' ,$_POST['leigthTo'] ])
+                ->andWhere(['>', 'year', (int)$_POST['yearFrom']])
+                ->andWhere(['<','year' ,(int)$_POST['yearTo'] ])
+                ->andWhere(['>', 'length', (int)$_POST['leigthFrom']])
+                ->andWhere(['<','length' ,(int)$_POST['leigthTo'] ])
                 //->where('price between '.$_POST['VesselSale']['priceFrom'].' and '.$_POST['VesselSale']['priceto'])
                 ->andWhere('type=:type',[':type' => $_POST['VesselSale']['type']])
                 ->andWhere('vessel_option=:vessel_option',[':vessel_option' => $_POST['VesselSale']['vesOption']])
@@ -615,9 +614,60 @@ class FindController extends Controller
 
     public function actionChartering()
     {
-        $model = new VesselSale();
+//        $model = new VesselSale();
+//        $place = Advertisement::find()->all();
+
+
         $place = Advertisement::find()->all();
+        if (Yii::$app->request->isPost){
+            $findVesselsPlus = Vessel::find()
+                //->where(['between','price',$_POST['VesselSale']['priceFrom'],$_POST['VesselSale']['priceto']])
+                ->where(['>', 'price', (int)$_POST['priceFrom']])
+                ->andWhere(['<','price' ,(int)$_POST['priceTo'] ])
+                ->andWhere(['>', 'draft', (int)$_POST['draftFrom']])
+                ->andWhere(['<','draft' ,(int)$_POST['draftTo'] ])
+                ->andWhere(['>', 'deadweight', (int)$_POST['deadweightFrom']])
+                ->andWhere(['<','deadweight' ,(int)$_POST['deadweightTo'] ])
+                ->andWhere(['>', 'year', (int)$_POST['yearFrom']])
+                ->andWhere(['<','year' ,(int)$_POST['yearTo'] ])
+                ->andWhere(['>', 'length', (int)$_POST['leigthFrom']])
+                ->andWhere(['<','length' ,(int)$_POST['leigthTo'] ])
+                //->where('price between '.$_POST['VesselSale']['priceFrom'].' and '.$_POST['VesselSale']['priceto'])
+                ->andWhere('type=:type',[':type' => $_POST['VesselSale']['type']])
+                ->andWhere('vessel_option=:vessel_option',[':vessel_option' => $_POST['VesselSale']['vesOption']])
+                ->andWhere('flag=:flag',[':flag'=> $_POST['flag']])
+                ->andWhere('port=:port',[':port'=> $_POST['port']])
+                ->andWhere('country=:country',[':country'=> $_POST['country']])
+                ->andWhere('category = :category',[':category'=>'vessel sale'])
+                ->andWhere('plan = :plan',[':plan'=>'business'])
+                ->all();
+
+            $findVessels = Vessel::find()
+                ->where(['>', 'price', (int)$_POST['priceFrom']])
+                ->andWhere(['<','price' ,(int)$_POST['priceTo'] ])
+                ->andWhere(['>', 'draft', (int)$_POST['draftFrom']])
+                ->andWhere(['<','draft' ,(int)$_POST['draftTo'] ])
+                ->andWhere(['>', 'deadweight', (int)$_POST['deadweightFrom']])
+                ->andWhere(['<','deadweight' ,$_POST['deadweightTo'] ])
+                ->andWhere(['>', 'year', (int)$_POST['yearFrom']])
+                ->andWhere(['<','year' ,(int)$_POST['yearTo'] ])
+                ->andWhere(['>', 'length', (int)$_POST['leigthFrom']])
+                ->andWhere(['<','length' ,(int)$_POST['leigthTo'] ])
+                //->where('price between '.$_POST['VesselSale']['priceFrom'].' and '.$_POST['VesselSale']['priceto'])
+                ->andWhere('type=:type',[':type' => $_POST['VesselSale']['type']])
+                ->andWhere('vessel_option=:vessel_option',[':vessel_option' => $_POST['VesselSale']['vesOption']])
+                ->andWhere('flag=:flag',[':flag'=> $_POST['flag']])
+                ->andWhere('category = :category',[':category'=>'vessel sale'])
+                ->andWhere('plan = :plan',[':plan'=>'free'])
+                ->all();
+
+            return $this->render('vesselsresult',['place'=>$place,'findVessels'=>$findVessels,'findVesselsPlus'=>$findVesselsPlus]);
+        }
+        $model = new VesselSale();
         return $this->render('chartering',['place'=>$place,'model'=>$model]);
+
+
+        //return $this->render('chartering',['place'=>$place,'model'=>$model]);
     }
 
     public function actionAjaxCrew()
@@ -638,7 +688,7 @@ class FindController extends Controller
     public function actionAboutShip()
     {
         $user = User::findOne($_GET['id']);
-        $ship = Vessel::find()->where('user_id=:user_id',[':user_id'=>$user['id']])->all();
+        $ship = Vessel::find()->where('id=:id',[':id'=>$_GET['vessel']])->all();
         if (!empty($_GET['agree'])){
             if ($_GET['agree']=='yes'){
                 Yii::$app->mailer->compose()
